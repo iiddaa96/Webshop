@@ -7,7 +7,7 @@ export default function Home() {
 
       {/* Här mappas en produkt ut. Detta blir ett produkt kort sen. */}
       {mockedProduct.map((product) => (
-        <div>
+        <div key={product.id}>
           <img src={product.image} alt="testProduct" />
           <p>{product.title}</p>
           <p>{product.price}</p>
