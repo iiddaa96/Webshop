@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
+import Header from "./header/page";
 import { LayoutProps } from "./types";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,15 +15,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header>
-          <Link href="/">
-            <h1>Wall Of Art</h1>
-          </Link>
-          <nav>
-            <Link href="/admin">admin</Link>
-            <Link href="/checkout">Checkout</Link>
-          </nav>
-        </header>
+        <Header />
         {children}
         <footer>
           <p>© 2024</p>
