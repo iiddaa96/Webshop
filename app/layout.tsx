@@ -20,8 +20,8 @@ export default function RootLayout({ children }: LayoutProps) {
             <h1>Wall Of Art</h1>
           </Link>
           <nav>
-            <Link href="/admin">About</Link>
-            <Link href="/checkout">Pricing</Link>
+            <Link href="/admin">admin</Link>
+            <Link href="/checkout">Checkout</Link>
           </nav>
         </header>
         {children}
