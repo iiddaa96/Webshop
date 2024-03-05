@@ -17,8 +17,12 @@ export default function RootLayout({ children }: LayoutProps) {
       <body className={inter.className}>
         <header>
           <Link href="/">
-            <h1>NextJS webbshop</h1>
+            <h1>Wall Of Art</h1>
           </Link>
+          <nav>
+            <Link href="/admin">admin</Link>
+            <Link href="/checkout">Checkout</Link>
+          </nav>
         </header>
         {children}
         <footer>
