@@ -9,7 +9,7 @@ function header() {
           <h1>Wall Of Art</h1>
         </Link>
         <nav>
-          <Link href="/admin">admin</Link>
+          <Link href="/admin/product">admin</Link>
           <Link href="/checkout">Checkout</Link>
         </nav>
       </header>
