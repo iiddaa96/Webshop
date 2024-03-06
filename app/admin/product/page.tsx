@@ -5,10 +5,10 @@ function Admin() {
     <div>
       <h1>Admin sidan</h1>
 
-      <Link href="/admin/updateExistProduct">
+      <Link href="/admin/product/updateExistProduct">
         <button>Uppdatera produkt</button>
       </Link>
-      <Link href="/admin/AddNewProduct">
+      <Link href="/admin/product/new">
         <button>Lägg till ny</button>
       </Link>
     </div>

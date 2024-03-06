@@ -4,7 +4,7 @@ function UpdateExistProduct() {
   return (
     <div>
       <h1>UpdateExistProduct Page</h1>
-      <Link href="/admin">Spara/Tillbaka till admin</Link>
+      <Link href="/admin/product">Spara/Tillbaka till admin</Link>
     </div>
   );
 }
