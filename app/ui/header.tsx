@@ -1,6 +1,5 @@
 "use client";
 
-import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AppBar from "@mui/material/AppBar";
@@ -11,8 +10,10 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import LogoImage from "../assets/logo.png";
 
 // Cypress tester som ska in i header
 /* - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
@@ -47,28 +48,39 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
-          {/* <Link href="/">
-            <img src="app/assets/logo.png" alt="" />
-          </Link> */}
-          <Link href="/">
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
+          <Link href="/" passHref>
+            <Box
               sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
+                display: "flex",
+                alignItems: "center",
                 textDecoration: "none",
+                color: "inherit",
+                cursor: "pointer",
               }}
             >
-              Wall of Art
-            </Typography>
+              <Image
+                src={LogoImage}
+                width={70}
+                height={70}
+                alt="Picture of the author"
+              />
+              <Typography
+                variant="h6"
+                noWrap
+                component="div" // Changed to 'div' to avoid nesting links
+                sx={{
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "inherit", // Inherits the AppBar color
+                  textDecoration: "none",
+                }}
+              >
+                Wall of Art
+              </Typography>
+            </Box>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -101,13 +113,13 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {/*------ Länk till admin sidan----------- */}
+              {/*------ Länk till admin sidan desktop----------- */}
               <Link href="/admin/product" passHref>
                 <Button color="inherit" data-cy="admin-link">
                   Admin
                 </Button>
               </Link>
-              {/* --------Tillfälliga länkar till andra sidor----------- */}
+              {/* --------Tillfälliga länkar till andra sidor desktop----------- */}
               <Link href="/checkout" passHref>
                 <Button color="inherit">Posters</Button>
               </Link>
@@ -125,27 +137,31 @@ function ResponsiveAppBar() {
               </Link>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            WALL OF ART
-          </Typography>
+          {/*---- Loggan för mobile----- */}
+          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
+          <Link href="/">
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              WALL OF ART
+            </Typography>
+          </Link>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {/* ----------Länk till admin sida här---------- */}
+            {/* ----------Länk till admin sida här mobile---------- */}
             <Link href="/admin/product" passHref>
               <Button color="inherit" data-cy="admin-link">
                 Admin
@@ -170,7 +186,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {/* ----Här är icon för varukorgen----- */}
+            {/* ----Här är länk och icon för varukorgen----- */}
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}></IconButton>
 
             <Link data-cy="cart-link" data- href="/checkout" passHref>
@@ -207,23 +223,3 @@ function ResponsiveAppBar() {
   );
 }
 export default ResponsiveAppBar;
-
-// function header() {
-//   return (
-//   );
-// }
-//     <div>
-//       <h1>Här ska headern layouten vara</h1>
-//       <header>
-//         <Link href="/">
-//           <h1>Wall Of Art</h1>
-//         </Link>
-//         <nav>
-//           <Link href="/admin/product">admin</Link>
-//           <Link href="/checkout">Checkout</Link>
-//         </nav>
-//       </header>
-
-//     </div>
-
-// export default header;
