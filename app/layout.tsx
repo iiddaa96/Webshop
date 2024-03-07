@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { LayoutProps } from "./types";
 import Footer from "./ui/footer";
-import Header from "./ui/header";
+import ResponsiveAppBar from "./ui/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
+        <ResponsiveAppBar />
         {children}
         <p>© 2024</p>
         <Footer />
