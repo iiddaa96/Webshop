@@ -12,10 +12,10 @@ import Link from "next/link";
 function Admin() {
   return (
     <div>
-      <h1>Admin sidan</h1>
       <Link href="/admin/product/new">
         <AddIcon />
       </Link>
+      <h1>Admin sidan</h1>
       <ProductCard />
     </div>
   );
