@@ -47,24 +47,29 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
+          {/* <Link href="/">
+            <img src="app/assets/logo.png" alt="" />
+          </Link> */}
+          <Link href="/">
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              Wall of Art
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -168,7 +173,7 @@ function ResponsiveAppBar() {
             {/* ----Här är icon för varukorgen----- */}
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}></IconButton>
 
-            <Link href="/checkout" passHref>
+            <Link data-cy="cart-link" data- href="/checkout" passHref>
               <ShoppingCartIcon />
             </Link>
             {/* -----MOBILE---HÄR BÖRJAR HAMBURGE MENY----- */}
@@ -200,7 +205,6 @@ function ResponsiveAppBar() {
       </Container>
     </AppBar>
   );
-
 }
 export default ResponsiveAppBar;
 
