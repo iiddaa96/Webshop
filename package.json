@@ -14,9 +14,14 @@
     "test": "plugga test"
   },
   "dependencies": {
+    "@fontsource/roboto": "^5.0.12",
+    "@mui/icons-material": "^5.15.12",
+    "@mui/material": "^5.15.12",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.17",
+    "next": "14.1.1",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.1.1"
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@plugga-tech/react-webshop-ts": "^1.0.21",

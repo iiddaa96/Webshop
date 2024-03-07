@@ -1,8 +1,12 @@
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Footer from "./components/footer";
-import Header from "./components/header";
 import { LayoutProps } from "./types";
+import Footer from "./ui/footer";
+import Header from "./ui/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
