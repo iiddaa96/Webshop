@@ -2,26 +2,23 @@
 
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AppBar from "@mui/material/AppBar";
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import * as React from "react";
-
 
 // Cypress tester som ska in i header
 /* - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
 - `data-cy="cart-items-count-badge"` siffran intill kundvagnsikonen som visar antalet tillagda produkter.
 - `data-cy="admin-link"` den länk/knapp som går till admin.
 */
-
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -79,6 +76,8 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
+
+            {/* -------HÄR ÄR MENY FÖR DESKTOP------------ */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -97,10 +96,27 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
+              {/*------ Länk till admin sidan----------- */}
               <Link href="/admin/product" passHref>
                 <Button color="inherit" data-cy="admin-link">
                   Admin
                 </Button>
+              </Link>
+              {/* --------Tillfälliga länkar till andra sidor----------- */}
+              <Link href="/checkout" passHref>
+                <Button color="inherit">Posters</Button>
+              </Link>
+              <Link href="/checkout" passHref>
+                <Button color="inherit">Frames</Button>
+              </Link>
+              <Link href="/checkout" passHref>
+                <Button color="inherit">Home</Button>
+              </Link>
+              <Link href="/checkout" passHref>
+                <Button color="inherit">Favorite</Button>
+              </Link>
+              <Link href="/checkout" passHref>
+                <Button color="inherit">Posters</Button>
               </Link>
             </Menu>
           </Box>
@@ -121,22 +137,41 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            WALL OF ART
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {/* ----------Länk till admin sida här---------- */}
             <Link href="/admin/product" passHref>
               <Button color="inherit" data-cy="admin-link">
                 Admin
               </Button>
             </Link>
+            {/* --------Tillfälliga länkar till andra sidor----------- */}
+            <Link href="/checkout" passHref>
+              <Button color="inherit">Posters</Button>
+            </Link>
+            <Link href="/checkout" passHref>
+              <Button color="inherit">Frames</Button>
+            </Link>
+            <Link href="/checkout" passHref>
+              <Button color="inherit">Home</Button>
+            </Link>
+            <Link href="/checkout" passHref>
+              <Button color="inherit">Favorite</Button>
+            </Link>
+            <Link href="/checkout" passHref>
+              <Button color="inherit">Posters</Button>
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
+            {/* ----Här är icon för varukorgen----- */}
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}></IconButton>
+
+            <Link href="/checkout" passHref>
+              <ShoppingCartIcon />
+            </Link>
+            {/* -----MOBILE---HÄR BÖRJAR HAMBURGE MENY----- */}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -153,6 +188,7 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              {/* -----Länk till admin sida mobil----- */}
               <Link href="/admin/product" passHref>
                 <Button color="inherit" data-cy="admin-link">
                   Admin
@@ -164,10 +200,9 @@ function ResponsiveAppBar() {
       </Container>
     </AppBar>
   );
+
 }
 export default ResponsiveAppBar;
-
-
 
 // function header() {
 //   return (
@@ -184,6 +219,7 @@ export default ResponsiveAppBar;
 //           <Link href="/checkout">Checkout</Link>
 //         </nav>
 //       </header>
+
 //     </div>
 
 // export default header;
