@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Box, Link, TextField } from "@mui/material";
 
 /* CYPRESS TESTER SOM SKA FINNAS MED  */
 /* - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan. 
@@ -17,7 +17,31 @@ import Link from "next/link";
 function UpdateExistProduct() {
   return (
     <div>
-      <h1>UpdateExistProduct Page</h1>
+      <Box
+        sx={{
+          width: 500,
+          maxWidth: "100%",
+        }}
+      >
+        <TextField
+          fullWidth
+          label="Title"
+          helperText=" "
+          id="demo-helper-text-aligned-no-helper"
+        />
+        <TextField
+          fullWidth
+          label="Price"
+          helperText=" "
+          id="demo-helper-text-aligned-no-helper"
+        />
+        <TextField
+          fullWidth
+          label="Description"
+          helperText=" "
+          id="demo-helper-text-aligned-no-helper"
+        />
+      </Box>
       <Link href="/admin/product">Spara/Tillbaka till admin</Link>
     </div>
   );
