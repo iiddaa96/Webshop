@@ -1,4 +1,17 @@
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import { products } from "../data/index";
+
+/*
+- `data-cy="product"` produkt-korten/raden på startsidan & adminsidan.
+- `data-cy="product-id"` id på en produkt.
+- `data-cy="product-title"` titeln på en produkt.
+- `data-cy="product-price"` priset på en produkt.
+- `data-cy="product-buy-button"` lägg till i kundvagnen knappen.
+- `data-cy="added-to-cart-toast"` toast som visas när en produkt läggs till i kundvagnen.
+  */
 
 export default function Home() {
   return (
