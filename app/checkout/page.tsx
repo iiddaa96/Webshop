@@ -39,6 +39,11 @@ function Checkout() {
           marginBottom: "20px",
         }}
       >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
+          alt="Tillfällig bild"
+          style={{ width: "20%" }}
+        />
         Innehåll i ruta 1
       </Box>
       <Box
@@ -48,6 +53,11 @@ function Checkout() {
           marginBottom: "20px",
         }}
       >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
+          alt="Tillfällig bild"
+          style={{ width: "20%" }}
+        />
         Innehåll i ruta 2
       </Box>
       <Box
@@ -57,6 +67,11 @@ function Checkout() {
           marginBottom: "20px",
         }}
       >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
+          alt="Tillfällig bild"
+          style={{ width: "20%" }}
+        />
         Innehåll i ruta 3
       </Box>
       {/* Checkout knappen med styleing */}
