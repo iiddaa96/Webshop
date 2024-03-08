@@ -20,7 +20,7 @@ export const products: Product[] = [
   {
     url: "product",
     id: "1",
-    title: "Poster 1",
+    title: "BERLIN SHAPES NO2 CANVASTAVLA",
     price: 109,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
@@ -30,7 +30,7 @@ export const products: Product[] = [
   {
     url: "product",
     id: "2",
-    title: "Poster 2",
+    title: "ABSTRACT FIGURES NO2 CANVASTAVLA",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
@@ -40,7 +40,7 @@ export const products: Product[] = [
   {
     url: "product",
     id: "3",
-    title: "Poster 3",
+    title: "BORIS DRASCHOFF / KUBISTIKA - RISING",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
@@ -50,7 +50,7 @@ export const products: Product[] = [
   {
     url: "product",
     id: "4",
-    title: "Poster 4",
+    title: "RUSTIC ARCHES CANVASTAVLA",
     price: 449,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
@@ -60,7 +60,7 @@ export const products: Product[] = [
   {
     url: "product",
     id: "5",
-    title: "Poster 5",
+    title: "VIVID SHAPES NO1 CANVASTAVLA",
     price: 449,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",

@@ -2,12 +2,16 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
   Card,
+  CardActions,
   CardContent,
   CardMedia,
   Grid,
+  IconButton,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
@@ -17,16 +21,9 @@ import MiddleImage from "./assets/middleImage.png";
 export default function Home() {
   return (
     <main>
-      <Typography
-        variant="h4"
-        component="p"
-        sx={{ margin: 4, textAlign: "center" }}
-      >
-        Det här är startsidan. Här ska alla produkterna visas.
-      </Typography>
       <Box
         sx={{
-          width: "100%",
+          width: "95%",
           overflow: "hidden",
           justifyContent: "center",
           position: "relative",
@@ -46,12 +43,19 @@ export default function Home() {
       </Box>
 
       <Box sx={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
-        {" "}
-        {/* Centrerar och lägger till padding för grid */}
         <Grid container spacing={4}>
           {products.map((product) => (
             <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
-              <Card sx={{ maxWidth: 345, m: "auto", boxShadow: 3 }}>
+              <Card
+                sx={{
+                  maxWidth: 345,
+                  m: "auto",
+                  boxShadow: 3,
+                  position: "relative",
+                }}
+              >
+                {" "}
+                {/* Lägg till position: 'relative' för att placera ikonerna korrekt */}
                 <CardMedia
                   component="img"
                   height="280"
@@ -69,8 +73,22 @@ export default function Home() {
                   >
                     {product.price}
                   </Typography>
-                  {/* Justera storleken på beskrivningstexten ytterligare om så önskas */}
                 </CardContent>
+                <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
+                  {" "}
+                  {/* Positionerar ikonerna i nedre högra hörnet */}
+                  <CardActions
+                    disableSpacing
+                    sx={{ justifyContent: "flex-end" }}
+                  >
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon />
+                    </IconButton>
+                    <IconButton aria-label="add to cart">
+                      <AddShoppingCartIcon />
+                    </IconButton>
+                  </CardActions>
+                </Box>
               </Card>
             </Grid>
           ))}
