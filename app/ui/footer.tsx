@@ -7,7 +7,7 @@ import "@fontsource/roboto/700.css";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction, Link } from "@mui/material";
 import { useState } from "react";
 
 function Footer() {
@@ -27,7 +27,12 @@ function Footer() {
         alignItems: "center",
       }}
     >
-      <BottomNavigationAction label="Contact" icon={<ContactPhoneIcon />} />
+      <BottomNavigationAction
+        component={Link}
+        href="/confirmation"
+        label="Contact"
+        icon={<ContactPhoneIcon />}
+      />
       <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
       <BottomNavigationAction label="Nearby" icon={<SearchIcon />} />
     </BottomNavigation>
