@@ -1,12 +1,7 @@
-import { Container } from "@mui/material";
 import CartLayout from "../checkoutComponents/cartLayout";
 
 function Checkout() {
-  return (
-    <Container maxWidth="md">
-      <CartLayout />
-    </Container>
-  );
+  return <CartLayout />;
 }
 
 export default Checkout;
