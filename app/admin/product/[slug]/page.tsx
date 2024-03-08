@@ -1,7 +1,17 @@
 "use client";
 
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { Box, Button, Link, TextField, styled } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
+import {
+  Box,
+  Button,
+  Container,
+  Link,
+  TextField,
+  Typography,
+  styled,
+} from "@mui/material";
 /* CYPRESS TESTER SOM SKA FINNAS MED  */
 /* - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan.
   - `data-cy="admin-link"` den länk/knapp som går till admin.
@@ -44,44 +54,83 @@ const VisuallyHiddenInput = styled("input")({
 
 function UpdateExistProduct() {
   return (
-    <div>
+    <Container
+      fixed
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: "30px",
+        marginBottom: "30px",
+      }}
+    >
       <Box
         sx={{
-          width: 500,
-          maxWidth: "100%",
+          height: 700,
+          borderRadius: "10px",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px",
+          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
         }}
       >
+        <Typography>Här kommer en bild</Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            marginBottom: "20px",
+          }}
+        >
+          <Button
+            component="label"
+            role={undefined}
+            variant="contained"
+            tabIndex={-1}
+            startIcon={<CloudUploadIcon />}
+          >
+            Upload file
+            <VisuallyHiddenInput type="file" />
+          </Button>
+        </Box>
         <TextField
           fullWidth
           label="Title"
           helperText=" "
           id="demo-helper-text-aligned-no-helper"
+          sx={{ width: "100%", marginBottom: "20px" }}
         />
         <TextField
           fullWidth
           label="Price"
           helperText=" "
           id="demo-helper-text-aligned-no-helper"
+          sx={{ width: "100%", marginBottom: "20px" }}
         />
+
         <TextField
-          fullWidth
+          id="outlined-multiline-static"
           label="Description"
-          helperText=" "
-          id="demo-helper-text-aligned-no-helper"
+          multiline
+          rows={6}
+          variant="outlined"
+          sx={{ width: "100%", marginBottom: "20px" }}
         />
-        <Button
-          component="label"
-          role={undefined}
-          variant="contained"
-          tabIndex={-1}
-          startIcon={<CloudUploadIcon />}
-        >
-          Upload file
-          <VisuallyHiddenInput type="file" />
-        </Button>
+        <Box sx={{ display: "flex", gap: "5vh" }}>
+          <Link href="/admin/product">
+            <Box component={"button"} sx={{ width: "150px" }}>
+              <SaveIcon fontSize="large" />
+            </Box>
+          </Link>
+          <Box component={"button"} sx={{ width: "150px" }}>
+            <DeleteIcon fontSize="large" />
+          </Box>
+        </Box>
       </Box>
-      <Link href="/admin/product">Spara/Tillbaka till admin</Link>
-    </div>
+    </Container>
   );
 }
 
