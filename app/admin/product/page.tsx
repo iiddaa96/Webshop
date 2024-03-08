@@ -1,5 +1,6 @@
+import ProductGrid from "@/app/ui/ProductGrid";
+import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
-
 /* CYPRESS TESTER SOM SKA FINNAS MED  */
 /* - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan. 
 - `data-cy="admin-link"` den länk/knapp som går till admin.
@@ -11,14 +12,11 @@ import Link from "next/link";
 function Admin() {
   return (
     <div>
-      <h1>Admin sidan</h1>
-
-      <Link href="/admin/product/updateExistProduct">
-        <button>Uppdatera produkt</button>
-      </Link>
       <Link href="/admin/product/new">
-        <button>Lägg till ny</button>
+        <AddIcon />
       </Link>
+      <h1>Admin sidan</h1>
+      <ProductGrid />
     </div>
   );
 }
