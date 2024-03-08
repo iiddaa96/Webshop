@@ -1,4 +1,4 @@
-import ProductCard from "@/app/ui/ProductCard";
+import ProductGrid from "@/app/ui/ProductGrid";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
 /* CYPRESS TESTER SOM SKA FINNAS MED  */
@@ -16,7 +16,7 @@ function Admin() {
         <AddIcon />
       </Link>
       <h1>Admin sidan</h1>
-      <ProductCard />
+      <ProductGrid />
     </div>
   );
 }
