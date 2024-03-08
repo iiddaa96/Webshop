@@ -87,25 +87,36 @@ Hittepå gatan 01
             key={item.name}
             sx={{
               display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              flexDirection: "column",
+              alignItems: "flex-start",
               padding: "10px",
               width: "100%",
               maxWidth: "500px", // Justera denna bredd efter behov
+              marginBottom: "10px", // Lägg till lite utrymme mellan varje Paper
             }}
           >
-            <Typography>{`Wall of Art - ${item.name}`}</Typography>
+            <Typography sx={{ marginBottom: "10px" }}>{item.name}</Typography>
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
-                width: "25px",
-                height: "25px",
-                border: "1px solid black",
+                justifyContent: "space-between",
+                width: "100%",
               }}
             >
-              {item.quantity}
+              <Typography sx={{ color: "lightgray" }}>Wall of Art</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "25px",
+                  height: "25px",
+                  border: "1px solid black",
+                }}
+              >
+                {item.quantity}
+              </Box>
             </Box>
           </Paper>
         ))}
