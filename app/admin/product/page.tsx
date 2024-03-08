@@ -15,7 +15,6 @@ function Admin() {
       <Link href="/admin/product/new">
         <AddIcon />
       </Link>
-      <h1>Admin sidan</h1>
       <ProductGrid />
     </div>
   );

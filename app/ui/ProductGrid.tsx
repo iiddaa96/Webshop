@@ -3,7 +3,14 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 
-import { Box, CardActionArea, Grid, Link, styled } from "@mui/material";
+import {
+  Box,
+  CardActionArea,
+  Container,
+  Grid,
+  Link,
+  styled,
+} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -18,45 +25,56 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 export default function ProductGrid() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={{ xs: 2, md: 3 }}>
-        {products.map((product, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={3}>
-            <Link href="/admin/product/updateExistProduct" key={index}>
-              <StyledCard>
-                <CardActionArea color="red">
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={product.image}
-                    alt="green iguana"
-                  />
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      sx={{ color: "primary.main" }}
-                    >
-                      {product.title}
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      sx={{ color: "secondary.main" }}
-                    >
-                      {product.price}
-                    </Typography>
-                    <Box>
-                      <EditNoteIcon fontSize="large" sx={{ display: "flex" }} />
-                      <DeleteIcon fontSize="large" />
-                    </Box>
-                  </CardContent>
-                </CardActionArea>
-              </StyledCard>
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+    <Container fixed>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={{ xs: 2, md: 3 }}>
+          {products.map((product, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Link
+                href="/admin/product/updateExistProduct"
+                key={index}
+                underline="none"
+              >
+                <StyledCard>
+                  <CardActionArea color="red">
+                    <CardMedia
+                      component="img"
+                      height="auto"
+                      image={product.image}
+                      alt="green iguana"
+                    />
+                    <CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        sx={{ color: "primary.main" }}
+                      >
+                        {product.title}
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        sx={{ color: "secondary.main" }}
+                      >
+                        {product.price}Kr
+                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <EditNoteIcon fontSize="large" />
+                        <DeleteIcon fontSize="large" />
+                      </Box>
+                    </CardContent>
+                  </CardActionArea>
+                </StyledCard>
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Container>
   );
 }
