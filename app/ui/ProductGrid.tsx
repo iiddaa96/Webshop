@@ -1,5 +1,8 @@
 "use client";
 
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+
 import { Box, CardActionArea, Grid, Link, styled } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -9,11 +12,8 @@ import { products } from "../../data/index";
 
 // styling till alla cards
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
   padding: theme.spacing(2),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
+  color: "black",
 }));
 
 export default function ProductGrid() {
@@ -46,9 +46,10 @@ export default function ProductGrid() {
                     >
                       {product.price}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {product.description}
-                    </Typography>
+                    <Box>
+                      <EditNoteIcon fontSize="large" sx={{ display: "flex" }} />
+                      <DeleteIcon fontSize="large" />
+                    </Box>
                   </CardContent>
                 </CardActionArea>
               </StyledCard>
