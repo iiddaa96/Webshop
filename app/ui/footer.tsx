@@ -26,10 +26,6 @@ function Footer() {
         alignItems: "center",
       }}
     >
-      {/* Iconerna i footer */}
-      <div>
-        <p style={{ margin: 0 }}>@Copywrite || Wall of Art</p>
-      </div>
       <BottomNavigationAction label="Contact" icon={<ContactPhoneIcon />} />
       <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
       <BottomNavigationAction label="Nearby" icon={<SearchIcon />} />
