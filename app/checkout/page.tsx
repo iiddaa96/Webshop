@@ -34,6 +34,7 @@ function Checkout() {
     <Container maxWidth="md">
       <Grid container spacing={3}>
         <Grid item xs={12}>
+          {/* Styleing för box 1 */}
           <Box
             sx={{
               display: "flex",
@@ -41,7 +42,7 @@ function Checkout() {
               marginTop: "20px",
             }}
           >
-            {/* Styleing för bild i box 1 */}
+            {/* Styling för img box i box 1 */}
             <Box sx={{ width: "20%" }}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
@@ -62,13 +63,14 @@ function Checkout() {
           </Box>
         </Grid>
         <Grid item xs={12}>
+          {/* Styleing för box 2 */}
           <Box
             sx={{
               display: "flex",
               border: "1px solid black",
             }}
           >
-            {/* Styleing för bild i box 2 */}
+            {/* Styleing för bild box i box 2 */}
             <Box sx={{ width: "20%" }}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
@@ -89,6 +91,7 @@ function Checkout() {
           </Box>
         </Grid>
         <Grid item xs={12}>
+          {/* Styleing för box 3 */}
           <Box
             sx={{
               display: "flex",
@@ -96,7 +99,7 @@ function Checkout() {
               marginBottom: "20px",
             }}
           >
-            {/* Styleing för bild i box 3 */}
+            {/* styleing för bild box i box 3 */}
             <Box sx={{ width: "20%" }}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
