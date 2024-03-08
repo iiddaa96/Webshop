@@ -61,7 +61,7 @@ function ResponsiveAppBar() {
           >
             <Box
               sx={{
-                display: "inline-block",
+                display: { xs: "none", md: "inline-block" },
                 borderRadius: "50%",
                 overflow: "hidden",
                 width: 70,
@@ -152,6 +152,22 @@ function ResponsiveAppBar() {
           </Box>
           {/*---- Loggan för mobile----- */}
           {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
+          <Box
+            sx={{
+              display: { md: "none", xs: "inline-block" },
+              borderRadius: "50%",
+              overflow: "hidden",
+              width: 70,
+              height: 70,
+            }}
+          >
+            <Image
+              src={LogoImage}
+              width={70}
+              height={70}
+              alt="Picture of the author"
+            />
+          </Box>
 
           <Typography
             variant="h5"
