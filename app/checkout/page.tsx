@@ -117,6 +117,7 @@ function Checkout() {
           Checkout
         </Button>
       </Box>
+      {/* Här är inputfälten från inputPayment */}
       <InputPayment />
     </Container>
   );
