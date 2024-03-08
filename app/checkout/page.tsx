@@ -1,4 +1,4 @@
-import { Box, Button, Container } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 
 /* 
 - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
@@ -32,63 +32,116 @@ import { Box, Button, Container } from "@mui/material";
 function Checkout() {
   return (
     <Container maxWidth="md">
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Box
+            sx={{
+              display: "flex",
+              border: "1px solid black",
+              marginTop: "20px",
+            }}
+          >
+            {/* Styleing för bild i box 1 */}
+            <Box sx={{ width: "20%" }}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
+                alt="Tillfällig bild"
+                style={{ width: "100%" }}
+              />
+            </Box>
+            {/* styleing och innehåll i box 1 */}
+            <Box sx={{ padding: "20px", width: "70%" }}>
+              <Typography variant="h6">Tavla 1</Typography>
+              <Typography variant="body1">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Praesentium maxime consequatur corrupti rerum expedita sint non
+                consectetur quae! Unde, blanditiis. Quasi amet id similique
+                saepe deserunt eligendi, minus iusto architecto!
+              </Typography>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Box
+            sx={{
+              display: "flex",
+              border: "1px solid black",
+            }}
+          >
+            {/* Styleing för bild i box 2 */}
+            <Box sx={{ width: "20%" }}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
+                alt="Tillfällig bild"
+                style={{ width: "100%" }}
+              />
+            </Box>
+            {/* styleing och innehåll i box 2 */}
+            <Box sx={{ padding: "20px", width: "70%" }}>
+              <Typography variant="h6">Tavla 2</Typography>
+              <Typography variant="body1">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit id
+                quisquam, error tempore eum mollitia veritatis eos, laudantium
+                quis voluptate repudiandae similique ipsam porro expedita odio
+                placeat, saepe est culpa.
+              </Typography>
+            </Box>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Box
+            sx={{
+              display: "flex",
+              border: "1px solid black",
+              marginBottom: "20px",
+            }}
+          >
+            {/* Styleing för bild i box 3 */}
+            <Box sx={{ width: "20%" }}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
+                alt="Tillfällig bild"
+                style={{ width: "100%" }}
+              />
+            </Box>
+            {/* styleing och innehåll i box 3 */}
+            <Box sx={{ padding: "20px", width: "70%" }}>
+              <Typography variant="h6">Tavla 3</Typography>
+              <Typography variant="body1">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Necessitatibus inventore cum eaque tenetur ullam non natus magni
+                dolor, harum aliquid. Reprehenderit beatae perferendis at itaque
+                accusamus maxime eligendi nesciunt corporis.
+              </Typography>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+      {/* -------Checkout knappen med styleing--------- */}
       <Box
         sx={{
-          border: "1px solid black",
-          padding: "20px",
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "20px",
           marginBottom: "20px",
         }}
       >
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
-          alt="Tillfällig bild"
-          style={{ width: "20%" }}
-        />
-        Innehåll i ruta 1
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{
+            justifyContent: "center",
+            width: "70%",
+            backgroundColor: "black",
+            color: "white",
+            "&:hover": {
+              backgroundColor: "darkgrey",
+            },
+          }}
+        >
+          Checkout
+        </Button>
       </Box>
-      <Box
-        sx={{
-          border: "1px solid black",
-          padding: "20px",
-          marginBottom: "20px",
-        }}
-      >
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
-          alt="Tillfällig bild"
-          style={{ width: "20%" }}
-        />
-        Innehåll i ruta 2
-      </Box>
-      <Box
-        sx={{
-          border: "1px solid black",
-          padding: "20px",
-          marginBottom: "20px",
-        }}
-      >
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
-          alt="Tillfällig bild"
-          style={{ width: "20%" }}
-        />
-        Innehåll i ruta 3
-      </Box>
-      {/* Checkout knappen med styleing */}
-      <Button
-        variant="contained"
-        color="primary"
-        sx={{
-          width: "100%", // Gör knappen 100% i bredd
-          backgroundColor: "black", // Bakgrundsfärg svart
-          color: "white", // Textfärg vit
-          "&:hover": {
-            backgroundColor: "darkgrey", // Bakgrundsfärg ändras vid hover
-          },
-        }}
-      >
-        Checkout
-      </Button>
     </Container>
   );
 }
