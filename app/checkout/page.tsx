@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+import { Box, TextField } from "@mui/material";
 
 /* 
 - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
@@ -29,14 +30,65 @@ import Link from "next/link";
 - `data-cy="total-price"` totala priset för alla produkter i kundvagnen.
 */
 
-function Checkout() {
+export default function InputPayment() {
   return (
-    <div>
-      <h1> Varukorg sidan</h1>
-
-      <Link href="/confirmation">Slutför köp</Link>
-    </div>
+    <Box
+      component="form"
+      sx={{
+        "& .MuiTextField-root": { m: 1, width: "25ch" },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <div>
+        <TextField
+          error
+          id="outlined-error"
+          label="Error"
+          defaultValue="Name"
+        />
+        <TextField
+          error
+          id="outlined-error-helper-text"
+          label="Error"
+          defaultValue="Lastname"
+          helperText="Incorrect entry."
+        />
+      </div>
+      <div>
+        <TextField
+          error
+          id="filled-error"
+          label="Error"
+          defaultValue="Adress"
+          variant="filled"
+        />
+        <TextField
+          error
+          id="filled-error-helper-text"
+          label="Error"
+          defaultValue="City"
+          helperText="Incorrect entry."
+          variant="filled"
+        />
+      </div>
+      <div>
+        <TextField
+          error
+          id="standard-error"
+          label="Error"
+          defaultValue="Mail"
+          variant="standard"
+        />
+        <TextField
+          error
+          id="standard-error-helper-text"
+          label="Error"
+          defaultValue="Id number:"
+          helperText="Incorrect entry."
+          variant="standard"
+        />
+      </div>
+    </Box>
   );
 }
-
-export default Checkout;
