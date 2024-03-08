@@ -44,13 +44,10 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-
-/* - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
+  /* - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
 - `data-cy="cart-items-count-badge"` siffran intill kundvagnsikonen som visar antalet tillagda produkter.
 - `data-cy="admin-link"` den länk/knapp som går till admin.
 */
-
-function header() {
 
   return (
     <AppBar position="static">
