@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 /* 
 - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
 - `data-cy="cart-items-count-badge"` siffran intill kundvagnsikonen som visar antalet tillagda produkter.
@@ -32,6 +33,7 @@ function Checkout() {
   return (
     <div>
       <h1> Varukorg sidan</h1>
+
       <Link href="/confirmation">Slutför köp</Link>
     </div>
   );
