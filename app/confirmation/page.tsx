@@ -12,6 +12,7 @@ function Confirmation() {
           marginTop: "20px",
           padding: "20px",
           minHeight: "300px",
+          borderBottom: "1px solid #e0e0e0", // Behåller nederkant på första boxen
         }}
       >
         <h1 style={{ textAlign: "center" }}>Orderbekräftelse</h1>
@@ -27,11 +28,12 @@ function Confirmation() {
           Hoppas vi hörs snart igen! Hälsningar från oss på Wall of Art
         </Typography>
       </Box>
-      {/* Ny Box för adressen, som visas under den första Box-komponenten */}
+      {/* Ny Box för adressen med nederkant, som visas under den första Box-komponenten */}
       <Box
         sx={{
           marginTop: "20px",
           padding: "20px",
+          borderBottom: "1px solid #e0e0e0", // Lägger till nederkant
         }}
       >
         <Typography
@@ -46,6 +48,19 @@ function Confirmation() {
 Wall of Art
 Hittepå gatan 01
 442 11 Göteborg`}
+        </Typography>
+      </Box>
+      {/* Ytterligare en ny Box under adressboxen */}
+      <Box
+        sx={{
+          marginTop: "20px",
+          padding: "20px",
+        }}
+      >
+        {/* Du kan lägga till ytterligare innehåll här */}
+        <Typography>
+          Om du har några frågor om din beställning, tveka inte att kontakta oss
+          på support@wallofart.se.
         </Typography>
       </Box>
     </>
