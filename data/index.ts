@@ -80,61 +80,61 @@ export const products: Product[] = [
   {
     url: "product",
     id: "7",
-    title: "Poster 7",
+    title: "CIRCLES CANVASTAVLA",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929",
+      "https://images.desenio.com/zoom/15550_1.jpg?_gl=1*i42h3e*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzc5Ny4wLjAuMA..",
   },
   {
     url: "product",
     id: "8",
-    title: "Poster 8",
+    title: "RUSTIC ARCHES CANVASTAVLA",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929",
+      "https://images.desenio.com/zoom/can16859_1.jpg?_gl=1*u7juis*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzgzNi4wLjAuMA..",
   },
   {
     url: "product",
     id: "9",
-    title: "Poster 9",
+    title: "ABSTRACT TEXTURE WAVES CANVASTAVLA",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929",
+      "https://images.desenio.com/zoom/can17134_1.jpg?_gl=1*1aqfbyj*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzg4NC4wLjAuMA..",
   },
   {
     url: "product",
     id: "10",
-    title: "Poster 10",
+    title: "BERLIN SHAPES NO1 CANVASTAVLA",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929",
+      "https://images.desenio.com/zoom/can15381_1.jpg?_gl=1*1eiab6k*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzkxMC4wLjAuMA..",
   },
   {
     url: "product",
     id: "11",
-    title: "Poster 11",
+    title: "SPACEFROG DESIGNS - METALLIC ",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929",
+      "https://images.desenio.com/zoom/can16996_2.jpg?_gl=1*1pptcpi*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkxNTI2NC41LjEuMTcwOTkxNTI2OC4wLjAuMA..",
   },
   {
     url: "product",
     id: "12",
-    title: "Poster 12",
+    title: "BABY TURTLE CANVAS",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929",
+      "https://images.desenio.com/zoom/can16063-1_1.jpg?_gl=1*k2xjuc*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkxNTI2NC41LjEuMTcwOTkxNTI5NC4wLjAuMA..",
   },
 ];

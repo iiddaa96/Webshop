@@ -42,7 +42,14 @@ export default function Home() {
         />
       </Box>
 
-      <Box sx={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
+      <Box
+        sx={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 24px",
+          marginBottom: "24px",
+        }}
+      >
         <Grid container spacing={4}>
           {products.map((product) => (
             <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
