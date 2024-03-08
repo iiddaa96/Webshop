@@ -1,5 +1,4 @@
-"use client";
-import { Box, TextField } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 
 /* 
 - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
@@ -30,65 +29,53 @@ import { Box, TextField } from "@mui/material";
 - `data-cy="total-price"` totala priset för alla produkter i kundvagnen.
 */
 
-export default function InputPayment() {
+function Checkout() {
   return (
-    <Box
-      component="form"
-      sx={{
-        "& .MuiTextField-root": { m: 1, width: "25ch" },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <div>
-        <TextField
-          error
-          id="outlined-error"
-          label="Error"
-          defaultValue="Name"
-        />
-        <TextField
-          error
-          id="outlined-error-helper-text"
-          label="Error"
-          defaultValue="Lastname"
-          helperText="Incorrect entry."
-        />
-      </div>
-      <div>
-        <TextField
-          error
-          id="filled-error"
-          label="Error"
-          defaultValue="Adress"
-          variant="filled"
-        />
-        <TextField
-          error
-          id="filled-error-helper-text"
-          label="Error"
-          defaultValue="City"
-          helperText="Incorrect entry."
-          variant="filled"
-        />
-      </div>
-      <div>
-        <TextField
-          error
-          id="standard-error"
-          label="Error"
-          defaultValue="Mail"
-          variant="standard"
-        />
-        <TextField
-          error
-          id="standard-error-helper-text"
-          label="Error"
-          defaultValue="Id number:"
-          helperText="Incorrect entry."
-          variant="standard"
-        />
-      </div>
-    </Box>
+    <Container maxWidth="md">
+      <Box
+        sx={{
+          border: "1px solid black",
+          padding: "20px",
+          marginBottom: "20px",
+        }}
+      >
+        Innehåll i ruta 1
+      </Box>
+      <Box
+        sx={{
+          border: "1px solid black",
+          padding: "20px",
+          marginBottom: "20px",
+        }}
+      >
+        Innehåll i ruta 2
+      </Box>
+      <Box
+        sx={{
+          border: "1px solid black",
+          padding: "20px",
+          marginBottom: "20px",
+        }}
+      >
+        Innehåll i ruta 3
+      </Box>
+      {/* Checkout knappen med styleing */}
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{
+          width: "100%", // Gör knappen 100% i bredd
+          backgroundColor: "black", // Bakgrundsfärg svart
+          color: "white", // Textfärg vit
+          "&:hover": {
+            backgroundColor: "darkgrey", // Bakgrundsfärg ändras vid hover
+          },
+        }}
+      >
+        Checkout
+      </Button>
+    </Container>
   );
 }
+
+export default Checkout;
