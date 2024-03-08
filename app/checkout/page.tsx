@@ -1,7 +1,11 @@
 import CartLayout from "../checkoutComponents/cartLayout";
 
 function Checkout() {
-  return <CartLayout />;
+  return (
+    <div>
+      <CartLayout />
+    </div>
+  );
 }
 
 export default Checkout;
