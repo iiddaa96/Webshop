@@ -42,6 +42,7 @@ function AddNewProduct() {
   return (
     <Container
       fixed
+      component={"main"}
       sx={{
         display: "flex",
         alignItems: "center",
@@ -51,6 +52,8 @@ function AddNewProduct() {
       }}
     >
       <Box
+        component={"form"}
+        data-cy="product-form"
         sx={{
           height: 700,
           borderRadius: "10px",
@@ -63,7 +66,9 @@ function AddNewProduct() {
           boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
         }}
       >
-        <Typography>Här kommer en bild</Typography>
+        <Typography data-cy="product-image-error">
+          Här kommer en bild
+        </Typography>
         <Box
           sx={{
             display: "flex",
@@ -83,6 +88,7 @@ function AddNewProduct() {
           </Button>
         </Box>
         <TextField
+          data-cy="product-title-error"
           fullWidth
           label="Title"
           helperText=" "
@@ -90,6 +96,7 @@ function AddNewProduct() {
           sx={{ width: "100%", marginBottom: "20px" }}
         />
         <TextField
+          data-cy="product-price-error"
           fullWidth
           label="Price"
           helperText=" "
@@ -98,6 +105,7 @@ function AddNewProduct() {
         />
 
         <TextField
+          data-cy="product-description-error"
           id="outlined-multiline-static"
           label="Description"
           multiline
@@ -106,11 +114,9 @@ function AddNewProduct() {
           sx={{ width: "100%", marginBottom: "20px" }}
         />
         <Box sx={{ display: "flex", gap: "5vh" }}>
-          <Link href="/admin/product">
-            <Box component={"button"} sx={{ width: "150px" }}>
-              <SaveIcon fontSize="large" />
-            </Box>
-          </Link>
+          <Box component={Link} href="/admin" sx={{ width: "150px" }}>
+            <SaveIcon fontSize="large" />
+          </Box>
         </Box>
       </Box>
     </Container>

@@ -14,6 +14,7 @@ function Admin() {
   return (
     <>
       <Box
+        component={"main"}
         sx={{
           display: "flex",
           justifyContent: "flex-end",
@@ -21,8 +22,9 @@ function Admin() {
           marginRight: "30px",
         }}
       >
-        <Link href="/admin/product/new">
+        <Link href="/admin/new">
           <AddIcon
+            data-cy="admin-add-product"
             sx={{
               color: "black",
               padding: "20px",
@@ -37,7 +39,7 @@ function Admin() {
           />
         </Link>
       </Box>
-      <ProductGrid />
+      <ProductGrid data-cy="product" />
     </>
   );
 }

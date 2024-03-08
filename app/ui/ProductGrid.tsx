@@ -26,12 +26,12 @@ const StyledCard = styled(Card)(({ theme }) => ({
 export default function ProductGrid() {
   return (
     <Container fixed>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }} data-cy="product">
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {products.map((product, index) => (
             <Grid item xs={12} sm={6} md={4} lg={3}>
               <Link
-                href="/admin/product/updateExistProduct"
+                href="/admin/updateExistProduct"
                 key={index}
                 underline="none"
               >
@@ -64,8 +64,14 @@ export default function ProductGrid() {
                           justifyContent: "space-between",
                         }}
                       >
-                        <EditNoteIcon fontSize="large" />
-                        <DeleteIcon fontSize="large" />
+                        <EditNoteIcon
+                          fontSize="large"
+                          data-cy="admin-edit-product"
+                        />
+                        <DeleteIcon
+                          fontSize="large"
+                          data-cy="admin-remove-product"
+                        />
                       </Box>
                     </CardContent>
                   </CardActionArea>
