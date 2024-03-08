@@ -52,8 +52,6 @@ export default function Home() {
           {products.map((product) => (
             <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
               <Card sx={{ maxWidth: 345, m: "auto", boxShadow: 3 }}>
-                {" "}
-                {/* Centrerar korten och tillämpar maxbredd */}
                 <CardMedia
                   component="img"
                   height="280"
@@ -61,12 +59,17 @@ export default function Home() {
                   alt={product.title}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="subtitle1" component="div">
                     {product.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ fontSize: "0.8rem" }}
+                  >
                     {product.price}
                   </Typography>
+                  {/* Justera storleken på beskrivningstexten ytterligare om så önskas */}
                 </CardContent>
               </Card>
             </Grid>
