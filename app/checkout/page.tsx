@@ -17,7 +17,7 @@ function Checkout() {
             {/* Styling för img box i box 1 */}
             <Box sx={{ width: "20%" }}>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
+                src="https://images.desenio.com/zoom/15801_1.jpg?_gl=1*1lb5ytk*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNTYzNy4wLjAuMA.."
                 alt="Tillfällig bild"
                 style={{ width: "100%" }}
               />
@@ -45,7 +45,7 @@ function Checkout() {
             {/* Styleing för bild box i box 2 */}
             <Box sx={{ width: "20%" }}>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
+                src="https://images.desenio.com/zoom/can2562_4.jpg?_gl=1*1uadpyj*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNjE0NS4wLjAuMA.."
                 alt="Tillfällig bild"
                 style={{ width: "100%" }}
               />
@@ -74,8 +74,7 @@ function Checkout() {
             {/* styleing för bild box i box 3 */}
             <Box sx={{ width: "20%" }}>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Picture_icon_BLACK.svg/224px-Picture_icon_BLACK.svg.png?20180309172929"
-                alt="Tillfällig bild"
+                src="https://images.desenio.com/zoom/15550_1.jpg?_gl=1*i42h3e*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzc5Ny4wLjAuMA.."
                 style={{ width: "100%" }}
               />
             </Box>
