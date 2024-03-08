@@ -6,8 +6,6 @@
 - `data-cy="product-description"` beskrivningen av en produkt.
 - `data-cy="product-buy-button"` lägg till i kundvagnen knappen.
 - `data-cy="added-to-cart-toast"` toast som visas när en produkt läggs till i kundvagnen.
-
-
 */
 
 function Product() {
