@@ -50,7 +50,7 @@ function ResponsiveAppBar() {
 */
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" component={"header"}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -131,7 +131,7 @@ function ResponsiveAppBar() {
               {/*------ Länk till admin sidan desktop----------- */}
               <Button
                 component={Link}
-                href="/admin/product"
+                href="/admin"
                 color="inherit"
                 data-cy="admin-link"
               >
@@ -197,7 +197,7 @@ function ResponsiveAppBar() {
             {/*------ Länk till admin sidan desktop----------- */}
             <Button
               component={Link}
-              href="/admin/product"
+              href="/admin"
               color="inherit"
               data-cy="admin-link"
             >
@@ -248,7 +248,7 @@ function ResponsiveAppBar() {
               {/* -----Länk till admin sida mobil----- */}
               <Button
                 component={Link}
-                href="/admin/product"
+                href="/admin"
                 color="inherit"
                 data-cy="admin-link"
               >

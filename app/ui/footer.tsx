@@ -15,6 +15,7 @@ function Footer() {
 
   return (
     <BottomNavigation
+      component={"footer"}
       showLabels
       value={value}
       onChange={(event, newValue) => {
