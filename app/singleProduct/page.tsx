@@ -15,6 +15,7 @@ import { products } from "../../data/index";
 import { Box, Button, Grid, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function SingleProduct() {
 
@@ -74,7 +75,7 @@ function SingleProduct() {
         margin: '25px',
         height: '50%',
         width: '100%'
-      }}>Add to cart </button>
+      }}>Add to cart <ShoppingCartIcon /> </button>
     </Box>
 
 
