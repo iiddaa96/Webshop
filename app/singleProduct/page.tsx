@@ -8,9 +8,6 @@
 - `data-cy="added-to-cart-toast"` toast som visas när en produkt läggs till i kundvagnen.
 */
 
-
-
-import Link from "next/link";
 import { products } from "../../data/index";
 import { Box, Button, Grid, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
@@ -18,7 +15,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function SingleProduct() {
-
  
   return (
     <Grid container spacing={2}>
@@ -47,13 +43,8 @@ function SingleProduct() {
           )}
         </Box>
 
-        {/* Button to checkout page 
-        <Button component={Link} href="/checkout" color="inherit">
-          Posters
-        </Button> */}
-
         {/* Add to Cart functionality */}
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: '2px' }}>
           <IconButton color="primary" aria-label="remove from cart">
             <RemoveIcon />
           </IconButton>
@@ -74,12 +65,9 @@ function SingleProduct() {
         transition: 'background-color 0.3s',
         margin: '25px',
         height: '50%',
-        width: '100%'
+        width: '100%',
       }}>Add to cart <ShoppingCartIcon /> </button>
     </Box>
-
-
-
       </Grid>
     </Grid>
   );
