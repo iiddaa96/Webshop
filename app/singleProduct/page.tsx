@@ -34,7 +34,7 @@ function SingleProduct() {
       </Grid>
       <Grid item xs={12} sm={6}>
         {/* Render single product details */}
-        <Box sx={{ flexGrow: 1, padding: "0 20px" }}>
+        <Box sx={{ flexGrow: 1, padding: "80px 30px" }}>
           {/* Render only the first product */}
           {products.length > 0 && (
             <div key={products[0].id}>
@@ -50,7 +50,7 @@ function SingleProduct() {
         <Button component={Link} href="/checkout" color="inherit">
           Posters
         </Button> */}
-        
+
         {/* Add to Cart functionality */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <IconButton color="primary" aria-label="remove from cart">
@@ -64,9 +64,21 @@ function SingleProduct() {
           </IconButton>
         </Box>
 
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <button>Add to cart </button>
-        </Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', height: '100px' }}>
+      <button style={{
+        borderRadius: '5px',
+        cursor: 'pointer',
+        fontWeight: 'bold',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+        transition: 'background-color 0.3s',
+        margin: '25px',
+        height: '50%',
+        width: '100%'
+      }}>Add to cart </button>
+    </Box>
+
+
+
       </Grid>
     </Grid>
   );
