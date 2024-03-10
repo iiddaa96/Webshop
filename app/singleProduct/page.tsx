@@ -14,9 +14,7 @@
 
 import Link from "next/link";
 import { products } from "../../data/index";
-import { Box, Typography} from "@mui/material";
-import Button from "@mui/material/Button";
-import IconButton from '@mui/material/IconButton';
+import { Box, Button, Grid, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
