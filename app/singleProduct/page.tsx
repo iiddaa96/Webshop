@@ -14,10 +14,11 @@
 
 import Link from "next/link";
 import { products } from "../../data/index";
-
 import { Box, Typography} from "@mui/material";
-
-
+import Button from "@mui/material/Button";
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 function singleProduct() {
   // Check if products array is not empty
@@ -42,7 +43,17 @@ function singleProduct() {
         <Button component={Link} href="/checkout" color="inherit">
           Posters
         </Button>*/}
-
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <IconButton color="primary" aria-label="remove from cart">
+        <RemoveIcon />
+      </IconButton>
+      <Button variant="contained" color="primary">
+        <Typography  component="span">1</Typography>
+      </Button>
+      <IconButton color="primary" aria-label="add to cart">
+        <AddIcon />
+      </IconButton>
+    </Box>
   
   </div>
     )
