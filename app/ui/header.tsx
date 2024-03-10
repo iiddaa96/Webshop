@@ -16,6 +16,7 @@ import * as React from "react";
 import LogoImage from "../assets/logo.png";
 
 function ResponsiveAppBar() {
+  // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -23,6 +24,7 @@ function ResponsiveAppBar() {
     null
   );
 
+  // Funktioner för att öppna och stänga navigeringsmenyn och användarmenyn
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -54,6 +56,7 @@ function ResponsiveAppBar() {
           disableGutters
           sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
         >
+          {/* Styleing för loggans namn samt länk */}
           <Box
             component={Link}
             href="/"
@@ -73,7 +76,7 @@ function ResponsiveAppBar() {
                 overflow: "hidden",
                 width: 70,
                 height: 70,
-                marginRight: "8px",
+                marginRight: "24rem", //Sätter länkarna i mitten
               }}
             >
               <Image src={LogoImage} width={70} height={70} alt="Logo" />
