@@ -100,21 +100,7 @@ function CartLayout() {
           marginBottom: "20px",
         }}
       >
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
-            justifyContent: "center",
-            width: "70%",
-            backgroundColor: "black",
-            color: "white",
-            "&:hover": {
-              backgroundColor: "darkgrey",
-            },
-          }}
-        >
-          Checkout
-        </Button>
+       
       </Box>
       <InputPayment />
     </Container>
@@ -122,3 +108,4 @@ function CartLayout() {
 }
 
 export default CartLayout;
+

@@ -79,7 +79,7 @@ function ResponsiveAppBar() {
                 marginRight: "24rem", //Sätter länkarna i mitten
               }}
             >
-              <Image src={LogoImage} width={70} height={70} alt="Logo" />
+              <Image src={LogoImage} width={75} height={75} alt="Logo" />
             </Box>
             <Typography
               variant="h6"
@@ -158,5 +158,5 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-
+ 
 export default ResponsiveAppBar;
