@@ -11,10 +11,12 @@ export default function InputPayment() {
         maxWidth: "500px",
         margin: "0 auto",
         marginBottom: "20px",
+        marginTop: "20px",
       }}
     >
       {/* Rubrik för fraktadress */}
       <Typography variant="h6" gutterBottom>
+        {/* Shipping icon */}
         <LocalShippingIcon sx={{ marginRight: "8px" }} />
         Shipping Address
       </Typography>

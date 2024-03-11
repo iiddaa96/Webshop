@@ -40,12 +40,12 @@ export const products: Product[] = [
   {
     url: "product",
     id: "3",
-    title: "BORIS DRASCHOFF / KUBISTIKA - RISING",
+    title: "WILLIAM MORRIS - WILLOW BOUGH POSTER",
     price: 99,
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
+      "Illustration with green leaves and beige twigs against a light background. Illustration with a green and beige leaf pattern on a light background with text at the top and bottom. This classic design by William Morris will give your home a beautiful and timeless style, and this poster goes perfectly with William Morris - Larkspur.",
     image:
-      "https://images.desenio.com/zoom/cset0013_2.jpg?_gl=1*9fluf7*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNjAzOC4wLjAuMA..",
+      "https://images.desenio.com/zoom/16099_2-52895.jpg?_gl=1*1e9n710*_ga*MTQ4NTA2NTE1OC4xNzA5NjMxMzAy*_ga_GH3FS7X5TH*MTcxMDE4MTM4NS4zLjEuMTcxMDE4MTQ0Ni4wLjAuMA..",
   },
   {
     url: "product",
@@ -60,22 +60,22 @@ export const products: Product[] = [
   {
     url: "product",
     id: "5",
-    title: "VIVID SHAPES NO1 CANVASTAVLA",
-    price: 449,
+    title: "ARTFUL LINES NO2 POSTER",
+    price: 299,
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
+      "Abstract body. Abstract line art illustration of a body against a beige background with shapes in beige and white. Graphic line art illustration of an abstract body in black, with beige and white shapes behind, all on a light beige background. With this poster in your home, it will have a modern look. Match it with Artful Lines No1 for a perfect pair. The poster is printed with a white border all around which neatly frames the motif.",
     image:
-      "https://images.desenio.com/zoom/can16860_2-8446.jpg?_gl=1*az9fby*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNjI4OS4wLjAuMA..",
+      "https://images.desenio.com/zoom/14386_2-75758.jpg?_gl=1*1ldl47g*_ga*MTQ4NTA2NTE1OC4xNzA5NjMxMzAy*_ga_GH3FS7X5TH*MTcxMDE4MTM4NS4zLjEuMTcxMDE4MTkxNi4wLjAuMA..",
   },
   {
     url: "product",
     id: "6",
-    title: "BOTANICAL LINES NO1 CANVASTAVLA",
-    price: 99,
+    title: "COTTONGRASS POSTER",
+    price: 109,
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
+      "White cotton grass. Photograph of cotton grass with white flowers. Photograph of white cotton grass against a beige, blurred background. Posters in neutral colors give your home a calm and cozy atmosphere, and this style is perfect for a clean, Scandinavian interior. The poster is printed with a white border around the motif and has a grainy photo texture.",
     image:
-      "https://images.desenio.com/zoom/can16297_2-40584.jpg?_gl=1*xv8ylc*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNjM2NS4wLjAuMA..",
+      "https://images.desenio.com/zoom/16313_2-34096.jpg?_gl=1*1trnp95*_ga*MTQ4NTA2NTE1OC4xNzA5NjMxMzAy*_ga_GH3FS7X5TH*MTcxMDE4MTM4NS4zLjEuMTcxMDE4MTc1Mi4wLjAuMA..",
   },
   {
     url: "product",
@@ -120,12 +120,12 @@ export const products: Product[] = [
   {
     url: "product",
     id: "11",
-    title: "SPACEFROG DESIGNS - METALLIC ",
+    title: "PRAIRIE ROSE POSTER",
     price: 99,
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
+      "Abstract pink roses. Hand painted abstract art motif in pastel colors. 'Hand-painted abstract poster in pastel colors with the text: ''Prairie Rose - La collection de L' expressionnisme moderne'' Bring art to your bedroom or living room! Perfect pair with Rêves de Pivoine.'",
     image:
-      "https://images.desenio.com/zoom/can16996_2.jpg?_gl=1*1pptcpi*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkxNTI2NC41LjEuMTcwOTkxNTI2OC4wLjAuMA..",
+      "https://images.desenio.com/zoom/17001_1.jpg?_gl=1*1orex6i*_ga*MTQ4NTA2NTE1OC4xNzA5NjMxMzAy*_ga_GH3FS7X5TH*MTcxMDE4MTM4NS4zLjEuMTcxMDE4MTM5My4wLjAuMA..",
   },
   {
     url: "product",
