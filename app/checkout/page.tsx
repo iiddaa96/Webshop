@@ -2,12 +2,10 @@ import CartLayout from "../checkoutComponents/cartLayout";
 
 function Checkout() {
   return (
-<<<<<<< HEAD
     <div>
       <CartLayout />
     </div>
-=======
- 
+  );
 }
 
 export default Checkout;
