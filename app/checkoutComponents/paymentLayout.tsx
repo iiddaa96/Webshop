@@ -1,5 +1,5 @@
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 
 export default function InputPayment() {
   return (
@@ -101,6 +101,8 @@ export default function InputPayment() {
       {/* Knapp för att fortsätta till bekräftelse sidan */}
       <Box sx={{ mt: 3, display: "flex", justifyContent: "right" }}>
         <Button
+          component={Link}
+          href="/confirmation"
           variant="contained"
           color="primary"
           sx={{
