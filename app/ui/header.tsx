@@ -131,8 +131,12 @@ function ResponsiveAppBar() {
               Admin
             </Button>
           </Box>
+          {/* Varukorgen */}
           <Box sx={{ flexGrow: 0 }}>
             <IconButton
+              // Länk till kassan
+              component={Link}
+              href="/checkout"
               size="large"
               aria-label="show cart items"
               color="inherit"
