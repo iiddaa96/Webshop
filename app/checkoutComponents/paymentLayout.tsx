@@ -1,3 +1,4 @@
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 
 export default function InputPayment() {
@@ -14,6 +15,7 @@ export default function InputPayment() {
     >
       {/* Rubrik för fraktadress */}
       <Typography variant="h6" gutterBottom>
+        <LocalShippingIcon sx={{ marginRight: "8px" }} />
         Shipping Address
       </Typography>
 
