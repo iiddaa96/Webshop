@@ -7,35 +7,48 @@ import "@fontsource/roboto/700.css";
 import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
-import { BottomNavigation, BottomNavigationAction, Link } from "@mui/material";
+import { Box, IconButton, Link, Typography } from "@mui/material";
 import { useState } from "react";
 
 function Footer() {
-  const [value, setValue] = useState(0);
+  const [selected, setSelected] = useState("contact"); 
 
   return (
-    <BottomNavigation
-      component={"footer"}
-      showLabels
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      style={{
+    <Box
+      component="footer"
+      sx={{
         border: "1px solid black",
         display: "flex",
+        justifyContent: "space-around", 
         alignItems: "center",
+        padding: "10px 0", 
+        backgroundColor: "#f0f0f0", 
       }}
     >
-      <BottomNavigationAction
+      <IconButton
         component={Link}
         href="/confirmation"
-        label="Contact"
-        icon={<ContactPhoneIcon />}
-      />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<SearchIcon />} />
-    </BottomNavigation>
+        onClick={() => setSelected("contact")}
+        color={selected === "contact" ? "primary" : "default"}
+      >
+        <ContactPhoneIcon />
+        <Typography>Contact</Typography>
+      </IconButton>
+      <IconButton
+        onClick={() => setSelected("favorites")}
+        color={selected === "favorites" ? "primary" : "default"}
+      >
+        <FavoriteIcon />
+        <Typography>Favorites</Typography>
+      </IconButton>
+      <IconButton
+        onClick={() => setSelected("search")}
+        color={selected === "search" ? "primary" : "default"}
+      >
+        <SearchIcon />
+        <Typography>Nearby</Typography>
+      </IconButton>
+    </Box>
   );
 }
 
