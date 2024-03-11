@@ -14,8 +14,10 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import LogoImage from "../assets/logo.png";
+import { useCart } from "../context/cartContext";
 
 function ResponsiveAppBar() {
+  const { cart } = useCart();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -138,7 +140,7 @@ function ResponsiveAppBar() {
               data-cy="cart-link"
             >
               <Badge
-                badgeContent={4}
+                badgeContent={cart.length}
                 color="secondary"
                 data-cy="cart-items-count-badge"
               >

@@ -1,9 +1,3 @@
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Box,
   Card,
@@ -11,12 +5,12 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  IconButton,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
 import { products } from "../data/index";
 import MiddleImage from "./assets/middleImage.png";
+import AddToCartButton from "./ui/addToCartButton";
 
 export default function Home() {
   return (
@@ -61,8 +55,6 @@ export default function Home() {
                   position: "relative",
                 }}
               >
-                {" "}
-                {/* Lägg till position: 'relative' för att placera ikonerna korrekt */}
                 <CardMedia
                   component="img"
                   height="280"
@@ -82,18 +74,11 @@ export default function Home() {
                   </Typography>
                 </CardContent>
                 <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
-                  {" "}
-                  {/* Positionerar ikonerna i nedre högra hörnet */}
                   <CardActions
                     disableSpacing
                     sx={{ justifyContent: "flex-end" }}
                   >
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="add to cart">
-                      <AddShoppingCartIcon />
-                    </IconButton>
+                    <AddToCartButton product={product} />
                   </CardActions>
                 </Box>
               </Card>
