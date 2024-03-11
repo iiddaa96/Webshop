@@ -1,4 +1,13 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import InputPayment from "../checkoutComponents/paymentLayout";
 
 function CartLayout() {
@@ -31,6 +40,25 @@ function CartLayout() {
                 consectetur quae! Unde, blanditiis. Quasi amet id similique
                 saepe deserunt eligendi, minus iusto architecto!
               </Typography>
+              {/* --------Tillfällig för ta bort / lägga till knappar ------*/}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "2px",
+                  paddingTop: "10px",
+                }}
+              >
+                <IconButton color="inherit" aria-label="remove from cart">
+                  <RemoveIcon />
+                </IconButton>
+                <Button variant="contained" color="inherit">
+                  <Typography component="span">1</Typography>
+                </Button>
+                <IconButton color="inherit" aria-label="add to cart">
+                  <AddIcon />
+                </IconButton>
+              </Box>
             </Box>
           </Box>
         </Grid>
