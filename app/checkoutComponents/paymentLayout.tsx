@@ -97,9 +97,26 @@ export default function InputPayment() {
           />
         </Grid>
       </Grid>
+      <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
+        {/* Box för "Cancel" knappen till vänster */}
+        <Button
+          component={Link}
+          href="/"
+          variant="contained"
+          color="primary"
+          sx={{
+            width: "30%",
+            backgroundColor: "white",
+            color: "black",
+            "&:hover": {
+              backgroundColor: "darkgrey",
+            },
+          }}
+        >
+          Cancel
+        </Button>
 
-      {/* Knapp för att fortsätta till bekräftelse sidan */}
-      <Box sx={{ mt: 3, display: "flex", justifyContent: "right" }}>
+        {/* Box för "Continue" knappen till höger */}
         <Button
           component={Link}
           href="/confirmation"
