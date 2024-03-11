@@ -22,6 +22,7 @@ import MiddleImage from "./assets/middleImage.png";
 export default function Home() {
   return (
     <main>
+      {/*Tillfälling länk till singleProduct page */}
       <Link href="/singleProduct">
       <Box
         sx={{
