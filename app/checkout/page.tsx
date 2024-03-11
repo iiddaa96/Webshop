@@ -1,14 +1,51 @@
-import CartLayout from "../checkoutComponents/cartLayout";
+import { products } from "@/data";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import PaymentSection from "../checkoutComponents/paymentSection";
 
-function Checkout() {
+function cartSection() {
   return (
-    <div>
-      <CartLayout />
-    </div>
+    <Container maxWidth="md">
+      <Grid container spacing={3}>
+        {/* Detta är tillfälligt ska vara cart sedan */}
+        {/* Mappar upp data (produkterna) */}
+        {products.map((item) => (
+          <Grid
+            item
+            xs={12}
+            key={item.id}
+            sx={{
+              display: "flex",
+              border: "1px solid black",
+              marginTop: "20px",
+            }}
+          >
+            {/* Styling för img box i box 1 */}
+            <Box sx={{ width: "20%" }}>
+              <img
+                src={item.image}
+                alt="Tillfällig bild"
+                style={{ width: "100%" }}
+              />
+            </Box>
+            {/* styleing och innehåll i box 1. */}
+            <Box sx={{ padding: "20px", width: "70%" }} data-cy="cart-item">
+              <Typography variant="h6">{item.title}</Typography>
+              <Typography variant="body1">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Praesentium maxime consequatur corrupti rerum expedita sint non
+                consectetur quae! Unde, blanditiis. Quasi amet id similique
+                saepe deserunt eligendi, minus iusto architecto!
+              </Typography>
+            </Box>
+          </Grid>
+        ))}
+      </Grid>
+      <PaymentSection />
+    </Container>
   );
 }
 
-export default Checkout;
+export default cartSection;
 
 // CYPRESS TESTER SOM SKA IN
 {
