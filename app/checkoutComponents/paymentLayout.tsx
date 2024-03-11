@@ -1,4 +1,5 @@
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 
 export default function InputPayment() {
   return (
@@ -14,6 +15,7 @@ export default function InputPayment() {
     >
       {/* Rubrik för fraktadress */}
       <Typography variant="h6" gutterBottom>
+        <LocalShippingIcon sx={{ marginRight: "8px" }} />
         Shipping Address
       </Typography>
 
@@ -95,10 +97,29 @@ export default function InputPayment() {
           />
         </Grid>
       </Grid>
-
-      {/* Knapp för att fortsätta till bekräftelse sidan */}
-      <Box sx={{ mt: 3, display: "flex", justifyContent: "right" }}>
+      <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
+        {/* Box för "Cancel" knappen till vänster */}
         <Button
+          component={Link}
+          href="/"
+          variant="contained"
+          color="primary"
+          sx={{
+            width: "30%",
+            backgroundColor: "white",
+            color: "black",
+            "&:hover": {
+              backgroundColor: "darkgrey",
+            },
+          }}
+        >
+          Cancel
+        </Button>
+
+        {/* Box för "Continue" knappen till höger */}
+        <Button
+          component={Link}
+          href="/confirmation"
           variant="contained"
           color="primary"
           sx={{

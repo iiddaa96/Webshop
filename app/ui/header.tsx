@@ -17,7 +17,10 @@ import LogoImage from "../assets/logo.png";
 import { useCart } from "../context/cartContext";
 
 function ResponsiveAppBar() {
+
   const { cart } = useCart();
+
+  // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -25,6 +28,7 @@ function ResponsiveAppBar() {
     null
   );
 
+  // Funktioner för att öppna och stänga navigeringsmenyn och användarmenyn
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -56,6 +60,7 @@ function ResponsiveAppBar() {
           disableGutters
           sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
         >
+          {/* Styleing för loggans namn samt länk */}
           <Box
             component={Link}
             href="/"
@@ -75,10 +80,10 @@ function ResponsiveAppBar() {
                 overflow: "hidden",
                 width: 70,
                 height: 70,
-                marginRight: "8px",
+                marginRight: "24rem", //Sätter länkarna i mitten
               }}
             >
-              <Image src={LogoImage} width={70} height={70} alt="Logo" />
+              <Image src={LogoImage} width={75} height={75} alt="Logo" />
             </Box>
             <Typography
               variant="h6"
@@ -130,8 +135,12 @@ function ResponsiveAppBar() {
               Admin
             </Button>
           </Box>
+          {/* Varukorgen */}
           <Box sx={{ flexGrow: 0 }}>
             <IconButton
+              // Länk till kassan
+              component={Link}
+              href="/checkout"
               size="large"
               aria-label="show cart items"
               color="inherit"
@@ -153,5 +162,5 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-
+ 
 export default ResponsiveAppBar;

@@ -1,3 +1,12 @@
+
+import Link from "next/link";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import {
   Box,
   Card,
@@ -15,6 +24,8 @@ import AddToCartButton from "./ui/addToCartButton";
 export default function Home() {
   return (
     <main>
+      {/*Tillfälling länk till singleProduct page */}
+      <Link href="/singleProduct">
       <Box
         sx={{
           width: "95%",
@@ -86,6 +97,7 @@ export default function Home() {
           ))}
         </Grid>
       </Box>
+      </Link>
     </main>
   );
 }
