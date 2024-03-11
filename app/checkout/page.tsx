@@ -1,5 +1,14 @@
 import { products } from "@/data";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import PaymentSection from "../checkoutComponents/paymentSection";
 
 function cartSection() {
@@ -29,6 +38,20 @@ function cartSection() {
               <Typography variant="h6">{item.title}</Typography>
               {/* Beskrivning från data, kommer nog inte finnas sedan */}
               <Typography variant="body1">{item.description}</Typography>
+            </Box>
+            {/* Kunna välja antal posters med + & - knapp */}
+            <Box
+              sx={{ display: "flex", alignItems: "center", marginLeft: "2px" }}
+            >
+              <IconButton color="inherit" aria-label="remove from cart">
+                <RemoveIcon />
+              </IconButton>
+              <Button variant="contained" color="inherit">
+                <Typography component="span">1</Typography>
+              </Button>
+              <IconButton color="inherit" aria-label="add to cart">
+                <AddIcon />
+              </IconButton>
             </Box>
           </Grid>
         ))}
