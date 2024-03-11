@@ -100,7 +100,7 @@ export const products: Product[] = [
   {
     url: "product",
     id: "9",
-    title: "ABSTRACT TEXTURE WAVES CANVASTAVLA",
+    title: "ABSTRACT TEXTURE CANVASTAVLA",
     price: 99,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
