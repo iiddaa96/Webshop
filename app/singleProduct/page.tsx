@@ -1,4 +1,4 @@
-
+"use client"
 /* 
 - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan.
 - `data-cy="product-id"` id på en produkt.
