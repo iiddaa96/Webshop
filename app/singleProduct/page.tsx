@@ -15,20 +15,26 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-function SingleProduct() {
-  const [quantity, setQuantity] = useState(0);
 
-  //Arrow function for increment 
+export default function SingleProduct() {
+  // Definerar en base price
+  const basePrice = products.length > 0 ? products[0].price : 0;
+  const [quantity, setQuantity] = useState(1);
+// function för increment
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
-// function for decrement
+// function för decrement
   const decrementQuantity = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
     }
   };
-  
+
+  // Function to calculate the total price based on quantity
+  const calculateTotalPrice = () => {
+    return basePrice * quantity;
+  };
 
   return (
     <Grid container spacing={2}>
@@ -51,7 +57,7 @@ function SingleProduct() {
             <div key={products[0].id}>
               {/* gutterbottom lägger till bottom margin*/}
               <Typography variant="h4" gutterBottom>{products[0].title}</Typography>
-              <Typography variant="body1" gutterBottom>{products[0].price}</Typography>
+              <Typography variant="body1" gutterBottom>Price: {basePrice}kr</Typography>
               <Typography variant="body2" gutterBottom>{products[0].description}</Typography>
             </div>
           )}
@@ -71,6 +77,12 @@ function SingleProduct() {
             </IconButton>
           </Box>
 
+          {/* Displays total price på sidan */}
+          <Box>
+            <Typography variant="h6">Total Price: {calculateTotalPrice()}kr</Typography>
+          </Box>
+
+          {/* Add to cart button */}
           <Box sx={{ display: 'flex', alignItems: 'center', height: '100px' }}>
             <button style={{
               borderRadius: '5px',
@@ -89,4 +101,4 @@ function SingleProduct() {
   );
 }
 
-export default SingleProduct;
+
