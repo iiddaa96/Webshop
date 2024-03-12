@@ -44,6 +44,7 @@ function SingleProduct() {
         </Box>
 
         {/* Add to Cart functionality */}
+        <Box>
         <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: '2px' }}>
           <IconButton color="primary" aria-label="remove from cart">
             <RemoveIcon />
@@ -67,6 +68,7 @@ function SingleProduct() {
         height: '50%',
         width: '100%',
       }}>Add to cart <ShoppingCartIcon /> </button>
+    </Box>
     </Box>
       </Grid>
     </Grid>
