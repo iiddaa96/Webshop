@@ -15,6 +15,7 @@ import PaymentSection from "../checkoutComponents/paymentSection";
 function CartSection() {
   return (
     <Container maxWidth="md">
+      {/* Spaceing mellan boxarna och css styleing */}
       <Grid container spacing={1}>
         {products.map((item) => (
           <Grid
@@ -27,6 +28,7 @@ function CartSection() {
               marginTop: "35px",
             }}
           >
+            {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
             <Box sx={{ width: "20%" }}>
               <img src={item.image} style={{ width: "100%" }} />
             </Box>
@@ -40,7 +42,9 @@ function CartSection() {
               }}
               data-cy="cart-item"
             >
+              {/* Mappar ut titel av tavlorna */}
               <Typography variant="h6">{item.title}</Typography>
+              {/* Mappar ut beskrivning av tavlorna, (kommer nog tas bort senare) */}
               <Typography variant="body1">{item.description}</Typography>
               <Box
                 sx={{
@@ -50,6 +54,7 @@ function CartSection() {
                   marginTop: "10px",
                 }}
               >
+                {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
                 <IconButton color="inherit" aria-label="remove from cart">
                   <RemoveIcon />
                 </IconButton>
@@ -72,12 +77,121 @@ function CartSection() {
           </Grid>
         ))}
       </Grid>
+      {/* Totalpris grid */}
+      <Grid container sx={{ alignItems: "center" }}>
+        <Grid item xs={6}>
+          <Box>
+            <Typography variant="h6">Totalt pris</Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box sx={{ textAlign: "right" }}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontWeight: "bold",
+                display: "inline-block",
+                verticalAlign: "middle",
+              }}
+            >
+              1000kr
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
       <PaymentSection />
     </Container>
   );
 }
 
 export default CartSection;
+
+// import AddIcon from "@mui/icons-material/Add";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import RemoveIcon from "@mui/icons-material/Remove";
+// import {
+//   Box,
+//   Button,
+//   Container,
+//   Grid,
+//   IconButton,
+//   Typography,
+// } from "@mui/material";
+// import PaymentSection from "../checkoutComponents/paymentSection";
+// import { useCart } from "../context/cartContext";
+
+// function CartSection() {
+//   const { cart } = useCart();
+
+//   return (
+//     <Container maxWidth="md">
+//       <Grid container spacing={1}>
+//         {/* Kontrollera om varukorgen är tom */}
+//         {cart.length === 0 ? (
+//           <Typography variant="body1">Varukorgen är tom.</Typography>
+//         ) : (
+//           cart.map((item) => (
+//             <Grid
+//               item
+//               xs={12}
+//               key={item.id}
+//               sx={{
+//                 display: "flex",
+//                 border: "1px solid black",
+//                 marginTop: "35px",
+//               }}
+//             >
+//               <Box sx={{ width: "20%" }}>
+//                 <img src={item.image} style={{ width: "100%" }} />
+//               </Box>
+//               <Box
+//                 sx={{
+//                   display: "flex",
+//                   flexDirection: "column",
+//                   justifyContent: "space-between",
+//                   padding: "20px",
+//                   width: "70%",
+//                 }}
+//                 data-cy="cart-item"
+//               >
+//                 <Typography variant="h6">{item.title}</Typography>
+//                 <Typography variant="body1">{item.description}</Typography>
+//                 <Box
+//                   sx={{
+//                     display: "flex",
+//                     alignItems: "center",
+//                     justifyContent: "flex-end",
+//                     marginTop: "10px",
+//                   }}
+//                 >
+//                   <IconButton color="inherit" aria-label="remove from cart">
+//                     <RemoveIcon />
+//                   </IconButton>
+//                   <Button variant="contained" color="inherit">
+//                     <Typography component="span">{item.quantity}</Typography>
+//                   </Button>
+//                   <IconButton color="inherit" aria-label="add to cart">
+//                     <AddIcon />
+//                   </IconButton>
+//                   <IconButton
+//                     color="inherit"
+//                     aria-label="delete"
+//                     sx={{ marginLeft: "auto" }}
+//                   >
+//                     <DeleteIcon />
+//                   </IconButton>
+//                 </Box>
+//               </Box>
+//             </Grid>
+//           ))
+//         )}
+//       </Grid>
+//       <PaymentSection />
+//     </Container>
+//   );
+// }
+
+// export default CartSection;
 
 // CYPRESS TESTER SOM SKA IN
 {
