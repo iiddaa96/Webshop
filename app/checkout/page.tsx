@@ -1,11 +1,20 @@
 import { products } from "@/data";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import PaymentSection from "../checkoutComponents/paymentSection";
 
 function cartSection() {
   return (
     <Container maxWidth="md">
-      <Grid container spacing={3}>
+      <Grid container spacing={1}>
         {/* Detta är tillfälligt ska vara cart sedan */}
         {/* Mappar upp data (produkterna) */}
         {products.map((item) => (
@@ -16,30 +25,38 @@ function cartSection() {
             sx={{
               display: "flex",
               border: "1px solid black",
-              marginTop: "20px",
+              marginTop: "35px",
             }}
           >
             {/* Styling för img box i box 1 */}
             <Box sx={{ width: "20%" }}>
-              <img
-                src={item.image}
-                alt="Tillfällig bild"
-                style={{ width: "100%" }}
-              />
+              <img src={item.image} style={{ width: "100%" }} />
             </Box>
             {/* styleing och innehåll i box 1. */}
             <Box sx={{ padding: "20px", width: "70%" }} data-cy="cart-item">
+              {/* Titel från data */}
               <Typography variant="h6">{item.title}</Typography>
-              <Typography variant="body1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium maxime consequatur corrupti rerum expedita sint non
-                consectetur quae! Unde, blanditiis. Quasi amet id similique
-                saepe deserunt eligendi, minus iusto architecto!
-              </Typography>
+              {/* Beskrivning från data, kommer nog inte finnas sedan */}
+              <Typography variant="body1">{item.description}</Typography>
+            </Box>
+            {/* Kunna välja antal posters med + & - knapp */}
+            <Box
+              sx={{ display: "flex", alignItems: "center", marginLeft: "2px" }}
+            >
+              <IconButton color="inherit" aria-label="remove from cart">
+                <RemoveIcon />
+              </IconButton>
+              <Button variant="contained" color="inherit">
+                <Typography component="span">1</Typography>
+              </Button>
+              <IconButton color="inherit" aria-label="add to cart">
+                <AddIcon />
+              </IconButton>
             </Box>
           </Grid>
         ))}
       </Grid>
+      {/* Payment input fälten är i filen nedan (PaymentSection) */}
       <PaymentSection />
     </Container>
   );
