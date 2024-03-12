@@ -18,7 +18,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export default function SingleProduct() {
   // Definerar en base price
-  const basePrice = products.length > 0 ? products[0].price : 0;
+  const basePrice: number = products.length > 0 ? products[0].price : 0;
   const [quantity, setQuantity] = useState(1);
 // function för increment
   const incrementQuantity = () => {
@@ -32,7 +32,7 @@ export default function SingleProduct() {
   };
 
   // Function to calculate the total price based on quantity
-  const calculateTotalPrice = () => {
+  const calculateTotalPrice = (): number => {
     return basePrice * quantity;
   };
 
