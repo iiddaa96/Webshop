@@ -1,5 +1,4 @@
 "use client";
-
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import SaveIcon from "@mui/icons-material/Save";
 import {
@@ -7,10 +6,10 @@ import {
   Button,
   Container,
   Link,
-  TextField,
   Typography,
   styled,
 } from "@mui/material";
+import TextField from "@mui/material/TextField";
 
 /* CYPRESS TESTER SOM SKA FINNAS MED  */
 /* - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan. 
@@ -87,6 +86,14 @@ function AddNewProduct() {
             <VisuallyHiddenInput type="file" />
           </Button>
         </Box>
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        ></Box>
         <TextField
           data-cy="product-title-error"
           fullWidth
