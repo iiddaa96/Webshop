@@ -1,6 +1,12 @@
 "use client";
 
-import { PropsWithChildren, createContext, useContext, useState } from "react";
+import {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { CartItem, Product } from "../../data/index";
 
 interface CartContextType {
@@ -17,6 +23,19 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+
+  // Hämta varukorgen från localStorage när komponenten laddas
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+  }, []);
+
+  // Spara varukorgen till localStorage när den uppdateras
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product: Product) => {
     const itemExists = cart.find((item) => item.id === product.id);
