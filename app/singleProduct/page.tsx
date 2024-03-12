@@ -18,6 +18,15 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 function SingleProduct() {
   const [quantity, setQuantity] = useState(0);
 
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
   
 
   return (
