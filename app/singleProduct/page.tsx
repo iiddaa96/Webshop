@@ -18,10 +18,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 function SingleProduct() {
   const [quantity, setQuantity] = useState(0);
 
+  //Arrow function for increment 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
-
+// function for decrement
   const decrementQuantity = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
