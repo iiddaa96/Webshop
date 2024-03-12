@@ -1,5 +1,6 @@
 import { products } from "@/data";
 import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import {
   Box,
@@ -11,12 +12,10 @@ import {
 } from "@mui/material";
 import PaymentSection from "../checkoutComponents/paymentSection";
 
-function cartSection() {
+function CartSection() {
   return (
     <Container maxWidth="md">
       <Grid container spacing={1}>
-        {/* Detta är tillfälligt ska vara cart sedan */}
-        {/* Mappar upp data (produkterna) */}
         {products.map((item) => (
           <Grid
             item
@@ -28,41 +27,57 @@ function cartSection() {
               marginTop: "35px",
             }}
           >
-            {/* Styling för img box i box 1 */}
             <Box sx={{ width: "20%" }}>
               <img src={item.image} style={{ width: "100%" }} />
             </Box>
-            {/* styleing och innehåll i box 1. */}
-            <Box sx={{ padding: "20px", width: "70%" }} data-cy="cart-item">
-              {/* Titel från data */}
-              <Typography variant="h6">{item.title}</Typography>
-              {/* Beskrivning från data, kommer nog inte finnas sedan */}
-              <Typography variant="body1">{item.description}</Typography>
-            </Box>
-            {/* Kunna välja antal posters med + & - knapp */}
             <Box
-              sx={{ display: "flex", alignItems: "center", marginLeft: "2px" }}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                padding: "20px",
+                width: "70%",
+              }}
+              data-cy="cart-item"
             >
-              <IconButton color="inherit" aria-label="remove from cart">
-                <RemoveIcon />
-              </IconButton>
-              <Button variant="contained" color="inherit">
-                <Typography component="span">1</Typography>
-              </Button>
-              <IconButton color="inherit" aria-label="add to cart">
-                <AddIcon />
-              </IconButton>
+              <Typography variant="h6">{item.title}</Typography>
+              <Typography variant="body1">{item.description}</Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-end",
+                  marginTop: "10px",
+                }}
+              >
+                <IconButton color="inherit" aria-label="remove from cart">
+                  <RemoveIcon />
+                </IconButton>
+                <Button variant="contained" color="inherit">
+                  <Typography component="span">1</Typography>
+                </Button>
+                <IconButton color="inherit" aria-label="add to cart">
+                  <AddIcon />
+                </IconButton>
+                {/* DeleteIcon som en knapp längst till höger */}
+                <IconButton
+                  color="inherit"
+                  aria-label="delete"
+                  sx={{ marginLeft: "auto" }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Box>
             </Box>
           </Grid>
         ))}
       </Grid>
-      {/* Payment input fälten är i filen nedan (PaymentSection) */}
       <PaymentSection />
     </Container>
   );
 }
 
-export default cartSection;
+export default CartSection;
 
 // CYPRESS TESTER SOM SKA IN
 {
