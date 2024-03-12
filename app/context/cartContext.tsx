@@ -1,5 +1,4 @@
 "use client";
-
 import {
   PropsWithChildren,
   createContext,
@@ -24,7 +23,6 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
-  // Hämta varukorgen från localStorage när komponenten laddas
   useEffect(() => {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
@@ -32,22 +30,24 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
   }, []);
 
-  // Spara varukorgen till localStorage när den uppdateras
+  const addToCart = (product: Product) => {
+    const existingProductIndex = cart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      const updatedCart = [...cart];
+      updatedCart[existingProductIndex].quantity += 1;
+      setCart(updatedCart);
+    } else {
+      const updatedCart = [...cart, { ...product, quantity: 1 }];
+      setCart(updatedCart);
+    }
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
-  const addToCart = (product: Product) => {
-    const itemExists = cart.find((item) => item.id === product.id);
-    if (itemExists) {
-      const updatedCart = cart.map((item) =>
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-      setCart(updatedCart);
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
-  };
 
   return (
     <CartContext.Provider value={{ cart, addToCart }}>
