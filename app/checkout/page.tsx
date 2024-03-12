@@ -81,7 +81,7 @@ function CartSection() {
       <Grid container sx={{ alignItems: "center" }}>
         <Grid item xs={6}>
           <Box>
-            <Typography variant="h6">Totalt pris</Typography>
+            <Typography variant="h6">Total:</Typography>
           </Box>
         </Grid>
         <Grid item xs={6}>
@@ -94,7 +94,7 @@ function CartSection() {
                 verticalAlign: "middle",
               }}
             >
-              1000kr
+              1000:-
             </Typography>
           </Box>
         </Grid>
