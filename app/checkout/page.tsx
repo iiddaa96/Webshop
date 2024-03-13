@@ -1,17 +1,9 @@
 "use client";
-import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-import RemoveIcon from "@mui/icons-material/Remove";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Grid, IconButton, Typography } from "@mui/material";
 import PaymentSection from "../checkoutComponents/paymentSection";
 import { useCart } from "../context/cartContext";
+import QuantityButton from "../ui/quantityButton";
 
 function CartSection() {
   const { cart, addToCart } = useCart();
@@ -66,23 +58,8 @@ function CartSection() {
                 {item.title}
               </Typography>
               {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "left",
-                  marginTop: "15px",
-                }}
-              >
-                <IconButton color="inherit" aria-label="remove from cart">
-                  <RemoveIcon />
-                </IconButton>
-                <Button variant="contained" color="inherit">
-                  <Typography component="span">1</Typography>
-                </Button>
-                <IconButton color="inherit" aria-label="add to cart">
-                  <AddIcon />
-                </IconButton>
-              </Box>
+              {/* Använd QuantityButton-komponenten här */}
+              <QuantityButton />
               {/* Mappar ut priset per tavla */}
               <Box
                 sx={{

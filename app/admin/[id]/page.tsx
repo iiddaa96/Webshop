@@ -1,5 +1,4 @@
 "use client";
-// UpdateExistProduct.js
 import { products } from "@/data";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
@@ -9,27 +8,61 @@ import {
   CardMedia,
   Container,
   IconButton,
+  Paper,
   TextField,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 
 type Props = { params: { id: string } };
 
 function UpdateExistProduct(props: Props) {
   const product = products.find((p) => p.id === props.params.id);
+  const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const [formData, setFormData] = useState({
+    title: product?.title || "",
+    price: product?.price || "",
+    description: product?.description || "",
+  });
 
   if (!product) {
     return <Box>404</Box>;
   }
 
   const handleDelete = (productId: string) => {
+    // Visa delete-toasten för att bekräfta att användaren vill radera produkten
+    setShowDeleteToast(true);
+  };
+
+  const handleConfirmDelete = () => {
     // Implementera logik för att ta bort produkten med det angivna productId
-    console.log("Delete product with ID:", productId);
+    console.log("Delete product with ID:", product.id);
+    // Rensa formuläret efter att produkten har raderats
+    setFormData({
+      title: "",
+      price: "",
+      description: "",
+    });
+    // Dölj bilden genom att sätta display: none
+    const imageElement = document.getElementById("product-image");
+    if (imageElement) {
+      imageElement.style.display = "none";
+    }
+    // Dölj delete-toasten efter att användaren har bekräftat radering
+    setShowDeleteToast(false);
   };
 
   const handleSave = () => {
     // Implementera logik för att spara ändringar i produkten
     console.log("Save changes");
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
@@ -62,27 +95,34 @@ function UpdateExistProduct(props: Props) {
         <CardMedia
           component="img"
           height="auto"
-          image={product.image}
+          image={product.image} // Uppdaterad för att visa den uppdaterade produktbilden
           alt={product.title}
+          id="product-image"
           sx={{ marginBottom: "20px" }}
         />
         <TextField
           fullWidth
           label="Titel"
-          defaultValue={product.title}
+          name="title"
+          value={formData.title}
+          onChange={handleInputChange}
           sx={{ marginBottom: "20px" }}
         />
         <TextField
           fullWidth
           label="Pris"
-          defaultValue={product.price}
+          name="price"
+          value={formData.price}
+          onChange={handleInputChange}
           sx={{ marginBottom: "20px" }}
         />
         <TextField
           label="Beskrivning"
           multiline
           rows={6}
-          defaultValue={product.description}
+          name="description"
+          value={formData.description}
+          onChange={handleInputChange}
           variant="outlined"
           fullWidth
           sx={{ marginBottom: "20px" }}
@@ -101,6 +141,40 @@ function UpdateExistProduct(props: Props) {
           </Button>
         </Box>
       </Box>
+      {showDeleteToast && (
+        <Paper
+          elevation={3}
+          sx={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            padding: "20px",
+            borderRadius: "10px",
+            backgroundColor: "#fff",
+          }}
+        >
+          <Typography variant="body1">
+            Är du säker på att du vill radera produkten?
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleConfirmDelete} // Anropar funktionen för att bekräfta radering
+            sx={{ marginRight: "10px", marginTop: "10px" }}
+          >
+            Ja
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => setShowDeleteToast(false)}
+            sx={{ marginTop: "10px" }}
+          >
+            Nej
+          </Button>
+        </Paper>
+      )}
     </Container>
   );
 }
