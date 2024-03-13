@@ -6,6 +6,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import {
   Box,
   Button,
+  CardMedia,
   Container,
   IconButton,
   TextField,
@@ -48,15 +49,23 @@ function UpdateExistProduct(props: Props) {
         data-cy="product-form"
         sx={{
           width: "100%",
-          maxWidth: 600,
+          maxWidth: 400, // Förminskar maxbredden för formuläret
           padding: "20px",
           borderRadius: "10px",
           boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
+          height: "auto",
         }}
       >
         <Typography variant="h5" gutterBottom>
           Uppdatera produkt
         </Typography>
+        <CardMedia
+          component="img"
+          height="auto"
+          image={product.image}
+          alt={product.title}
+          sx={{ marginBottom: "20px" }}
+        />
         <TextField
           fullWidth
           label="Titel"
