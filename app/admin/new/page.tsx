@@ -1,5 +1,4 @@
-"use client";
-
+import { zodResolver } from "@hookform/resolvers/zod";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import SaveIcon from "@mui/icons-material/Save";
 import {
@@ -9,8 +8,9 @@ import {
   Link,
   TextField,
   Typography,
-  styled,
 } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 /* CYPRESS TESTER SOM SKA FINNAS MED  */
 /* - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan. 
@@ -26,16 +26,31 @@ import {
 - `data-cy="product-image-error"` felmeddelande vid felaktigt angiven bild.
 */
 
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
+// const VisuallyHiddenInput = styled("input")({
+//   clip: "rect(0 0 0 0)",
+//   clipPath: "inset(50%)",
+//   height: 1,
+//   overflow: "hidden",
+//   position: "absolute",
+//   bottom: 0,
+//   left: 0,
+//   whiteSpace: "nowrap",
+//   width: 1,
+// });
+
+const productSchema = z.object({
+  id: z.string(),
+  title: z.string().min(5, { message: "Titel måste innehålla minst 5 tecken" }),
+  price: z.number().positive({ message: "Skriv in ett nummer" }),
+  description: z
+    .string()
+    .max(400, { message: "Inlägget får vara 400 tecken långt" }),
+});
+
+type SingleProduct = z.infer<typeof productSchema>;
+
+const form = useForm<SingleProduct>({
+  resolver: zodResolver(productSchema),
 });
 
 function AddNewProduct() {
@@ -84,7 +99,7 @@ function AddNewProduct() {
             startIcon={<CloudUploadIcon />}
           >
             Upload file
-            <VisuallyHiddenInput type="file" />
+            {/* <VisuallyHiddenInput type="file" /> */}
           </Button>
         </Box>
         <TextField
@@ -94,6 +109,12 @@ function AddNewProduct() {
           helperText=" "
           id="demo-helper-text-aligned-no-helper"
           sx={{ width: "100%", marginBottom: "20px" }}
+          {...form.register("title")}
+          {...(form.formState.errors.title && (
+            <Typography sx={{ color: "red" }}>
+              {form.formState.errors.title.message}
+            </Typography>
+          ))}
         />
         <TextField
           data-cy="product-price-error"
