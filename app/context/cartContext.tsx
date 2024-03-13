@@ -3,12 +3,12 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { CartItem, Product } from "../../data/index";
 
-interface CartContextType {
+export interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
 }
 
-const CartContext = createContext<CartContextType>({
+export const CartContext = createContext<CartContextType>({
   cart: [],
   addToCart: () => {},
 });

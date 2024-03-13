@@ -1,4 +1,4 @@
-import { products } from "@/data";
+"use client";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -11,13 +11,16 @@ import {
   Typography,
 } from "@mui/material";
 import PaymentSection from "../checkoutComponents/paymentSection";
+import { useCart } from "../context/cartContext";
 
 function CartSection() {
+  const { cart, addToCart } = useCart();
+
   return (
     <Container maxWidth="md">
       {/* Spaceing mellan boxarna och css styleing */}
       <Grid container spacing={1}>
-        {products.map((item) => (
+        {cart.map((item) => (
           <Grid
             item
             xs={12}
