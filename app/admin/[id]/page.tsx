@@ -1,6 +1,9 @@
 "use client";
+// UpdateExistProduct.js
 import { products } from "@/data";
-import { Box, Container, TextField } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
+import { Box, Button, Container, IconButton, TextField } from "@mui/material";
 
 type Props = { params: { id: string } };
 
@@ -10,6 +13,16 @@ function UpdateExistProduct(props: Props) {
   if (!product) {
     return <Box>404</Box>;
   }
+
+  const handleDelete = (productId: string) => {
+    // Implementera logik för att ta bort produkten med det angivna productId
+    console.log("Delete product with ID:", productId);
+  };
+
+  const handleSave = () => {
+    // Implementera logik för att spara ändringar i produkten
+    console.log("Save changes");
+  };
 
   return (
     <Container
@@ -61,6 +74,17 @@ function UpdateExistProduct(props: Props) {
           variant="outlined"
           sx={{ width: "100%", marginBottom: "20px" }}
         />
+        <IconButton onClick={() => handleDelete(product.id)}>
+          <DeleteIcon />
+        </IconButton>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSave}
+          startIcon={<SaveIcon />}
+        >
+          Spara
+        </Button>
       </Box>
     </Container>
   );
