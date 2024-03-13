@@ -1,5 +1,6 @@
-import { products } from "@/data";
+"use client";
 import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
 import {
   Box,
@@ -10,14 +11,27 @@ import {
   Typography,
 } from "@mui/material";
 import PaymentSection from "../checkoutComponents/paymentSection";
+import { useCart } from "../context/cartContext";
 
-function cartSection() {
+function CartSection() {
+  const { cart, addToCart } = useCart();
+
   return (
     <Container maxWidth="md">
+      {/* Rubriken "Cart" */}
+      <Typography
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          fontWeight: "bold",
+          fontSize: "30px",
+        }}
+      >
+        CART
+      </Typography>
+      {/* Spaceing mellan boxarna och css styleing */}
       <Grid container spacing={1}>
-        {/* Detta är tillfälligt ska vara cart sedan */}
-        {/* Mappar upp data (produkterna) */}
-        {products.map((item) => (
+        {cart.map((item) => (
           <Grid
             item
             xs={12}
@@ -25,44 +39,101 @@ function cartSection() {
             sx={{
               display: "flex",
               border: "1px solid black",
-              marginTop: "35px",
+              marginTop: "30px",
             }}
           >
-            {/* Styling för img box i box 1 */}
-            <Box sx={{ width: "20%" }}>
+            {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
+            <Box sx={{ width: "10%" }}>
               <img src={item.image} style={{ width: "100%" }} />
             </Box>
-            {/* styleing och innehåll i box 1. */}
-            <Box sx={{ padding: "20px", width: "70%" }} data-cy="cart-item">
-              {/* Titel från data */}
-              <Typography variant="h6">{item.title}</Typography>
-              {/* Beskrivning från data, kommer nog inte finnas sedan */}
-              <Typography variant="body1">{item.description}</Typography>
-            </Box>
-            {/* Kunna välja antal posters med + & - knapp */}
             <Box
-              sx={{ display: "flex", alignItems: "center", marginLeft: "2px" }}
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "90%",
+              }}
+              data-cy="cart-item"
             >
-              <IconButton color="inherit" aria-label="remove from cart">
-                <RemoveIcon />
-              </IconButton>
-              <Button variant="contained" color="inherit">
-                <Typography component="span">1</Typography>
-              </Button>
-              <IconButton color="inherit" aria-label="add to cart">
-                <AddIcon />
+              {/* Mappar ut titel av tavlorna */}
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  marginTop: "40px",
+                  textAlign: "left",
+                }}
+                variant="h6"
+              >
+                {item.title}
+              </Typography>
+              {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "left",
+                  marginTop: "15px",
+                }}
+              >
+                <IconButton color="inherit" aria-label="remove from cart">
+                  <RemoveIcon />
+                </IconButton>
+                <Button variant="contained" color="inherit">
+                  <Typography component="span">1</Typography>
+                </Button>
+                <IconButton color="inherit" aria-label="add to cart">
+                  <AddIcon />
+                </IconButton>
+              </Box>
+              {/* Mappar ut priset per tavla */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  paddingBottom: "5px",
+                }}
+              >
+                <Typography variant="body1">Price:</Typography>
+                <Typography sx={{ marginLeft: "8px" }} variant="body1">
+                  {item.price} :-
+                </Typography>
+              </Box>
+            </Box>
+            {/* DeleteIcon som en knapp längst till höger */}
+            <Box sx={{ alignSelf: "flex-start" }}>
+              <IconButton color="inherit" aria-label="delete">
+                <DeleteIcon />
               </IconButton>
             </Box>
           </Grid>
         ))}
       </Grid>
-      {/* Payment input fälten är i filen nedan (PaymentSection) */}
+      {/* Totalpris grid */}
+      <Grid container sx={{ alignItems: "center" }}>
+        <Grid item xs={6}>
+          <Box>
+            <Typography variant="h6">Total:</Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={6}>
+          <Box sx={{ textAlign: "right" }}>
+            <Typography
+              variant="body1"
+              sx={{
+                fontWeight: "bold",
+                display: "inline-block",
+                verticalAlign: "middle",
+              }}
+            >
+              1000:-
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
       <PaymentSection />
     </Container>
   );
 }
 
-export default cartSection;
+export default CartSection;
 
 // CYPRESS TESTER SOM SKA IN
 {

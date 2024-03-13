@@ -1,5 +1,20 @@
+<<<<<<< HEAD
 import NewProductForm from "@/app/ui/NewProductForm";
 import { Container } from "@mui/material";
+=======
+"use client";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import SaveIcon from "@mui/icons-material/Save";
+import {
+  Box,
+  Button,
+  Container,
+  Link,
+  Typography,
+  styled,
+} from "@mui/material";
+import TextField from "@mui/material/TextField";
+>>>>>>> main
 
 /* CYPRESS TESTER SOM SKA FINNAS MED  */
 /* - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan. 
@@ -28,7 +43,86 @@ function AddNewProduct() {
         marginBottom: "30px",
       }}
     >
+<<<<<<< HEAD
       <NewProductForm />
+=======
+      <Box
+        component={"form"}
+        data-cy="product-form"
+        sx={{
+          height: 700,
+          borderRadius: "10px",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px",
+          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
+        }}
+      >
+        <Typography data-cy="product-image-error">
+          Här kommer en bild
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            marginBottom: "20px",
+          }}
+        >
+          <Button
+            component="label"
+            role={undefined}
+            variant="contained"
+            tabIndex={-1}
+            startIcon={<CloudUploadIcon />}
+          >
+            Upload file
+            <VisuallyHiddenInput type="file" />
+          </Button>
+        </Box>
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        ></Box>
+        <TextField
+          data-cy="product-title-error"
+          fullWidth
+          label="Title"
+          helperText=" "
+          id="demo-helper-text-aligned-no-helper"
+          sx={{ width: "100%", marginBottom: "20px" }}
+        />
+        <TextField
+          data-cy="product-price-error"
+          fullWidth
+          label="Price"
+          helperText=" "
+          id="demo-helper-text-aligned-no-helper"
+          sx={{ width: "100%", marginBottom: "20px" }}
+        />
+
+        <TextField
+          data-cy="product-description-error"
+          id="outlined-multiline-static"
+          label="Description"
+          multiline
+          rows={6}
+          variant="outlined"
+          sx={{ width: "100%", marginBottom: "20px" }}
+        />
+        <Box sx={{ display: "flex", gap: "5vh" }}>
+          <Box component={Link} href="/admin" sx={{ width: "150px" }}>
+            <SaveIcon fontSize="large" />
+          </Box>
+        </Box>
+      </Box>
+>>>>>>> main
     </Container>
   );
 }
