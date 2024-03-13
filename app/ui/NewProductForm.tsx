@@ -4,13 +4,14 @@ import { products } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { nanoid } from "nanoid";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const productSchema = z.object({
-  id: z.string(),
+  id: z.string().default(() => nanoid()),
   title: z.string().min(5, { message: "Titel måste innehålla minst 5 tecken" }),
   price: z.number().positive({ message: "Skriv in ett nummer" }),
   description: z
@@ -28,7 +29,8 @@ function NewProductForm() {
   });
 
   const save = (data: SingleProduct) => {
-    const updateProducts = [...products, data];
+    const newData = { ...data, id: nanoid() };
+    const updateProducts = [...products, newData];
     setProduct(updateProducts);
     console.log("Produkter", updateProducts);
   };
@@ -89,6 +91,7 @@ function NewProductForm() {
           error={Boolean(form.formState.errors.price)}
           id="demo-helper-text-aligned-no-helper"
           sx={{ width: "100%", marginBottom: "20px" }}
+          {...form.register("price")}
         />
 
         <TextField
@@ -101,6 +104,7 @@ function NewProductForm() {
           rows={6}
           variant="outlined"
           sx={{ width: "100%", marginBottom: "20px" }}
+          {...form.register("description")}
         />
         <Box sx={{ display: "flex", gap: "5vh" }}>
           <Box component={Link} href="/admin" sx={{ width: "150px" }}>
