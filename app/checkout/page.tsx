@@ -57,7 +57,9 @@ function CartSection() {
               data-cy="cart-item"
             >
               {/* Mappar ut titel av tavlorna */}
-              <Typography variant="h6">{item.title}</Typography>
+              <Typography sx={{ fontSize: "16px" }} variant="h6">
+                {item.title}
+              </Typography>
               {/* Mappar ut priset per tavla */}
               <Box
                 sx={{
