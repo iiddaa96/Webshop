@@ -43,6 +43,11 @@ function UpdateExistProduct(props: Props) {
       price: "",
       description: "",
     });
+    // Dölj bilden genom att sätta display: none
+    const imageElement = document.getElementById("product-image");
+    if (imageElement) {
+      imageElement.style.display = "none";
+    }
     // Dölj delete-toasten efter att användaren har bekräftat radering
     setShowDeleteToast(false);
   };
@@ -90,8 +95,9 @@ function UpdateExistProduct(props: Props) {
         <CardMedia
           component="img"
           height="auto"
-          image={product.image}
+          image={product.image} // Uppdaterad för att visa den uppdaterade produktbilden
           alt={product.title}
+          id="product-image"
           sx={{ marginBottom: "20px" }}
         />
         <TextField
