@@ -30,10 +30,16 @@ interface ProductProviderProps {
 export const ProductProvider: React.FC<ProductProviderProps> = ({
   children,
 }) => {
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  // Initialize state with LocalStorage value if it exists
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(() => {
+    const savedProduct = localStorage.getItem("selectedProduct");
+    return savedProduct ? JSON.parse(savedProduct) : null;
+  });
 
   const selectProduct = (product: Product) => {
     setSelectedProduct(product);
+    // Save to LocalStorage
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
   };
 
   return (
