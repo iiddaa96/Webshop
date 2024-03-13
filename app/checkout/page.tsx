@@ -52,12 +52,13 @@ function CartSection() {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  marginLeft: "10px",
                   marginTop: "10px",
                 }}
               >
                 <Typography variant="body1">Pris:</Typography>
-                <Typography variant="body1">{item.price}</Typography>
+                <Typography sx={{ marginLeft: "8px" }} variant="body1">
+                  {item.price}
+                </Typography>
               </Box>
               <Box
                 sx={{
