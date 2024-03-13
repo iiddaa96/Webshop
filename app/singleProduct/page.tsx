@@ -12,6 +12,7 @@
 import { products } from "../../data/index";
 import { Box,  Grid, Typography } from '@mui/material';
 import QuantityButton from "../ui/quantityButton";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
 export default function SingleProduct() {
 
@@ -42,6 +43,22 @@ export default function SingleProduct() {
         </Box>
          {/* incrrement decrement button*/}
            <QuantityButton />
+
+
+        {/* Add to cart button */}
+        
+           <Box sx={{ display: 'flex', alignItems: 'center', height: '100px' }}>
+          <button style={{
+            borderRadius: '5px',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            transition: 'background-color 0.3s',
+            margin: '25px',
+            height: '50%',
+            width: '100%',
+          }}>Add to cart <ShoppingCart /> </button>
+        </Box>
 
       </Grid>
     </Grid>
