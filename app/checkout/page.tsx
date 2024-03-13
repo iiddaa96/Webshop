@@ -47,8 +47,18 @@ function CartSection() {
             >
               {/* Mappar ut titel av tavlorna */}
               <Typography variant="h6">{item.title}</Typography>
-              {/* Mappar ut beskrivning av tavlorna, (kommer nog tas bort senare) */}
-              <Typography variant="body1">{item.description}</Typography>
+              {/* Mappar ut priset per tavla */}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginLeft: "10px",
+                  marginTop: "10px",
+                }}
+              >
+                <Typography variant="body1">Pris:</Typography>
+                <Typography variant="body1">{item.price}</Typography>
+              </Box>
               <Box
                 sx={{
                   display: "flex",
