@@ -19,20 +19,45 @@ type Props = { params: { id: string } };
 function UpdateExistProduct(props: Props) {
   const product = products.find((p) => p.id === props.params.id);
   const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const [formData, setFormData] = useState({
+    title: product?.title || "",
+    price: product?.price || "",
+    description: product?.description || "",
+  });
 
   if (!product) {
     return <Box>404</Box>;
   }
 
   const handleDelete = (productId: string) => {
-    // Implementera logik för att ta bort produkten med det angivna productId
-    console.log("Delete product with ID:", productId);
+    // Visa delete-toasten för att bekräfta att användaren vill radera produkten
     setShowDeleteToast(true);
+  };
+
+  const handleConfirmDelete = () => {
+    // Implementera logik för att ta bort produkten med det angivna productId
+    console.log("Delete product with ID:", product.id);
+    // Rensa formuläret efter att produkten har raderats
+    setFormData({
+      title: "",
+      price: "",
+      description: "",
+    });
+    // Dölj delete-toasten efter att användaren har bekräftat radering
+    setShowDeleteToast(false);
   };
 
   const handleSave = () => {
     // Implementera logik för att spara ändringar i produkten
     console.log("Save changes");
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
@@ -72,20 +97,26 @@ function UpdateExistProduct(props: Props) {
         <TextField
           fullWidth
           label="Titel"
-          defaultValue={product.title}
+          name="title"
+          value={formData.title}
+          onChange={handleInputChange}
           sx={{ marginBottom: "20px" }}
         />
         <TextField
           fullWidth
           label="Pris"
-          defaultValue={product.price}
+          name="price"
+          value={formData.price}
+          onChange={handleInputChange}
           sx={{ marginBottom: "20px" }}
         />
         <TextField
           label="Beskrivning"
           multiline
           rows={6}
-          defaultValue={product.description}
+          name="description"
+          value={formData.description}
+          onChange={handleInputChange}
           variant="outlined"
           fullWidth
           sx={{ marginBottom: "20px" }}
@@ -123,7 +154,7 @@ function UpdateExistProduct(props: Props) {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => setShowDeleteToast(false)}
+            onClick={handleConfirmDelete} // Anropar funktionen för att bekräfta radering
             sx={{ marginRight: "10px", marginTop: "10px" }}
           >
             Ja
