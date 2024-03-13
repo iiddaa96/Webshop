@@ -19,8 +19,8 @@ type Props = { params: { id: string } };
 
 function UpdateExistProduct(props: Props) {
   const { selectedProduct, selectProduct } = useProductContext();
-  const product =
-    selectedProduct || products.find((p) => p.id === props.params.id);
+  const product: any =
+    selectedProduct || products.find((p) => p.id === props.params.id); // Använd typen 'any' för produkten
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [formData, setFormData] = useState({
     title: product?.title || "",
