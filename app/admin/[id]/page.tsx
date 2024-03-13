@@ -11,9 +11,6 @@ function UpdateExistProduct(props: Props) {
     return <Box>404</Box>;
   }
 
-  console.log(product);
-  // Hämta produkten baserad på vad URL säger.
-
   return (
     <Container
       fixed
@@ -64,7 +61,6 @@ function UpdateExistProduct(props: Props) {
           variant="outlined"
           sx={{ width: "100%", marginBottom: "20px" }}
         />
-        {/* Save and Delete buttons */}
       </Box>
     </Container>
   );
