@@ -39,7 +39,7 @@ function Admin() {
           />
         </Link>
       </Box>
-      <ProductGrid data-cy="product" />
+      <ProductGrid />
     </>
   );
 }

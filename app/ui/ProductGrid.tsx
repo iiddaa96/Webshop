@@ -1,5 +1,6 @@
 "use client";
 
+import { products } from "@/data";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 
@@ -15,7 +16,6 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { products } from "../../data/index";
 
 // styling till alla cards
 const StyledCard = styled(Card)(({ theme }) => ({
