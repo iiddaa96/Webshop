@@ -49,47 +49,24 @@ function CartSection() {
             <Box
               sx={{
                 display: "flex",
+                flexDirection: "column",
+                width: "90%",
               }}
               data-cy="cart-item"
             >
               {/* Mappar ut titel av tavlorna */}
-              <Box
+              <Typography
                 sx={{
-                  marginRight: "80px",
-                  marginLeft: "5px",
+                  fontSize: "16px",
+                  alignContent: "left",
                   marginTop: "40px",
                 }}
+                variant="h6"
               >
-                <Typography
-                  sx={{ fontSize: "16px", alignContent: "center" }}
-                  variant="h6"
-                >
-                  {item.title}
-                </Typography>
-              </Box>
-
-              {/* Mappar ut priset per tavla */}
-              <Box
-                sx={{
-                  display: "flex",
-                }}
-              >
-                <Typography sx={{ marginLeft: "40px" }} variant="body1">
-                  Pris:
-                </Typography>
-                <Typography sx={{ marginLeft: "8px" }} variant="body1">
-                  {item.price}
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "flex-end",
-                  marginTop: "10px",
-                }}
-              >
-                {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
+                {item.title}
+              </Typography>
+              {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
+              <Box>
                 <IconButton color="inherit" aria-label="remove from cart">
                   <RemoveIcon />
                 </IconButton>
@@ -100,12 +77,25 @@ function CartSection() {
                   <AddIcon />
                 </IconButton>
               </Box>
-              <Box sx={{ marginLeft: "80px" }}>
-                {/* DeleteIcon som en knapp längst till höger */}
-                <IconButton color="inherit" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
+              {/* Mappar ut priset per tavla */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  paddingBottom: "5px",
+                }}
+              >
+                <Typography variant="body1">Price:</Typography>
+                <Typography sx={{ marginLeft: "8px" }} variant="body1">
+                  {item.price} :-
+                </Typography>
               </Box>
+            </Box>
+            {/* DeleteIcon som en knapp längst till höger */}
+            <Box sx={{ alignSelf: "flex-start" }}>
+              <IconButton color="inherit" aria-label="delete">
+                <DeleteIcon />
+              </IconButton>
             </Box>
           </Grid>
         ))}
@@ -138,93 +128,6 @@ function CartSection() {
 }
 
 export default CartSection;
-
-// import AddIcon from "@mui/icons-material/Add";
-// import DeleteIcon from "@mui/icons-material/Delete";
-// import RemoveIcon from "@mui/icons-material/Remove";
-// import {
-//   Box,
-//   Button,
-//   Container,
-//   Grid,
-//   IconButton,
-//   Typography,
-// } from "@mui/material";
-// import PaymentSection from "../checkoutComponents/paymentSection";
-// import { useCart } from "../context/cartContext";
-
-// function CartSection() {
-//   const { cart } = useCart();
-
-//   return (
-//     <Container maxWidth="md">
-//       <Grid container spacing={1}>
-//         {/* Kontrollera om varukorgen är tom */}
-//         {cart.length === 0 ? (
-//           <Typography variant="body1">Varukorgen är tom.</Typography>
-//         ) : (
-//           cart.map((item) => (
-//             <Grid
-//               item
-//               xs={12}
-//               key={item.id}
-//               sx={{
-//                 display: "flex",
-//                 border: "1px solid black",
-//                 marginTop: "35px",
-//               }}
-//             >
-//               <Box sx={{ width: "20%" }}>
-//                 <img src={item.image} style={{ width: "100%" }} />
-//               </Box>
-//               <Box
-//                 sx={{
-//                   display: "flex",
-//                   flexDirection: "column",
-//                   justifyContent: "space-between",
-//                   padding: "20px",
-//                   width: "70%",
-//                 }}
-//                 data-cy="cart-item"
-//               >
-//                 <Typography variant="h6">{item.title}</Typography>
-//                 <Typography variant="body1">{item.description}</Typography>
-//                 <Box
-//                   sx={{
-//                     display: "flex",
-//                     alignItems: "center",
-//                     justifyContent: "flex-end",
-//                     marginTop: "10px",
-//                   }}
-//                 >
-//                   <IconButton color="inherit" aria-label="remove from cart">
-//                     <RemoveIcon />
-//                   </IconButton>
-//                   <Button variant="contained" color="inherit">
-//                     <Typography component="span">{item.quantity}</Typography>
-//                   </Button>
-//                   <IconButton color="inherit" aria-label="add to cart">
-//                     <AddIcon />
-//                   </IconButton>
-//                   <IconButton
-//                     color="inherit"
-//                     aria-label="delete"
-//                     sx={{ marginLeft: "auto" }}
-//                   >
-//                     <DeleteIcon />
-//                   </IconButton>
-//                 </Box>
-//               </Box>
-//             </Grid>
-//           ))
-//         )}
-//       </Grid>
-//       <PaymentSection />
-//     </Container>
-//   );
-// }
-
-// export default CartSection;
 
 // CYPRESS TESTER SOM SKA IN
 {
