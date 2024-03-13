@@ -49,26 +49,34 @@ function CartSection() {
             <Box
               sx={{
                 display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                padding: "20px",
-                width: "70%",
               }}
               data-cy="cart-item"
             >
               {/* Mappar ut titel av tavlorna */}
-              <Typography sx={{ fontSize: "16px" }} variant="h6">
-                {item.title}
-              </Typography>
+              <Box
+                sx={{
+                  marginRight: "80px",
+                  marginLeft: "5px",
+                  marginTop: "40px",
+                }}
+              >
+                <Typography
+                  sx={{ fontSize: "16px", alignContent: "center" }}
+                  variant="h6"
+                >
+                  {item.title}
+                </Typography>
+              </Box>
+
               {/* Mappar ut priset per tavla */}
               <Box
                 sx={{
                   display: "flex",
-                  alignItems: "center",
-                  marginTop: "10px",
                 }}
               >
-                <Typography variant="body1">Pris:</Typography>
+                <Typography sx={{ marginLeft: "40px" }} variant="body1">
+                  Pris:
+                </Typography>
                 <Typography sx={{ marginLeft: "8px" }} variant="body1">
                   {item.price}
                 </Typography>
@@ -91,12 +99,10 @@ function CartSection() {
                 <IconButton color="inherit" aria-label="add to cart">
                   <AddIcon />
                 </IconButton>
+              </Box>
+              <Box sx={{ marginLeft: "80px" }}>
                 {/* DeleteIcon som en knapp längst till höger */}
-                <IconButton
-                  color="inherit"
-                  aria-label="delete"
-                  sx={{ marginLeft: "auto" }}
-                >
+                <IconButton color="inherit" aria-label="delete">
                   <DeleteIcon />
                 </IconButton>
               </Box>
