@@ -58,15 +58,21 @@ function CartSection() {
               <Typography
                 sx={{
                   fontSize: "16px",
-                  alignContent: "left",
                   marginTop: "40px",
+                  textAlign: "left",
                 }}
                 variant="h6"
               >
                 {item.title}
               </Typography>
               {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
-              <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "left",
+                  marginTop: "15px",
+                }}
+              >
                 <IconButton color="inherit" aria-label="remove from cart">
                   <RemoveIcon />
                 </IconButton>
