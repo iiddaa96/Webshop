@@ -13,10 +13,7 @@ import { products } from "../../data/index";
 import { Box,  Grid, Typography } from '@mui/material';
 import QuantityButton from "../ui/quantityButton";
 
-
-
 export default function SingleProduct() {
-
 
   return (
     <Grid container spacing={2}>
@@ -39,16 +36,13 @@ export default function SingleProduct() {
             <div key={products[0].id}>
               {/* gutterbottom lägger till bottom margin*/}
               <Typography variant="h4" gutterBottom>{products[0].title}</Typography>
-         
               <Typography variant="body2" gutterBottom>{products[0].description}</Typography>
             </div>
           )}
         </Box>
+         {/* incrrement decrement button*/}
+           <QuantityButton />
 
-    
-        <QuantityButton />
-    
-        
       </Grid>
     </Grid>
   );
