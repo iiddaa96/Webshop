@@ -18,6 +18,17 @@ function CartSection() {
 
   return (
     <Container maxWidth="md">
+      {/* Rubriken "Cart" */}
+      <Typography
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          fontWeight: "bold",
+          fontSize: "30px",
+        }}
+      >
+        CART
+      </Typography>
       {/* Spaceing mellan boxarna och css styleing */}
       <Grid container spacing={1}>
         {cart.map((item) => (
@@ -28,11 +39,11 @@ function CartSection() {
             sx={{
               display: "flex",
               border: "1px solid black",
-              marginTop: "35px",
+              marginTop: "30px",
             }}
           >
             {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
-            <Box sx={{ width: "20%" }}>
+            <Box sx={{ width: "10%" }}>
               <img src={item.image} style={{ width: "100%" }} />
             </Box>
             <Box
