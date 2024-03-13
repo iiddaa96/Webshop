@@ -89,6 +89,7 @@ function NewProductForm() {
           error={Boolean(form.formState.errors.price)}
           id="demo-helper-text-aligned-no-helper"
           sx={{ width: "100%", marginBottom: "20px" }}
+          {...form.register("price")}
         />
 
         <TextField
@@ -101,6 +102,7 @@ function NewProductForm() {
           rows={6}
           variant="outlined"
           sx={{ width: "100%", marginBottom: "20px" }}
+          {...form.register("description")}
         />
         <Box sx={{ display: "flex", gap: "5vh" }}>
           <Box component={Link} href="/admin" sx={{ width: "150px" }}>
