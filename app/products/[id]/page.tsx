@@ -9,14 +9,20 @@
 - `data-cy="added-to-cart-toast"` toast som visas när en produkt läggs till i kundvagnen.
 */
 
-import { products } from "../../data/index";
+import { products } from "../../../data/index";
 import { Box,  Grid, Typography } from '@mui/material';
-import QuantityButton from "../ui/quantityButton";
+import QuantityButton from "../../ui/quantityButton";
 
 import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
 
 export default function SingleProduct() {
+  
+  const product = products.find((product) => product.id === product.id);
 
+  if (!product) {
+    // If product not found, you can render a loading state or a message
+    return <div>Product not found</div>;
+  }
   return (
     <main>
     <Grid container spacing={2}>
