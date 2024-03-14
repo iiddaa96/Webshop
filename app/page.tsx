@@ -93,8 +93,11 @@ export default function Home() {
                     <CardActions
                       disableSpacing
                       sx={{ justifyContent: "flex-end" }}
+                      data-cy="product-buy-button"
                     >
-                      <AddToCartButton product={product} />
+                      <AddToCartButton 
+                      product={product}
+                        />
                     </CardActions>
                   </Box>
                 </Card>
