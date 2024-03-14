@@ -13,8 +13,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { products } from "../../data/index";
-import { useProductContext } from "../context/AdminContext"; // Adjust the path accordingly
+import { useProduct } from "../context/AdminContext"; // Adjust the path accordingly
 
 // Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -24,7 +23,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 
 export default function ProductGrid() {
   // Using the context to select a product
-  const { selectProduct } = useProductContext();
+  const { products } = useProduct();
 
   return (
     <Container fixed>
@@ -65,10 +64,6 @@ export default function ProductGrid() {
                         <EditNoteIcon
                           fontSize="large"
                           data-cy="admin-edit-product"
-                          onClick={(e) => {
-                            e.stopPropagation(); // Prevent CardActionArea click
-                            selectProduct(product);
-                          }}
                         />
                       </Link>
                       <DeleteIcon

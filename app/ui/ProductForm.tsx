@@ -1,51 +1,42 @@
 "use client";
 
-import { products } from "@/data";
+import { Product, productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
-import Link from "next/link";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { useProductContext } from "../context/AdminContext";
+import { useProduct } from "../context/AdminContext";
 
-const productSchema = z.object({
-  id: z.string().default(() => nanoid()),
-  title: z.string().min(5, { message: "Titel måste innehålla minst 5 tecken" }),
-  price: z.number().positive({ message: "Skriv in ett nummer" }),
-  description: z
-    .string()
-    .max(400, { message: "Inlägget får vara 400 tecken långt" }),
-});
+interface Props {
+  product?: Product;
+}
 
-type SingleProduct = z.infer<typeof productSchema>;
+function ProductForm(props: Props) {
+  const isEdit = Boolean(props.product);
+  const { addProduct } = useProduct();
 
-function NewProductForm() {
-  const { selectProduct } = useProductContext();
-
-  const [product, setProduct] = useState<SingleProduct[]>([]);
-
-  const form = useForm<SingleProduct>({
+  const form = useForm<Product>({
+    defaultValues: props.product,
     resolver: zodResolver(productSchema),
   });
 
-  const save = (data: SingleProduct) => {
+  const save = (data: Product) => {
     const newData = { ...data, id: nanoid() };
-    const updateProducts = [...products, newData];
-    setProduct(updateProducts);
-    selectProduct(data);
-    console.log("Produkter", updateProducts);
+    if (isEdit) {
+      // update
+    } else {
+      addProduct(newData);
+    }
+    // navigera...
   };
 
   return (
     <Box
-      component={"form"}
+      component="form"
       onSubmit={form.handleSubmit(save)}
       data-cy="product-form"
       sx={{
-        height: 700,
         borderRadius: "10px",
         width: "100%",
         display: "flex",
@@ -56,25 +47,9 @@ function NewProductForm() {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
       }}
     >
-      <Typography data-cy="product-image-error">Här kommer en bild</Typography>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-start",
-          marginBottom: "20px",
-        }}
-      >
-        <Button
-          component="label"
-          role={undefined}
-          variant="contained"
-          tabIndex={-1}
-          // startIcon={<CloudUploadIcon />}
-        >
-          Upload file
-          {/* <VisuallyHiddenInput type="file" /> */}
-        </Button>
-      </Box>
+      <Typography variant="h4">
+        {isEdit ? "Uppdatera produkt" : "Skapa ny produkt"}
+      </Typography>
       <TextField
         data-cy="product-title-error"
         fullWidth
@@ -84,6 +59,16 @@ function NewProductForm() {
         id="demo-helper-text-aligned-no-helper"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("title")}
+      />
+      <TextField
+        data-cy="product-image-error"
+        fullWidth
+        label="Image"
+        helperText={form.formState.errors.image?.message}
+        error={Boolean(form.formState.errors.image)}
+        id="demo-helper-text-aligned-no-helper"
+        sx={{ width: "100%", marginBottom: "20px" }}
+        {...form.register("image")}
       />
       <TextField
         data-cy="product-price-error"
@@ -109,13 +94,13 @@ function NewProductForm() {
         {...form.register("description")}
       />
       <Box sx={{ display: "flex", gap: "5vh" }}>
-        <Box component={Link} href="/admin" sx={{ width: "150px" }}>
+        <Button type="submit" variant="contained" sx={{ width: "150px" }}>
           <SaveIcon fontSize="large" />
-          <button onClick={() => save(form.getValues())}>Skicka</button>
-        </Box>
+          Spara
+        </Button>
       </Box>
     </Box>
   );
 }
 
-export default NewProductForm;
+export default ProductForm;
