@@ -15,6 +15,10 @@ import {
 } from "@mui/material";
 import { useProduct } from "../context/AdminContext"; // Adjust the path accordingly
 
+// interface Props {
+//   product?: Product;
+// }
+
 // Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(2),
@@ -22,8 +26,17 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 export default function ProductGrid() {
+  // const { removeProduct } = useProduct();
+
   // Using the context to select a product
-  const { products } = useProduct();
+  const { products, removeProduct } = useProduct();
+
+  //  const handleDelete = (data: Product) => {
+  //    const newData = { ...data, id: nanoid() };
+  //    if (isEdit) {
+  //      editProduct(data);
+  //    }
+  //  };
 
   return (
     <Container fixed>
@@ -69,6 +82,7 @@ export default function ProductGrid() {
                       <DeleteIcon
                         fontSize="large"
                         data-cy="admin-remove-product"
+                        onClick={() => removeProduct(product.id)}
                       />
                     </Box>
                   </CardContent>

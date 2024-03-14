@@ -12,6 +12,7 @@ interface ProductContextType {
   products: Product[];
   addProduct: (product: Product) => void;
   editProduct: (editProduct: Product) => void;
+  removeProduct: (productId: string) => void;
 }
 
 const ProductContext = createContext<ProductContextType>(
@@ -42,10 +43,6 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     setProducts((prevProducts) => [...prevProducts, newProduct]);
   };
 
-  // const editProd = (editProduct: Product) => {
-  //   setProducts((prevProducts) => [...prevProducts, editProduct]);
-  // };
-
   const editProduct = (editProduct: Product) => {
     setProducts((prevProducts) => {
       const index = prevProducts.findIndex(
@@ -60,8 +57,24 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     });
   };
 
+   const removeProduct = (productId: string) => {
+     setProducts((prevProducts) =>
+       prevProducts.filter((product) => product.id !== productId)
+     );
+    
+     // Denna rad uppdaterar listan genom att filtrera bort produkten med det angivna ID:t
+   };
+
+  // const removeProduct = (productId: string) => {
+  //   const deleteProduct = products.filter((item) => item.id !== productId);
+
+  //   setProducts(deleteProduct);
+  // };
+
   return (
-    <ProductContext.Provider value={{ products, addProduct, editProduct }}>
+    <ProductContext.Provider
+      value={{ products, addProduct, editProduct, removeProduct  }}
+    >
       {children}
     </ProductContext.Provider>
   );

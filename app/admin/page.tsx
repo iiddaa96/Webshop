@@ -12,6 +12,7 @@ import Link from "next/link";
 - `data-cy="confirm-delete-button"` konfirmera att man vill radera en produkt.*/
 
 function Admin() {
+
   return (
     <>
       <Box
