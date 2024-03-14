@@ -1,47 +1,52 @@
 "use client";
+// AddNewProduct.tsx
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import SaveIcon from "@mui/icons-material/Save";
-import {
-  Box,
-  Button,
-  Container,
-  Link,
-  Typography,
-  styled,
-} from "@mui/material";
-import TextField from "@mui/material/TextField";
+import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { Product } from "../../ui/ProductTypes"; // Importera Product typen
+import { useProductContext } from "../../context/AdminContext"; // Justera sökvägen till din ProductContext
 
-/* CYPRESS TESTER SOM SKA FINNAS MED  */
-/* - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan. 
-- `data-cy="admin-link"` den länk/knapp som går till admin.
-- `data-cy="admin-add-product"` edit-knappen för admin som ska editera en produkt.
-- `data-cy="admin-edit-product"` edit-knappen för admin som ska editera en produkt.
-- `data-cy="admin-remove-product"` den knapp som ska kunna radera en produkt.
-- `data-cy="confirm-delete-button"` konfirmera att man vill radera en produkt.
-- `data-cy="product-form"` formuläret för att lägga till eller editera en produkt.
-- `data-cy="product-title-error"` felmeddelande vid felaktigt angiven titel.
-- `data-cy="product-description-error"` felmeddelande vid felaktigt angiven beskrivning.
-- `data-cy="product-price-error"` felmeddelande vid felaktigt angivet pris.
-- `data-cy="product-image-error"` felmeddelande vid felaktigt angiven bild.
-*/
+const AddNewProduct: React.FC = () => {
+  const { addProduct } = useProductContext();
+  const [title, setTitle] = useState<string>("");
+  const [price, setPrice] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [image, setImage] = useState<string>("");
 
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const newProduct: Product = {
+      id: Date.now().toString(), // Enkel unik identifierare
+      title,
+      price: Number(price), // Omvandla sträng till nummer
+      description,
+      image,
+    };
 
-function AddNewProduct() {
+    addProduct(newProduct);
+    console.log("Product added:", newProduct);
+    // Rensa formulärfält
+    setTitle("");
+    setPrice("");
+    setDescription("");
+    setImage("");
+  };
+
+  const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <Container
       fixed
-      component={"main"}
+      component="main"
       sx={{
         display: "flex",
         alignItems: "center",
@@ -51,10 +56,10 @@ function AddNewProduct() {
       }}
     >
       <Box
-        component={"form"}
-        data-cy="product-form"
+        component="form"
+        onSubmit={handleSubmit}
         sx={{
-          height: 700,
+          height: "auto",
           borderRadius: "10px",
           width: "100%",
           display: "flex",
@@ -65,69 +70,44 @@ function AddNewProduct() {
           boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
         }}
       >
-        <Typography data-cy="product-image-error">
-          Här kommer en bild
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-start",
-            marginBottom: "20px",
-          }}
+        <Typography variant="h6">Lägg till en ny produkt</Typography>
+        <Button
+          component="label"
+          variant="contained"
+          startIcon={<CloudUploadIcon />}
         >
-          <Button
-            component="label"
-            role={undefined}
-            variant="contained"
-            tabIndex={-1}
-            startIcon={<CloudUploadIcon />}
-          >
-            Upload file
-            <VisuallyHiddenInput type="file" />
-          </Button>
-        </Box>
-        <Box
-          component="form"
-          sx={{
-            "& .MuiTextField-root": { m: 1, width: "25ch" },
-          }}
-          noValidate
-          autoComplete="off"
-        ></Box>
+          Ladda upp bild
+          <input type="file" hidden onChange={handleImageUpload} />
+        </Button>
         <TextField
-          data-cy="product-title-error"
           fullWidth
-          label="Title"
-          helperText=" "
-          id="demo-helper-text-aligned-no-helper"
+          label="Titel"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           sx={{ width: "100%", marginBottom: "20px" }}
         />
         <TextField
-          data-cy="product-price-error"
           fullWidth
-          label="Price"
-          helperText=" "
-          id="demo-helper-text-aligned-no-helper"
+          label="Pris"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
           sx={{ width: "100%", marginBottom: "20px" }}
         />
-
         <TextField
-          data-cy="product-description-error"
-          id="outlined-multiline-static"
-          label="Description"
+          fullWidth
+          label="Beskrivning"
           multiline
-          rows={6}
-          variant="outlined"
+          rows={4}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           sx={{ width: "100%", marginBottom: "20px" }}
         />
-        <Box sx={{ display: "flex", gap: "5vh" }}>
-          <Box component={Link} href="/admin" sx={{ width: "150px" }}>
-            <SaveIcon fontSize="large" />
-          </Box>
-        </Box>
+        <Button type="submit" variant="contained" color="primary">
+          Lägg till Produkt
+        </Button>
       </Box>
     </Container>
   );
-}
+};
 
 export default AddNewProduct;
