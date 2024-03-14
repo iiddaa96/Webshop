@@ -1,4 +1,5 @@
 "use client";
+
 import {
   PropsWithChildren,
   createContext,
@@ -11,11 +12,13 @@ import { CartItem, Product } from "../../data/index";
 export interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
+  removeFromCart: (productId: string) => void; // New function to remove items
 }
 
 export const CartContext = createContext<CartContextType>({
   cart: [],
   addToCart: () => {},
+  removeFromCart: () => {}, // Default implementation for the new function
 });
 
 export const useCart = () => useContext(CartContext);
@@ -45,12 +48,17 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const removeFromCart = (productId: string) => {
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCart(updatedCart);
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}
     </CartContext.Provider>
   );
