@@ -13,56 +13,75 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { useProductContext } from "../../context/AdminContext";
 
 type Props = { params: { id: string } };
 
 function UpdateExistProduct(props: Props) {
-  const product = products.find((p) => p.id === props.params.id);
+  const { selectedProduct, selectProduct } = useProductContext();
+  const product: any =
+    selectedProduct || products.find((p) => p.id === props.params.id); // Använd typen 'any' för produkten
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [formData, setFormData] = useState({
     title: product?.title || "",
     price: product?.price || "",
     description: product?.description || "",
+    image: "", // Lägg till fältet för bildens URL
   });
 
-  if (!product) {
-    return <Box>404</Box>;
-  }
-
   const handleDelete = (productId: string) => {
-    // Visa delete-toasten för att bekräfta att användaren vill radera produkten
     setShowDeleteToast(true);
   };
 
   const handleConfirmDelete = () => {
-    // Implementera logik för att ta bort produkten med det angivna productId
-    console.log("Delete product with ID:", product.id);
-    // Rensa formuläret efter att produkten har raderats
+    console.log("Delete product with ID:", product?.id);
     setFormData({
       title: "",
       price: "",
       description: "",
+      image: "", // Rensa bildens URL
     });
-    // Dölj bilden genom att sätta display: none
     const imageElement = document.getElementById("product-image");
     if (imageElement) {
       imageElement.style.display = "none";
     }
-    // Dölj delete-toasten efter att användaren har bekräftat radering
     setShowDeleteToast(false);
   };
 
   const handleSave = () => {
-    // Implementera logik för att spara ändringar i produkten
     console.log("Save changes");
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const { name, value, files } = e.target;
+    if (files && files.length > 0) {
+      const selectedFile = files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        const uploadedImageUrl = reader.result as string;
+        setFormData({
+          ...formData,
+          [name]: uploadedImageUrl,
+        });
+        const imageElement = document.getElementById("product-image");
+        if (imageElement) {
+          imageElement.setAttribute("src", uploadedImageUrl);
+          imageElement.style.display = "block";
+        }
+      };
+      reader.readAsDataURL(selectedFile);
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
+  const handleSelectProduct = () => {
+    if (product) {
+      selectProduct(product);
+    }
   };
 
   return (
@@ -82,7 +101,7 @@ function UpdateExistProduct(props: Props) {
         data-cy="product-form"
         sx={{
           width: "100%",
-          maxWidth: 400, // Förminskar maxbredden för formuläret
+          maxWidth: 400,
           padding: "20px",
           borderRadius: "10px",
           boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
@@ -95,8 +114,8 @@ function UpdateExistProduct(props: Props) {
         <CardMedia
           component="img"
           height="auto"
-          image={product.image} // Uppdaterad för att visa den uppdaterade produktbilden
-          alt={product.title}
+          image={formData.image || product?.image || ""}
+          alt={formData.title || product?.title || ""}
           id="product-image"
           sx={{ marginBottom: "20px" }}
         />
@@ -127,8 +146,18 @@ function UpdateExistProduct(props: Props) {
           fullWidth
           sx={{ marginBottom: "20px" }}
         />
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <IconButton onClick={() => handleDelete(product.id)}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "20px",
+          }}
+        >
+          <Button variant="contained" component="label">
+            Upload File
+            <input type="file" hidden onChange={handleInputChange} />
+          </Button>
+          <IconButton onClick={() => handleDelete(product?.id || "")}>
             <DeleteIcon />
           </IconButton>
           <Button
@@ -160,7 +189,7 @@ function UpdateExistProduct(props: Props) {
           <Button
             variant="contained"
             color="primary"
-            onClick={handleConfirmDelete} // Anropar funktionen för att bekräfta radering
+            onClick={handleConfirmDelete}
             sx={{ marginRight: "10px", marginTop: "10px" }}
           >
             Ja
