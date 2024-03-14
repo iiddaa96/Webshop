@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <main>
       {/*Tillfälling länk till singleProduct page */}
-      <Link href="/products">
+      
         <Box
           sx={{
             width: "95%",
@@ -55,6 +55,7 @@ export default function Home() {
           <Grid container spacing={4}>
             {products.map((product) => (
               <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id} data-cy="product">
+                <Link href={`/products/${product.id}`}>
                 <Card
                   sx={{
                     maxWidth: 345,
@@ -101,11 +102,12 @@ export default function Home() {
                     </CardActions>
                   </Box>
                 </Card>
+                </Link>
               </Grid>
             ))}
           </Grid>
         </Box>
-      </Link>
+      
     </main>
   );
 }
