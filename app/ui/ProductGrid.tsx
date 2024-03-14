@@ -1,23 +1,28 @@
+"use client";
 /* eslint-disable react/jsx-key */
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import {
   Box,
+  Button,
   Card,
   CardActionArea,
   CardContent,
   CardMedia,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   Grid,
   Link,
+  SnackbarOrigin,
   Typography,
   styled,
 } from "@mui/material";
+import React from "react";
 import { useProduct } from "../context/AdminContext"; // Adjust the path accordingly
-
-// interface Props {
-//   product?: Product;
-// }
 
 // Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -25,18 +30,34 @@ const StyledCard = styled(Card)(({ theme }) => ({
   color: "black",
 }));
 
-export default function ProductGrid() {
-  // const { removeProduct } = useProduct();
+interface State extends SnackbarOrigin {
+  open: boolean;
+}
 
+export default function ProductGrid() {
   // Using the context to select a product
   const { products, removeProduct } = useProduct();
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [productToDelete, setProductToDelete] = React.useState<string | null>(
+    null
+  );
 
-  //  const handleDelete = (data: Product) => {
-  //    const newData = { ...data, id: nanoid() };
-  //    if (isEdit) {
-  //      editProduct(data);
-  //    }
-  //  };
+  const handleDialogOpen = (productId: string) => {
+    setProductToDelete(productId);
+    setDialogOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleDeleteProduct = () => {
+    if (productToDelete) {
+      removeProduct(productToDelete);
+      setDialogOpen(false);
+    }
+  };
 
   return (
     <Container fixed>
@@ -82,7 +103,7 @@ export default function ProductGrid() {
                       <DeleteIcon
                         fontSize="large"
                         data-cy="admin-remove-product"
-                        onClick={() => removeProduct(product.id)}
+                        onClick={() => handleDialogOpen(product.id)}
                       />
                     </Box>
                   </CardContent>
@@ -92,6 +113,24 @@ export default function ProductGrid() {
           ))}
         </Grid>
       </Box>
+      <Dialog open={dialogOpen} onClose={handleDialogClose}>
+        <DialogTitle>
+          {"Är du säker på att du vill radera denna produkt?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>Denna åtgärd kan inte ångras.</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClose}>Avbryt</Button>
+          <Button
+            onClick={handleDeleteProduct}
+            data-cy="confirm-delete-button"
+            autoFocus
+          >
+            Radera
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 }
