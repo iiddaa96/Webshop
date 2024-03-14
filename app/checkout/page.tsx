@@ -1,16 +1,31 @@
 "use client";
+import React, { useState } from 'react';
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box, Container, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Container, Grid, IconButton, Typography, Paper, Button } from "@mui/material";
 import PaymentSection from "../checkoutComponents/paymentSection";
 import { useCart } from "../context/cartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function CartSection() {
   const { cart, addToCart } = useCart();
+  const [showDeleteToast, setShowDeleteToast] = useState(false);
+  const [selectedItemId, setSelectedItemId] = useState('');
+
+  const handleDelete = (itemId: string) => {
+    setShowDeleteToast(true);
+    setSelectedItemId(itemId);
+  };
+
+  const handleConfirmDelete = () => {
+    // Filter out the deleted product from the cart
+    const updatedCart = cart.filter(item => item.id !== selectedItemId);
+    // Update the cart with the filtered items
+    setCart(updatedCart);
+    setShowDeleteToast(false);
+  };
 
   return (
     <Container maxWidth="md">
-      {/* Rubriken "Cart" */}
       <Typography
         sx={{
           display: "flex",
@@ -21,7 +36,7 @@ function CartSection() {
       >
         CART
       </Typography>
-      {/* Spaceing mellan boxarna och css styleing */}
+{/* Spaceing mellan boxarna och css styleing */}
       <Grid container spacing={1}>
         {cart.map((item) => (
           <Grid
@@ -34,9 +49,9 @@ function CartSection() {
               marginTop: "30px",
             }}
           >
-            {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
+{/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
             <Box sx={{ width: "10%" }}>
-              <img src={item.image} style={{ width: "100%" }} />
+              <img src={item.image} style={{ width: "100%" }} alt={item.title} />
             </Box>
             <Box
               sx={{
@@ -46,7 +61,7 @@ function CartSection() {
               }}
               data-cy="cart-item"
             >
-              {/* Mappar ut titel av tavlorna */}
+{/* Mappar ut titel av tavlorna */}
               <Typography
                 sx={{
                   fontSize: "16px",
@@ -57,10 +72,10 @@ function CartSection() {
               >
                 {item.title}
               </Typography>
-              {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
+{/* Icon buttons för att lägga till eller ta bort antal valda posters */}
               {/* Använd QuantityButton-komponenten här */}
               <QuantityButton />
-              {/* Mappar ut priset per tavla */}
+{/* Mappar ut priset per tavla */}
               <Box
                 sx={{
                   display: "flex",
@@ -74,16 +89,16 @@ function CartSection() {
                 </Typography>
               </Box>
             </Box>
-            {/* DeleteIcon som en knapp längst till höger */}
+{/* DeleteIcon som en knapp längst till höger */}
             <Box sx={{ alignSelf: "flex-start" }}>
-              <IconButton color="inherit" aria-label="delete">
+              <IconButton color="inherit" aria-label="delete" onClick={() => handleDelete(item.id)}>
                 <DeleteIcon />
               </IconButton>
             </Box>
           </Grid>
         ))}
       </Grid>
-      {/* Totalpris grid */}
+{/* Totalpris grid */}
       <Grid container sx={{ alignItems: "center" }}>
         <Grid item xs={6}>
           <Box>
@@ -105,12 +120,47 @@ function CartSection() {
           </Box>
         </Grid>
       </Grid>
+      {showDeleteToast && (
+        <Paper
+          elevation={3}
+          sx={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            padding: "20px",
+            borderRadius: "10px",
+            backgroundColor: "#fff",
+          }}
+        >
+          <Typography variant="body1">
+            Are you sure you want to delete the item?
+          </Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleConfirmDelete}
+            sx={{ marginRight: "10px", marginTop: "10px" }}
+          >
+            Yes
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => setShowDeleteToast(false)}
+            sx={{ marginTop: "10px" }}
+          >
+            No
+          </Button>
+        </Paper>
+      )}
       <PaymentSection />
     </Container>
   );
 }
 
 export default CartSection;
+
 
 // CYPRESS TESTER SOM SKA IN
 {
