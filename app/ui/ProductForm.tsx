@@ -7,6 +7,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useForm } from "react-hook-form";
 import { useProduct } from "../context/AdminContext";
+import { useRouter } from "next/navigation";
 
 interface Props {
   product?: Product;
@@ -14,7 +15,8 @@ interface Props {
 
 function ProductForm(props: Props) {
   const isEdit = Boolean(props.product);
-  const { addProduct } = useProduct();
+  const { addProduct, editProduct } = useProduct();
+  const router = useRouter();
 
   const form = useForm<Product>({
     defaultValues: props.product,
@@ -24,11 +26,10 @@ function ProductForm(props: Props) {
   const save = (data: Product) => {
     const newData = { ...data, id: nanoid() };
     if (isEdit) {
-      // update
+      editProduct(data);
     } else {
       addProduct(newData);
     }
-    // navigera...
   };
 
   return (
@@ -94,7 +95,12 @@ function ProductForm(props: Props) {
         {...form.register("description")}
       />
       <Box sx={{ display: "flex", gap: "5vh" }}>
-        <Button type="submit" variant="contained" sx={{ width: "150px" }}>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ width: "150px" }}
+          onClick={() => router.push("/admin")}
+        >
           <SaveIcon fontSize="large" />
           Spara
         </Button>
