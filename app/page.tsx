@@ -68,20 +68,23 @@ export default function Home() {
                     component="img"
                     height="280"
                     image={product.image}
-                    alt={product.title}
+                    alt={product.title} 
+                    data-cy="product-title"
                   />
                   <CardContent>
                     <Typography
                       gutterBottom
                       variant="subtitle1"
                       component="div"
+                      data-cy="product-title"
                     >
-                      {product.title}
+                      { product.title}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="text.secondary"
                       sx={{ fontSize: "0.8rem" }}
+                      data-cy="product-price"
                     >
                       {product.price}
                     </Typography>
