@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <main>
       {/*Tillfälling länk till singleProduct page */}
-      <Link href="/singleProduct">
+      <Link href="/products">
         <Box
           sx={{
             width: "95%",
