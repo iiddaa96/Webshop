@@ -55,7 +55,7 @@ export default function Home() {
           <Grid container spacing={4}>
             {products.map((product) => (
               <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id} data-cy="product">
-                <Link href={`/products/${product.id}`}>
+                <Link href={`/products/${product.id}` as any}>
                 <Card
                   sx={{
                     maxWidth: 345,
