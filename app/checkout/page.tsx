@@ -7,7 +7,7 @@ import { useCart } from "../context/cartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function CartSection() {
-  const { cart, addToCart } = useCart();
+  const { cart, removeFromCart } = useCart(); // Assuming removeFromCart is provided by your context
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState('');
 
@@ -17,10 +17,8 @@ function CartSection() {
   };
 
   const handleConfirmDelete = () => {
-    // Filter out the deleted product from the cart
-    const updatedCart = cart.filter(item => item.id !== selectedItemId);
-    // Update the cart with the filtered items
-    setCart(updatedCart);
+    // Remove the item from the cart
+    removeFromCart(selectedItemId);
     setShowDeleteToast(false);
   };
 
