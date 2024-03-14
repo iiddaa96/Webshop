@@ -7,7 +7,7 @@ import { useCart } from "../context/cartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function CartSection() {
-  const { cart, removeFromCart } = useCart(); // Assuming removeFromCart is provided by your context
+  const { cart, removeFromCart } = useCart(); //hämtar från cartContext
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState('');
 
@@ -34,7 +34,7 @@ function CartSection() {
       >
         CART
       </Typography>
-{/* Spaceing mellan boxarna och css styleing */}
+        {/* Spaceing mellan boxarna och css styleing */}
       <Grid container spacing={1}>
         {cart.map((item) => (
           <Grid
@@ -47,7 +47,7 @@ function CartSection() {
               marginTop: "30px",
             }}
           >
-{/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
+          {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
             <Box sx={{ width: "10%" }}>
               <img src={item.image} style={{ width: "100%" }} alt={item.title} />
             </Box>
@@ -59,7 +59,7 @@ function CartSection() {
               }}
               data-cy="cart-item"
             >
-{/* Mappar ut titel av tavlorna */}
+          {/* Mappar ut titel av tavlorna */}
               <Typography
                 sx={{
                   fontSize: "16px",
@@ -70,10 +70,10 @@ function CartSection() {
               >
                 {item.title}
               </Typography>
-{/* Icon buttons för att lägga till eller ta bort antal valda posters */}
+                {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
               {/* Använd QuantityButton-komponenten här */}
               <QuantityButton />
-{/* Mappar ut priset per tavla */}
+            {/* Mappar ut priset per tavla */}
               <Box
                 sx={{
                   display: "flex",
@@ -161,7 +161,7 @@ export default CartSection;
 
 
 // CYPRESS TESTER SOM SKA IN
-{
+
   /* /* 
 - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
 - `data-cy="cart-items-count-badge"` siffran intill kundvagnsikonen som visar antalet tillagda produkter.
@@ -194,4 +194,4 @@ export default CartSection;
 - `data-cy="product-quantity"` antalet valda produkter av samma typ på kassasida.
 - `data-cy="total-price"` totala priset för alla produkter i kundvagnen.
 */
-}
+
