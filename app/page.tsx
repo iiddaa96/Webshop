@@ -54,13 +54,14 @@ export default function Home() {
         >
           <Grid container spacing={4}>
             {products.map((product) => (
-              <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
+              <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id} data-cy="product">
                 <Card
                   sx={{
                     maxWidth: 345,
                     m: "auto",
                     boxShadow: 3,
                     position: "relative",
+                  
                   }}
                 >
                   <CardMedia
