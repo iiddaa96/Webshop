@@ -1,5 +1,11 @@
 "use client";
-import React, { ReactNode, createContext, useContext, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 export interface Product {
   id: string;
@@ -9,6 +15,8 @@ export interface Product {
 }
 
 interface ProductContextType {
+  products: Product[];
+  addProduct: (product: Product) => void;
   selectedProduct: Product | null;
   selectProduct: (product: Product) => void;
 }
@@ -23,27 +31,46 @@ export const useProductContext = (): ProductContextType => {
   return context;
 };
 
-interface ProductProviderProps {
-  children: ReactNode;
-}
+const PRODUCTS_LOCAL_STORAGE_KEY = "products";
+const SELECTED_PRODUCT_LOCAL_STORAGE_KEY = "selectedProduct";
 
-export const ProductProvider: React.FC<ProductProviderProps> = ({
+export const ProductProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  // Initialize state with LocalStorage value if it exists
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(() => {
-    const savedProduct = localStorage.getItem("selectedProduct");
-    return savedProduct ? JSON.parse(savedProduct) : null;
+  const [products, setProducts] = useState<Product[]>(() => {
+    const savedProducts = localStorage.getItem(PRODUCTS_LOCAL_STORAGE_KEY);
+    return savedProducts ? JSON.parse(savedProducts) : [];
   });
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(() => {
+    const savedSelectedProduct = localStorage.getItem(
+      SELECTED_PRODUCT_LOCAL_STORAGE_KEY
+    );
+    return savedSelectedProduct ? JSON.parse(savedSelectedProduct) : null;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(PRODUCTS_LOCAL_STORAGE_KEY, JSON.stringify(products));
+  }, [products]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      SELECTED_PRODUCT_LOCAL_STORAGE_KEY,
+      JSON.stringify(selectedProduct)
+    );
+  }, [selectedProduct]);
+
+  const addProduct = (newProduct: Product) => {
+    setProducts((prevProducts) => [...prevProducts, newProduct]);
+  };
 
   const selectProduct = (product: Product) => {
     setSelectedProduct(product);
-    // Save to LocalStorage
-    localStorage.setItem("selectedProduct", JSON.stringify(product));
   };
 
   return (
-    <ProductContext.Provider value={{ selectedProduct, selectProduct }}>
+    <ProductContext.Provider
+      value={{ products, addProduct, selectedProduct, selectProduct }}
+    >
       {children}
     </ProductContext.Provider>
   );
