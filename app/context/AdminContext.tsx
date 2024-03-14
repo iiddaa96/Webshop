@@ -11,6 +11,7 @@ import React, {
 interface ProductContextType {
   products: Product[];
   addProduct: (product: Product) => void;
+  editProduct: (editProduct: Product) => void;
 }
 
 const ProductContext = createContext<ProductContextType>(
@@ -41,8 +42,26 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     setProducts((prevProducts) => [...prevProducts, newProduct]);
   };
 
+  // const editProd = (editProduct: Product) => {
+  //   setProducts((prevProducts) => [...prevProducts, editProduct]);
+  // };
+
+  const editProduct = (editProduct: Product) => {
+    setProducts((prevProducts) => {
+      const index = prevProducts.findIndex(
+        (product) => product.id === editProduct.id
+      );
+      if (index !== -1) {
+        const updatedProducts = [...prevProducts];
+        updatedProducts[index] = editProduct;
+        return updatedProducts;
+      }
+      return prevProducts;
+    });
+  };
+
   return (
-    <ProductContext.Provider value={{ products, addProduct }}>
+    <ProductContext.Provider value={{ products, addProduct, editProduct }}>
       {children}
     </ProductContext.Provider>
   );

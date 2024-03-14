@@ -14,7 +14,7 @@ interface Props {
 
 function ProductForm(props: Props) {
   const isEdit = Boolean(props.product);
-  const { addProduct } = useProduct();
+  const { addProduct, editProduct } = useProduct();
 
   const form = useForm<Product>({
     defaultValues: props.product,
@@ -24,7 +24,7 @@ function ProductForm(props: Props) {
   const save = (data: Product) => {
     const newData = { ...data, id: nanoid() };
     if (isEdit) {
-      // update
+      editProduct(data);
     } else {
       addProduct(newData);
     }
