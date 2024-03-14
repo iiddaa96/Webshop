@@ -1,5 +1,5 @@
 "use client";
-// AddNewProduct.tsx
+
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import React, { ChangeEvent, FormEvent, useState } from "react";
