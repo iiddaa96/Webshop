@@ -1,5 +1,4 @@
 "use client";
-import { products } from "@/data";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
 import {
@@ -13,14 +12,13 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { useProductContext } from "../../context/AdminContext";
+import { useProduct } from "../../context/AdminContext";
 
 type Props = { params: { id: string } };
 
 function UpdateExistProduct(props: Props) {
-  const { selectedProduct, selectProduct } = useProductContext();
-  const product: any =
-    selectedProduct || products.find((p) => p.id === props.params.id); // Använd typen 'any' för produkten
+  const { products } = useProduct();
+  const product = products.find((p) => p.id === props.params.id);
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [formData, setFormData] = useState({
     title: product?.title || "",
@@ -78,11 +76,9 @@ function UpdateExistProduct(props: Props) {
     }
   };
 
-  const handleSelectProduct = () => {
-    if (product) {
-      selectProduct(product);
-    }
-  };
+  if (!product) {
+    <div>404</div>;
+  }
 
   return (
     <Container

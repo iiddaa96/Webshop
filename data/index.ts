@@ -1,15 +1,21 @@
+import { nanoid } from "nanoid";
+import { z } from "zod";
+
 /**
  * Beskriver en produkt som ska säljas på sidan.
  * OBS: Kan utökas men inte ändras pga cypress.
  **/
-export interface Product {
-  id: string;
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-  url: string;
-}
+export const productSchema = z.object({
+  id: z.string().default(() => nanoid()),
+  image: z.string().url(),
+  title: z.string().min(5, { message: "Titel måste innehålla minst 5 tecken" }),
+  price: z.coerce.number().positive({ message: "Skriv in ett nummer" }),
+  description: z
+    .string()
+    .max(400, { message: "Inlägget får vara 400 tecken långt" }),
+});
+
+export type Product = z.infer<typeof productSchema>;
 
 export interface CartItem extends Product {
   quantity: number;
@@ -18,7 +24,6 @@ export interface CartItem extends Product {
 /* DATA: Våra mockade produkter, 12 stycken */
 export const products: Product[] = [
   {
-    url: "product",
     id: "1",
     title: "BERLIN SHAPES NO2 CANVASTAVLA",
     price: 109,
@@ -28,7 +33,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/15801_1.jpg?_gl=1*1lb5ytk*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNTYzNy4wLjAuMA..",
   },
   {
-    url: "product",
     id: "2",
     title: "ABSTRACT FIGURES NO2 CANVASTAVLA",
     price: 99,
@@ -38,7 +42,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/can17123-8_1-82084.jpg?_gl=1*bwpdbi*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNTk1MC4wLjAuMA..",
   },
   {
-    url: "product",
     id: "3",
     title: "WILLIAM MORRIS - WILLOW BOUGH POSTER",
     price: 99,
@@ -48,7 +51,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/16099_2-52895.jpg?_gl=1*1e9n710*_ga*MTQ4NTA2NTE1OC4xNzA5NjMxMzAy*_ga_GH3FS7X5TH*MTcxMDE4MTM4NS4zLjEuMTcxMDE4MTQ0Ni4wLjAuMA..",
   },
   {
-    url: "product",
     id: "4",
     title: "RUSTIC ARCHES CANVASTAVLA",
     price: 449,
@@ -58,7 +60,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/can2562_4.jpg?_gl=1*1uadpyj*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNjE0NS4wLjAuMA..",
   },
   {
-    url: "product",
     id: "5",
     title: "ARTFUL LINES NO2 POSTER",
     price: 299,
@@ -68,7 +69,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/14386_2-75758.jpg?_gl=1*1ldl47g*_ga*MTQ4NTA2NTE1OC4xNzA5NjMxMzAy*_ga_GH3FS7X5TH*MTcxMDE4MTM4NS4zLjEuMTcxMDE4MTkxNi4wLjAuMA..",
   },
   {
-    url: "product",
     id: "6",
     title: "COTTONGRASS POSTER",
     price: 109,
@@ -78,7 +78,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/16313_2-34096.jpg?_gl=1*1trnp95*_ga*MTQ4NTA2NTE1OC4xNzA5NjMxMzAy*_ga_GH3FS7X5TH*MTcxMDE4MTM4NS4zLjEuMTcxMDE4MTc1Mi4wLjAuMA..",
   },
   {
-    url: "product",
     id: "7",
     title: "CIRCLES CANVASTAVLA",
     price: 99,
@@ -88,7 +87,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/15550_1.jpg?_gl=1*i42h3e*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzc5Ny4wLjAuMA..",
   },
   {
-    url: "product",
     id: "8",
     title: "RUSTIC ARCHES CANVASTAVLA",
     price: 99,
@@ -98,7 +96,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/can16859_1.jpg?_gl=1*u7juis*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzgzNi4wLjAuMA..",
   },
   {
-    url: "product",
     id: "9",
     title: "ABSTRACT TEXTURE CANVASTAVLA",
     price: 99,
@@ -108,7 +105,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/can17134_1.jpg?_gl=1*1aqfbyj*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzg4NC4wLjAuMA..",
   },
   {
-    url: "product",
     id: "10",
     title: "BERLIN SHAPES NO1 CANVASTAVLA",
     price: 99,
@@ -118,7 +114,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/can15381_1.jpg?_gl=1*1eiab6k*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkwNTYzNy40LjEuMTcwOTkwNzkxMC4wLjAuMA..",
   },
   {
-    url: "product",
     id: "11",
     title: "PRAIRIE ROSE POSTER",
     price: 99,
@@ -128,7 +123,6 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/17001_1.jpg?_gl=1*1orex6i*_ga*MTQ4NTA2NTE1OC4xNzA5NjMxMzAy*_ga_GH3FS7X5TH*MTcxMDE4MTM4NS4zLjEuMTcxMDE4MTM5My4wLjAuMA..",
   },
   {
-    url: "product",
     id: "12",
     title: "BABY TURTLE CANVAS",
     price: 99,
