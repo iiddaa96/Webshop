@@ -1,7 +1,15 @@
 "use client";
-import React, { useState } from 'react';
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box, Container, Grid, IconButton, Typography, Paper, Button } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { useState } from "react";
 import PaymentSection from "../checkoutComponents/paymentSection";
 import { useCart } from "../context/cartContext";
 import QuantityButton from "../ui/quantityButton";
@@ -9,7 +17,7 @@ import QuantityButton from "../ui/quantityButton";
 function CartSection() {
   const { cart, removeFromCart } = useCart(); //hämtar från cartContext
   const [showDeleteToast, setShowDeleteToast] = useState(false);
-  const [selectedItemId, setSelectedItemId] = useState('');
+  const [selectedItemId, setSelectedItemId] = useState("");
 
   const handleDelete = (itemId: string) => {
     setShowDeleteToast(true);
@@ -20,6 +28,11 @@ function CartSection() {
     // Remove the item from the cart
     removeFromCart(selectedItemId);
     setShowDeleteToast(false);
+  };
+
+  // Funktion för att beräkna den totala summan av varukorgen
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.quantity * item.price, 0);
   };
 
   return (
@@ -34,7 +47,7 @@ function CartSection() {
       >
         CART
       </Typography>
-        {/* Spaceing mellan boxarna och css styleing */}
+      {/* Spaceing mellan boxarna och css styleing */}
       <Grid container spacing={1}>
         {cart.map((item) => (
           <Grid
@@ -47,9 +60,13 @@ function CartSection() {
               marginTop: "30px",
             }}
           >
-          {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
+            {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
             <Box sx={{ width: "10%" }}>
-              <img src={item.image} style={{ width: "100%" }} alt={item.title} />
+              <img
+                src={item.image}
+                style={{ width: "100%" }}
+                alt={item.title}
+              />
             </Box>
             <Box
               sx={{
@@ -59,7 +76,7 @@ function CartSection() {
               }}
               data-cy="cart-item"
             >
-          {/* Mappar ut titel av tavlorna */}
+              {/* Mappar ut titel av tavlorna */}
               <Typography
                 sx={{
                   fontSize: "16px",
@@ -70,10 +87,10 @@ function CartSection() {
               >
                 {item.title}
               </Typography>
-                {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
+              {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
               {/* Använd QuantityButton-komponenten här */}
               <QuantityButton />
-            {/* Mappar ut priset per tavla */}
+              {/* Mappar ut priset per tavla */}
               <Box
                 sx={{
                   display: "flex",
@@ -87,16 +104,20 @@ function CartSection() {
                 </Typography>
               </Box>
             </Box>
-{/* DeleteIcon som en knapp längst till höger */}
+            {/* DeleteIcon som en knapp längst till höger */}
             <Box sx={{ alignSelf: "flex-start" }}>
-              <IconButton color="inherit" aria-label="delete" onClick={() => handleDelete(item.id)}>
+              <IconButton
+                color="inherit"
+                aria-label="delete"
+                onClick={() => handleDelete(item.id)}
+              >
                 <DeleteIcon />
               </IconButton>
             </Box>
           </Grid>
         ))}
       </Grid>
-{/* Totalpris grid */}
+      {/* Totalpris grid */}
       <Grid container sx={{ alignItems: "center" }}>
         <Grid item xs={6}>
           <Box>
@@ -113,7 +134,7 @@ function CartSection() {
                 verticalAlign: "middle",
               }}
             >
-              1000:-
+              {calculateTotal()}:- {/* Visa den beräknade totalen */}
             </Typography>
           </Box>
         </Grid>
@@ -159,10 +180,9 @@ function CartSection() {
 
 export default CartSection;
 
-
 // CYPRESS TESTER SOM SKA IN
 
-  /* /* 
+/* /* 
 - `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
 - `data-cy="cart-items-count-badge"` siffran intill kundvagnsikonen som visar antalet tillagda produkter.
 - `data-cy="cart-item"` en produktrad på kassasidan.
@@ -194,4 +214,3 @@ export default CartSection;
 - `data-cy="product-quantity"` antalet valda produkter av samma typ på kassasida.
 - `data-cy="total-price"` totala priset för alla produkter i kundvagnen.
 */
-
