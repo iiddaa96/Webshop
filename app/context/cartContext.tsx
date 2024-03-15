@@ -8,6 +8,7 @@ export interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void; // New function to remove items from cart
+  calculateTotal: () => number;
 }
 
 const CART_LOCAL_STORAGE_KEY = "cart";
@@ -16,6 +17,7 @@ export const CartContext = createContext<CartContextType>({
   cart: [],
   addToCart: () => {},
   removeFromCart: () => {}, // Default implementation for the new function
+  calculateTotal: () => 0,
 });
 
 export const useCart = () => useContext(CartContext);
@@ -31,6 +33,11 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   useEffect(() => {
     localStorage.setItem(CART_LOCAL_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
+
+  // Function to calculate the total sum of the cart
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
 
   /**
    * Function for add product to card and if product exist increment with 1
@@ -70,7 +77,9 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   };
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, calculateTotal }}
+    >
       {children}
     </CartContext.Provider>
   );

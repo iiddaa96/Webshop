@@ -15,7 +15,7 @@ import { useCart } from "../context/cartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function CartSection() {
-  const { cart, removeFromCart } = useCart(); //hämtar från cartContext
+  const { cart, removeFromCart, calculateTotal } = useCart();
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState("");
 
@@ -28,11 +28,6 @@ function CartSection() {
     // Remove the item from the cart
     removeFromCart(selectedItemId);
     setShowDeleteToast(false);
-  };
-
-  // Funktion för att beräkna den totala summan av varukorgen
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.quantity * item.price, 0);
   };
 
   return (
