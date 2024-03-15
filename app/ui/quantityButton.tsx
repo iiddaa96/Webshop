@@ -47,9 +47,9 @@ export default function QuantityButton() {
       </Box>
 
       {/* Displays total price på sidan */}
-      <Box>
-        <Typography variant="h6">
-          Total Price: {calculateTotalPrice()}kr
+      <Box data-cy="total-price">
+        <Typography variant="h6" >
+        Total Price: {calculateTotalPrice()}kr
         </Typography>
       </Box>
     </Box>

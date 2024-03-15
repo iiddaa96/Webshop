@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <main>
       {/*Tillfälling länk till singleProduct page */}
-      <Link href="/products">
+      
         <Box
           sx={{
             width: "95%",
@@ -54,33 +54,38 @@ export default function Home() {
         >
           <Grid container spacing={4}>
             {products.map((product) => (
-              <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
+              <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id} data-cy="product">
+                <Link href={`/products/${product.id}` as any}>
                 <Card
                   sx={{
                     maxWidth: 345,
                     m: "auto",
                     boxShadow: 3,
                     position: "relative",
+                  
                   }}
                 >
                   <CardMedia
                     component="img"
                     height="280"
                     image={product.image}
-                    alt={product.title}
+                    alt={product.title} 
+                    data-cy="product-title"
                   />
                   <CardContent>
                     <Typography
                       gutterBottom
                       variant="subtitle1"
                       component="div"
+                      data-cy="product-title"
                     >
-                      {product.title}
+                      { product.title}
                     </Typography>
                     <Typography
                       variant="body2"
                       color="text.secondary"
                       sx={{ fontSize: "0.8rem" }}
+                      data-cy="product-price"
                     >
                       {product.price}
                     </Typography>
@@ -89,16 +94,20 @@ export default function Home() {
                     <CardActions
                       disableSpacing
                       sx={{ justifyContent: "flex-end" }}
+                      data-cy="product-buy-button"
                     >
-                      <AddToCartButton product={product} />
+                      <AddToCartButton 
+                      product={product}
+                        />
                     </CardActions>
                   </Box>
                 </Card>
+                </Link>
               </Grid>
             ))}
           </Grid>
         </Box>
-      </Link>
+      
     </main>
   );
 }
