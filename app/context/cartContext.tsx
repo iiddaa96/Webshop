@@ -38,20 +38,25 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
       // Kontrollerar om produkten redan finns i varukorgen
-      const existingProductIndex = prevCart.findIndex(
-        (item) => item.id === product.id
-      );
-      let updatedCart = [...prevCart]; // Skapar en kopia av den nuvarande varukorgen
+      const updatedCart = [...prevCart]; // Skapar en kopia av den nuvarande varukorgen
+      let isProductFound = false;
 
-      if (existingProductIndex >= 0) {
-        // Om produkten finns, öka dess kvantitet med 1
-        updatedCart[existingProductIndex] = {
-          ...updatedCart[existingProductIndex],
-          quantity: updatedCart[existingProductIndex].quantity + 1,
-        };
-      } else {
-        // Om produkten inte finns, lägg till den i varukorgen med kvantitet satt till 1
-        updatedCart = updatedCart.concat([{ ...product, quantity: 1 }]);
+      // Kontrollerar om produkten redan finns i varukorgen
+      for (let i = 0; i < updatedCart.length; i++) {
+        if (updatedCart[i].id === product.id) {
+          // Om produkten finns, öka dess kvantitet med 1
+          updatedCart[i] = {
+            ...updatedCart[i],
+            quantity: updatedCart[i].quantity + 1,
+          };
+          isProductFound = true;
+          break;
+        }
+      }
+
+      // Om produkten inte finns, lägg till den i varukorgen med kvantitet satt till 1
+      if (!isProductFound) {
+        updatedCart.push({ ...product, quantity: 1 });
       }
 
       return updatedCart; // Uppdaterar varukorgen med den nya kopian
