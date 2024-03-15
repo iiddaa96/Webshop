@@ -5,9 +5,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useProduct } from "../context/AdminContext";
-import { useRouter } from "next/navigation";
 
 interface Props {
   product?: Product;
@@ -21,6 +21,7 @@ function ProductForm(props: Props) {
   const form = useForm<Product>({
     defaultValues: props.product,
     resolver: zodResolver(productSchema),
+    mode: "onChange",
   });
 
   const save = (data: Product) => {
@@ -51,6 +52,8 @@ function ProductForm(props: Props) {
       <Typography variant="h4">
         {isEdit ? "Uppdatera produkt" : "Skapa ny produkt"}
       </Typography>
+
+      {/* Textfält för titel */}
       <TextField
         data-cy="product-title-error"
         fullWidth
@@ -61,6 +64,7 @@ function ProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("title")}
       />
+      {/* Textfält för image */}
       <TextField
         data-cy="product-image-error"
         fullWidth
@@ -71,6 +75,7 @@ function ProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("image")}
       />
+      {/* Textfält för pris */}
       <TextField
         data-cy="product-price-error"
         fullWidth
@@ -81,7 +86,7 @@ function ProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("price")}
       />
-
+      {/* Textfält för beskrivning */}
       <TextField
         data-cy="product-description-error"
         id="outlined-multiline-static"
@@ -94,11 +99,15 @@ function ProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("description")}
       />
+      {/* Box med spara knappen */}
       <Box sx={{ display: "flex", gap: "5vh" }}>
         <Button
           type="submit"
           variant="contained"
           sx={{ width: "150px" }}
+          /*  Knappen är grå om formuläret inte 
+          är godkänt*/
+          disabled={!form.formState.isValid}
           onClick={() => router.push("/admin")}
         >
           <SaveIcon fontSize="large" />
