@@ -116,29 +116,31 @@
 //               <MenuIcon />
 //             </IconButton>
 //           </Box>
-//           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-//             {/* Tillfälliga länkar till andra sidor desktop */}
-//             <Button component={Link} href="/posters" color="inherit">
-//               Posters
-//             </Button>
-//             <Button component={Link} href="/frames" color="inherit">
-//               Frames
-//             </Button>
-//             <Button component={Link} href="/home" color="inherit">
-//               Home
-//             </Button>
-//             <Button component={Link} href="/favorite" color="inherit">
-//               Favorite
-//             </Button>
-//             <Button
-//               component={Link}
-//               href="/admin"
-//               color="inherit"
-//               data-cy="admin-link"
-//             >
-//               Admin
-//             </Button>
-//           </Box>
+{
+  /* <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}> */
+}
+//   {/* Tillfälliga länkar till andra sidor desktop */}
+//   <Button component={Link} href="/posters" color="inherit">
+//     Posters
+//   </Button>
+//   <Button component={Link} href="/frames" color="inherit">
+//     Frames
+//   </Button>
+//   <Button component={Link} href="/home" color="inherit">
+//     Home
+//   </Button>
+//   <Button component={Link} href="/favorite" color="inherit">
+//     Favorite
+//   </Button>
+//   <Button
+//     component={Link}
+//     href="/admin"
+//     color="inherit"
+//     data-cy="admin-link"
+//   >
+//     Admin
+//   </Button>
+// </Box>
 //           {/* Varukorgen */}
 // <Box sx={{ flexGrow: 0 }}>
 //   <IconButton
@@ -307,11 +309,33 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
+              {/* {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+
+              {/* Tillfälliga länkar till andra sidor desktop */}
+              <Button component={Link} href="/posters" color="inherit">
+                Posters
+              </Button>
+              <Button component={Link} href="/frames" color="inherit">
+                Frames
+              </Button>
+              <Button component={Link} href="/home" color="inherit">
+                Home
+              </Button>
+              <Button component={Link} href="/favorite" color="inherit">
+                Favorite
+              </Button>
+              <Button
+                component={Link}
+                href="/admin"
+                color="inherit"
+                data-cy="admin-link"
+              >
+                Admin
+              </Button>
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
