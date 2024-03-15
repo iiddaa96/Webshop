@@ -66,8 +66,8 @@
 //         >
 //           {/* Styleing för loggans namn samt länk */}
 //           <Box
-//             component={Link}
-//             href="/"
+// component={Link}
+// href="/"
 //             sx={{
 //               display: "flex",
 //               alignItems: "center",
@@ -243,6 +243,8 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
+            component={Link}
+            href="/"
             sx={{
               display: { xs: "none", md: "inline-block" },
               borderRadius: "50%",
@@ -264,23 +266,29 @@ function ResponsiveAppBar() {
               color="inherit"
             >
               <MenuIcon />
-              <Box>
-                <Typography
-                  variant="h6"
-                  noWrap
-                  component="div"
-                  sx={{
-                    fontFamily: "monospace",
-                    fontWeight: 700,
-                    letterSpacing: ".3rem",
-                    color: "black",
-                    textDecoration: "none",
-                  }}
-                >
-                  Wall of Art
-                </Typography>
-              </Box>
             </IconButton>
+            <Box
+              component={Link}
+              href="/"
+              sx={{
+                textDecoration: "none",
+              }}
+            >
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "black",
+                  textDecoration: "none",
+                }}
+              >
+                Wall of Art
+              </Typography>
+            </Box>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
