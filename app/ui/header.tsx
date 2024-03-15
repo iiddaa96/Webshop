@@ -17,8 +17,11 @@ import LogoImage from "../assets/logo.png";
 import { useCart } from "../context/cartContext";
 
 function ResponsiveAppBar() {
-
   const { cart } = useCart();
+  const totalQuantity = cart.reduce(
+    (total, currentItem) => total + currentItem.quantity,
+    0
+  );
 
   // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -149,7 +152,7 @@ function ResponsiveAppBar() {
               data-cy="cart-link"
             >
               <Badge
-                badgeContent={cart.length}
+                badgeContent={totalQuantity}
                 color="secondary"
                 data-cy="cart-items-count-badge"
               >
@@ -162,5 +165,5 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
- 
+
 export default ResponsiveAppBar;
