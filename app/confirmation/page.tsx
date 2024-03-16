@@ -3,6 +3,7 @@
 
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useCart } from "../context/cartContext";
+import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
   const { cart } = useCart();
@@ -32,55 +33,42 @@ function Confirmation() {
               key={item.id}
               sx={{
                 display: "flex",
-                border: "1px solid black",
+                flexDirection: "column", // Gör så att innehållet staplas vertikalt
                 marginTop: "30px",
               }}
             >
-              {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
-              <Box sx={{ width: "10%" }}>
-                <img
-                  src={item.image}
-                  style={{ width: "100%" }}
-                  alt={item.title}
-                />
-              </Box>
-              <Box
+              {/* Titel */}
+              <Typography
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "90%",
+                  fontSize: "16px",
+                  textAlign: "left",
+                  marginBottom: "8px", // Lägger till lite marginal mellan titel och pris
                 }}
-                data-cy="cart-item"
+                variant="h6"
               >
-                {/* Mappar ut titel av tavlorna */}
-                <Typography
-                  sx={{
-                    fontSize: "16px",
-                    marginTop: "40px",
-                    textAlign: "left",
-                  }}
-                  variant="h6"
-                >
-                  {item.title}
-                </Typography>
+                {item.title}
+              </Typography>
 
-                {/* Mappar ut priset per tavla */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    paddingBottom: "5px",
-                  }}
-                >
-                  <Typography variant="body1">Price:</Typography>
-                  <Typography sx={{ marginLeft: "8px" }} variant="body1">
-                    {item.price} :-
-                  </Typography>
-                </Box>
+              {/* Pris */}
+              <Typography
+                sx={{
+                  fontSize: "14px",
+                  textAlign: "left",
+                  marginBottom: "8px", // Lägger till lite marginal mellan pris och kvantitet
+                }}
+                variant="body1"
+              >
+                Price: {item.price} :-
+              </Typography>
+
+              {/* QuantityButton, med visningskontroller beroende på sidan */}
+              <Box sx={{ alignSelf: "flex-start" }}>
+                <QuantityButton showControls={false} showTotalPrice={false} />
               </Box>
             </Grid>
           ))}
         </Grid>
+
         <Typography>
           Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya tavlor.
         </Typography>
