@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState } from 'react';
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -74,7 +75,7 @@ function CartSection() {
               {/* Använd QuantityButton-komponenten här */}
               <QuantityButton />
             {/* Mappar ut priset per tavla */}
-              <Box
+              {/* <Box
                 sx={{
                   display: "flex",
                   justifyContent: "flex-end",
@@ -85,7 +86,7 @@ function CartSection() {
                 <Typography sx={{ marginLeft: "8px" }} variant="body1">
                   {item.price} :-
                 </Typography>
-              </Box>
+              </Box> */}
             </Box>
 {/* DeleteIcon som en knapp längst till höger */}
             <Box sx={{ alignSelf: "flex-start" }}>

@@ -7,7 +7,7 @@ import { useState } from "react";
 import { products } from "../../data/index";
 
 export default function QuantityButton() {
-  const basePrice: number = products.length > 0 ? products[0].price : 0;
+  const [productIndex, setProductIndex] = useState(0); 
   const [quantity, setQuantity] = useState(1);
   // function för increment
   const incrementQuantity = () => {
@@ -20,10 +20,16 @@ export default function QuantityButton() {
     }
   };
 
-  // Function to calculate the total price based on quantity
+  const selectedProduct = products[productIndex];
+
   const calculateTotalPrice = (): number => {
-    return basePrice * quantity;
+    return selectedProduct.price * quantity;
   };
+
+  // Function to calculate the total price based on quantity
+  // const calculateTotalPrice = (): number => {
+  //   return productIndex * quantity;
+  // };
   return (
     <Box>
       <Box sx={{ display: "flex", alignItems: "center", marginLeft: "2px" }}>

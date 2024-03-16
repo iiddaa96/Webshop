@@ -64,6 +64,8 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
     setCart(updatedCart);
   };
 
+  
+
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
       {children}

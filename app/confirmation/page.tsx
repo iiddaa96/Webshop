@@ -1,15 +1,14 @@
-import { Box, Paper, Typography } from "@mui/material";
+/* eslint-disable @next/next/no-img-element */
+"use client";
+
+import { Box, Container, Grid, Typography } from "@mui/material";
+import { useCart } from "../context/cartContext";
 
 function Confirmation() {
-  // Antag att dessa är de varor som har köpts
-  const purchasedItems = [
-    { name: "Abstrakt Konst", quantity: 1 },
-    { name: "Landskapsmålning", quantity: 1 },
-    { name: "Porträtt Illustration", quantity: 1 },
-  ];
+  const { cart } = useCart();
 
   return (
-    <>
+    <Container>
       {/* Box för orderbekräftelse */}
       <Box
         sx={{
@@ -24,6 +23,64 @@ function Confirmation() {
         }}
       >
         <h1 style={{ textAlign: "center" }}>Orderbekräftelse</h1>
+        {/* Spaceing mellan boxarna och css styleing */}
+        <Grid container spacing={1}>
+          {cart.map((item) => (
+            <Grid
+              item
+              xs={12}
+              key={item.id}
+              sx={{
+                display: "flex",
+                border: "1px solid black",
+                marginTop: "30px",
+              }}
+            >
+              {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
+              <Box sx={{ width: "10%" }}>
+                <img
+                  src={item.image}
+                  style={{ width: "100%" }}
+                  alt={item.title}
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "90%",
+                }}
+                data-cy="cart-item"
+              >
+                {/* Mappar ut titel av tavlorna */}
+                <Typography
+                  sx={{
+                    fontSize: "16px",
+                    marginTop: "40px",
+                    textAlign: "left",
+                  }}
+                  variant="h6"
+                >
+                  {item.title}
+                </Typography>
+
+                {/* Mappar ut priset per tavla */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  <Typography variant="body1">Price:</Typography>
+                  <Typography sx={{ marginLeft: "8px" }} variant="body1">
+                    {item.price} :-
+                  </Typography>
+                </Box>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
         <Typography>
           Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya tavlor.
         </Typography>
@@ -59,73 +116,7 @@ Hittepå gatan 01
 442 11 Göteborg`}
         </Typography>
       </Box>
-
-      {/* Box för kontaktinformation */}
-      <Box
-        sx={{
-          marginTop: "20px",
-          padding: "20px",
-        }}
-      ></Box>
-
-      {/* Box för presentation av köpta varor */}
-      <Box
-        sx={{
-          marginTop: "20px",
-          padding: "20px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 2,
-        }}
-      >
-        <Typography variant="h6" sx={{ marginBottom: "16px" }}>
-          Dina köpta varor
-        </Typography>
-        {purchasedItems.map((item) => (
-          <Paper
-            key={item.name}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              padding: "10px",
-              width: "100%",
-              maxWidth: "500px", // Justera denna bredd efter behov
-              marginBottom: "10px", // Lägg till lite utrymme mellan varje Paper
-            }}
-          >
-            <Typography sx={{ marginBottom: "10px" }}>{item.name}</Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-              }}
-            >
-              <Typography sx={{ color: "lightgray" }}>Wall of Art</Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "25px",
-                  height: "25px",
-                  border: "1px solid black",
-                }}
-              >
-                {item.quantity}
-              </Box>
-            </Box>
-          </Paper>
-        ))}
-        <Typography>
-          Om du har några frågor om din beställning, tveka inte att kontakta oss
-          på support@wallofart.se.
-        </Typography>
-      </Box>
-    </>
+    </Container>
   );
 }
 
