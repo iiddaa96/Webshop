@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Container, Grid, IconButton, Typography, Paper, Button } from "@mui/material";
 import PaymentSection from "../checkoutComponents/paymentSection";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function CartSection() {

@@ -14,10 +14,9 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import LogoImage from "../assets/logo.png";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 
 function ResponsiveAppBar() {
-
   const { cart } = useCart();
 
   // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
@@ -149,11 +148,14 @@ function ResponsiveAppBar() {
               data-cy="cart-link"
             >
               <Badge
-                badgeContent={cart.length}
+                badgeContent={cart.reduce(
+                  (total, item) => total + item.quantity,
+                  0
+                )}
                 color="secondary"
                 data-cy="cart-items-count-badge"
               >
-                <ShoppingCartIcon />
+                <ShoppingCartIcon  />
               </Badge>
             </IconButton>
           </Box>
@@ -162,5 +164,5 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
- 
+
 export default ResponsiveAppBar;

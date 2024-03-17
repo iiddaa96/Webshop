@@ -2,7 +2,7 @@
 "use client";
 
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
