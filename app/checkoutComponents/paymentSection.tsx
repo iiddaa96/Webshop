@@ -2,6 +2,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { useState } from "react";
 import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 
+
 export default function InputPayment() {
   // State som kollar alla values
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ export default function InputPayment() {
     email: "",
     phone: "",
   });
+
 
   // funktion för att uppdatera form data
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
@@ -164,7 +166,7 @@ export default function InputPayment() {
           Cancel
         </Button>
 
-        {/* Conditional rendering for the "Continue" button */}
+        {/* Conditional rendering for the "Continue" button, depending on valideringen */}
         {isFormValid() ? (
           <Button
             variant="contained"
