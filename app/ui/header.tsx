@@ -1,24 +1,23 @@
 "use client";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Badge, Button, IconButton, Menu } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
+import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import LogoImage from "../assets/logo.png";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 
 function ResponsiveAppBar() {
   const { cart } = useCart();
-  const totalQuantity = cart.reduce(
-    (total, currentItem) => total + currentItem.quantity,
-    0
-  );
 
   // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -56,95 +55,64 @@ function ResponsiveAppBar() {
       }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
+        >
+          {/* Styleing för loggans namn samt länk */}
           <Box
             component={Link}
             href="/"
             sx={{
-              display: { xs: "none", md: "inline-block" },
-              borderRadius: "50%",
-              overflow: "hidden",
-              width: 70,
-              height: 70,
-              marginRight: "24rem", //Sätter länkarna i mitten
+              display: "flex",
+              alignItems: "center",
+              textDecoration: "none",
+              color: "inherit",
+              cursor: "pointer",
+              marginRight: "16px",
             }}
           >
-            <Image src={LogoImage} height={75} width={75} alt="Logo" />
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <Box
-              component={Link}
-              href="/"
               sx={{
+                display: { xs: "none", md: "inline-block" },
+                borderRadius: "50%",
+                overflow: "hidden",
+                width: 70,
+                height: 70,
+                marginRight: "24rem", //Sätter länkarna i mitten
+              }}
+            >
+              <Image src={LogoImage} width={75} height={75} alt="Logo" />
+            </Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
                 textDecoration: "none",
               }}
             >
-              <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "black",
-                  textDecoration: "none",
-                }}
-              >
-                Wall of Art
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleOpenNavMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Typography>
-            </Box>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
+              Wall of Art
+            </Typography>
+          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="open navigation menu"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
             >
-              <Button component={Link} href="/posters" color="inherit">
-                Posters
-              </Button>
-              <Button component={Link} href="/frames" color="inherit">
-                Frames
-              </Button>
-              <Button component={Link} href="/home" color="inherit">
-                Home
-              </Button>
-              <Button component={Link} href="/favorite" color="inherit">
-                Favorite
-              </Button>
-              <Button
-                component={Link}
-                href="/admin"
-                color="inherit"
-                data-cy="admin-link"
-              >
-                Admin
-              </Button>
-            </Menu>
+              <MenuIcon />
+            </IconButton>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {/* Tillfälliga länkar till andra sidor desktop */}
             <Button component={Link} href="/posters" color="inherit">
               Posters
             </Button>
@@ -166,43 +134,30 @@ function ResponsiveAppBar() {
               Admin
             </Button>
           </Box>
-
+          {/* Varukorgen */}
           <Box sx={{ flexGrow: 0 }}>
-            <Box sx={{ flexGrow: 0 }}>
-              <IconButton
-                component={Link}
-                href="/checkout"
-                size="large"
-                aria-label="show cart items"
-                color="inherit"
-                sx={{ p: 0 }}
-                data-cy="cart-link"
+            <IconButton
+              // Länk till kassan
+              component={Link}
+              href="/checkout"
+              size="large"
+              aria-label="show cart items"
+              color="inherit"
+              onClick={handleOpenUserMenu}
+              sx={{ p: 0 }}
+              data-cy="cart-link"
+            >
+              <Badge
+                badgeContent={cart.reduce(
+                  (total, item) => total + item.quantity,
+                  0
+                )}
+                color="secondary"
+                data-cy="cart-items-count-badge"
               >
-                <Badge
-                  // badgeContent={totalQuantity}
-                  color="secondary"
-                  data-cy="cart-items-count-badge"
-                >
-                  <ShoppingCartIcon />
-                </Badge>
-              </IconButton>
-            </Box>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            ></Menu>
+                <ShoppingCartIcon  />
+              </Badge>
+            </IconButton>
           </Box>
         </Toolbar>
       </Container>

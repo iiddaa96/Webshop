@@ -3,7 +3,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { IconButton } from "@mui/material";
 import React from "react";
 import { Product } from "../../data/index";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 
 interface AddToCartButtonProps {
   product: Product;

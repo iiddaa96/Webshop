@@ -1,14 +1,18 @@
 "use client";
-import { useEffect, useState } from "react";
-
-import { PropsWithChildren, createContext, useContext } from "react";
+import React, {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { CartItem, Product } from "../../data/index";
 
 export interface CartContextType {
   cart: CartItem[];
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void; // New function to remove items from cart
-  calculateTotal: () => number;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
 }
 
 const CART_LOCAL_STORAGE_KEY = "cart";
@@ -16,69 +20,61 @@ const CART_LOCAL_STORAGE_KEY = "cart";
 export const CartContext = createContext<CartContextType>({
   cart: [],
   addToCart: () => {},
-  removeFromCart: () => {}, // Default implementation for the new function
-  calculateTotal: () => 0,
+  removeFromCart: () => {},
+  updateQuantity: () => {},
 });
 
 export const useCart = () => useContext(CartContext);
 
-export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
+export const CartProvider: React.FC = ({ children }: PropsWithChildren<{}>) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
-    // Hämtar varukorgen från localStorage vid initial rendering
     const savedCart = localStorage.getItem(CART_LOCAL_STORAGE_KEY);
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  // Sparar varukorgen till localStorage varje gång den uppdateras
   useEffect(() => {
     localStorage.setItem(CART_LOCAL_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
 
-  // Function to calculate the total sum of the cart
-  const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  /**
-   * Function for add product to card and if product exist increment with 1
-   */
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
-      // Kontrollerar om produkten redan finns i varukorgen
-      const updatedCart = [...prevCart]; // Skapar en kopia av den nuvarande varukorgen
-      let isProductFound = false;
+      const existingProductIndex = prevCart.findIndex(
+        (item) => item.id === product.id
+      );
+      let updatedCart = [...prevCart];
 
-      // Kontrollerar om produkten redan finns i varukorgen
-      for (let i = 0; i < updatedCart.length; i++) {
-        if (updatedCart[i].id === product.id) {
-          // Om produkten finns, öka dess kvantitet med 1
-          updatedCart[i] = {
-            ...updatedCart[i],
-            quantity: updatedCart[i].quantity + 1,
-          };
-          isProductFound = true;
-          break;
-        }
-      }
-
-      // Om produkten inte finns, lägg till den i varukorgen med kvantitet satt till 1
-      if (!isProductFound) {
+      if (existingProductIndex >= 0) {
+        const updatedItem = {
+          ...updatedCart[existingProductIndex],
+          quantity: updatedCart[existingProductIndex].quantity + 1,
+        };
+        updatedCart[existingProductIndex] = updatedItem;
+      } else {
         updatedCart.push({ ...product, quantity: 1 });
       }
 
-      return updatedCart; // Uppdaterar varukorgen med den nya kopian
+      return updatedCart;
     });
   };
 
-  // filtrerar cart och uppdaterar med ny array
   const removeFromCart = (productId: string) => {
-    const updatedCart = cart.filter((item) => item.id !== productId);
-    setCart(updatedCart);
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  };
+
+  const updateQuantity = (productId: string, quantity: number) => {
+    setCart((currentCart) => {
+      return currentCart.map((item) => {
+        if (item.id === productId) {
+          return { ...item, quantity };
+        }
+        return item;
+      });
+    });
   };
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, calculateTotal }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity }}
     >
       {children}
     </CartContext.Provider>
