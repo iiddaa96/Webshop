@@ -164,7 +164,7 @@ export default function InputPayment() {
           Cancel
         </Button>
 
-     
+        {/* Conditional rendering for the "Continue" button */}
         {isFormValid() ? (
           <Button
             variant="contained"
@@ -200,4 +200,3 @@ export default function InputPayment() {
     </Box>
   );
 }
-s
