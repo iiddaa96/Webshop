@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 
 export default function InputPayment() {
-  // State to track form values
+  // State som kollar alla values
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -13,10 +13,7 @@ export default function InputPayment() {
     phone: "",
   });
 
-  // State to track form validation status
-  const [isFormValid, setIsFormValid] = useState(false);
-
-  // Function to update form data
+  // funktion för att uppdatera form data
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData({
@@ -25,27 +22,42 @@ export default function InputPayment() {
     });
   };
 
-  // Function to validate form
-  const validateForm = () => {
-    // Perform validation logic here
-    const isValid =
-      formData.name.trim() !== "" &&
-      formData.address.trim() !== "" &&
-      formData.zip.trim() !== "" &&
-      formData.city.trim() !== "" &&
-      formData.email.trim() !== "" &&
-      formData.phone.trim() !== "";
-    setIsFormValid(isValid);
-    return isValid;
+  // 
+  const isFormValid = () => {
+    const { name, address, zip, city, email, phone } = formData;
+
+    // kollar om valideringen är rätt
+    return (
+      name.trim() !== "" &&
+      address.trim() !== "" &&
+      zip.trim() !== "" &&
+      city.trim() !== "" &&
+      email.trim() !== "" &&
+      phone.trim() !== "" &&
+      isValidEmail(email) &&
+      isValidPhone(phone)
+    );
+  };
+
+  //funktion för att kolla om email är rätt
+  const isValidEmail = (email: string) => {
+    // Regular expression to match email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  //kolla mobil nummer
+  const isValidPhone = (phone: string) => {
+    // Regular expression to match phone number format (10 digits)
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(phone);
   };
 
   // Function to handle click on the "Continue" button
   const handleContinueClick = () => {
-    // Validate the form
-    const isValid = validateForm();
     // If form is valid, navigate to confirmation page
-    if (isValid) {
-      window.location.href = "/confirmation"; // Replace this with your actual confirmation page URL
+    if (isFormValid()) {
+      window.location.href = "/confirmation"; 
     }
   };
 
@@ -72,7 +84,6 @@ export default function InputPayment() {
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            error={formData.name.trim() === ""}
             id="outlined-error"
             label="Name"
             variant="outlined"
@@ -84,7 +95,6 @@ export default function InputPayment() {
             name="address"
             value={formData.address}
             onChange={handleInputChange}
-            error={formData.address.trim() === ""}
             id="filled-error"
             label="Address"
             variant="filled"
@@ -96,10 +106,8 @@ export default function InputPayment() {
             name="zip"
             value={formData.zip}
             onChange={handleInputChange}
-            error={formData.zip.trim() === ""}
             id="outlined-error-helper-text"
             label="Zip"
-            helperText={formData.zip.trim() === "" ? "Incorrect entry." : ""}
             variant="outlined"
             fullWidth
           />
@@ -109,10 +117,8 @@ export default function InputPayment() {
             name="city"
             value={formData.city}
             onChange={handleInputChange}
-            error={formData.city.trim() === ""}
             id="filled-error-helper-text"
             label="City"
-            helperText={formData.city.trim() === "" ? "Incorrect entry." : ""}
             variant="filled"
             fullWidth
           />
@@ -122,7 +128,6 @@ export default function InputPayment() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            error={formData.email.trim() === ""}
             id="standard-error"
             label="Email"
             variant="standard"
@@ -134,10 +139,8 @@ export default function InputPayment() {
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            error={formData.phone.trim() === ""}
             id="standard-error-helper-text"
             label="Mobile"
-            helperText={formData.phone.trim() === "" ? "Incorrect entry." : ""}
             variant="standard"
             fullWidth
           />
@@ -161,22 +164,40 @@ export default function InputPayment() {
           Cancel
         </Button>
 
-        <Button
-          variant="contained"
-          color="primary"
-          sx={{
-            width: "30%",
-            backgroundColor: isFormValid ? "black" : "grey",
-            color: "white",
-            "&:hover": {
-              backgroundColor: "darkgrey",
-            },
-          }}
-          onClick={handleContinueClick}
-        >
-          Continue
-        </Button>
+     
+        {isFormValid() ? (
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              width: "30%",
+              backgroundColor: "black",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "darkgrey",
+              },
+            }}
+            onClick={handleContinueClick}
+          >
+            Continue
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              width: "30%",
+              backgroundColor: "grey",
+              color: "white",
+              pointerEvents: "none", // Disable button click
+            }}
+            disabled // Disable the button
+          >
+            Continue
+          </Button>
+        )}
       </Box>
     </Box>
   );
 }
+s
