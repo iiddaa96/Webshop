@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-// CartSection.tsx
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
   Box,
@@ -175,7 +174,6 @@ function CartSection() {
         </Paper>
       )}
       <PaymentSection  />{" "}
-      {/* Lägg till PaymentSection */}
     </Container>
   );
 }

@@ -1,12 +1,15 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
-
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useCart } from "../context/CartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
   const { cart } = useCart();
+
+  // Beräkna det totala priset för alla varor i kundvagnen
+  const totalPrice = cart.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
 
   return (
     <Container>
@@ -74,6 +77,11 @@ function Confirmation() {
         </Typography>
         <Typography>
           Hoppas vi hörs snart igen! Hälsningar från oss på Wall of Art
+        </Typography>
+
+        {/* Totalpris för hela beställningen */}
+        <Typography variant="h6" sx={{ marginTop: "20px" }}>
+          Totalt: {totalPrice} kr
         </Typography>
       </Box>
 
