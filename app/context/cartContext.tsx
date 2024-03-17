@@ -62,8 +62,8 @@ export const CartProvider: React.FC = ({ children }: PropsWithChildren<{}>) => {
   };
 
   const updateQuantity = (productId: string, quantity: number) => {
-    setCart((prevCart) => {
-      return prevCart.map((item) => {
+    setCart((currentCart) => {
+      return currentCart.map((item) => {
         if (item.id === productId) {
           return { ...item, quantity };
         }
