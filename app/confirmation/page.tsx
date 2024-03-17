@@ -49,21 +49,16 @@ function Confirmation() {
                 {item.title}
               </Typography>
 
-              {/* Pris */}
-              <Typography
-                sx={{
-                  fontSize: "14px",
-                  textAlign: "left",
-                  marginBottom: "8px", // Lägger till lite marginal mellan pris och kvantitet
-                }}
-                variant="body1"
-              >
-                Price: {item.price} :-
-              </Typography>
-
               {/* QuantityButton, med visningskontroller beroende på sidan */}
               <Box sx={{ alignSelf: "flex-start" }}>
-                <QuantityButton showControls={false} showTotalPrice={false} />
+                {/* <QuantityButton showControls={false}  /> */}
+                <QuantityButton
+                  productId={item.id}
+                  initialQuantity={item.quantity}
+                  showTotalPrice
+                  showControls={false}
+                  // showTotalPrice={false}
+                />
               </Box>
             </Grid>
           ))}
