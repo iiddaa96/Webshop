@@ -72,6 +72,16 @@ function ResponsiveAppBar() {
             <Image src={LogoImage} height={75} width={75} alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
             <Box
               component={Link}
               href="/"
@@ -89,19 +99,10 @@ function ResponsiveAppBar() {
                   letterSpacing: ".3rem",
                   color: "black",
                   textDecoration: "none",
+                  padding: "10px",
                 }}
               >
                 Wall of Art
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleOpenNavMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
               </Typography>
             </Box>
             <Menu
@@ -179,7 +180,7 @@ function ResponsiveAppBar() {
                 data-cy="cart-link"
               >
                 <Badge
-                  // badgeContent={totalQuantity}
+                  badgeContent={totalQuantity}
                   color="secondary"
                   data-cy="cart-items-count-badge"
                 >
