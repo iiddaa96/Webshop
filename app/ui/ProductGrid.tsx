@@ -98,6 +98,7 @@ export default function ProductGrid() {
                     >
                       {product.price}Kr
                     </Typography>
+                    <Typography data-cy="product-id">{product.id}</Typography>
                     <Box
                       sx={{
                         display: "flex",
