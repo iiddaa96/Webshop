@@ -144,7 +144,7 @@ function CartSection() {
           elevation={3}
           sx={{
             position: "fixed",
-            top: "50%",
+            top: "20%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             padding: "20px",
@@ -173,7 +173,7 @@ function CartSection() {
           </Button>
         </Paper>
       )}
-      <PaymentSection  />{" "}
+      <PaymentSection />{" "}
     </Container>
   );
 }
