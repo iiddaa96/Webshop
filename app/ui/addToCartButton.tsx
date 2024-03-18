@@ -7,13 +7,26 @@ import { useCart } from "../context/CartContext";
 
 interface AddToCartButtonProps {
   product: Product;
+  title: string;
+  // Lägg till funktion för att hantera "Lägg till i kundvagnen"
+  handleAddToCart: (products: Product) => void;
 }
 
-const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({
+  product,
+  handleAddToCart,
+}) => {
   const { addToCart } = useCart();
 
   return (
-    <IconButton aria-label="add to cart" onClick={() => addToCart(product)}>
+    <IconButton
+      aria-label="add to cart"
+      // Anropa handleAddToCart-funktionen med produkttiteln
+      onClick={() => {
+        handleAddToCart(product);
+        addToCart(product);
+      }}
+    >
       <AddShoppingCartIcon />
     </IconButton>
   );

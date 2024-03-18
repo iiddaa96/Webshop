@@ -1,8 +1,8 @@
+"use client";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import Link from "next/link";
 
 import {
   Box,
@@ -11,17 +11,56 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  Snackbar,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import { products } from "../data/index";
+import { useState } from "react";
+import { Product, products } from "../data/index";
 import MiddleImage from "./assets/middleImage.png";
 import AddToCartButton from "./ui/addToCartButton";
 
 export default function Home() {
+  // Tillstånd för att visa snackbar
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  // Tillstånd för meddelandet i snackbar
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  const handleAddToCart = (product: Product) => {
+    setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
+    setOpenSnackbar(true); // Visa snackbar
+  };
+
+  const handleCloseSnackbar = () => {
+    // Funktion för att stänga snackbar
+    setOpenSnackbar(false);
+  };
   return (
     <main>
-      {/*Tillfälling länk till singleProduct page */}
+
+      <Box
+        sx={{
+          width: "95%",
+          overflow: "hidden",
+          justifyContent: "center",
+          position: "relative",
+          paddingTop: "30%", // Minskat från '56.25%' till en lägre procent för att minska höjden
+          margin: "32px auto",
+          display: "flex",
+          alignItems: "center",
+          marginBottom: "24px", // Mellanrum mellan bilden och griden
+        }}
+      >
+        <Image
+          src={MiddleImage}
+          alt="Stor Bild"
+          layout="fill"
+          objectFit="cover"
+        />
+      </Box>
+
+      <Box
+        sx={{
 
       <Box
         sx={{
@@ -79,6 +118,7 @@ export default function Home() {
                   data-cy="product-title"
                 />
                 <CardContent>
+
                   <Link href={`/products/${product.id}` as any}>
                     <Typography
                       gutterBottom
@@ -89,6 +129,16 @@ export default function Home() {
                       {product.title}
                     </Typography>
                   </Link>
+
+                  <Typography
+                    gutterBottom
+                    variant="subtitle1"
+                    component="div"
+                    data-cy="product-title"
+                  >
+                    {product.title}
+                  </Typography>
+
                   <Typography
                     variant="body2"
                     color="text.secondary"
@@ -104,7 +154,12 @@ export default function Home() {
                     sx={{ justifyContent: "flex-end" }}
                     data-cy="product-buy-button"
                   >
-                    <AddToCartButton product={product} />
+                    <AddToCartButton
+                      product={product}
+                      handleAddToCart={handleAddToCart}
+                      title={""}
+                    />
+
                   </CardActions>
                 </Box>
               </Card>
@@ -112,6 +167,17 @@ export default function Home() {
           ))}
         </Grid>
       </Box>
+
+
+      {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={openSnackbar}
+        autoHideDuration={1000}
+        onClose={handleCloseSnackbar}
+        message={snackbarMessage}
+      />
+
     </main>
   );
 }
