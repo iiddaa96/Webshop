@@ -22,92 +22,96 @@ export default function Home() {
   return (
     <main>
       {/*Tillfälling länk till singleProduct page */}
-      
-        <Box
-          sx={{
-            width: "95%",
-            overflow: "hidden",
-            justifyContent: "center",
-            position: "relative",
-            paddingTop: "30%", // Minskat från '56.25%' till en lägre procent för att minska höjden
-            margin: "32px auto",
-            display: "flex",
-            alignItems: "center",
-            marginBottom: "24px", // Mellanrum mellan bilden och griden
-          }}
-        >
-          <Image
-            src={MiddleImage}
-            alt="Stor Bild"
-            layout="fill"
-            objectFit="cover"
-          />
-        </Box>
 
-        <Box
-          sx={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "0 24px",
-            marginBottom: "24px",
-          }}
-        >
-          <Grid container spacing={4}>
-            {products.map((product) => (
-              <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id} data-cy="product">
-                <Link href={`/products/${product.id}` as any}>
-                <Card
-                  sx={{
-                    maxWidth: 345,
-                    m: "auto",
-                    boxShadow: 3,
-                    position: "relative",
-                  
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="280"
-                    image={product.image}
-                    alt={product.title} 
-                    data-cy="product-title"
-                  />
-                  <CardContent>
+      <Box
+        sx={{
+          width: "95%",
+          overflow: "hidden",
+          justifyContent: "center",
+          position: "relative",
+          paddingTop: "30%", // Minskat från '56.25%' till en lägre procent för att minska höjden
+          margin: "32px auto",
+          display: "flex",
+          alignItems: "center",
+          marginBottom: "24px", // Mellanrum mellan bilden och griden
+        }}
+      >
+        <Image
+          src={MiddleImage}
+          alt="Stor Bild"
+          layout="fill"
+          objectFit="cover"
+        />
+      </Box>
+
+      <Box
+        sx={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 24px",
+          marginBottom: "24px",
+        }}
+      >
+        <Grid container spacing={4}>
+          {products.map((product) => (
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              lg={4}
+              xl={3}
+              key={product.id}
+              data-cy="product"
+            >
+              <Card
+                sx={{
+                  maxWidth: 345,
+                  m: "auto",
+                  boxShadow: 3,
+                  position: "relative",
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  height="280"
+                  image={product.image}
+                  alt={product.title}
+                  data-cy="product-title"
+                />
+                <CardContent>
+                  <Link href={`/products/${product.id}` as any}>
                     <Typography
                       gutterBottom
                       variant="subtitle1"
                       component="div"
                       data-cy="product-title"
                     >
-                      { product.title}
+                      {product.title}
                     </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ fontSize: "0.8rem" }}
-                      data-cy="product-price"
-                    >
-                      {product.price}
-                    </Typography>
-                  </CardContent>
-                  <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
-                    <CardActions
-                      disableSpacing
-                      sx={{ justifyContent: "flex-end" }}
-                      data-cy="product-buy-button"
-                    >
-                      <AddToCartButton 
-                      product={product}
-                        />
-                    </CardActions>
-                  </Box>
-                </Card>
-                </Link>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      
+                  </Link>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ fontSize: "0.8rem" }}
+                    data-cy="product-price"
+                  >
+                    {product.price}
+                  </Typography>
+                </CardContent>
+                <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
+                  <CardActions
+                    disableSpacing
+                    sx={{ justifyContent: "flex-end" }}
+                    data-cy="product-buy-button"
+                  >
+                    <AddToCartButton product={product} />
+                  </CardActions>
+                </Box>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </main>
   );
 }
