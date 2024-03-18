@@ -10,14 +10,32 @@
 - `data-cy="added-to-cart-toast"` toast som visas när en produkt läggs till i kundvagnen.
 */
 
+"use client";
+
 import AddToCartButton from "@/app/ui/addToCartButton";
-import { Box, Grid, Typography } from "@mui/material";
-import { products } from "../../../data/index";
+import { Box, Grid, Snackbar, Typography } from "@mui/material";
+import { useState } from "react";
+import { Product, products } from "../../../data/index";
 
 type Props = { params: { id: string } };
 
 export default function SingleProduct(props: Props) {
   const product = products.find((product) => product.id === props.params.id);
+
+  // Tillstånd för att visa snackbar
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  // Tillstånd för meddelandet i snackbar
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  const handleAddToCart = (product: Product) => {
+    setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
+    setOpenSnackbar(true); // Visa snackbar
+  };
+
+  const handleCloseSnackbar = () => {
+    // Funktion för att stänga snackbar
+    setOpenSnackbar(false);
+  };
 
   if (!product) {
     return <div>Product not found</div>;
@@ -53,9 +71,21 @@ export default function SingleProduct(props: Props) {
               {product.price} kr
             </Typography>
           </Box>
-          <AddToCartButton product={product} />
+          <AddToCartButton
+            product={product}
+            handleAddToCart={handleAddToCart}
+            title={""}
+          />
         </Grid>
       </Grid>
+      {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={openSnackbar}
+        autoHideDuration={1000}
+        onClose={handleCloseSnackbar}
+        message={snackbarMessage}
+      />
     </main>
   );
 }
