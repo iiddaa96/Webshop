@@ -173,7 +173,7 @@ function CartSection() {
           </Button>
         </Paper>
       )}
-      <PaymentSection  />{" "}
+      <PaymentSection />{" "}
     </Container>
   );
 }
