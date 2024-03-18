@@ -17,6 +17,11 @@ import { useCart } from "../context/CartContext";
 function ResponsiveAppBar() {
   const { cart } = useCart();
 
+  const totalQuantity = cart.reduce(
+    (total, currentItem) => total + currentItem.quantity,
+    0
+  );
+
   // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
