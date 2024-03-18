@@ -7,7 +7,8 @@ import { Product } from "../../data/index";
 interface AddToCartButtonProps {
   product: Product;
   title: string;
-  handleAddToCart: (products: Product) => void; // Lägg till funktion för att hantera "Lägg till i kundvagnen"
+  // Lägg till funktion för att hantera "Lägg till i kundvagnen"
+  handleAddToCart: (products: Product) => void;
 }
 
 const AddToCartButton: React.FC<AddToCartButtonProps> = ({
@@ -17,7 +18,8 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   return (
     <IconButton
       aria-label="add to cart"
-      onClick={() => handleAddToCart(product)} // Anropa handleAddToCart-funktionen med produkttiteln
+      // Anropa handleAddToCart-funktionen med produkttiteln
+      onClick={() => handleAddToCart(product)}
     >
       <AddShoppingCartIcon />
     </IconButton>
