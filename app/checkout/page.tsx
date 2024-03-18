@@ -1,15 +1,37 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useState } from 'react';
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box, Container, Grid, IconButton, Typography, Paper, Button } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 import PaymentSection from "../checkoutComponents/paymentSection";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function CartSection() {
   const { cart, removeFromCart } = useCart(); //hämtar från cartContext
   const [showDeleteToast, setShowDeleteToast] = useState(false);
-  const [selectedItemId, setSelectedItemId] = useState('');
+  const [selectedItemId, setSelectedItemId] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0); // State för den totala summan
+
+  useEffect(() => {
+    // Uppdatera den totala summan när kundvagnen ändras
+    const calculateTotalPrice = () => {
+      let total = 0;
+      cart.forEach((item) => {
+        total += item.price * item.quantity;
+      });
+      return total;
+    };
+    setTotalPrice(calculateTotalPrice());
+  }, [cart]);
 
   const handleDelete = (itemId: string) => {
     setShowDeleteToast(true);
@@ -34,7 +56,7 @@ function CartSection() {
       >
         CART
       </Typography>
-        {/* Spaceing mellan boxarna och css styleing */}
+      {/* Spaceing mellan boxarna och css styleing */}
       <Grid container spacing={1}>
         {cart.map((item) => (
           <Grid
@@ -47,9 +69,13 @@ function CartSection() {
               marginTop: "30px",
             }}
           >
-          {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
+            {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
             <Box sx={{ width: "10%" }}>
-              <img src={item.image} style={{ width: "100%" }} alt={item.title} />
+              <img
+                src={item.image}
+                style={{ width: "100%" }}
+                alt={item.title}
+              />
             </Box>
             <Box
               sx={{
@@ -59,7 +85,7 @@ function CartSection() {
               }}
               data-cy="cart-item"
             >
-          {/* Mappar ut titel av tavlorna */}
+              {/* Mappar ut titel av tavlorna */}
               <Typography
                 sx={{
                   fontSize: "16px",
@@ -70,33 +96,28 @@ function CartSection() {
               >
                 {item.title}
               </Typography>
-                {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
-              {/* Använd QuantityButton-komponenten här */}
-              <QuantityButton />
-            {/* Mappar ut priset per tavla */}
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  paddingBottom: "5px",
-                }}
-              >
-                <Typography variant="body1">Price:</Typography>
-                <Typography sx={{ marginLeft: "8px" }} variant="body1">
-                  {item.price} :-
-                </Typography>
-              </Box>
+              {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
+              <QuantityButton
+                productId={item.id}
+                initialQuantity={item.quantity}
+                showTotalPrice
+              />
+              {/* Mappar ut priset per tavla */}
             </Box>
-{/* DeleteIcon som en knapp längst till höger */}
+            {/* DeleteIcon som en knapp längst till höger */}
             <Box sx={{ alignSelf: "flex-start" }}>
-              <IconButton color="inherit" aria-label="delete" onClick={() => handleDelete(item.id)}>
+              <IconButton
+                color="inherit"
+                aria-label="delete"
+                onClick={() => handleDelete(item.id)}
+              >
                 <DeleteIcon />
               </IconButton>
             </Box>
           </Grid>
         ))}
       </Grid>
-{/* Totalpris grid */}
+      {/* Totalpris grid */}
       <Grid container sx={{ alignItems: "center" }}>
         <Grid item xs={6}>
           <Box>
@@ -113,7 +134,7 @@ function CartSection() {
                 verticalAlign: "middle",
               }}
             >
-              1000:-
+              {totalPrice} kr
             </Typography>
           </Box>
         </Grid>
@@ -152,46 +173,9 @@ function CartSection() {
           </Button>
         </Paper>
       )}
-      <PaymentSection />
+      <PaymentSection  />{" "}
     </Container>
   );
 }
 
 export default CartSection;
-
-
-// CYPRESS TESTER SOM SKA IN
-
-  /* /* 
-- `data-cy="cart-link"` knappen för att gå till kundvagnen/kassasidan.
-- `data-cy="cart-items-count-badge"` siffran intill kundvagnsikonen som visar antalet tillagda produkter.
-- `data-cy="cart-item"` en produktrad på kassasidan.
-- `data-cy="increase-quantity-button"` knappen för att öka antalet av en produkt på kassasida.
-- `data-cy="decrease-quantity-button"` knappen för att minska antalet av en produkt på kassasida.
-- `data-cy="product-quantity"` antalet valda produkter av samma typ på kassasida.
-- `data-cy="total-price"` totala priset för alla produkter i kundvagnen.
-
-- `data-cy="customer-form"` formulär för att fylla i kunduppgifter på checkout-sidan.
-- `data-cy="customer-name"` kundens namn (som fylls i på checkout-sidan).
-- `data-cy="customer-address"` kundens gatuadress (som fylls i på checkout-sidan).
-- `data-cy="customer-zipcode"` kundens postnummer (som fylls i på checkout-sidan).
-- `data-cy="customer-city"` kundens stad (som fylls i på checkout-sidan).
-- `data-cy="customer-email"` kundens emailadress (som fylls i på checkout-sidan).
-
-
-- `data-cy="customer-phone"` kundens telefonnummer (som fylls i på checkout-sidan).
-- `data-cy="customer-name-error"` felmeddelande vid felaktigt angivet namn.
-- `data-cy="customer-address-error"` felmeddelande vid felaktigt angiven adress.
-- `data-cy="customer-zipcode-error"` felmeddelande vid felaktigt angivet postnummer.
-- `data-cy="customer-city-error"` felmeddelande vid felaktigt angiven stad.
-- `data-cy="customer-email-error"` felmeddelande vid felaktigt angiven emailadress.
-- `data-cy="customer-phone-error"` felmeddelande vid felaktigt angivet telefonnummer.
-
-
-- `data-cy="cart-item"` en produktrad på kassasidan.
-- `data-cy="increase-quantity-button"` knappen för att öka antalet av en produkt på kassasida.
-- `data-cy="decrease-quantity-button"` knappen för att minska antalet av en produkt på kassasida.
-- `data-cy="product-quantity"` antalet valda produkter av samma typ på kassasida.
-- `data-cy="total-price"` totala priset för alla produkter i kundvagnen.
-*/
-

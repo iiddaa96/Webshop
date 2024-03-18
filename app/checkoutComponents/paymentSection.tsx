@@ -1,7 +1,68 @@
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import { useState } from "react";
 import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 
+
 export default function InputPayment() {
+  // State som kollar alla values
+  const [formData, setFormData] = useState({
+    name: "",
+    address: "",
+    zip: "",
+    city: "",
+    email: "",
+    phone: "",
+  });
+
+
+  // funktion för att uppdatera form data
+  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // 
+  const isFormValid = () => {
+    const { name, address, zip, city, email, phone } = formData;
+
+    // kollar om valideringen är rätt
+    return (
+      name.trim() !== "" &&
+      address.trim() !== "" &&
+      zip.trim() !== "" &&
+      city.trim() !== "" &&
+      email.trim() !== "" &&
+      phone.trim() !== "" &&
+      isValidEmail(email) &&
+      isValidPhone(phone)
+    );
+  };
+
+  //funktion för att kolla om email är rätt
+  const isValidEmail = (email: string) => {
+    // Regular expression to match email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  //kolla mobil nummer
+  const isValidPhone = (phone: string) => {
+    // Regular expression to match phone number format (10 digits)
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(phone);
+  };
+
+  // Function to handle click on the "Continue" button
+  const handleContinueClick = () => {
+    // If form is valid, navigate to confirmation page
+    if (isFormValid()) {
+      window.location.href = "/confirmation"; 
+    }
+  };
+
   return (
     <Box
       data-cy="customer-form"
@@ -14,93 +75,80 @@ export default function InputPayment() {
         marginTop: "20px",
       }}
     >
-      {/* Rubrik för fraktadress */}
       <Typography variant="h6" gutterBottom>
-        {/* Shipping icon */}
         <LocalShippingIcon sx={{ marginRight: "8px" }} />
         Shipping Address
       </Typography>
 
-      {/* Grid för att ordna inputfälten i två kolumner */}
       <Grid container spacing={2}>
-        {/* Inputfält för namn */}
         <Grid item xs={6}>
           <TextField
-            data-cy="customer-name"
-            error
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
             id="outlined-error"
             label="Name"
-            defaultValue=""
             variant="outlined"
             fullWidth
           />
         </Grid>
-        {/* Inputfält för adress */}
         <Grid item xs={6}>
           <TextField
-            data-cy="customer-address"
-            error
+            name="address"
+            value={formData.address}
+            onChange={handleInputChange}
             id="filled-error"
             label="Address"
-            defaultValue=""
             variant="filled"
             fullWidth
           />
         </Grid>
-        {/* Inputfält för postnummer */}
         <Grid item xs={6}>
           <TextField
-            data-cy="customer-zipcode"
-            error
+            name="zip"
+            value={formData.zip}
+            onChange={handleInputChange}
             id="outlined-error-helper-text"
             label="Zip"
-            defaultValue=""
-            helperText="Incorrect entry."
             variant="outlined"
             fullWidth
           />
         </Grid>
-        {/* Inputfält för stad */}
         <Grid item xs={6}>
           <TextField
-            data-cy="customer-city"
-            error
+            name="city"
+            value={formData.city}
+            onChange={handleInputChange}
             id="filled-error-helper-text"
             label="City"
-            defaultValue=""
-            helperText="Incorrect entry."
             variant="filled"
             fullWidth
           />
         </Grid>
-        {/* Inputfält för e-post */}
         <Grid item xs={6}>
           <TextField
-            data-cy="customer-email"
-            error
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
             id="standard-error"
             label="Email"
-            defaultValue=""
             variant="standard"
             fullWidth
           />
         </Grid>
-        {/* Inputfält för mobilnummer */}
         <Grid item xs={6}>
           <TextField
-            data-cy="customer-phone"
-            error
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
             id="standard-error-helper-text"
             label="Mobile"
-            defaultValue=""
-            helperText="Incorrect entry."
             variant="standard"
             fullWidth
           />
         </Grid>
       </Grid>
       <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
-        {/* Box för "Cancel" knappen till vänster */}
         <Button
           component={Link}
           href="/"
@@ -118,23 +166,38 @@ export default function InputPayment() {
           Cancel
         </Button>
 
-        {/* Box för "Continue" knappen till höger */}
-        <Button
-          component={Link}
-          href="/confirmation"
-          variant="contained"
-          color="primary"
-          sx={{
-            width: "30%",
-            backgroundColor: "black",
-            color: "white",
-            "&:hover": {
-              backgroundColor: "darkgrey",
-            },
-          }}
-        >
-          Continue
-        </Button>
+        {/* Conditional rendering for the "Continue" button, depending on valideringen */}
+        {isFormValid() ? (
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              width: "30%",
+              backgroundColor: "black",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "darkgrey",
+              },
+            }}
+            onClick={handleContinueClick}
+          >
+            Continue
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              width: "30%",
+              backgroundColor: "grey",
+              color: "white",
+              pointerEvents: "none", // Disable button click
+            }}
+            disabled // Disable the button
+          >
+            Continue
+          </Button>
+        )}
       </Box>
     </Box>
   );

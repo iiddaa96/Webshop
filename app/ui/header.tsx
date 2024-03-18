@@ -1,4 +1,5 @@
 "use client";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge, Button, IconButton, Menu } from "@mui/material";
@@ -11,14 +12,10 @@ import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
 import LogoImage from "../assets/logo.png";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 
 function ResponsiveAppBar() {
   const { cart } = useCart();
-  const totalQuantity = cart.reduce(
-    (total, currentItem) => total + currentItem.quantity,
-    0
-  );
 
   // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -56,7 +53,11 @@ function ResponsiveAppBar() {
       }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
+        >
+          {/* Styleing för loggans namn samt länk */}
           <Box
             component={Link}
             href="/"
@@ -146,6 +147,7 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            {/* Tillfälliga länkar till andra sidor desktop */}
             <Button component={Link} href="/posters" color="inherit">
               Posters
             </Button>

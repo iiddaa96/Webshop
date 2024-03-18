@@ -1,15 +1,18 @@
-import { Box, Paper, Typography } from "@mui/material";
+"use client";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import { useCart } from "../context/CartContext";
+import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
-  // Antag att dessa är de varor som har köpts
-  const purchasedItems = [
-    { name: "Abstrakt Konst", quantity: 1 },
-    { name: "Landskapsmålning", quantity: 1 },
-    { name: "Porträtt Illustration", quantity: 1 },
-  ];
+  const { cart } = useCart();
+
+  // Beräkna det totala priset för alla varor i kundvagnen
+  const totalPrice = cart.reduce((acc, item) => {
+    return acc + item.price * item.quantity;
+  }, 0);
 
   return (
-    <>
+    <Container>
       {/* Box för orderbekräftelse */}
       <Box
         sx={{
@@ -24,6 +27,46 @@ function Confirmation() {
         }}
       >
         <h1 style={{ textAlign: "center" }}>Orderbekräftelse</h1>
+        {/* Spaceing mellan boxarna och css styleing */}
+        <Grid container spacing={1}>
+          {cart.map((item) => (
+            <Grid
+              item
+              xs={12}
+              key={item.id}
+              sx={{
+                display: "flex",
+                flexDirection: "column", // Gör så att innehållet staplas vertikalt
+                marginTop: "30px",
+              }}
+            >
+              {/* Titel */}
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  textAlign: "left",
+                  marginBottom: "8px", // Lägger till lite marginal mellan titel och pris
+                }}
+                variant="h6"
+              >
+                {item.title}
+              </Typography>
+
+              {/* QuantityButton, med visningskontroller beroende på sidan */}
+              <Box sx={{ alignSelf: "flex-start" }}>
+                {/* <QuantityButton showControls={false}  /> */}
+                <QuantityButton
+                  productId={item.id}
+                  initialQuantity={item.quantity}
+                  showTotalPrice
+                  showControls={false}
+                  // showTotalPrice={false}
+                />
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+
         <Typography>
           Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya tavlor.
         </Typography>
@@ -34,6 +77,11 @@ function Confirmation() {
         </Typography>
         <Typography>
           Hoppas vi hörs snart igen! Hälsningar från oss på Wall of Art
+        </Typography>
+
+        {/* Totalpris för hela beställningen */}
+        <Typography variant="h6" sx={{ marginTop: "20px" }}>
+          Totalt: {totalPrice} kr
         </Typography>
       </Box>
 
@@ -59,73 +107,7 @@ Hittepå gatan 01
 442 11 Göteborg`}
         </Typography>
       </Box>
-
-      {/* Box för kontaktinformation */}
-      <Box
-        sx={{
-          marginTop: "20px",
-          padding: "20px",
-        }}
-      ></Box>
-
-      {/* Box för presentation av köpta varor */}
-      <Box
-        sx={{
-          marginTop: "20px",
-          padding: "20px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 2,
-        }}
-      >
-        <Typography variant="h6" sx={{ marginBottom: "16px" }}>
-          Dina köpta varor
-        </Typography>
-        {purchasedItems.map((item) => (
-          <Paper
-            key={item.name}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              padding: "10px",
-              width: "100%",
-              maxWidth: "500px", // Justera denna bredd efter behov
-              marginBottom: "10px", // Lägg till lite utrymme mellan varje Paper
-            }}
-          >
-            <Typography sx={{ marginBottom: "10px" }}>{item.name}</Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-              }}
-            >
-              <Typography sx={{ color: "lightgray" }}>Wall of Art</Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "25px",
-                  height: "25px",
-                  border: "1px solid black",
-                }}
-              >
-                {item.quantity}
-              </Box>
-            </Box>
-          </Paper>
-        ))}
-        <Typography>
-          Om du har några frågor om din beställning, tveka inte att kontakta oss
-          på support@wallofart.se.
-        </Typography>
-      </Box>
-    </>
+    </Container>
   );
 }
 
