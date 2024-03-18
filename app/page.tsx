@@ -37,6 +37,31 @@ export default function Home() {
   };
   return (
     <main>
+
+      <Box
+        sx={{
+          width: "95%",
+          overflow: "hidden",
+          justifyContent: "center",
+          position: "relative",
+          paddingTop: "30%", // Minskat från '56.25%' till en lägre procent för att minska höjden
+          margin: "32px auto",
+          display: "flex",
+          alignItems: "center",
+          marginBottom: "24px", // Mellanrum mellan bilden och griden
+        }}
+      >
+        <Image
+          src={MiddleImage}
+          alt="Stor Bild"
+          layout="fill"
+          objectFit="cover"
+        />
+      </Box>
+
+      <Box
+        sx={{
+
       <Box
         sx={{
           width: "95%",
@@ -93,6 +118,18 @@ export default function Home() {
                   data-cy="product-title"
                 />
                 <CardContent>
+
+                  <Link href={`/products/${product.id}` as any}>
+                    <Typography
+                      gutterBottom
+                      variant="subtitle1"
+                      component="div"
+                      data-cy="product-title"
+                    >
+                      {product.title}
+                    </Typography>
+                  </Link>
+
                   <Typography
                     gutterBottom
                     variant="subtitle1"
@@ -101,6 +138,7 @@ export default function Home() {
                   >
                     {product.title}
                   </Typography>
+
                   <Typography
                     variant="body2"
                     color="text.secondary"
@@ -121,6 +159,7 @@ export default function Home() {
                       handleAddToCart={handleAddToCart}
                       title={""}
                     />
+
                   </CardActions>
                 </Box>
               </Card>
@@ -128,6 +167,8 @@ export default function Home() {
           ))}
         </Grid>
       </Box>
+
+
       {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -136,6 +177,7 @@ export default function Home() {
         onClose={handleCloseSnackbar}
         message={snackbarMessage}
       />
+
     </main>
   );
 }
