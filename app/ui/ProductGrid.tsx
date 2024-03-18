@@ -61,10 +61,18 @@ export default function ProductGrid() {
 
   return (
     <Container fixed>
-      <Box sx={{ flexGrow: 1 }} data-cy="product">
+      <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {products.map((product, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              key={index}
+              data-cy="product"
+            >
               <StyledCard>
                 <CardActionArea>
                   <CardMedia
@@ -78,6 +86,7 @@ export default function ProductGrid() {
                       gutterBottom
                       variant="h6"
                       sx={{ color: "primary.main" }}
+                      data-cy="product-title"
                     >
                       {product.title}
                     </Typography>
@@ -85,6 +94,7 @@ export default function ProductGrid() {
                       gutterBottom
                       variant="h6"
                       sx={{ color: "secondary.main" }}
+                      data-cy="product-price"
                     >
                       {product.price}Kr
                     </Typography>
