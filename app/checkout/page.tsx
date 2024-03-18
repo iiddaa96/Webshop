@@ -11,8 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import PaymentSection from "../checkoutComponents/paymentSection";
 import { useCart } from "../context/CartContext";
+import PaymentSection from "../ui/PaymentSection";
 import QuantityButton from "../ui/quantityButton";
 
 function CartSection() {
