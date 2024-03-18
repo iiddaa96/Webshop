@@ -111,7 +111,7 @@ export default function Home() {
                     sx={{ fontSize: "0.8rem" }}
                     data-cy="product-price"
                   >
-                    {product.price}
+                    {product.price}kr
                   </Typography>
                 </CardContent>
                 <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
