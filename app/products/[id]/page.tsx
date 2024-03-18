@@ -16,10 +16,10 @@ import QuantityButton from "../../ui/quantityButton";
 
 import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
 
+type Props = { params: { id: string } };
 
-
-export default function SingleProduct() {
-  const product = products.find((product) => product.id === product.id);
+export default function SingleProduct(props: Props) {
+  const product = products.find((product) => product.id === props.params.id);
 
   if (!product) {
     // If product not found, you can render a loading state or a message
@@ -33,9 +33,9 @@ export default function SingleProduct() {
           <Box sx={{ flexGrow: 1 }}>
             {/* Render only the first product */}
             {products.length > 0 && (
-              <div key={products[0].id} data-cy="product-id">
+              <div key={product.id} data-cy="product-id">
                 <img
-                  src={products[0].image}
+                  src={product.image}
                   alt="testProduct"
                   style={{ maxWidth: "100%" }}
                 />
@@ -48,24 +48,24 @@ export default function SingleProduct() {
           <Box sx={{ flexGrow: 1, padding: "80px 30px" }}>
             {/* Render only the first product */}
             {products.length > 0 && (
-              <div key={products[0].id}>
+              <div key={product.id}>
                 {/* gutterbottom lägger till bottom margin*/}
                 <Typography variant="h4" gutterBottom data-cy="product-title">
-                  {products[0].title}
+                  {product.title}
                 </Typography>
                 <Typography
                   variant="body2"
                   gutterBottom
                   data-cy="product-description"
                 >
-                  {products[0].description}
+                  {product.description}
                 </Typography>
                 <Typography
                   variant="body2"
                   gutterBottom
                   data-cy="product-price"
                 >
-                  {products[0].price}
+                  {product.price}
                 </Typography>
               </div>
             )}
@@ -80,3 +80,4 @@ export default function SingleProduct() {
     </main>
   );
 }
+
