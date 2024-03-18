@@ -1,14 +1,13 @@
 "use client";
 import ProductForm from "@/app/ui/ProductForm";
 import { Container } from "@mui/material";
-import { useProduct } from "../../context/AdminContext";
+import { useProduct } from "../../../context/AdminContext";
 
 type Props = { params: { id: string } };
 
 function UpdateExistProduct(props: Props) {
   const { products } = useProduct();
   const product = products.find((p) => p.id === props.params.id);
-  
 
   if (!product) {
     <div>404</div>;

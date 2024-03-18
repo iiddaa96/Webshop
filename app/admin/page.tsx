@@ -12,7 +12,6 @@ import Link from "next/link";
 - `data-cy="confirm-delete-button"` konfirmera att man vill radera en produkt.*/
 
 function Admin() {
-
   return (
     <>
       <Box
@@ -24,7 +23,7 @@ function Admin() {
           marginRight: "30px",
         }}
       >
-        <Link href="/admin/new">
+        <Link href="/admin/product/new">
           <AddIcon
             data-cy="admin-add-product"
             sx={{

@@ -28,6 +28,7 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider: React.FC = ({ children }: PropsWithChildren<{}>) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof localStorage === "undefined") return [];
     const savedCart = localStorage.getItem(CART_LOCAL_STORAGE_KEY);
     return savedCart ? JSON.parse(savedCart) : [];
   });
