@@ -8,7 +8,6 @@ type Props = { params: { id: string } };
 function UpdateExistProduct(props: Props) {
   const { products } = useProduct();
   const product = products.find((p) => p.id === props.params.id);
-  
 
   if (!product) {
     <div>404</div>;
