@@ -94,7 +94,7 @@ export default function Home() {
                   data-cy="product-title"
                 />
                 <CardContent>
-                  <Link href={`/product/${product.id}` as any}>
+                  <Link href={`/products/${product.id}` as any}>
                     <Typography
                       gutterBottom
                       variant="subtitle1"
