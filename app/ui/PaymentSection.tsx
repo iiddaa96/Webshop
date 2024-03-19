@@ -1,65 +1,78 @@
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import { useState } from "react";
 import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { z } from "zod";
 
+// Skapar schema för inputfälten
+const stringSchema = z.string();
+const numberSchema = z.number();
 
+// Error meddelande för inputfälten
+// Skriver man inte annat sätt för error meddelande för nummer?
+const formSchema = z.object({
+  name: z.string(),
+
+  lastname: z.string(),
+
+  adress: z
+    .string()
+    .min(2, { message: "Address must be at least 2 characters long" }),
+
+  zipcode: z.coerce
+    .number()
+    .min(5, { message: "Zipcode must be at least 5 digits long" }),
+
+  city: z
+    .string()
+    .min(2, { message: "City must be at least 2 characters long" }),
+
+  email: z.string().email({ message: "Invalid email format" }),
+
+  phone: z.coerce
+    .number()
+    .min(10, { message: "Phone number must be at least 10 digits long" }),
+});
+
+// Hantering av inputfält och formulärdata
 export default function InputPayment() {
-  // State som kollar alla values
   const [formData, setFormData] = useState({
     name: "",
+    lastname: "",
     address: "",
-    zip: "",
+    zipcode: "",
     city: "",
     email: "",
     phone: "",
   });
 
+  const router = useRouter();
 
-  // funktion för att uppdatera form data
-  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [isFormValid, setIsFormValid] = useState(true);
+
+  // Hantera ändringar i inmatningsfälten
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  // 
-  const isFormValid = () => {
-    const { name, address, zip, city, email, phone } = formData;
-
-    // kollar om valideringen är rätt
-    return (
-      name.trim() !== "" &&
-      address.trim() !== "" &&
-      zip.trim() !== "" &&
-      city.trim() !== "" &&
-      email.trim() !== "" &&
-      phone.trim() !== "" &&
-      isValidEmail(email) &&
-      isValidPhone(phone)
-    );
-  };
-
-  //funktion för att kolla om email är rätt
-  const isValidEmail = (email: string) => {
-    // Regular expression to match email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  //kolla mobil nummer
-  const isValidPhone = (phone: string) => {
-    // Regular expression to match phone number format (10 digits)
-    const phoneRegex = /^[0-9]{10}$/;
-    return phoneRegex.test(phone);
-  };
-
-  // Function to handle click on the "Continue" button
-  const handleContinueClick = () => {
-    // If form is valid, navigate to confirmation page
-    if (isFormValid()) {
-      window.location.href = "/confirmation"; 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const validationResult = formSchema.safeParse(formData);
+    // Om valideringen lyckas, fortsätt till confirmation sidan
+    if (validationResult.success) {
+      setIsFormValid(true);
+      console.log("Form submitted successfully!");
+    } else {
+      // Om valideringen misslyckas, visa felmeddelanden
+      setIsFormValid(false);
+      const errors: Record<string, string> = {};
+      validationResult.error.errors.forEach((error) => {
+        errors[error.path[0]] = error.message;
+      });
+      setFormErrors(errors);
+      console.log("Form submission failed:", errors);
     }
   };
 
@@ -75,100 +88,136 @@ export default function InputPayment() {
         marginTop: "20px",
       }}
     >
+      {/* Rubrik och icon för inputfälten */}
       <Typography variant="h6" gutterBottom>
         <LocalShippingIcon sx={{ marginRight: "8px" }} />
         Shipping Address
       </Typography>
 
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <TextField
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            id="outlined-error"
-            label="Name"
-            variant="outlined"
-            fullWidth
-          />
+      <form onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item xs={6}>
+            <TextField
+              data-cy="customer-name"
+              error={!!formErrors["name"]}
+              id="outlined-error"
+              name="name"
+              label="Name"
+              value={formData.name}
+              onChange={handleInputChange}
+              helperText={formErrors["name"] || ""}
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              data-cy="customer-lastname"
+              error={!!formErrors["lastname"]}
+              id="outlined-error"
+              name="lastname"
+              label="Lastname"
+              value={formData.lastname}
+              onChange={handleInputChange}
+              helperText={formErrors["lastname"] || ""}
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              data-cy="customer-address"
+              error={!!formErrors["address"]}
+              id="filled-error"
+              name="address"
+              label="Address"
+              value={formData.address}
+              onChange={handleInputChange}
+              helperText={formErrors["address"] || ""}
+              variant="filled"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              data-cy="customer-zipcode"
+              error={!!formErrors["zipcode"]}
+              id="outlined-error-helper-text"
+              name="zipcode"
+              label="Zip"
+              value={formData.zipcode}
+              onChange={handleInputChange}
+              helperText={formErrors["zipcode"] || ""}
+              variant="outlined"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              data-cy="customer-city"
+              error={!!formErrors["city"]}
+              id="filled-error-helper-text"
+              name="city"
+              label="City"
+              value={formData.city}
+              onChange={handleInputChange}
+              helperText={formErrors["city"] || ""}
+              variant="filled"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              data-cy="customer-email"
+              error={!!formErrors["email"]}
+              id="standard-error"
+              name="email"
+              label="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+              helperText={formErrors["email"] || ""}
+              variant="standard"
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              data-cy="customer-phone"
+              error={!!formErrors["phone"]}
+              id="standard-error-helper-text"
+              name="phone"
+              label="Mobile"
+              value={formData.phone}
+              onChange={handleInputChange}
+              helperText={formErrors["phone"] || ""}
+              variant="standard"
+              fullWidth
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <TextField
-            name="address"
-            value={formData.address}
-            onChange={handleInputChange}
-            id="filled-error"
-            label="Address"
-            variant="filled"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            name="zip"
-            value={formData.zip}
-            onChange={handleInputChange}
-            id="outlined-error-helper-text"
-            label="Zip"
-            variant="outlined"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            name="city"
-            value={formData.city}
-            onChange={handleInputChange}
-            id="filled-error-helper-text"
-            label="City"
-            variant="filled"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            id="standard-error"
-            label="Email"
-            variant="standard"
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            name="phone"
-            value={formData.phone}
-            onChange={handleInputChange}
-            id="standard-error-helper-text"
-            label="Mobile"
-            variant="standard"
-            fullWidth
-          />
-        </Grid>
-      </Grid>
-      <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
-        <Button
-          component={Link}
-          href="/"
-          variant="contained"
-          color="primary"
-          sx={{
-            width: "30%",
-            backgroundColor: "white",
-            color: "black",
-            "&:hover": {
-              backgroundColor: "darkgrey",
-            },
-          }}
-        >
-          Cancel
-        </Button>
-
-        {/* Conditional rendering for the "Continue" button, depending on valideringen */}
-        {isFormValid() ? (
+        {/* Knapparna cancel och continue */}
+        <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
           <Button
+            component={Link}
+            href="/"
+            variant="contained"
+            color="primary"
+            sx={{
+              width: "30%",
+              backgroundColor: "white",
+              color: "black",
+              "&:hover": {
+                backgroundColor: "darkgrey",
+              },
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            // component={Link}
+            // href="/confirmation"
+            // onClick={() => router.push("/confirmation")}
+            type="submit"
             variant="contained"
             color="primary"
             sx={{
@@ -179,26 +228,11 @@ export default function InputPayment() {
                 backgroundColor: "darkgrey",
               },
             }}
-            onClick={handleContinueClick}
           >
             Continue
           </Button>
-        ) : (
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{
-              width: "30%",
-              backgroundColor: "grey",
-              color: "white",
-              pointerEvents: "none", // Disable button click
-            }}
-            disabled // Disable the button
-          >
-            Continue
-          </Button>
-        )}
-      </Box>
+        </Box>
+      </form>
     </Box>
   );
 }
