@@ -1,7 +1,7 @@
 "use client";
 import ProductForm from "@/app/ui/ProductForm";
 import { Container } from "@mui/material";
-import { useProduct } from "../../context/AdminContext";
+import { useProduct } from "../../../context/AdminContext";
 
 type Props = { params: { id: string } };
 

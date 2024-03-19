@@ -1,37 +1,78 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/G1YVQsIF)
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Webbshop Next.js
 
-## Getting Started
+#### Projektet innehåller:
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js
+- React
+- TypeScript
+- MUI
+- NanoId
+- Zod
+- React-hook-form
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Länkar:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org/)
+- [Material-UI](https://mui.com/)
+- [Zod](https://zod.dev/)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Starta projekt:
 
-## Learn More
+- nmp install
+- npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+#### Beskrivning
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Uppgiften är att använda sig av Next.js, Typescript och React och ett valfritt designverktyg. Det finns en mockad datafil med produkter som ska mappas ut. Det ska finnas en startsida, checkout, bekräftelsesida och en adminsida enligt CRUD. Tester sker via cypress.Se kravlista nedan.
 
-## Deploy on Vercel
+### Krav för Godkänt
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [x] Git & GitHub har använts
+- [x] Projektmappen innehåller en README.md fil - (läs ovan för mer info)
+- [x] Uppgiften lämnas in i tid!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Home**
+
+- [x] Ska ha en övergripande layout med header, main & footer.
+- [x] Startsidan ska lista samtliga produkter.
+- [x] Det ska gå att lägga till produkter i kundvagnen (header + toast + ls).
+- [x] Det ska gå att klicka på en produkt och komma till en detaljsida.
+- [x] Sidan ska vara responsiv och gå att använda på mobil, tablet & desktop.
+
+**Produkt**
+
+- [x] Ska ha en övergripande layout med header, main & footer.
+- [x] Detaljsidan ska visa all info om en produkt.
+- [x] Det ska gå att lägga till produkten i kundvagnen (header + toast + ls).
+- [x] Sidan ska vara responsiv och gå att använda på mobil, tablet & desktop.
+
+**Kundvagn & Checkout**
+
+- [x] Ska ha en övergripande layout med header, main & footer.
+- [x] Det ska gå att gå till checkoutsidan och se innehållet i kundvagnen (knapp & url).
+- [x] Det ska gå att se det totala priset i kundvagnen.
+- [x] Det ska gå att ändra produkterna i kundvagnen (header + vyn + pris + ls).
+- [x] Det ska gå att ange leveransuppgifter i ett formulär.
+- [x] Samtliga fält för checkoutsidans formulär ska ha valideringsregler.
+- [x] Formulären vid utcheckningen ska gå att automatiskt fyllas i.
+- [x] Bekräftelsesidan ska visa orderdetaljer och leveransuppgifter
+
+**Admin**
+
+- [x] Det finns en admin-sida för produkthantering
+- [x] Det ska gå att se alla produkter på admin sidan
+- [x] Det går att lägga till produkter via admin sidan + ls
+- [x] Det går att ta bort produkter via admin sidan + ls
+- [x] Det går att redigera produkter via admin sidan + ls
+- [x] Samtliga fält för adminsidans formulär ska ha valideringsregler
+
+**Medverkande**
+
+- [Ida Caspersson](https://github.com/iiddaa96)
+- [Jessica Rodriguez](https://github.com/iiddaa96)
+- [Maryama Salad](https://github.com/Maryamakeyf)
+- [Michaela Andreasson](https://github.com/Navaas)

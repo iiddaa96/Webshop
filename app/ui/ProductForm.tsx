@@ -3,7 +3,13 @@
 import { Product, productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormHelperTextProps,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -55,9 +61,12 @@ function ProductForm(props: Props) {
 
       {/* Textfält för titel */}
       <TextField
-        data-cy="product-title-error"
         fullWidth
         label="Title"
+        inputProps={{ "data-cy": "product-title" }}
+        FormHelperTextProps={
+          { "data-cy": "product-title-error" } as FormHelperTextProps
+        }
         helperText={form.formState.errors.title?.message}
         error={Boolean(form.formState.errors.title)}
         id="demo-helper-text-aligned-no-helper"
@@ -66,7 +75,9 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för image */}
       <TextField
-        data-cy="product-image-error"
+        FormHelperTextProps={
+          { "data-cy": "product-image-error" } as FormHelperTextProps
+        }
         fullWidth
         label="Image"
         helperText={form.formState.errors.image?.message}
@@ -77,7 +88,9 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för pris */}
       <TextField
-        data-cy="product-price-error"
+        FormHelperTextProps={
+          { "data-cy": "product-price-error" } as FormHelperTextProps
+        }
         fullWidth
         label="Price"
         helperText={form.formState.errors.price?.message}
@@ -88,7 +101,6 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för beskrivning */}
       <TextField
-        data-cy="product-description-error"
         id="outlined-multiline-static"
         label="Description"
         multiline
@@ -98,6 +110,7 @@ function ProductForm(props: Props) {
         variant="outlined"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("description")}
+        inputProps={{ "data-cy": "product-description" }}
       />
       {/* Box med spara knappen */}
       <Box sx={{ display: "flex", gap: "5vh" }}>

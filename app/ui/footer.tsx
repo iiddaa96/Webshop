@@ -37,7 +37,7 @@ function Footer() {
         }}
       >
         <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-          Kontakta oss:
+          Kontakta oss här:
         </Typography>
         <Typography sx={{ fontSize: "14px" }}>Wall of Art </Typography>
         <Typography sx={{ fontSize: "14px" }}>Hittepå gatan 01</Typography>

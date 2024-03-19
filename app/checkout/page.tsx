@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
