@@ -8,8 +8,7 @@ import { z } from "zod";
 const stringSchema = z.string();
 const numberSchema = z.number();
 
-// Error meddelande för inputfälten
-// Skriver man inte annat sätt för error meddelande för nummer?
+// Error meddelande för inputfälten om man skriver fel
 const formSchema = z.object({
   name: z.string(),
 
@@ -59,21 +58,6 @@ export default function InputPayment() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const validationResult = formSchema.safeParse(formData);
-    // Om valideringen lyckas, fortsätt till confirmation sidan
-    if (validationResult.success) {
-      setIsFormValid(true);
-      console.log("Form submitted successfully!");
-    } else {
-      // Om valideringen misslyckas, visa felmeddelanden
-      setIsFormValid(false);
-      const errors: Record<string, string> = {};
-      validationResult.error.errors.forEach((error) => {
-        errors[error.path[0]] = error.message;
-      });
-      setFormErrors(errors);
-      console.log("Form submission failed:", errors);
-    }
   };
 
   return (
