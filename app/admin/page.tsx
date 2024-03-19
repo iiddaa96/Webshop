@@ -3,6 +3,7 @@ import ProductGrid from "@/app/ui/ProductGrid";
 import AddIcon from "@mui/icons-material/Add";
 import { Box } from "@mui/material";
 import Link from "next/link";
+
 /* CYPRESS TESTER SOM SKA FINNAS MED  */
 /* - `data-cy="product"` produkt-korten/raden på startsidan & adminsidan. 
 - `data-cy="admin-link"` den länk/knapp som går till admin.
