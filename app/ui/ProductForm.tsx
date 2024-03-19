@@ -101,7 +101,6 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för beskrivning */}
       <TextField
-        inputProps={{ "data-cy": "product-description" }}
         id="outlined-multiline-static"
         label="Description"
         multiline
@@ -111,6 +110,7 @@ function ProductForm(props: Props) {
         variant="outlined"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("description")}
+        inputProps={{ "data-cy": "product-description" }}
       />
       {/* Box med spara knappen */}
       <Box sx={{ display: "flex", gap: "5vh" }}>
