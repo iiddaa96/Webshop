@@ -1,5 +1,13 @@
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormHelperTextProps,
+  Grid,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { z } from "zod";
@@ -82,7 +90,10 @@ export default function InputPayment() {
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
-              data-cy="customer-name"
+              FormHelperTextProps={
+                { "data-cy": "customer-name-error" } as FormHelperTextProps
+              }
+              inputProps={{ "data-cy": "customer-name" }}
               error={!!formErrors["name"]}
               id="outlined-error"
               name="name"
@@ -96,7 +107,10 @@ export default function InputPayment() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              data-cy="customer-lastname"
+              FormHelperTextProps={
+                { "data-cy": "customer-lastname-error" } as FormHelperTextProps
+              }
+              inputProps={{ "data-cy": "customer-lastname" }}
               error={!!formErrors["lastname"]}
               id="outlined-error"
               name="lastname"
@@ -110,7 +124,10 @@ export default function InputPayment() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              data-cy="customer-address"
+              inputProps={{ "data-cy": "customer-address" }}
+              FormHelperTextProps={
+                { "data-cy": "customer-address-error" } as FormHelperTextProps
+              }
               error={!!formErrors["address"]}
               id="filled-error"
               name="address"
@@ -124,7 +141,10 @@ export default function InputPayment() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              data-cy="customer-zipcode"
+              FormHelperTextProps={
+                { "data-cy": "customer-zipcode-error" } as FormHelperTextProps
+              }
+              inputProps={{ "data-cy": "customer-zipcode" }}
               error={!!formErrors["zipcode"]}
               id="outlined-error-helper-text"
               name="zipcode"
@@ -138,7 +158,10 @@ export default function InputPayment() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              data-cy="customer-city"
+              FormHelperTextProps={
+                { "data-cy": "customer-city-error" } as FormHelperTextProps
+              }
+              inputProps={{ "data-cy": "customer-city" }}
               error={!!formErrors["city"]}
               id="filled-error-helper-text"
               name="city"
@@ -152,7 +175,10 @@ export default function InputPayment() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              data-cy="customer-email"
+              FormHelperTextProps={
+                { "data-cy": "customer-email-error" } as FormHelperTextProps
+              }
+              inputProps={{ "data-cy": "customer-email" }}
               error={!!formErrors["email"]}
               id="standard-error"
               name="email"
@@ -166,7 +192,10 @@ export default function InputPayment() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              data-cy="customer-phone"
+              FormHelperTextProps={
+                { "data-cy": "customer-phone-error" } as FormHelperTextProps
+              }
+              inputProps={{ "data-cy": "customer-phone" }}
               error={!!formErrors["phone"]}
               id="standard-error-helper-text"
               name="phone"
