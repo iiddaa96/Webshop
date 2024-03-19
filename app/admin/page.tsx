@@ -23,7 +23,7 @@ function Admin() {
           marginRight: "30px",
         }}
       >
-        <Link href="/admin/product/new">
+        <Link href="/admin/new">
           <AddIcon
             data-cy="admin-add-product"
             sx={{
