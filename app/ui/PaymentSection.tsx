@@ -1,3 +1,4 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import {
   Box,
@@ -10,6 +11,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useCustomer } from "../context/PaymentContext";
 
@@ -18,7 +20,7 @@ const stringSchema = z.string();
 const numberSchema = z.number();
 
 // Error meddelande för inputfälten om man skriver fel
-const formSchema = z.object({
+const customerSchema = z.object({
   name: z.string(),
 
   lastname: z.string(),
@@ -42,7 +44,7 @@ const formSchema = z.object({
     .min(10, { message: "Phone number must be at least 10 digits long" }),
 });
 
-export type CustomerInfo = z.infer<typeof formSchema>;
+export type CustomerInfo = z.infer<typeof customerSchema>;
 
 // Hantering av inputfält och formulärdata
 export default function InputPayment() {
@@ -59,6 +61,8 @@ export default function InputPayment() {
   const router = useRouter();
   const { setCustomer } = useCustomer();
 
+  const form = useForm<CustomerInfo>({ resolver: zodResolver(customerSchema) });
+
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isFormValid, setIsFormValid] = useState(true);
 
@@ -68,26 +72,11 @@ export default function InputPayment() {
     setFormData({ ...formData, [name]: value });
   };
 
-  //Tillfällig if sats, ska vara context sen
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const validationResult = formSchema.safeParse(formData);
-    // Om valideringen lyckas, fortsätt till confirmation sidan
-    if (validationResult.success) {
-      setCustomer(formData);
-      setIsFormValid(true);
-      console.log("Form submitted successfully!");
-      router.push("/confirmation");
-    } else {
-      // Om valideringen misslyckas, visa felmeddelanden
-      setIsFormValid(false);
-      const errors: Record<string, string> = {};
-      validationResult.error.errors.forEach((error) => {
-        errors[error.path[0]] = error.message;
-      });
-      setFormErrors(errors);
-      console.log("Form submission failed:", errors);
-    }
+  const handleSubmit = (customer: CustomerInfo) => {
+    setCustomer(formData);
+    setIsFormValid(true);
+    console.log("Form submitted successfully!");
+    router.push("/confirmation");
   };
 
   return (
@@ -108,7 +97,7 @@ export default function InputPayment() {
         Shipping Address
       </Typography>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={form.handleSubmit(handleSubmit)}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
@@ -116,13 +105,11 @@ export default function InputPayment() {
                 { "data-cy": "customer-name-error" } as FormHelperTextProps
               }
               inputProps={{ "data-cy": "customer-name" }}
-              error={!!formErrors["name"]}
               id="outlined-error"
-              name="name"
               label="Name"
-              value={formData.name}
-              onChange={handleInputChange}
-              helperText={formErrors["name"] || ""}
+              {...form.register("name")}
+              error={Boolean(form.formState.errors.name)}
+              helperText={form.formState.errors.name?.message}
               variant="outlined"
               fullWidth
             />
