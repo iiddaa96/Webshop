@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useCustomer } from "../context/PaymentContext";
@@ -63,19 +63,9 @@ export default function InputPayment() {
 
   const form = useForm<CustomerInfo>({ resolver: zodResolver(customerSchema) });
 
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
-  const [isFormValid, setIsFormValid] = useState(true);
-
-  // Hantera ändringar i inmatningsfälten
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   const handleSubmit = (customer: CustomerInfo) => {
-    setCustomer(formData);
-    setIsFormValid(true);
-    console.log("Form submitted successfully!");
+    console.log(customer);
+    setCustomer(customer);
     router.push("/confirmation");
   };
 
