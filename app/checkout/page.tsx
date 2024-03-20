@@ -9,7 +9,6 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { useCart } from "../context/CartContext";
@@ -73,7 +72,7 @@ function CartSection() {
           >
             {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
             <Box sx={{ width: "10%" }}>
-              <Image
+              <img
                 src={item.image}
                 style={{ width: "100%" }}
                 alt={item.title}
