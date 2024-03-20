@@ -135,6 +135,7 @@ export default function Home() {
 
       {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
       <Snackbar
+        data-cy="added-to-cart-toast"
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={openSnackbar}
         autoHideDuration={1000}
