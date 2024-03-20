@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+
 import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
 import QuantityButton from "../ui/quantityButton";
@@ -126,6 +127,7 @@ function CartSection() {
         <Grid item xs={6}>
           <Box sx={{ textAlign: "right" }}>
             <Typography
+              ata-cy="total-price"
               variant="body1"
               sx={{
                 fontWeight: "bold",
@@ -172,7 +174,7 @@ function CartSection() {
           </Button>
         </Paper>
       )}
-      <PaymentSection />{" "}
+      <PaymentSection />
     </Container>
   );
 }

@@ -1,6 +1,7 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ProductProvider } from "./context/AdminContext";
 import { CartProvider } from "./context/CartContext";
+import { PaymentProvider } from "./context/PaymentContext";
 import { LayoutProps } from "./types";
 import Footer from "./ui/footer";
 import ResponsiveAppBar from "./ui/header";
@@ -11,11 +12,13 @@ export default function RootLayout({ children }: LayoutProps) {
       <body>
         <CartProvider>
           <AppRouterCacheProvider>
-            <ProductProvider>
-              <ResponsiveAppBar />
-              {children}
-              <Footer />
-            </ProductProvider>
+            <PaymentProvider>
+              <ProductProvider>
+                <ResponsiveAppBar />
+                {children}
+                <Footer />
+              </ProductProvider>
+            </PaymentProvider>
           </AppRouterCacheProvider>
         </CartProvider>
       </body>
