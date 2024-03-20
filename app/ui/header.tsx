@@ -184,6 +184,7 @@ function ResponsiveAppBar() {
                 aria-label="show cart items"
                 color="inherit"
                 sx={{ p: 0 }}
+                data-cy="cart-items-count-badge"
               >
                 <Badge badgeContent={totalQuantity} color="secondary">
                   <ShoppingCartIcon />
