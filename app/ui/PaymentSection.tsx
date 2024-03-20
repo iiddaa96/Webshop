@@ -64,8 +64,24 @@ export default function InputPayment() {
     setFormData({ ...formData, [name]: value });
   };
 
+  //Tillfällig if sats, ska vara context sen
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const validationResult = formSchema.safeParse(formData);
+    // Om valideringen lyckas, fortsätt till confirmation sidan
+    if (validationResult.success) {
+      setIsFormValid(true);
+      console.log("Form submitted successfully!");
+    } else {
+      // Om valideringen misslyckas, visa felmeddelanden
+      setIsFormValid(false);
+      const errors: Record<string, string> = {};
+      validationResult.error.errors.forEach((error) => {
+        errors[error.path[0]] = error.message;
+      });
+      setFormErrors(errors);
+      console.log("Form submission failed:", errors);
+    }
   };
 
   return (
