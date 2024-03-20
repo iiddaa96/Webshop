@@ -78,23 +78,23 @@ export default function Home() {
               key={product.id}
               data-cy="product"
             >
-              <Card
-                sx={{
-                  maxWidth: 345,
-                  m: "auto",
-                  boxShadow: 3,
-                  position: "relative",
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  height="280"
-                  image={product.image}
-                  alt={product.title}
-                  data-cy="product-title"
-                />
-                <CardContent>
-                  <Link href={`/products/${product.id}` as any}>
+              <Link href={`/products/${product.id}` as any}>
+                <Card
+                  sx={{
+                    maxWidth: 345,
+                    m: "auto",
+                    boxShadow: 3,
+                    position: "relative",
+                  }}
+                >
+                  <CardMedia
+                    component="img"
+                    height="280"
+                    image={product.image}
+                    alt={product.title}
+                    data-cy="product-title"
+                  />
+                  <CardContent>
                     <Typography
                       gutterBottom
                       variant="subtitle1"
@@ -103,31 +103,31 @@ export default function Home() {
                     >
                       {product.title}
                     </Typography>
-                  </Link>
 
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ fontSize: "0.8rem" }}
-                    data-cy="product-price"
-                  >
-                    {product.price}kr
-                  </Typography>
-                </CardContent>
-                <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
-                  <CardActions
-                    disableSpacing
-                    sx={{ justifyContent: "flex-end" }}
-                    data-cy="product-buy-button"
-                  >
-                    <AddToCartButton
-                      product={product}
-                      handleAddToCart={handleAddToCart}
-                      title={""}
-                    />
-                  </CardActions>
-                </Box>
-              </Card>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{ fontSize: "0.8rem" }}
+                      data-cy="product-price"
+                    >
+                      {product.price}kr
+                    </Typography>
+                  </CardContent>
+                  <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
+                    <CardActions
+                      disableSpacing
+                      sx={{ justifyContent: "flex-end" }}
+                      data-cy="product-buy-button"
+                    >
+                      <AddToCartButton
+                        product={product}
+                        handleAddToCart={handleAddToCart}
+                        title={""}
+                      />
+                    </CardActions>
+                  </Box>
+                </Card>
+              </Link>
             </Grid>
           ))}
         </Grid>
