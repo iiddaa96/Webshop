@@ -109,7 +109,7 @@ function ProductForm(props: Props) {
         }
         id="outlined-multiline-static"
         label="Description"
-        // multiline // Fråga David om denna ska vara med eller inte ???
+        // multiline // Fråga David om denna ska vara med eller inte (admin-2) ???
         helperText={form.formState.errors.description?.message}
         error={Boolean(form.formState.errors.description)}
         rows={6}
@@ -125,7 +125,7 @@ function ProductForm(props: Props) {
           sx={{ width: "150px" }}
           /*  Knappen är grå om formuläret inte 
           är godkänt*/
-          disabled={!form.formState.isValid} // Fråga David hur man löser denna !!!!!!!
+          disabled={!form.formState.isValid} // Fråga David hur man löser denna (admin-2)!!!!!!!
           onClick={() => router.push("/admin")}
         >
           <SaveIcon fontSize="large" />

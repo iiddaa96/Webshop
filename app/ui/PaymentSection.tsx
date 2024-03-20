@@ -91,10 +91,10 @@ export default function InputPayment() {
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
+              inputProps={{ "data-cy": "customer-name" }}
               FormHelperTextProps={
                 { "data-cy": "customer-name-error" } as FormHelperTextProps
               }
-              inputProps={{ "data-cy": "customer-name" }}
               id="outlined-error"
               label="Name"
               {...form.register("name")}
@@ -102,12 +102,13 @@ export default function InputPayment() {
               helperText={form.formState.errors.name?.message}
               variant="outlined"
               fullWidth
+              autoComplete="name"
             />
           </Grid>
           <Grid item xs={6}>
             <TextField
               id="outlined-error"
-              label="Lastname"
+              label="lastname"
               {...form.register("lastname")}
               error={Boolean(form.formState.errors.lastname)}
               helperText={form.formState.errors.lastname?.message}
@@ -128,6 +129,7 @@ export default function InputPayment() {
               helperText={form.formState.errors.address?.message}
               variant="filled"
               fullWidth
+              autoComplete="street-address"
             />
           </Grid>
           <Grid item xs={6}>
@@ -143,6 +145,7 @@ export default function InputPayment() {
               helperText={form.formState.errors.zip?.message}
               variant="outlined"
               fullWidth
+              autoComplete="postal-code"
             />
           </Grid>
           <Grid item xs={6}>
@@ -158,6 +161,7 @@ export default function InputPayment() {
               helperText={form.formState.errors.city?.message}
               variant="filled"
               fullWidth
+              autoComplete="address-level2"
             />
           </Grid>
           <Grid item xs={6}>
@@ -173,6 +177,7 @@ export default function InputPayment() {
               helperText={form.formState.errors.email?.message}
               variant="standard"
               fullWidth
+              autoComplete="email"
             />
           </Grid>
           <Grid item xs={6}>
@@ -188,6 +193,7 @@ export default function InputPayment() {
               helperText={form.formState.errors.phone?.message}
               variant="standard"
               fullWidth
+              autoComplete="tel"
             />
           </Grid>
         </Grid>
