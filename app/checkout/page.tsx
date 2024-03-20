@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "../context/cartContext";
 import PaymentSection from "../ui/PaymentSection";
 import QuantityButton from "../ui/quantityButton";
 
