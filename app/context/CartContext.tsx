@@ -1,5 +1,5 @@
 "use client";
-import React, {
+import {
   PropsWithChildren,
   createContext,
   useContext,
@@ -26,7 +26,7 @@ export const CartContext = createContext<CartContextType>({
 
 export const useCart = () => useContext(CartContext);
 
-export const CartProvider: React.FC = ({ children }: PropsWithChildren<{}>) => {
+export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
