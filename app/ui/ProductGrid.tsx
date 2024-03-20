@@ -105,7 +105,7 @@ export default function ProductGrid() {
                         justifyContent: "space-between",
                       }}
                     >
-                      <Link href={"/admin/" + product.id}>
+                      <Link href={"/admin/product/" + product.id}>
                         <EditNoteIcon
                           fontSize="large"
                           data-cy="admin-edit-product"

@@ -75,6 +75,7 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för image */}
       <TextField
+        inputProps={{ "data-cy": "product-image" }}
         FormHelperTextProps={
           { "data-cy": "product-image-error" } as FormHelperTextProps
         }
@@ -88,6 +89,7 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för pris */}
       <TextField
+        inputProps={{ "data-cy": "product-price" }}
         FormHelperTextProps={
           { "data-cy": "product-price-error" } as FormHelperTextProps
         }
@@ -101,16 +103,19 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för beskrivning */}
       <TextField
+        inputProps={{ "data-cy": "product-description" }}
+        FormHelperTextProps={
+          { "data-cy": "product-description-error" } as FormHelperTextProps
+        }
         id="outlined-multiline-static"
         label="Description"
-        multiline
+        // multiline // Fråga David om denna ska vara med eller inte ???
         helperText={form.formState.errors.description?.message}
         error={Boolean(form.formState.errors.description)}
         rows={6}
         variant="outlined"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("description")}
-        inputProps={{ "data-cy": "product-description" }}
       />
       {/* Box med spara knappen */}
       <Box sx={{ display: "flex", gap: "5vh" }}>
@@ -120,7 +125,7 @@ function ProductForm(props: Props) {
           sx={{ width: "150px" }}
           /*  Knappen är grå om formuläret inte 
           är godkänt*/
-          disabled={!form.formState.isValid}
+          disabled={!form.formState.isValid} // Fråga David hur man löser denna !!!!!!!
           onClick={() => router.push("/admin")}
         >
           <SaveIcon fontSize="large" />

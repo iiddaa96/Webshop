@@ -1,14 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import {
-  Box,
-  Button,
-  FormHelperTextProps,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -71,7 +63,6 @@ export default function InputPayment() {
 
   return (
     <Box
-      data-cy="customer-form"
       sx={{
         border: "1px solid #ccc",
         padding: "20px",
@@ -87,13 +78,14 @@ export default function InputPayment() {
         Shipping Address
       </Typography>
 
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
+
+      <form data-cy="customer-form" onSubmit={handleSubmit}>
+
         <Grid container spacing={2}>
           <Grid item xs={6}>
+            {/* Input för namn */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-name-error" } as FormHelperTextProps
-              }
+              data-cy="customer-name-error, customer-name"
               inputProps={{ "data-cy": "customer-name" }}
               id="outlined-error"
               label="Name"
@@ -105,11 +97,13 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Input för efternamn */}
             <TextField
               FormHelperTextProps={
                 { "data-cy": "customer-lastname-error" } as FormHelperTextProps
               }
               inputProps={{ "data-cy": "customer-lastname" }}
+n
               id="outlined-error"
               label="Lastname"
               {...form.register("lastname")}
@@ -120,11 +114,13 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Input för address */}
             <TextField
               FormHelperTextProps={
                 { "data-cy": "customer-address-error" } as FormHelperTextProps
               }
               inputProps={{ "data-cy": "customer-address" }}
+
               id="filled-error"
               label="Address"
               {...form.register("address")}
@@ -135,10 +131,9 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Input för zipcode */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-zipcode-error" } as FormHelperTextProps
-              }
+              data-cy="customer-zipcode-error"
               inputProps={{ "data-cy": "customer-zipcode" }}
               id="outlined-error-helper-text"
               label="Zip"
@@ -150,10 +145,9 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Input för för stad */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-city-error" } as FormHelperTextProps
-              }
+              data-cy="customer-city-error"
               inputProps={{ "data-cy": "customer-city" }}
               id="filled-error-helper-text"
               label="City"
@@ -165,10 +159,9 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Input för email */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-email-error" } as FormHelperTextProps
-              }
+              data-cy="customer-email-error"
               inputProps={{ "data-cy": "customer-email" }}
               id="standard-error"
               label="Email"
@@ -180,10 +173,9 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Input för mobil */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-phone-error" } as FormHelperTextProps
-              }
+              data-cy="customer-phone-error"
               inputProps={{ "data-cy": "customer-phone" }}
               id="standard-error-helper-text"
               label="Mobile"
@@ -195,7 +187,7 @@ export default function InputPayment() {
             />
           </Grid>
         </Grid>
-        {/* Knapparna cancel och continue */}
+        {/* -----Knapparna cancel och continue-------- */}
         <Box sx={{ mt: 3, display: "flex", justifyContent: "space-between" }}>
           <Button
             component={Link}
