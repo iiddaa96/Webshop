@@ -37,6 +37,8 @@ function ProductForm(props: Props) {
     } else {
       addProduct(newData);
     }
+    //länka tillbaka till admin efter
+    router.push("/admin");
   };
 
   return (
@@ -126,7 +128,6 @@ function ProductForm(props: Props) {
           /*  Knappen är grå om formuläret inte 
           är godkänt*/
           disabled={!form.formState.isValid} // Fråga David hur man löser denna (admin-2)!!!!!!!
-          onClick={() => router.push("/admin")}
         >
           <SaveIcon fontSize="large" />
           Spara

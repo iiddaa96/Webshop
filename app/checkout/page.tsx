@@ -45,7 +45,7 @@ function CartSection() {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" component="main">
       <Typography
         sx={{
           display: "flex",
@@ -93,6 +93,7 @@ function CartSection() {
                   textAlign: "left",
                 }}
                 variant="h6"
+                data-cy="product-title"
               >
                 {item.title}
               </Typography>

@@ -21,9 +21,7 @@ const numberSchema = z.number();
 
 // Error meddelande för inputfälten om man skriver fel
 const customerSchema = z.object({
-  name: z.string(),
-
-  lastname: z.string(),
+  fullname: z.string().min(1, { message: "Please write your name." }),
 
   address: z
     .string()
@@ -31,7 +29,8 @@ const customerSchema = z.object({
 
   zip: z.coerce
     .number()
-    .min(5, { message: "Zipcode must be at least 5 digits long" }),
+    .min(10000, { message: "Please enter a valid zip code" })
+    .max(99999, { message: "Please enter a valid zip code" }),
 
   city: z
     .string()
@@ -49,8 +48,7 @@ export type CustomerInfo = z.infer<typeof customerSchema>;
 // Hantering av inputfält och formulärdata
 export default function InputPayment() {
   const [formData, setFormData] = useState<CustomerInfo>({
-    name: "",
-    lastname: "",
+    fullname: "",
     address: "",
     zip: "" as any,
     city: "",
@@ -96,24 +94,13 @@ export default function InputPayment() {
                 { "data-cy": "customer-name-error" } as FormHelperTextProps
               }
               id="outlined-error"
-              label="Name"
-              {...form.register("name")}
-              error={Boolean(form.formState.errors.name)}
-              helperText={form.formState.errors.name?.message}
+              label="FullName"
+              {...form.register("fullname")}
+              error={Boolean(form.formState.errors.fullname)}
+              helperText={form.formState.errors.fullname?.message}
               variant="outlined"
               fullWidth
               autoComplete="name"
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              id="outlined-error"
-              label="lastname"
-              {...form.register("lastname")}
-              error={Boolean(form.formState.errors.lastname)}
-              helperText={form.formState.errors.lastname?.message}
-              variant="outlined"
-              fullWidth
             />
           </Grid>
           <Grid item xs={6}>

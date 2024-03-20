@@ -20,6 +20,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
 
   return (
     <IconButton
+      data-cy="product-buy-button"
       aria-label="add to cart"
       // Anropa handleAddToCart-funktionen med produkttiteln
       onClick={(e) => {

@@ -19,7 +19,7 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
   showControls = true,
   showTotalPrice = true,
 }) => {
-  const { cart, updateQuantity } = useCart();
+  const { cart, updateQuantity, removeFromCart } = useCart();
   const [quantity, setQuantity] = useState<number>(initialQuantity);
 
   const incrementQuantity = () => {
@@ -33,6 +33,8 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
       const newQuantity = quantity - 1;
       setQuantity(newQuantity);
       updateQuantity(productId, newQuantity);
+    } else {
+      removeFromCart(productId);
     }
   };
 
@@ -74,7 +76,7 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
 
       {showTotalPrice && (
         <Box>
-          <Typography data-cy="total-price" variant="h6">
+          <Typography variant="h6" data-cy="product-price">
             Total Price: {calculateTotalPrice()} kr
           </Typography>
         </Box>

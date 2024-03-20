@@ -56,10 +56,7 @@ export default function SingleProduct(props: Props) {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Box
-            sx={{ flexGrow: 1, padding: "80px 30px" }}
-            data-cy="product-buy-button"
-          >
+          <Box sx={{ flexGrow: 1, padding: "80px 30px" }}>
             <Typography variant="h4" gutterBottom data-cy="product-title">
               {product.title}
             </Typography>
@@ -84,6 +81,7 @@ export default function SingleProduct(props: Props) {
       </Grid>
       {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
       <Snackbar
+        data-cy="added-to-cart-toast"
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={openSnackbar}
         autoHideDuration={1000}
