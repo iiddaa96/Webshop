@@ -1,17 +1,7 @@
 "use client"
 
 import { Dispatch, FC, ReactNode, SetStateAction, createContext, useContext, useState } from "react";
-
-// Define the type for form data
-export interface CustomerInfo {
-  name: string;
-  lastname: string;
-  address: string;
-  zip: string;
-  city: string;
-  email: string;
-  phone: string;
-}
+import { CustomerInfo } from "../ui/PaymentSection";
 
 // Define the type for context value
 interface PaymentContextType {
@@ -37,7 +27,7 @@ export const PaymentProvider: FC<{ children: ReactNode }> = ({ children }) => {
     name: "",
     lastname:"",
     address: "",
-    zip: "",
+    zip: 0,
     city: "",
     email: "",
     phone: "",

@@ -11,7 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { z } from "zod";
-import { CustomerInfo, useCustomer } from "../context/PaymentContext";
+import { useCustomer } from "../context/PaymentContext";
 
 // Skapar schema för inputfälten
 const stringSchema = z.string();
@@ -23,11 +23,11 @@ const formSchema = z.object({
 
   lastname: z.string(),
 
-  adress: z
+  address: z
     .string()
     .min(2, { message: "Address must be at least 2 characters long" }),
 
-  zipcode: z.coerce
+  zip: z.coerce
     .number()
     .min(5, { message: "Zipcode must be at least 5 digits long" }),
 
@@ -37,10 +37,12 @@ const formSchema = z.object({
 
   email: z.string().email({ message: "Invalid email format" }),
 
-  phone: z.coerce
-    .number()
+  phone: z
+    .string()
     .min(10, { message: "Phone number must be at least 10 digits long" }),
 });
+
+export type CustomerInfo = z.infer<typeof formSchema>;
 
 // Hantering av inputfält och formulärdata
 export default function InputPayment() {
@@ -48,7 +50,7 @@ export default function InputPayment() {
     name: "",
     lastname: "",
     address: "",
-    zip: "",
+    zip: "" as any,
     city: "",
     email: "",
     phone: "",
@@ -71,9 +73,11 @@ export default function InputPayment() {
     event.preventDefault();
     const validationResult = formSchema.safeParse(formData);
     // Om valideringen lyckas, fortsätt till confirmation sidan
-    if (validationResult.success) { setCustomer(formData)
+    if (validationResult.success) {
+      setCustomer(formData);
       setIsFormValid(true);
       console.log("Form submitted successfully!");
+      router.push("/confirmation");
     } else {
       // Om valideringen misslyckas, visa felmeddelanden
       setIsFormValid(false);
