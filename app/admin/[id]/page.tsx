@@ -1,7 +1,7 @@
 "use client";
+import { useProduct } from "@/app/context/AdminContext";
 import ProductForm from "@/app/ui/ProductForm";
 import { Container } from "@mui/material";
-import { useProduct } from "../../../context/AdminContext";
 
 type Props = { params: { id: string } };
 
@@ -12,6 +12,7 @@ function UpdateExistProduct(props: Props) {
   if (!product) {
     <div>404</div>;
   }
+// removed link
 
   return (
     <Container
