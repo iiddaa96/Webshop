@@ -176,7 +176,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Box sx={{ flexGrow: 0 }}>
+            <Box sx={{ flexGrow: 0 }} data-cy="cart-items-count-badge">
               <IconButton
                 component={Link}
                 href="/checkout"
@@ -184,7 +184,7 @@ function ResponsiveAppBar() {
                 aria-label="show cart items"
                 color="inherit"
                 sx={{ p: 0 }}
-                data-cy="cart-link"
+                data-cy="cart-items-count-badge"
               >
                 <Badge
                   badgeContent={totalQuantity}
