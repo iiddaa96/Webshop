@@ -1,12 +1,20 @@
-"use client"
+"use client";
 
-import { Dispatch, FC, ReactNode, SetStateAction, createContext, useContext, useState } from "react";
+import {
+  Dispatch,
+  FC,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 import { CustomerInfo } from "../ui/PaymentSection";
 
 // Define the type for context value
 interface PaymentContextType {
   customer: CustomerInfo;
-  setCustomer: Dispatch<SetStateAction<CustomerInfo>>
+  setCustomer: Dispatch<SetStateAction<CustomerInfo>>;
 }
 
 // Create a context for payment data
@@ -24,8 +32,7 @@ export const useCustomer = () => {
 // Payment context provider component
 export const PaymentProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [customer, setCustomer] = useState<CustomerInfo>({
-    name: "",
-    lastname:"",
+    fullname: "",
     address: "",
     zip: 0,
     city: "",
@@ -39,8 +46,6 @@ export const PaymentProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   return (
-    <PaymentContext.Provider value={value}>
-      {children}
-    </PaymentContext.Provider>
+    <PaymentContext.Provider value={value}>{children}</PaymentContext.Provider>
   );
 };

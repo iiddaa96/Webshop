@@ -5,9 +5,14 @@ import { useCustomer } from "../context/PaymentContext";
 import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
-  const { cart } = useCart();
+  const { cart /* : contextCart */ } = useCart();
+  /*   const [cart] = useState(contextCart); */
 
   const { customer } = useCustomer();
+
+  /*  useEffect(() => {
+    clearCart();
+  }, [clearCart]); */
 
   // Beräkna det totala priset för alla varor i kundvagnen
   const totalPrice = cart.reduce((acc, item) => {
@@ -15,7 +20,7 @@ function Confirmation() {
   }, 0);
 
   return (
-    <Container>
+    <Container component="main">
       {/* Box för orderbekräftelse */}
       <Box
         sx={{
@@ -103,7 +108,7 @@ function Confirmation() {
           }}
         >
           {/* Render form data */}
-          <Typography>Name: {customer.name}</Typography>
+          <Typography>Name: {customer.fullname}</Typography>
           <Typography>Address: {customer.address}</Typography>
           <Typography>Zip: {customer.zip}</Typography>
           <Typography>City: {customer.city}</Typography>
