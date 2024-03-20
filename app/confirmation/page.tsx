@@ -1,10 +1,13 @@
 "use client";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useCart } from "../context/CartContext";
+import { useCustomer } from "../context/PaymentContext";
 import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
   const { cart } = useCart();
+
+  const { customer } = useCustomer();
 
   // Beräkna det totala priset för alla varor i kundvagnen
   const totalPrice = cart.reduce((acc, item) => {
@@ -98,13 +101,13 @@ function Confirmation() {
             whiteSpace: "pre-line",
           }}
         >
-          {`Ida Casperson
-Åby allé 69
-431 45 Mölndal
-
-Wall of Art
-Hittepå gatan 01
-442 11 Göteborg`}
+          {/* Render form data */}
+          <Typography>Name: {customer.name}</Typography>
+          <Typography>Address: {customer.address}</Typography>
+          <Typography>Zip: {customer.zip}</Typography>
+          <Typography>City: {customer.city}</Typography>
+          <Typography>Email: {customer.email}</Typography>
+          <Typography>Phone: {customer.phone}</Typography>
         </Typography>
       </Box>
     </Container>

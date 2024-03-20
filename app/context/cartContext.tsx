@@ -72,7 +72,6 @@ export const CartProvider: React.FC = ({ children }: PropsWithChildren<{}>) => {
       });
     });
   };
-  
 
   return (
     <CartContext.Provider

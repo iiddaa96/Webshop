@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+
 import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
 import QuantityButton from "../ui/quantityButton";
@@ -173,7 +174,7 @@ function CartSection() {
           </Button>
         </Paper>
       )}
-      <PaymentSection />{" "}
+      <PaymentSection />
     </Container>
   );
 }
