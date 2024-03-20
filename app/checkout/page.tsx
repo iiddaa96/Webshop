@@ -10,15 +10,13 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import { usePayment } from "../context/PaymentContext";
+
 import { useCart } from "../context/cartContext";
 import PaymentSection from "../ui/PaymentSection";
 import QuantityButton from "../ui/quantityButton";
 
 
 function CartSection() {
-
-  const { formData } = usePayment();
   const { cart, removeFromCart } = useCart(); //hämtar från cartContext
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState("");
@@ -176,7 +174,7 @@ function CartSection() {
           </Button>
         </Paper>
       )}
-     <PaymentSection formData={formData} />
+     <PaymentSection />
     </Container>
   );
 }

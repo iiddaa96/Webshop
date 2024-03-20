@@ -11,6 +11,7 @@ import {
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { z } from "zod";
+import { CustomerInfo, useCustomer } from "../context/PaymentContext";
 
 // Skapar schema för inputfälten
 const stringSchema = z.string();
@@ -43,17 +44,18 @@ const formSchema = z.object({
 
 // Hantering av inputfält och formulärdata
 export default function InputPayment() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<CustomerInfo>({
     name: "",
     lastname: "",
     address: "",
-    zipcode: "",
+    zip: "",
     city: "",
     email: "",
     phone: "",
   });
 
   const router = useRouter();
+  const { setCustomer } = useCustomer();
 
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isFormValid, setIsFormValid] = useState(true);
@@ -69,7 +71,7 @@ export default function InputPayment() {
     event.preventDefault();
     const validationResult = formSchema.safeParse(formData);
     // Om valideringen lyckas, fortsätt till confirmation sidan
-    if (validationResult.success) {
+    if (validationResult.success) { setCustomer(formData)
       setIsFormValid(true);
       console.log("Form submitted successfully!");
     } else {
@@ -163,9 +165,9 @@ export default function InputPayment() {
               inputProps={{ "data-cy": "customer-zipcode" }}
               error={!!formErrors["zipcode"]}
               id="outlined-error-helper-text"
-              name="zipcode"
+              name="zip"
               label="Zip"
-              value={formData.zipcode}
+              value={formData.zip}
               onChange={handleInputChange}
               helperText={formErrors["zipcode"] || ""}
               variant="outlined"

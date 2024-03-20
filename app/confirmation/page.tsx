@@ -1,16 +1,17 @@
 
 "use client";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { usePayment } from "../context/PaymentContext";
+import { useCustomer } from "../context/PaymentContext";
 import { useCart } from "../context/cartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
   const { cart } = useCart();
 
-  const { formData } = usePayment();
+  const { customer } = useCustomer();
+
   
-  const { name, address, zip, city, email, phone } = formData;
+
   // Beräkna det totala priset för alla varor i kundvagnen
   const totalPrice = cart.reduce((acc, item) => {
     return acc + item.price * item.quantity;
@@ -104,12 +105,12 @@ function Confirmation() {
           }}
         >
          {/* Render form data */}
-         <Typography>Name: {formData.name}</Typography>
-      <Typography>Address: {formData.address}</Typography>
-      <Typography>Zip: {formData.zip}</Typography>
-      <Typography>City: {formData.city}</Typography>
-      <Typography>Email: {formData.email}</Typography>
-      <Typography>Phone: {formData.phone}</Typography>
+         <Typography>Name: {customer.name}</Typography>
+      <Typography>Address: {customer.address}</Typography>
+      <Typography>Zip: {customer.zip}</Typography>
+      <Typography>City: {customer.city}</Typography>
+      <Typography>Email: {customer.email}</Typography>
+      <Typography>Phone: {customer.phone}</Typography>
           
         </Typography>
       
