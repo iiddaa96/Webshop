@@ -78,7 +78,7 @@ export default function Home() {
               key={product.id}
               data-cy="product"
             >
-              <Link href={`/products/${product.id}` as any}>
+              <Link href={`/product/${product.id}` as any}>
                 <Card
                   sx={{
                     maxWidth: 345,
@@ -135,6 +135,7 @@ export default function Home() {
 
       {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
       <Snackbar
+        data-cy="added-to-cart-toast"
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={openSnackbar}
         autoHideDuration={1000}
