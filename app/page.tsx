@@ -78,7 +78,7 @@ export default function Home() {
               key={product.id}
               data-cy="product"
             >
-              <Link href={`/products/${product.id}` as any}>
+              <Link href={`/product/${product.id}` as any}>
                 <Card
                   sx={{
                     maxWidth: 345,
