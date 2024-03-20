@@ -120,30 +120,26 @@ export default function InputPayment() {
                 { "data-cy": "customer-lastname-error" } as FormHelperTextProps
               }
               inputProps={{ "data-cy": "customer-lastname" }}
-              error={!!formErrors["lastname"]}
               id="outlined-error"
-              name="lastname"
               label="Lastname"
-              value={formData.lastname}
-              onChange={handleInputChange}
-              helperText={formErrors["lastname"] || ""}
+              {...form.register("lastname")}
+              error={Boolean(form.formState.errors.lastname)}
+              helperText={form.formState.errors.lastname?.message}
               variant="outlined"
               fullWidth
             />
           </Grid>
           <Grid item xs={6}>
             <TextField
-              inputProps={{ "data-cy": "customer-address" }}
               FormHelperTextProps={
                 { "data-cy": "customer-address-error" } as FormHelperTextProps
               }
-              error={!!formErrors["address"]}
+              inputProps={{ "data-cy": "customer-address" }}
               id="filled-error"
-              name="address"
               label="Address"
-              value={formData.address}
-              onChange={handleInputChange}
-              helperText={formErrors["address"] || ""}
+              {...form.register("address")}
+              error={Boolean(form.formState.errors.address)}
+              helperText={form.formState.errors.address?.message}
               variant="filled"
               fullWidth
             />
@@ -154,13 +150,11 @@ export default function InputPayment() {
                 { "data-cy": "customer-zipcode-error" } as FormHelperTextProps
               }
               inputProps={{ "data-cy": "customer-zipcode" }}
-              error={!!formErrors["zipcode"]}
               id="outlined-error-helper-text"
-              name="zip"
               label="Zip"
-              value={formData.zip}
-              onChange={handleInputChange}
-              helperText={formErrors["zipcode"] || ""}
+              {...form.register("zip")}
+              error={Boolean(form.formState.errors.zip)}
+              helperText={form.formState.errors.zip?.message}
               variant="outlined"
               fullWidth
             />
@@ -171,13 +165,11 @@ export default function InputPayment() {
                 { "data-cy": "customer-city-error" } as FormHelperTextProps
               }
               inputProps={{ "data-cy": "customer-city" }}
-              error={!!formErrors["city"]}
               id="filled-error-helper-text"
-              name="city"
               label="City"
-              value={formData.city}
-              onChange={handleInputChange}
-              helperText={formErrors["city"] || ""}
+              {...form.register("city")}
+              error={Boolean(form.formState.errors.city)}
+              helperText={form.formState.errors.city?.message}
               variant="filled"
               fullWidth
             />
@@ -188,13 +180,11 @@ export default function InputPayment() {
                 { "data-cy": "customer-email-error" } as FormHelperTextProps
               }
               inputProps={{ "data-cy": "customer-email" }}
-              error={!!formErrors["email"]}
               id="standard-error"
-              name="email"
               label="Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              helperText={formErrors["email"] || ""}
+              {...form.register("email")}
+              error={Boolean(form.formState.errors.email)}
+              helperText={form.formState.errors.email?.message}
               variant="standard"
               fullWidth
             />
@@ -205,13 +195,11 @@ export default function InputPayment() {
                 { "data-cy": "customer-phone-error" } as FormHelperTextProps
               }
               inputProps={{ "data-cy": "customer-phone" }}
-              error={!!formErrors["phone"]}
               id="standard-error-helper-text"
-              name="phone"
               label="Mobile"
-              value={formData.phone}
-              onChange={handleInputChange}
-              helperText={formErrors["phone"] || ""}
+              {...form.register("phone")}
+              error={Boolean(form.formState.errors.phone)}
+              helperText={form.formState.errors.phone?.message}
               variant="standard"
               fullWidth
             />
@@ -236,9 +224,6 @@ export default function InputPayment() {
             Cancel
           </Button>
           <Button
-            // component={Link}
-            // href="/confirmation"
-            // onClick={() => router.push("/confirmation")}
             type="submit"
             variant="contained"
             color="primary"
