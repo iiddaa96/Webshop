@@ -22,8 +22,6 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
   const { cart, updateQuantity } = useCart();
   const [quantity, setQuantity] = useState<number>(initialQuantity);
 
-  
-
   const incrementQuantity = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
