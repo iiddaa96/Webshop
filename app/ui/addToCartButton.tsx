@@ -27,9 +27,8 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
         handleAddToCart(product);
         addToCart(product);
       }}
-      data-cy="cart-items-count-badge"
     >
-      <AddShoppingCartIcon data-cy="cart-items-count-badge" />
+      <AddShoppingCartIcon />
     </IconButton>
   );
 };

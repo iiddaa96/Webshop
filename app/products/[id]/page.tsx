@@ -45,7 +45,7 @@ export default function SingleProduct(props: Props) {
     <main>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          <Box sx={{ flexGrow: 1 }} data-cy="cart-items-count-badge">
+          <Box sx={{ flexGrow: 1 }}>
             <div key={product.id} data-cy="product-id">
               <img
                 src={product.image}
@@ -78,7 +78,6 @@ export default function SingleProduct(props: Props) {
               product={product}
               handleAddToCart={handleAddToCart}
               title={""}
-              data-cy="cart-items-count-badge"
             />
           </Box>
         </Grid>
