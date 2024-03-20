@@ -127,7 +127,7 @@ function CartSection() {
         <Grid item xs={6}>
           <Box sx={{ textAlign: "right" }}>
             <Typography
-              ata-cy="total-price"
+              data-cy="total-price"
               variant="body1"
               sx={{
                 fontWeight: "bold",

@@ -1,5 +1,5 @@
 "use client";
-import React, {
+import {
   PropsWithChildren,
   createContext,
   useContext,
@@ -26,16 +26,22 @@ export const CartContext = createContext<CartContextType>({
 
 export const useCart = () => useContext(CartContext);
 
-export const CartProvider: React.FC = ({ children }: PropsWithChildren<{}>) => {
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    if (typeof localStorage === "undefined") return [];
-    const savedCart = localStorage.getItem(CART_LOCAL_STORAGE_KEY);
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    const savedCart = localStorage.getItem(CART_LOCAL_STORAGE_KEY);
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded) return;
     localStorage.setItem(CART_LOCAL_STORAGE_KEY, JSON.stringify(cart));
-  }, [cart]);
+  }, [cart, isLoaded]);
 
   const addToCart = (product: Product) => {
     setCart((prevCart) => {

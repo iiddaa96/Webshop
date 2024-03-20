@@ -87,7 +87,7 @@ export default function InputPayment() {
         Shipping Address
       </Typography>
 
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
+      <form data-cy="customer-form" onSubmit={form.handleSubmit(handleSubmit)}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             <TextField
@@ -106,10 +106,6 @@ export default function InputPayment() {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-lastname-error" } as FormHelperTextProps
-              }
-              inputProps={{ "data-cy": "customer-lastname" }}
               id="outlined-error"
               label="Lastname"
               {...form.register("lastname")}
