@@ -22,8 +22,6 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
   const { cart, updateQuantity } = useCart();
   const [quantity, setQuantity] = useState<number>(initialQuantity);
 
-  
-
   const incrementQuantity = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
@@ -51,26 +49,32 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
             color="inherit"
             aria-label="decrement"
             onClick={decrementQuantity}
+            data-cy="decrease-quantity-button"
           >
             <RemoveIcon />
           </IconButton>
         )}
         <Button variant="contained" color="inherit">
-          <Typography component="span">{quantity}</Typography>
+          <Typography data-cy="product-quantity" component="span">
+            {quantity}
+          </Typography>
         </Button>
+
         {showControls && (
           <IconButton
             color="inherit"
             aria-label="increment"
             onClick={incrementQuantity}
+            data-cy="increase-quantity-button"
           >
             <AddIcon />
           </IconButton>
         )}
       </Box>
+
       {showTotalPrice && (
         <Box>
-          <Typography variant="h6">
+          <Typography data-cy="total-price" variant="h6">
             Total Price: {calculateTotalPrice()} kr
           </Typography>
         </Box>
