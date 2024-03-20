@@ -1,16 +1,13 @@
-
 "use client";
 import { Box, Container, Grid, Typography } from "@mui/material";
+import { useCart } from "../context/CartContext";
 import { useCustomer } from "../context/PaymentContext";
-import { useCart } from "../context/cartContext";
 import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
   const { cart } = useCart();
 
   const { customer } = useCustomer();
-
-  
 
   // Beräkna det totala priset för alla varor i kundvagnen
   const totalPrice = cart.reduce((acc, item) => {
@@ -99,26 +96,22 @@ function Confirmation() {
           borderBottom: "1px solid #e0e0e0",
         }}
       >
-              <Typography
+        <Typography
           sx={{
             whiteSpace: "pre-line",
           }}
         >
-         {/* Render form data */}
-         <Typography>Name: {customer.name}</Typography>
-      <Typography>Address: {customer.address}</Typography>
-      <Typography>Zip: {customer.zip}</Typography>
-      <Typography>City: {customer.city}</Typography>
-      <Typography>Email: {customer.email}</Typography>
-      <Typography>Phone: {customer.phone}</Typography>
-          
+          {/* Render form data */}
+          <Typography>Name: {customer.name}</Typography>
+          <Typography>Address: {customer.address}</Typography>
+          <Typography>Zip: {customer.zip}</Typography>
+          <Typography>City: {customer.city}</Typography>
+          <Typography>Email: {customer.email}</Typography>
+          <Typography>Phone: {customer.phone}</Typography>
         </Typography>
-      
       </Box>
     </Container>
   );
 }
 
 export default Confirmation;
-
-

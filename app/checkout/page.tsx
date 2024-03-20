@@ -11,10 +11,9 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
 import QuantityButton from "../ui/quantityButton";
-
 
 function CartSection() {
   const { cart, removeFromCart } = useCart(); //hämtar från cartContext
@@ -174,7 +173,7 @@ function CartSection() {
           </Button>
         </Paper>
       )}
-     <PaymentSection />
+      <PaymentSection />
     </Container>
   );
 }
