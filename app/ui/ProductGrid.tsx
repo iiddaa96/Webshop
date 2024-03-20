@@ -78,6 +78,7 @@ export default function ProductGrid() {
                   <CardMedia
                     component="img"
                     height="auto"
+                    width="auto"
                     image={product.image}
                     alt={product.title}
                   />
