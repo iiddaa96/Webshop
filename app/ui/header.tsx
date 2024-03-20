@@ -175,7 +175,7 @@ function ResponsiveAppBar() {
             </Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0 }} data-cy="cart-items-count-badge">
             <Box sx={{ flexGrow: 0 }} data-cy="cart-items-count-badge">
               <IconButton
                 component={Link}
@@ -191,7 +191,7 @@ function ResponsiveAppBar() {
                   color="secondary"
                   data-cy="cart-items-count-badge"
                 >
-                  <ShoppingCartIcon />
+                  <ShoppingCartIcon data-cy="cart-items-count-badge" />
                 </Badge>
               </IconButton>
             </Box>
