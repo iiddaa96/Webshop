@@ -30,7 +30,21 @@ function Confirmation() {
         }}
       >
         <h1 style={{ textAlign: "center" }}>Orderbekräftelse</h1>
+        {/* Hejdå och tack meddelande till kund */}
+        <Typography>
+          Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya tavlor.
+        </Typography>
+        <Typography>
+          Här kommer ditt digitala kvitto från Wall of Art. Mer inspiration
+          finns på vår hemsida Wall of Art.se där du kan se olika tavlor för
+          olika stylingar.
+        </Typography>
+        <Typography>
+          Hoppas vi hörs snart igen! Hälsningar från oss på Wall of Art
+        </Typography>
+
         {/* Spaceing mellan boxarna och css styleing */}
+        {/* Mappar ut från paymentSection ut till bekräftelse sidan */}
         <Grid container spacing={1}>
           {cart.map((item) => (
             <Grid
@@ -63,24 +77,11 @@ function Confirmation() {
                   initialQuantity={item.quantity}
                   showTotalPrice
                   showControls={false}
-                  // showTotalPrice={false}
                 />
               </Box>
             </Grid>
           ))}
         </Grid>
-
-        <Typography>
-          Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya tavlor.
-        </Typography>
-        <Typography>
-          Här kommer ditt digitala kvitto från Wall of Art. Mer inspiration
-          finns på vår hemsida Wall of Art.se där du kan se olika tavlor för
-          olika stylingar.
-        </Typography>
-        <Typography>
-          Hoppas vi hörs snart igen! Hälsningar från oss på Wall of Art
-        </Typography>
 
         {/* Totalpris för hela beställningen */}
         <Typography variant="h6" sx={{ marginTop: "20px" }}>

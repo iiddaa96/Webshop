@@ -57,23 +57,15 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     });
   };
 
-   const removeProduct = (productId: string) => {
-     setProducts((prevProducts) =>
-       prevProducts.filter((product) => product.id !== productId)
-     );
-    
-     // Denna rad uppdaterar listan genom att filtrera bort produkten med det angivna ID:t
-   };
-
-  // const removeProduct = (productId: string) => {
-  //   const deleteProduct = products.filter((item) => item.id !== productId);
-
-  //   setProducts(deleteProduct);
-  // };
+  const removeProduct = (productId: string) => {
+    setProducts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== productId)
+    );
+  };
 
   return (
     <ProductContext.Provider
-      value={{ products, addProduct, editProduct, removeProduct  }}
+      value={{ products, addProduct, editProduct, removeProduct }}
     >
       {children}
     </ProductContext.Provider>

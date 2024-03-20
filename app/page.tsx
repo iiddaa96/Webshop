@@ -41,7 +41,7 @@ export default function Home() {
       <Box
         sx={{
           width: "95%",
-          // overflow: "hidden",
+          overflow: "hidden",
           justifyContent: "center",
           position: "relative",
           paddingTop: "30%", // Minskat från '56.25%' till en lägre procent för att minska höjden
@@ -89,6 +89,7 @@ export default function Home() {
                 >
                   <CardMedia
                     component="img"
+                    width="auto"
                     height="280"
                     image={product.image}
                     alt={product.title}

@@ -9,6 +9,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { useCart } from "../context/CartContext";
@@ -60,6 +61,7 @@ function CartSection() {
       <Grid container spacing={1}>
         {cart.map((item) => (
           <Grid
+            data-cy="cart-item"
             item
             xs={12}
             key={item.id}
@@ -71,7 +73,7 @@ function CartSection() {
           >
             {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
             <Box sx={{ width: "10%" }}>
-              <img
+              <Image
                 src={item.image}
                 style={{ width: "100%" }}
                 alt={item.title}
@@ -83,7 +85,6 @@ function CartSection() {
                 flexDirection: "column",
                 width: "90%",
               }}
-              data-cy="cart-item"
             >
               {/* Mappar ut titel av tavlorna */}
               <Typography
