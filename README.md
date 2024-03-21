@@ -72,7 +72,7 @@ Uppgiften är att använda sig av Next.js, Typescript och React och ett valfritt
 
 **Medverkande**
 
-- [Ida Caspersson](https://github.com/iiddaa96)
+- [Ida Casperson](https://github.com/iiddaa96)
 - [Jessica Rodriguez](https://github.com/iiddaa96)
 - [Maryama Salad](https://github.com/Maryamakeyf)
 - [Michaela Andreasson](https://github.com/Navaas)
