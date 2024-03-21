@@ -1,10 +1,9 @@
 "use client";
-
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { useCart } from "../context/CartContext"; // Justera importen baserat på din filstruktur
+import { useCart } from "../context/CartContext";
 
 interface QuantityButtonProps {
   productId: string;
@@ -19,7 +18,7 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
   showControls = true,
   showTotalPrice = true,
 }) => {
-  const { cart, updateQuantity, removeFromCart } = useCart();
+  const { cart, updateQuantity, removeFromCart, confirmedCart } = useCart();
   const [quantity, setQuantity] = useState<number>(initialQuantity);
 
   const incrementQuantity = () => {
@@ -76,8 +75,8 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
 
       {showTotalPrice && (
         <Box>
-          <Typography variant="h6" data-cy="product-price">
-            Total Price: {calculateTotalPrice()} kr
+          <Typography variant="subtitle1" data-cy="product-price">
+            Price: {calculateTotalPrice()} kr
           </Typography>
         </Box>
       )}

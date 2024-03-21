@@ -37,7 +37,6 @@ function ProductForm(props: Props) {
     } else {
       addProduct(newData);
     }
-    //länka tillbaka till admin efter
     router.push("/admin");
   };
 

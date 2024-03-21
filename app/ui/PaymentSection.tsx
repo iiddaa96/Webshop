@@ -104,6 +104,7 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Textfält för adress */}
             <TextField
               FormHelperTextProps={
                 { "data-cy": "customer-address-error" } as FormHelperTextProps
@@ -120,6 +121,7 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Textfält för zip */}
             <TextField
               FormHelperTextProps={
                 { "data-cy": "customer-zipcode-error" } as FormHelperTextProps
@@ -136,6 +138,7 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Textfält för stad */}
             <TextField
               FormHelperTextProps={
                 { "data-cy": "customer-city-error" } as FormHelperTextProps
@@ -152,6 +155,7 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Textfält för email */}
             <TextField
               FormHelperTextProps={
                 { "data-cy": "customer-email-error" } as FormHelperTextProps
@@ -168,6 +172,7 @@ export default function InputPayment() {
             />
           </Grid>
           <Grid item xs={6}>
+            {/* Textfält för mobil */}
             <TextField
               FormHelperTextProps={
                 { "data-cy": "customer-phone-error" } as FormHelperTextProps

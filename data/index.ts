@@ -44,7 +44,7 @@ export const products: Product[] = [
   {
     id: "3",
     title: "WILLIAM MORRIS - WILLOW BOUGH POSTER",
-    price: 99,
+    price: 105,
     description:
       "Illustration with green leaves and beige twigs against a light background. Illustration with a green and beige leaf pattern on a light background with text at the top and bottom. This classic design by William Morris will give your home a beautiful and timeless style, and this poster goes perfectly with William Morris - Larkspur.",
     image:
@@ -71,7 +71,7 @@ export const products: Product[] = [
   {
     id: "6",
     title: "COTTONGRASS POSTER",
-    price: 109,
+    price: 209,
     description:
       "White cotton grass. Photograph of cotton grass with white flowers. Photograph of white cotton grass against a beige, blurred background. Posters in neutral colors give your home a calm and cozy atmosphere, and this style is perfect for a clean, Scandinavian interior. The poster is printed with a white border around the motif and has a grainy photo texture.",
     image:
@@ -80,7 +80,7 @@ export const products: Product[] = [
   {
     id: "7",
     title: "CIRCLES CANVASTAVLA",
-    price: 99,
+    price: 105,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
@@ -89,7 +89,7 @@ export const products: Product[] = [
   {
     id: "8",
     title: "RUSTIC ARCHES CANVASTAVLA",
-    price: 99,
+    price: 159,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
@@ -98,7 +98,7 @@ export const products: Product[] = [
   {
     id: "9",
     title: "ABSTRACT TEXTURE CANVASTAVLA",
-    price: 99,
+    price: 125,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:
@@ -107,7 +107,7 @@ export const products: Product[] = [
   {
     id: "10",
     title: "BERLIN SHAPES NO1 CANVASTAVLA",
-    price: 99,
+    price: 100,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,debitis suscipit sapiente voluptates obcaecati neque accusamus veniam corporis vel quo ipsa quibusdam voluptas commodi eligendi vitae dicta ullam, beatae nobis?",
     image:

@@ -10,20 +10,24 @@ import { CartItem, Product } from "../../data/index";
 
 export interface CartContextType {
   cart: CartItem[];
+  confirmedCart: CartItem[]; // Lägg till denna rad
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
-  // clearCart: () => void;
+  clearCart: () => void; //lägger till clearCart
+  setConfirmedCart: (items: CartItem[]) => void; // Lägg till denna rad
 }
 
 const CART_LOCAL_STORAGE_KEY = "cart";
 
 export const CartContext = createContext<CartContextType>({
   cart: [],
+  confirmedCart: [], // Lägg till denna rad
   addToCart: () => {},
   removeFromCart: () => {},
   updateQuantity: () => {},
-  /*  clearCart: () => {}, */
+  clearCart: () => [], // cart to empty array on clear
+  setConfirmedCart: () => {}, // Lägg till denna rad
 });
 
 export const useCart = () => useContext(CartContext);
@@ -31,6 +35,11 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [confirmedCart, setConfirmedCart] = useState<CartItem[]>([]); // Ny state
+
+  const handleSetConfirmedCart = (items: CartItem[]) => {
+    setConfirmedCart(items);
+  };
 
   useEffect(() => {
     const savedCart = localStorage.getItem(CART_LOCAL_STORAGE_KEY);
@@ -81,14 +90,22 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
     });
   };
 
-  // const clearCart = () => {
-  //   setCart([]);
-  //   localStorage.removeItem(CART_LOCAL_STORAGE_KEY);
-  // };
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem(CART_LOCAL_STORAGE_KEY);
+  };
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+        setConfirmedCart: handleSetConfirmedCart,
+        confirmedCart,
+      }}
     >
       {children}
     </CartContext.Provider>

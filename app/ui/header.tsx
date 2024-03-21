@@ -62,7 +62,6 @@ function ResponsiveAppBar() {
           disableGutters
           sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
         >
-          {/* Styleing för loggans namn samt länk */}
           <Box
             component={Link}
             href="/"
@@ -72,7 +71,7 @@ function ResponsiveAppBar() {
               overflow: "hidden",
               width: 70,
               height: 70,
-              marginRight: "24rem", //Sätter länkarna i mitten
+              marginRight: "24rem",
             }}
           >
             <Image src={LogoImage} height={75} width={75} alt="Logo" />
@@ -88,6 +87,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
+            {/* Layout för mobil */}
             <Box
               component={Link}
               href="/"
