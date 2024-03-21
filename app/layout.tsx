@@ -3,8 +3,8 @@ import { ProductProvider } from "./context/AdminContext";
 import { CartProvider } from "./context/CartContext";
 import { PaymentProvider } from "./context/PaymentContext";
 import { LayoutProps } from "./types";
-import Footer from "./ui/footer1";
-import ResponsiveAppBar from "./ui/header1";
+import Footer from "./ui/Footer";
+import ResponsiveAppBar from "./ui/Header";
 
 /**
  * Rotlayoutkomponenten som ger grundläggande layout för hela applikationen.
