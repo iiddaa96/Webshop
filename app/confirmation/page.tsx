@@ -1,12 +1,11 @@
 "use client";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
-import { useCart } from "../context/CartContext"; // Se till att denna sökväg matchar var du faktiskt har din CartContext
-import { useCustomer } from "../context/PaymentContext"; // Justera sökvägen enligt behov
-import QuantityButton from "../ui/quantityButton"; // Uppdatera sökvägen enligt din struktur
+import { useCart } from "../context/CartContext";
+import { useCustomer } from "../context/PaymentContext";
+import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
-  // Använder confirmedCart istället för cart
   const { cart } = useCart();
   const { clearCart, setConfirmedCart, confirmedCart } = useCart();
   const { customer } = useCustomer();
@@ -18,7 +17,6 @@ function Confirmation() {
     }
   }, [cart, clearCart, setConfirmedCart]);
 
-  // Beräknar det totala priset för alla varor i den bekräftade varukorgen
   const totalPrice = confirmedCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -60,13 +58,15 @@ function Confirmation() {
               <QuantityButton
                 productId={item.id}
                 initialQuantity={item.quantity}
-                showTotalPrice
                 showControls={false}
               />
+              {/* Render the price here */}
+              <Typography>Price: {item.price} kr</Typography>
             </Grid>
           ))}
         </Grid>
 
+        {/* Render the total price here */}
         <Typography variant="h6" sx={{ marginTop: "20px" }}>
           Totalt: {totalPrice} kr
         </Typography>
