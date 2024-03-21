@@ -60,13 +60,11 @@ function Confirmation() {
                 initialQuantity={item.quantity}
                 showControls={false}
               />
-              {/* Render the price here */}
               <Typography>Price: {item.price} kr</Typography>
             </Grid>
           ))}
         </Grid>
 
-        {/* Render the total price here */}
         <Typography variant="h6" sx={{ marginTop: "20px" }}>
           Totalt: {totalPrice} kr
         </Typography>
