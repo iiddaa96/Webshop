@@ -77,7 +77,7 @@ function ResponsiveAppBar() {
               overflow: "hidden",
               width: 70,
               height: 70,
-              marginRight: "24rem",
+              marginRight: "30rem",
             }}
           >
             <Image src={LogoImage} height={75} width={75} alt="Logo" />
