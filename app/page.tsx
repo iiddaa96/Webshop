@@ -19,7 +19,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Product, products } from "../data/index";
 import MiddleImage from "./assets/middleImage.png";
-import AddToCartButton from "./ui/AddToCartButton";
+import AddToCartButton from "./ui/AddToCartButton1";
 
 /**
  * Komponent för startsidan.
