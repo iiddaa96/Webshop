@@ -1,6 +1,6 @@
 "use client";
 
-import AddToCartButton from "@/app/ui/AddToCartButton1";
+import AddToCartButton from "@/app/ui/AddToCartButton";
 import { Box, Grid, Snackbar, Typography } from "@mui/material";
 import { useState } from "react";
 import { Product, products } from "../../../data/index";
