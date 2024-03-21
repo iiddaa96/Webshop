@@ -12,7 +12,6 @@ function UpdateExistProduct(props: Props) {
   if (!product) {
     <div>404</div>;
   }
-  // removed link
 
   return (
     <Container

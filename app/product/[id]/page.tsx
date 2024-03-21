@@ -1,15 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
-/*
-- `data-cy="product"` produkt-korten/raden på startsidan & adminsidan.
-- `data-cy="product-id"` id på en produkt. ------------------
-- `data-cy="product-title"` titeln på en produkt. --------------
-- `data-cy="product-price"` priset på en produkt. -----------------
-- `data-cy="product-description"` beskrivningen av en produkt. -----------------
-- `data-cy="product-buy-button"` lägg till i kundvagnen knappen.
-- `data-cy="added-to-cart-toast"` toast som visas när en produkt läggs till i kundvagnen.
-*/
-
 "use client";
 
 import AddToCartButton from "@/app/ui/addToCartButton";
@@ -72,6 +60,7 @@ export default function SingleProduct(props: Props) {
             </Typography>
 
             <AddToCartButton
+              data-cy="added-to-cart-toast"
               product={product}
               handleAddToCart={handleAddToCart}
               title={""}

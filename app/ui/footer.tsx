@@ -22,7 +22,7 @@ function Footer() {
         alignItems: "center",
         padding: "10px 0",
         backgroundColor: "white",
-        flexDirection: "row", // För desktop-läge (standard)
+        flexDirection: "row", // För desktop-läge
         "@media (max-width: 600px)": {
           flexDirection: "column", // För mobilläge
           padding: "20px",

@@ -22,7 +22,7 @@ import {
   styled,
 } from "@mui/material";
 import React from "react";
-import { useProduct } from "../context/AdminContext"; // Adjust the path accordingly
+import { useProduct } from "../context/AdminContext";
 
 // Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
