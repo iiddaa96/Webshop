@@ -58,6 +58,7 @@ function Confirmation() {
               <QuantityButton
                 productId={item.id}
                 initialQuantity={item.quantity}
+                showTotalPrice
                 showControls={false}
               />
               <Typography>Price: {item.price} kr</Typography>
