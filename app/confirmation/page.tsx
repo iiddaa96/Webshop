@@ -1,15 +1,19 @@
 "use client";
 import { Box, Container, Grid, Typography } from "@mui/material";
+import { useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useCustomer } from "../context/PaymentContext";
 import QuantityButton from "../ui/quantityButton";
 
 function Confirmation() {
-  const { cart /* : contextCart */ } = useCart();
+  const { cart, clearCart } = useCart();
   /*   const [cart] = useState(contextCart); */
 
   const { customer } = useCustomer();
 
+  useEffect(() => {
+    clearCart(); // Clear the cart when component mounts
+  }, []);
   /*  useEffect(() => {
     clearCart();
   }, [clearCart]); */

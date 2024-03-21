@@ -13,7 +13,7 @@ export interface CartContextType {
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
-  // clearCart: () => void;
+  clearCart: () => void; //lägger till clearCart
 }
 
 const CART_LOCAL_STORAGE_KEY = "cart";
@@ -23,7 +23,7 @@ export const CartContext = createContext<CartContextType>({
   addToCart: () => {},
   removeFromCart: () => {},
   updateQuantity: () => {},
-  /*  clearCart: () => {}, */
+  clearCart: () => [],
 });
 
 export const useCart = () => useContext(CartContext);
@@ -81,14 +81,14 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
     });
   };
 
-  // const clearCart = () => {
-  //   setCart([]);
-  //   localStorage.removeItem(CART_LOCAL_STORAGE_KEY);
-  // };
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem(CART_LOCAL_STORAGE_KEY);
+  };
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity }}
+      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart }}
     >
       {children}
     </CartContext.Provider>
