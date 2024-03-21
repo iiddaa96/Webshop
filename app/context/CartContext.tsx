@@ -23,7 +23,7 @@ export const CartContext = createContext<CartContextType>({
   addToCart: () => {},
   removeFromCart: () => {},
   updateQuantity: () => {},
-  clearCart: () => [],
+  clearCart: () => [], // cart to empty array on clear
 });
 
 export const useCart = () => useContext(CartContext);
