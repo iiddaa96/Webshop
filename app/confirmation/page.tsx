@@ -3,7 +3,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useCustomer } from "../context/PaymentContext";
-import QuantityButton from "../ui/quantityButton";
+import QuantityButton from "../ui/quantityButton1";
 
 /**
  * Komponent som representerar bekräftelsesidan för en genomförd beställning.

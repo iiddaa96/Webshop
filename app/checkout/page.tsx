@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 
 import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
-import QuantityButton from "../ui/quantityButton";
+import QuantityButton from "../ui/quantityButton1";
 
 /**
  * Komponent som representerar kundvagnen.
