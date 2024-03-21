@@ -1,12 +1,21 @@
 "use client";
 
-import AddToCartButton from "@/app/ui/addToCartButton";
+import AddToCartButton from "@/app/ui/AddToCartButton";
 import { Box, Grid, Snackbar, Typography } from "@mui/material";
 import { useState } from "react";
 import { Product, products } from "../../../data/index";
 
 type Props = { params: { id: string } };
 
+/**
+ * Komponent för att visa detaljer för en enskild produkt.
+ *
+ * @component
+ * @param {object} props - Props för komponenten.
+ * @param {object} props.params - Parametrar för produkten.
+ * @param {string} props.params.id - Id för produkten.
+ * @returns {JSX.Element} Detaljer för en enskild produkt.
+ */
 export default function SingleProduct(props: Props) {
   const product = products.find((product) => product.id === props.params.id);
 
@@ -15,11 +24,18 @@ export default function SingleProduct(props: Props) {
   // Tillstånd för meddelandet i snackbar
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  /**
+   * Funktion för att lägga till en produkt i kundvagnen.
+   * @param {Object} product - Produktobjektet som ska läggas till.
+   */
   const handleAddToCart = (product: Product) => {
     setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
     setOpenSnackbar(true); // Visa snackbar
   };
 
+  /**
+   * Funktion för att stänga snackbar.
+   */
   const handleCloseSnackbar = () => {
     // Funktion för att stänga snackbar
     setOpenSnackbar(false);

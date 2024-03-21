@@ -14,9 +14,15 @@ import * as React from "react";
 import LogoImage from "../assets/logo.png";
 import { useCart } from "../context/CartContext";
 
+/**
+ * Komponent för en responsiv app-fält som innehåller navigeringslänkar och en kundvagnsikon.
+ *
+ * @returns {JSX.Element} Komponenten för app-fältet.
+ */
 function ResponsiveAppBar() {
   const { cart } = useCart();
 
+  // Beräkna totala antalet produkter i kundvagnen
   const totalQuantity = cart.reduce(
     (total, currentItem) => total + currentItem.quantity,
     0
@@ -71,7 +77,7 @@ function ResponsiveAppBar() {
               overflow: "hidden",
               width: 70,
               height: 70,
-              marginRight: "24rem",
+              marginRight: "30rem",
             }}
           >
             <Image src={LogoImage} height={75} width={75} alt="Logo" />
@@ -95,6 +101,7 @@ function ResponsiveAppBar() {
                 textDecoration: "none",
               }}
             >
+              {/* logo namn mobil vy */}
               <Typography
                 variant="h6"
                 noWrap

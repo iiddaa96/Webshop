@@ -3,13 +3,19 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { useCustomer } from "../context/PaymentContext";
-import QuantityButton from "../ui/quantityButton";
+import QuantityButton from "../ui/QuantityButton";
 
+/**
+ * Komponent som representerar bekräftelsesidan för en genomförd beställning.
+ * @returns {JSX.Element} JSX-element som representerar bekräftelsesidan för en genomförd beställning.
+ */
 function Confirmation() {
+  // Hämtar kundvagnens innehåll, bekräftar och tömmer kundvagnen samt hämtar kundinformation från kontexten
   const { cart } = useCart();
   const { clearCart, setConfirmedCart, confirmedCart } = useCart();
   const { customer } = useCustomer();
 
+  // Hanterar bekräftelse av kundvagn och tömning efter bekräftelse
   useEffect(() => {
     if (cart.length > 0) {
       setConfirmedCart(cart);
@@ -17,6 +23,7 @@ function Confirmation() {
     }
   }, [cart, clearCart, setConfirmedCart]);
 
+  // Beräknar den totala kostnaden för bekräftade varor
   const totalPrice = confirmedCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0

@@ -4,6 +4,10 @@ import AddIcon from "@mui/icons-material/Add";
 import { Box } from "@mui/material";
 import Link from "next/link";
 
+/**
+ * Renderar administrationsgränssnittet.
+ * @returns {JSX.Element} JSX-elementet som representerar administrationsgränssnittet.
+ */
 function Admin() {
   return (
     <>

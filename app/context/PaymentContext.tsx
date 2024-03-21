@@ -11,16 +11,24 @@ import {
 } from "react";
 import { CustomerInfo } from "../ui/PaymentSection";
 
-// Define the type for context value
+/**
+ *  Definiera typen för context-värdena
+ */
 interface PaymentContextType {
   customer: CustomerInfo;
   setCustomer: Dispatch<SetStateAction<CustomerInfo>>;
 }
 
-// Create a context for payment data
+/**
+ * Skapa en kontext för betalningsdata
+ */
 const PaymentContext = createContext<PaymentContextType | undefined>(undefined);
 
-// Custom hook to access payment data
+/**
+ * Anpassad hook för att få åtkomst till betalningsdata.
+ * @returns {PaymentContextType} Betalningskontexttyp.
+ * @throws {Error} Kastar ett fel om hooken inte används inom en PaymentProvider.
+ */
 export const useCustomer = () => {
   const context = useContext(PaymentContext);
   if (!context) {
@@ -29,7 +37,12 @@ export const useCustomer = () => {
   return context;
 };
 
-// Payment context provider component
+/**
+ * Providerkomponent för betalningskontexten.
+ * @param {Object} props - Props för komponenten.
+ * @param {ReactNode} props.children - Barnkomponenterna som ska omslutas av kontexten.
+ * @returns {JSX.Element} Providerkomponenten för PaymentContext.
+ */
 export const PaymentProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [customer, setCustomer] = useState<CustomerInfo>({
     fullname: "",

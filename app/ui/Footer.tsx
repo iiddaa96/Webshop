@@ -9,6 +9,12 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Box, Typography } from "@mui/material";
 import { useState } from "react";
+
+/**
+ * Footer-komponenten som visar kontaktinformation och sociala medier.
+ *
+ * @returns {JSX.Element} Footer-komponenten för webbplatsen.
+ */
 function Footer() {
   const [selected, setSelected] = useState("contact");
 

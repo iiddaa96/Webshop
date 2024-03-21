@@ -13,7 +13,12 @@ import { useEffect, useState } from "react";
 
 import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
-import QuantityButton from "../ui/quantityButton";
+import QuantityButton from "../ui/QuantityButton";
+
+/**
+ * Komponent som representerar kundvagnen.
+ * @returns {JSX.Element} JSX-element som representerar kundvagnen.
+ */
 
 function CartSection() {
   const { cart, removeFromCart } = useCart(); //hämtar från cartContext

@@ -8,22 +8,37 @@ import React, {
   useState,
 } from "react";
 
+/**
+ * Typ för kontexten som innehåller produktrelaterade funktioner och data.
+ */
 interface ProductContextType {
   products: Product[];
   addProduct: (product: Product) => void;
   editProduct: (editProduct: Product) => void;
   removeProduct: (productId: string) => void;
 }
-
+/**
+ * Skapar en React-kontext för produkter.
+ */
 const ProductContext = createContext<ProductContextType>(
   {} as ProductContextType
 );
 
+/**
+ * Hook för att använda produktrelaterad kontext.
+ * @returns {ProductContextType} Produktrelaterad kontext
+ */
 export const useProduct = () => useContext(ProductContext);
 
 const PRODUCTS_LOCAL_STORAGE_KEY = "products";
 const SELECTED_PRODUCT_LOCAL_STORAGE_KEY = "selectedProduct";
 
+/**
+ * Providerkomponent för produkter.
+ *
+ * @param {ReactNode} children Barnkomponenter som ska ha tillgång till produktkontexten
+ * @returns {JSX.Element} JSX-element som representerar produktkontexten
+ */
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
@@ -39,10 +54,20 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.setItem(PRODUCTS_LOCAL_STORAGE_KEY, JSON.stringify(products));
   }, [products]);
 
+  /**
+   * Lägger till en ny produkt.
+   *
+   * @param {Product} newProduct Den nya produkten som ska läggas till
+   */
   const addProduct = (newProduct: Product) => {
     setProducts((prevProducts) => [...prevProducts, newProduct]);
   };
 
+  /**
+   * Redigerar en befintlig produkt.
+   *
+   * @param {Product} editProduct Produkten som ska redigeras
+   */
   const editProduct = (editProduct: Product) => {
     setProducts((prevProducts) => {
       const index = prevProducts.findIndex(
@@ -57,6 +82,11 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
     });
   };
 
+  /**
+   * Tar bort en produkt.
+   *
+   * @param {string} productId ID:t för produkten som ska tas bort
+   */
   const removeProduct = (productId: string) => {
     setProducts((prevProducts) =>
       prevProducts.filter((product) => product.id !== productId)
