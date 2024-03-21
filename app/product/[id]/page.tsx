@@ -49,7 +49,7 @@ export default function SingleProduct(props: Props) {
     <main>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ flexGrow: 1, marginLeft: "8rem" }}>
             <div key={product.id} data-cy="product-id">
               <img
                 src={product.image}
