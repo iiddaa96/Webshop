@@ -15,6 +15,11 @@ import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
 import QuantityButton from "../ui/quantityButton";
 
+/**
+ * Komponent som representerar kundvagnen.
+ * @returns {JSX.Element} JSX-element som representerar kundvagnen.
+ */
+
 function CartSection() {
   const { cart, removeFromCart } = useCart(); //hämtar från cartContext
   const [showDeleteToast, setShowDeleteToast] = useState(false);

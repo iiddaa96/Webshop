@@ -128,7 +128,7 @@ Ni ska vid presentationstillfället hålla i en muntlig presentation för klasse
 
 - [x] Ska ha en övergripande layout med header, main & footer.
 - [x] Detaljsidan ska visa all info om en produkt.
-- [-] Det ska gå att lägga till produkten i kundvagnen (header + toast + ls).
+- [x] Det ska gå att lägga till produkten i kundvagnen (header + toast + ls).
 - [x] Sidan ska vara responsiv och gå att använda på mobil, tablet & desktop.
 
 **Kundvagn & Checkout**
@@ -140,7 +140,7 @@ Ni ska vid presentationstillfället hålla i en muntlig presentation för klasse
 - [x] Det ska gå att ange leveransuppgifter i ett formulär.
 - [x] Samtliga fält för checkoutsidans formulär ska ha valideringsregler.
 - [x] Formulären vid utcheckningen ska gå att automatiskt fyllas i.
-- [-] Bekräftelsesidan ska visa orderdetaljer och leveransuppgifter
+- [x] Bekräftelsesidan ska visa orderdetaljer och leveransuppgifter
 
 **Admin**
 

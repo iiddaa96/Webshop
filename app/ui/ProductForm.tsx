@@ -19,6 +19,12 @@ interface Props {
   product?: Product;
 }
 
+/**
+ * Komponent för formulär för att lägga till eller redigera en produkt.
+ *
+ * @param {Props} props - Egenskaper för produkten.
+ * @returns {JSX.Element} Formulär för produkten.
+ */
 function ProductForm(props: Props) {
   const isEdit = Boolean(props.product);
   const { addProduct, editProduct } = useProduct();
@@ -30,6 +36,11 @@ function ProductForm(props: Props) {
     mode: "onChange",
   });
 
+  /**
+   * Funktion för att spara produktinformationen.
+   *
+   * @param {Product} data - Produktinformationen.
+   */
   const save = (data: Product) => {
     const newData = { ...data, id: nanoid() };
     if (isEdit) {

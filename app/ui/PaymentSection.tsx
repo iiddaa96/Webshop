@@ -45,7 +45,11 @@ const customerSchema = z.object({
 
 export type CustomerInfo = z.infer<typeof customerSchema>;
 
-// Hantering av inputfält och formulärdata
+/**
+ * Hantering av inputfält och formulärdata i betalningsprocessen.
+ *
+ * @returns {JSX.Element} Inputfält och hantering av formulärdata.
+ */
 export default function InputPayment() {
   const [formData, setFormData] = useState<CustomerInfo>({
     fullname: "",
@@ -61,6 +65,11 @@ export default function InputPayment() {
 
   const form = useForm<CustomerInfo>({ resolver: zodResolver(customerSchema) });
 
+  /**
+   * Funktion som hanterar formulärinskick.
+   *
+   * @param {CustomerInfo} customer - Kundinformationen från formuläret.
+   */
   const handleSubmit = (customer: CustomerInfo) => {
     console.log(customer);
     setCustomer(customer);
@@ -88,6 +97,7 @@ export default function InputPayment() {
       <form data-cy="customer-form" onSubmit={form.handleSubmit(handleSubmit)}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
+            {/* Textfält för namn och efternamn */}
             <TextField
               inputProps={{ "data-cy": "customer-name" }}
               FormHelperTextProps={

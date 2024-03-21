@@ -21,17 +21,31 @@ import { Product, products } from "../data/index";
 import MiddleImage from "./assets/middleImage.png";
 import AddToCartButton from "./ui/addToCartButton";
 
+/**
+ * Komponent för startsidan.
+ * Visar produkter och hanterar tillstånd för snackbar för att visa meddelande när en produkt läggs till i kundvagnen.
+ * @returns {JSX.Element} JSX för startsidan.
+ */
+
 export default function Home() {
   // Tillstånd för att visa snackbar
   const [openSnackbar, setOpenSnackbar] = useState(false);
   // Tillstånd för meddelandet i snackbar
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  /**
+   * Funktion för att hantera när en produkt läggs till i kundvagnen.
+   * @param {Product} product Den produkt som läggs till i kundvagnen.
+   */
+
   const handleAddToCart = (product: Product) => {
     setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
     setOpenSnackbar(true); // Visa snackbar
   };
 
+  /**
+   * Funktion för att hantera stängning av snackbar.
+   */
   const handleCloseSnackbar = () => {
     // Funktion för att stänga snackbar
     setOpenSnackbar(false);
