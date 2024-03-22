@@ -17,9 +17,11 @@ function UpdateExistProduct(props: Props) {
   const { products } = useProduct();
   const product = products.find((p) => p.id === props.params.id);
 
+  console.log("product", product);
+
   // Om produkten inte finns, rendera 404-sidan
   if (!product) {
-    <div>404</div>;
+    return <div>Loading</div>;
   }
 
   // Renderar formuläret för att uppdatera produkten

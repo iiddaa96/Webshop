@@ -12,6 +12,7 @@ export const productSchema = z.object({
   price: z.coerce.number().positive({ message: "Skriv in ett nummer" }),
   description: z
     .string()
+    .min(1)
     .max(400, { message: "Inlägget får vara 400 tecken långt" }),
 });
 
