@@ -42,17 +42,21 @@ const SELECTED_PRODUCT_LOCAL_STORAGE_KEY = "selectedProduct";
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [products, setProducts] = useState<Product[]>(() => {
-    if (typeof localStorage === "undefined") {
-      return mockedProducts; // kan kanske orsaka hydration fel
-    }
-    const savedProducts = localStorage.getItem(PRODUCTS_LOCAL_STORAGE_KEY);
-    return savedProducts ? JSON.parse(savedProducts) : mockedProducts;
-  });
+  const [products, setProducts] = useState<Product[]>(mockedProducts);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    const savedProducts = localStorage.getItem(PRODUCTS_LOCAL_STORAGE_KEY);
+    if (savedProducts) {
+      setProducts(JSON.parse(savedProducts));
+    }
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded) return;
     localStorage.setItem(PRODUCTS_LOCAL_STORAGE_KEY, JSON.stringify(products));
-  }, [products]);
+  }, [isLoaded, products]);
 
   /**
    * Lägger till en ny produkt.
