@@ -65,7 +65,7 @@ function CartSection() {
       <Grid container spacing={1}>
         {cart.map((item) => (
           <Grid
-            data-cy="cart-itemcon"
+            data-cy="cart-item"
             item
             xs={12}
             key={item.id}
