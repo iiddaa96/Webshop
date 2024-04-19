@@ -1,5 +1,6 @@
 # Webbshop Next.js
 
+### Klicka på länken för att komma in på webbshoppen!
 (https://nextjs-webbshop-ts-team-jimm.vercel.app/)
 
 #### Projektet innehåller:
