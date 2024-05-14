@@ -9,13 +9,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import console from "console";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { saveUser } from "../api/users";
 import { useCustomer } from "../context/PaymentContext";
-
-import { saveUser } from "../../pages/index";
 
 // Skapar schema för inputfälten
 const stringSchema = z.string();

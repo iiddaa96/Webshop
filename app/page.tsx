@@ -1,3 +1,4 @@
+"use client";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -18,10 +19,10 @@ import { PrismaClient } from "@prisma/client";
 import Image from "next/image";
 import { useState } from "react";
 import MiddleImage from "../app/assets/middleImage.png";
-import AddToCartButton from "../app/ui/AddToCartButton";
 import { Product, products } from "../data/index";
+import AddToCartButton from "./ui/AddToCartButton";
 
-interface User {
+export interface User {
   id: Number;
   nickname: String;
   firstName: String;
@@ -30,29 +31,11 @@ interface User {
   products: Product[];
 }
 
-interface HomeProps {
+export interface HomeProps {
   initialUsers: User[];
 }
 
 const prisma = new PrismaClient();
-export async function getServerSideProps() {
-  const users = await prisma.user.findMany();
-  return {
-    props: {
-      initialUsers: users,
-    },
-  };
-}
-export async function saveUser(user: User) {
-  const response = await fetch("/api/users", {
-    method: "POST",
-    body: JSON.stringify(user),
-  });
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  return await response.json();
-}
 
 /**
  * Komponent för startsidan.
@@ -109,7 +92,7 @@ export default function Home({ initialUsers }: HomeProps) {
       <Box>
         <Typography variant="h2">Users</Typography>
         <ul>
-          {initialUsers.map((user) => (
+          {initialUsers?.map((user) => (
             <li key={user.id.toString()}>
               {user.nickname} ({user.email})
             </li>
