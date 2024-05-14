@@ -15,11 +15,42 @@ import {
   Snackbar,
   Typography,
 } from "@mui/material";
+import { PrismaClient } from "@prisma/client";
 import Image from "next/image";
 import { useState } from "react";
 import { Product, products } from "../data/index";
 import MiddleImage from "./assets/middleImage.png";
 import AddToCartButton from "./ui/AddToCartButton";
+
+interface User {
+  id: Number;
+  nickname: String;
+  firstName: String;
+  lastName: String;
+  email: String;
+  products: Product[];
+}
+
+const prisma = new PrismaClient();
+export async function getServerSideFunction() {
+  const users = await prisma.user.findMany();
+  return {
+    props: {
+      initialUsers: users,
+    },
+  };
+}
+
+export async function saveUser(user: User) {
+  const response = await fetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify(user),
+  });
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  return await response.json();
+}
 
 /**
  * Komponent för startsidan.

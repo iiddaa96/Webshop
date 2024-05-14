@@ -15,6 +15,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useCustomer } from "../context/PaymentContext";
 
+import { saveUser } from "../page";
+
 // Skapar schema för inputfälten
 const stringSchema = z.string();
 const numberSchema = z.number();
@@ -94,7 +96,25 @@ export default function InputPayment() {
         Shipping Address
       </Typography>
 
-      <form data-cy="customer-form" onSubmit={form.handleSubmit(handleSubmit)}>
+      <form
+        data-cy="customer-form"
+        onSubmit={async (event) => {
+          event.preventDefault();
+          const user = {
+            id: 1,
+            nickname: "abc",
+            firstName: "123",
+            lastName: "123",
+            email: "123",
+            products: [],
+          };
+          try {
+            await saveUser(user);
+          } catch (error) {
+            console.error(error);
+          }
+        }}
+      >
         <Grid container spacing={2}>
           <Grid item xs={6}>
             {/* Textfält för namn och efternamn */}
