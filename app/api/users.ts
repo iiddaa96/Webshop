@@ -2,7 +2,7 @@ import { PrismaClient, User } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next/types";
 
 const prisma = new PrismaClient();
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.json(savedUsers);
 };
 
-export default handler;
+export default getUsers;
 
 export async function saveUser(user: User) {
   const response = await fetch("/api/users", {
