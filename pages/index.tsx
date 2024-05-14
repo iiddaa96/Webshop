@@ -1,4 +1,3 @@
-"use client";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -18,9 +17,9 @@ import {
 import { PrismaClient } from "@prisma/client";
 import Image from "next/image";
 import { useState } from "react";
+import MiddleImage from "../app/assets/middleImage.png";
+import AddToCartButton from "../app/ui/AddToCartButton";
 import { Product, products } from "../data/index";
-import MiddleImage from "./assets/middleImage.png";
-import AddToCartButton from "./ui/AddToCartButton";
 
 interface User {
   id: Number;
@@ -31,8 +30,12 @@ interface User {
   products: Product[];
 }
 
+interface HomeProps {
+  initialUsers: User[];
+}
+
 const prisma = new PrismaClient();
-export async function getServerSideFunction() {
+export async function getServerSideProps() {
   const users = await prisma.user.findMany();
   return {
     props: {
@@ -40,7 +43,6 @@ export async function getServerSideFunction() {
     },
   };
 }
-
 export async function saveUser(user: User) {
   const response = await fetch("/api/users", {
     method: "POST",
@@ -58,7 +60,7 @@ export async function saveUser(user: User) {
  * @returns {JSX.Element} JSX för startsidan.
  */
 
-export default function Home() {
+export default function Home({ initialUsers }: HomeProps) {
   // Tillstånd för att visa snackbar
   const [openSnackbar, setOpenSnackbar] = useState(false);
   // Tillstånd för meddelandet i snackbar
@@ -104,6 +106,16 @@ export default function Home() {
         />
       </Box>
 
+      <Box>
+        <Typography variant="h2">Users</Typography>
+        <ul>
+          {initialUsers.map((user) => (
+            <li key={user.id.toString()}>
+              {user.nickname} ({user.email})
+            </li>
+          ))}
+        </ul>
+      </Box>
       <Box
         sx={{
           maxWidth: "1200px",

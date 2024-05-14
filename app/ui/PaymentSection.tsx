@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useCustomer } from "../context/PaymentContext";
 
-import { saveUser } from "../page";
+import { saveUser } from "../../pages/index";
 
 // Skapar schema för inputfälten
 const stringSchema = z.string();
