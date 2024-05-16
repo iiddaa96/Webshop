@@ -27,6 +27,9 @@ function Login() {
               sx={{
                 fontSize: { xs: "25px", md: "3rem", lg: "2.6rem" },
                 fontFamily: "times new roman",
+                color: "white",
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+                fontWeight: "bold",
               }}
             >
               Log In
@@ -37,7 +40,18 @@ function Login() {
         <Grid item xs={12}>
           <form className="form">
             <div className="form-group">
-              <label htmlFor="username">Username</label>
+              <label
+                style={{
+                  color: "white",
+                  fontFamily: "Times New Roman",
+                  fontWeight: "bold",
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
+                  fontSize: "1.3rem",
+                }}
+                htmlFor="username"
+              >
+                Username
+              </label>
               <TextField
                 fullWidth
                 id="username"
@@ -52,7 +66,18 @@ function Login() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label
+                style={{
+                  fontFamily: "Times New Roman",
+                  fontWeight: "bold",
+                  fontSize: "1.3rem",
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
+                  color: "white",
+                }}
+                htmlFor="password"
+              >
+                Password
+              </label>
 
               <TextField
                 fullWidth
