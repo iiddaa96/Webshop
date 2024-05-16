@@ -9,10 +9,11 @@ datasource db {
 
 // Detta är models för våra user och products som vi ska använda i vår databas
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
   name     String
   password String // ska bli hashed password
+  isAdmin  Boolean @default(false)
 }
 
 model Product {

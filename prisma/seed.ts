@@ -60,10 +60,10 @@ async function product() {
     update: {},
     create: {
       image:
-        "https://static.partyking.org/fit-in/1300x0/products/original/uppblasbar-strandboll-86181-1.jpg",
-      title: "Badboll1",
-      price: 99,
-      description: "Badbollar är kul",
+        "https://homeofess.com/pub_images/original/charlieston12.jpg?extend=copy&width=800&method=crop&height=800&type=webp",
+      title: "Badring2",
+      price: 259,
+      description: "Badringar är jätte kul",
     },
   });
 }
