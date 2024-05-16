@@ -102,7 +102,7 @@ function Login() {
                 fontSize: "1rem",
                 bgcolor: "#a9b4d5",
                 "&:hover": { bgcolor: "#6d82b7" },
-                fontFamily: "monospace",
+                fontFamily: "times new roman",
               }}
             >
               Log In
