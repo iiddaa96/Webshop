@@ -1,7 +1,7 @@
 import { db } from "./db";
 
 // Skapar default användare
-async function main() {
+async function user() {
   const test = await db.user.upsert({
     where: { email: "test@testsson.se" },
     update: {},
@@ -12,7 +12,7 @@ async function main() {
   });
 }
 
-main()
+user()
   .then(async () => {
     await db.$disconnect();
   })
