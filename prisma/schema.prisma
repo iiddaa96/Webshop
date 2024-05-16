@@ -14,14 +14,33 @@ model User {
   name     String
   password String // ska bli hashed password
   isAdmin  Boolean @default(false)
+  order    Order[] //en user kan ha flera orders
+}
+
+model Order {
+  id           Int            @id @default(autoincrement())
+  createdAt    DateTime       @default(now())
+  userId       Int
+  user         User           @relation(fields: [userId], references: [id])
+  orderDetails OrderDetails[]
+}
+
+model OrderDetails {
+  orderId   Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@id([orderId, productId]) //utgör primary key'n för varje OrderDetails instans 
 }
 
 model Product {
-  image       String
-  id          Int    @id @default(autoincrement())
-  title       String
-  price       Int
-  description String
+  image        String
+  id           Int            @id @default(autoincrement())
+  title        String
+  price        Int
+  description  String
+  orderDetails OrderDetails[]
 }
 
 model Category {
