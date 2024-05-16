@@ -1,9 +1,10 @@
-"use client";
+/* "use client"; */
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
+import { db } from "@/prisma/db";
 import {
   Box,
   Card,
@@ -17,45 +18,38 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
-import { Product, products } from "../data/index";
+// import { Product } from "../data/index";
 import MiddleImage from "./assets/middleImage.png";
 import AddToCartButton from "./ui/AddToCartButton";
+import { ProductCreate } from "./zod-validation/products";
 
-/**
- * Komponent för startsidan.
- * Visar produkter och hanterar tillstånd för snackbar för att visa meddelande när en produkt läggs till i kundvagnen.
- * @returns {JSX.Element} JSX för startsidan.
- */
-
-export default function Home() {
+export default async function Home() {
   // Tillstånd för att visa snackbar
   const [openSnackbar, setOpenSnackbar] = useState(false);
   // Tillstånd för meddelandet i snackbar
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
-  /**
-   * Funktion för att hantera när en produkt läggs till i kundvagnen.
-   * @param {Product} product Den produkt som läggs till i kundvagnen.
-   */
-
-  const handleAddToCart = (product: Product) => {
+  // Funktion för att lägga till en produkt i kundvagnen
+  const handleAddToCart = (product) => {
     setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
     setOpenSnackbar(true); // Visa snackbar
   };
 
-  /**
-   * Funktion för att hantera stängning av snackbar.
-   */
   const handleCloseSnackbar = () => {
     // Funktion för att stänga snackbar
     setOpenSnackbar(false);
   };
+
+  const products = await db.product.findMany({
+    include: {},
+    orderBy: { id: "desc" },
+  });
+
   return (
     <main>
       <Box
         sx={{
           width: "95%",
-          /* overflow: "hidden", */
           justifyContent: "center",
           position: "relative",
           paddingTop: "30%", // Minskat från '56.25%' till en lägre procent för att minska höjden
@@ -82,16 +76,8 @@ export default function Home() {
         }}
       >
         <Grid container spacing={4}>
-          {products.map((product) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              lg={4}
-              xl={3}
-              key={product.id}
-              data-cy="product"
-            >
+          {products.map((product: ProductCreate) => (
+            <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
               <Link href={`/product/${product.id}` as any}>
                 <Card
                   sx={{
@@ -107,14 +93,12 @@ export default function Home() {
                     height="280"
                     image={product.image}
                     alt={product.title}
-                    data-cy="product-title"
                   />
                   <CardContent>
                     <Typography
                       gutterBottom
                       variant="subtitle1"
                       component="div"
-                      data-cy="product-title"
                     >
                       {product.title}
                     </Typography>
@@ -123,7 +107,6 @@ export default function Home() {
                       variant="body2"
                       color="text.secondary"
                       sx={{ fontSize: "0.8rem" }}
-                      data-cy="product-price"
                     >
                       {product.price}kr
                     </Typography>
@@ -137,7 +120,6 @@ export default function Home() {
                         product={product}
                         handleAddToCart={handleAddToCart}
                         title={""}
-                        data-cy="product-buy-button"
                       />
                     </CardActions>
                   </Box>
@@ -150,7 +132,6 @@ export default function Home() {
 
       {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
       <Snackbar
-        data-cy="added-to-cart-toast"
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={openSnackbar}
         autoHideDuration={1000}

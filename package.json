@@ -9,7 +9,14 @@
     "start": "next start",
     "lint": "next lint",
     "update": "plugga update",
-    "test": "plugga test"
+    "test": "plugga test",
+    "migrate": "prisma migrate dev",
+    "generate": "prisma generate",
+    "studio": "prisma studio",
+    "seed": "prisma db seed"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@emotion/cache": "^11.11.0",

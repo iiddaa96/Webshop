@@ -12,18 +12,21 @@ async function product() {
             image:
               "https://static.partyking.org/fit-in/1300x0/products/original/uppblasbar-strandboll-86181-1.jpg",
             title: "Badboll1",
+            price: 99,
             description: "Badbollar är kul",
           },
           {
             image:
               "https://homeofess.com/pub_images/original/calile13.jpg?extend=copy&width=800&method=crop&height=800&type=webp",
             title: "Badring",
+            price: 199,
             description: "Badringen för dig som vill vara coolast på stranden",
           },
           {
             image:
               "https://homeofess.com/pub_images/original/SCBPSCBLny(1).png?extend=copy&width=800&method=crop&height=800&type=webp",
             title: "Paddel set",
+            price: 999,
             description:
               "Vem vill vara inne i en padelhall när det är sommar? Ta med matchen ut istället och fortsätt spela!",
           },
@@ -31,6 +34,7 @@ async function product() {
             image:
               "https://homeofess.com/pub_images/original/coolerny.png?extend=copy&width=800&method=crop&height=800&type=webp",
             title: "Kylväska",
+            price: 299,
             description:
               "Look! En picknickkorg. Nej, ett bord. Kylväska? Yup, den är allt det. Fyll den med öl, bubblor eller vad du vill. Vi har precis räddat din sommar. You’re welcome.",
           },
@@ -38,11 +42,13 @@ async function product() {
             image:
               "https://homeofess.com/pub_images/original/charlieston12.jpg?extend=copy&width=800&method=crop&height=800&type=webp",
             title: "Badring2",
+            price: 259,
             description: "Badringar är jätte kul",
           },
           {
             image: "https://www.livedeco.com/img/p/1/0/8/0/9/10809.jpg",
             title: "Gigantisk XXL Puff",
+            price: 699,
             description: "En puff som är gigantisk",
           },
         ],
