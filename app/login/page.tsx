@@ -73,8 +73,10 @@ function Login() {
               variant="contained"
               sx={{
                 mt: 2,
-                bgcolor: "#020202",
-                "&:hover": { bgcolor: "#38403a" },
+                color: "black",
+                fontSize: "1rem",
+                bgcolor: "#a9b4d5",
+                "&:hover": { bgcolor: "#6d82b7" },
                 fontFamily: "monospace",
               }}
             >
