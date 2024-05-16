@@ -14,11 +14,6 @@ import * as React from "react";
 import LogoImage from "../assets/logo.png";
 import { useCart } from "../context/CartContext";
 
-/**
- * Komponent för en responsiv app-fält som innehåller navigeringslänkar och en kundvagnsikon.
- *
- * @returns {JSX.Element} Komponenten för app-fältet.
- */
 function ResponsiveAppBar() {
   const { cart } = useCart();
 
@@ -136,8 +131,8 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <Button component={Link} href="/posters" color="inherit">
-                Posters
+              <Button component={Link} href="/login" color="inherit">
+                Login
               </Button>
               <Button component={Link} href="/frames" color="inherit">
                 Frames
@@ -160,8 +155,8 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {/* Tillfälliga länkar till andra sidor desktop */}
-            <Button component={Link} href="/posters" color="inherit">
-              Posters
+            <Button component={Link} href="/login" color="inherit">
+              Login
             </Button>
             <Button component={Link} href="/frames" color="inherit">
               Frames
