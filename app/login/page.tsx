@@ -3,8 +3,6 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Controller } from "react-hook-form";
-import "../css/user-loginPages.css";
 
 function Login() {
   return (
@@ -28,7 +26,7 @@ function Login() {
                 fontFamily: "Caveat",
               }}
             >
-              Log In for recipe´s
+              Log In
             </Typography>
           </Box>
         </Grid>
@@ -37,36 +35,23 @@ function Login() {
           <form className="form">
             <div className="form-group">
               <label htmlFor="username">Username</label>
-              <Controller
-                name="username"
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    fullWidth
-                    id="username"
-                    variant="outlined"
-                    margin="normal"
-                  />
-                )}
+              <TextField
+                fullWidth
+                id="username"
+                variant="outlined"
+                margin="normal"
               />
             </div>
 
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <Controller
-                name="password"
-                defaultValue=""
-                render={({ field }) => (
-                  <TextField
-                    {...field}
-                    fullWidth
-                    id="password"
-                    variant="outlined"
-                    margin="normal"
-                    type="password"
-                  />
-                )}
+
+              <TextField
+                fullWidth
+                id="password"
+                variant="outlined"
+                margin="normal"
+                type="password"
               />
             </div>
             <Button
@@ -75,8 +60,8 @@ function Login() {
               variant="contained"
               sx={{
                 mt: 2,
-                bgcolor: "#70c583",
-                "&:hover": { bgcolor: "#5aa46a" },
+                bgcolor: "#020202",
+                "&:hover": { bgcolor: "#38403a" },
               }}
             >
               Log In
