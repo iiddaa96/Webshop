@@ -14,6 +14,14 @@ model User {
   name     String
   password String // ska bli hashed password
   isAdmin  Boolean @default(false)
+  order    Order[] //en user kan ha flera orders
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id]) //en order kan bara vara kopplad till en user
 }
 
 model Product {
