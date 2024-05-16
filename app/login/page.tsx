@@ -43,6 +43,11 @@ function Login() {
                 id="username"
                 variant="outlined"
                 margin="normal"
+                sx={{
+                  bgcolor: "white",
+                  border: "1px solid black",
+                  borderRadius: "10px",
+                }}
               />
             </div>
 
@@ -55,6 +60,11 @@ function Login() {
                 variant="outlined"
                 margin="normal"
                 type="password"
+                sx={{
+                  bgcolor: "white",
+                  border: "1px solid black",
+                  borderRadius: "10px",
+                }}
               />
             </div>
             <Button
