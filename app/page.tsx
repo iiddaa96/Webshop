@@ -5,6 +5,16 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import { db } from "@/prisma/db";
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+} from "@mui/material";
+import Link from "next/link";
 
 export default async function Home() {
   /*   // Tillstånd för att visa snackbar
@@ -32,7 +42,7 @@ export default async function Home() {
 
   return (
     <main>
-      <div>
+      {/* <div>
         {users.map((user) => (
           <div key={user.id}>
             <h2>{user.name}</h2>
@@ -40,9 +50,9 @@ export default async function Home() {
             <p>{user.password}</p>
           </div>
         ))}
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         {products.map((product) => (
           <div key={product.id}>
             <img
@@ -54,7 +64,7 @@ export default async function Home() {
             <p>{product.description}</p>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* <Box
         sx={{
@@ -69,12 +79,12 @@ export default async function Home() {
         }}
       >
         <Image
-          src={MiddleImage}
-          alt="Stor Bild"
+          src={product.image}
+          alt={product.title}
           layout="fill"
           objectFit="cover"
         />
-      </Box>
+      </Box> */}
 
       <Box
         sx={{
@@ -125,11 +135,11 @@ export default async function Home() {
                       disableSpacing
                       sx={{ justifyContent: "flex-end" }}
                     >
-                      <AddToCartButton
+                      {/* <AddToCartButton
                         product={product}
                         handleAddToCart={handleAddToCart}
                         title={""}
-                      />
+                      /> */}
                     </CardActions>
                   </Box>
                 </Card>
@@ -137,7 +147,7 @@ export default async function Home() {
             </Grid>
           ))}
         </Grid>
-      </Box> */}
+      </Box>
 
       {/*  Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
       {/* <Snackbar
