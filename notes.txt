@@ -1,0 +1,3 @@
+Handledning:
+* Hur skapar vi mellanhanden, CategoryProduct?
+* Hur kopplar man admin till products

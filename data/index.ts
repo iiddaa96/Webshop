@@ -3,7 +3,6 @@ import { z } from "zod";
 
 /**
  * Beskriver en produkt som ska säljas på sidan.
- * OBS: Kan utökas men inte ändras pga cypress.
  **/
 export const productSchema = z.object({
   id: z.string().default(() => nanoid()),
