@@ -5,31 +5,13 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import { db } from "@/prisma/db";
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Grid,
-  Link,
-  Snackbar,
-  Typography,
-} from "@mui/material";
-import Image from "next/image";
-import { useState } from "react";
-// import { Product } from "../data/index";
-import MiddleImage from "./assets/middleImage.png";
-import AddToCartButton from "./ui/AddToCartButton";
-import { ProductCreate } from "./zod-validation/products";
 
 export default async function Home() {
-  // Tillstånd för att visa snackbar
+  /*   // Tillstånd för att visa snackbar
   const [openSnackbar, setOpenSnackbar] = useState(false);
   // Tillstånd för meddelandet i snackbar
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
-  // Funktion för att lägga till en produkt i kundvagnen
   const handleAddToCart = (product) => {
     setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
     setOpenSnackbar(true); // Visa snackbar
@@ -38,16 +20,43 @@ export default async function Home() {
   const handleCloseSnackbar = () => {
     // Funktion för att stänga snackbar
     setOpenSnackbar(false);
-  };
+  }; */
+
+  const users = await db.user.findMany({
+    orderBy: { id: "desc" },
+  });
 
   const products = await db.product.findMany({
-    include: {},
     orderBy: { id: "desc" },
   });
 
   return (
     <main>
-      <Box
+      <div>
+        {users.map((user) => (
+          <div key={user.id}>
+            <h2>{user.name}</h2>
+            <p>{user.email}</p>
+            <p>{user.password}</p>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        {products.map((product) => (
+          <div key={product.id}>
+            <img
+              style={{ width: "250px", height: "250px" }}
+              src={product.image}
+              alt={product.title}
+            />
+            <h2>{product.title}</h2>
+            <p>{product.description}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* <Box
         sx={{
           width: "95%",
           justifyContent: "center",
@@ -76,7 +85,7 @@ export default async function Home() {
         }}
       >
         <Grid container spacing={4}>
-          {products.map((product: ProductCreate) => (
+          {products.map((product) => (
             <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
               <Link href={`/product/${product.id}` as any}>
                 <Card
@@ -128,16 +137,16 @@ export default async function Home() {
             </Grid>
           ))}
         </Grid>
-      </Box>
+      </Box> */}
 
-      {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
-      <Snackbar
+      {/*  Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
+      {/* <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={openSnackbar}
         autoHideDuration={1000}
         onClose={handleCloseSnackbar}
         message={snackbarMessage}
-      />
+      /> */}
     </main>
   );
 }
