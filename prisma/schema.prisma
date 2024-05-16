@@ -35,15 +35,26 @@ model OrderDetails {
 }
 
 model Product {
-  image        String
-  id           Int            @id @default(autoincrement())
-  title        String
-  price        Int
-  description  String
-  orderDetails OrderDetails[]
+  image           String
+  id              Int               @id @default(autoincrement())
+  title           String
+  price           Int
+  description     String
+  orderDetails    OrderDetails[]
+  CategoryProduct CategoryProduct[]
+}
+
+model CategoryProduct {
+  productId  Int
+  product    Product  @relation(fields: [productId], references: [id])
+  categoryId Int
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@id([productId, categoryId]) //utgör primary key'n för varje CategoryProduct instans 
 }
 
 model Category {
-  id   Int    @id @default(autoincrement())
-  name String @unique
+  id              Int               @id @default(autoincrement())
+  name            String            @unique
+  CategoryProduct CategoryProduct[]
 }
