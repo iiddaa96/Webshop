@@ -9,11 +9,35 @@ async function user() {
       email: "test@testsson.se",
       name: "Tess",
       password: "fisonofensn9oie",
+      isAdmin: false,
     },
   });
 }
 
 user()
+  .then(async () => {
+    await db.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await db.$disconnect();
+    process.exit(1);
+  });
+
+async function admin() {
+  const test = await db.user.upsert({
+    where: { email: "admin@gmail.com" },
+    update: {},
+    create: {
+      email: "admin@gmail.com",
+      name: "admin1",
+      password: "göteborg",
+      isAdmin: true,
+    },
+  });
+}
+
+admin()
   .then(async () => {
     await db.$disconnect();
   })
