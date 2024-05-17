@@ -13,48 +13,58 @@ model User {
   email    String  @unique
   name     String
   password String // ska bli hashed password
-  isAdmin  Boolean 
-  order    Order[] //en user kan ha flera orders
+  isAdmin  Boolean
+
+  order Order[] //en user kan ha flera orders
 }
 
 model Order {
-  id           Int            @id @default(autoincrement())
-  createdAt    DateTime       @default(now())
-  userId       Int
-  user         User           @relation(fields: [userId], references: [id])
-  orderDetails OrderDetails[]
+  id                Int      @id @default(autoincrement())
+  createdAt         DateTime @default(now())
+  userId            Int
+  total             Decimal
+  deliveryAddressId Int
+  isSent            Boolean  @default(false)
+
+  user            User           @relation(fields: [userId], references: [id])
+  deliveryAddress Address        @relation(fields: [deliveryAddressId], references: [id])
+  orderDetails    OrderDetails[]
+}
+
+model Address {
+  id     Int     @id @default(autoincrement())
+  street String
+  zip    Int
+  city   String
+  Order  Order[]
 }
 
 model OrderDetails {
   orderId   Int
-  order     Order   @relation(fields: [orderId], references: [id])
   productId Int
-  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  subTotal  Decimal
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
 
   @@id([orderId, productId]) //utgör primary key'n för varje OrderDetails instans 
 }
 
 model Product {
-  image           String
-  id              Int               @id @default(autoincrement())
-  title           String
-  price           Int
-  description     String
-  orderDetails    OrderDetails[]
-  CategoryProduct CategoryProduct[]
-}
+  id          Int     @id @default(autoincrement())
+  title       String
+  image       String
+  price       Decimal
+  description String
 
-model CategoryProduct {
-  productId  Int
-  product    Product  @relation(fields: [productId], references: [id])
-  categoryId Int
-  category   Category @relation(fields: [categoryId], references: [id])
-
-  @@id([productId, categoryId]) //utgör primary key'n för varje CategoryProduct instans 
+  orderDetails OrderDetails[]
+  categories   Category[]
 }
 
 model Category {
-  id              Int               @id @default(autoincrement())
-  name            String            @unique
-  CategoryProduct CategoryProduct[]
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  products Product[]
 }
