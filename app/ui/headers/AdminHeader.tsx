@@ -1,4 +1,6 @@
 import { useCart } from "@/app/context/CartContext";
+import MenuIcon from "@mui/icons-material/Menu";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
   AppBar,
   Badge,
@@ -10,6 +12,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import Image from "next";
 import Link from "next/link";
 import React from "react";
 import LogoImage from "../../assets/logo.png";
