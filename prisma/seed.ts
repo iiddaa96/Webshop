@@ -6,10 +6,14 @@ async function user() {
   const hashedPassword = await argon2.hash("malmö123");
   const test = await db.user.upsert({
     where: { email: "test@testsson.se" },
-    update: {},
+    update: {
+      name: "kent",
+      password: hashedPassword,
+      isAdmin: false,
+    },
     create: {
       email: "test@testsson.se",
-      name: "Tess",
+      name: "kent",
       password: hashedPassword,
       isAdmin: false,
     },
@@ -30,10 +34,14 @@ async function admin() {
   const hashedPassword = await argon2.hash("göteborg123");
   const test = await db.user.upsert({
     where: { email: "admin@gmail.com" },
-    update: {},
+    update: {
+      name: "göran",
+      password: hashedPassword,
+      isAdmin: true,
+    },
     create: {
       email: "admin@gmail.com",
-      name: "admin1",
+      name: "göran",
       password: hashedPassword,
       isAdmin: true,
     },
