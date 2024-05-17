@@ -12,7 +12,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import Image from "next";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import LogoImage from "../../assets/logo.png";
