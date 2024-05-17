@@ -1,7 +1,6 @@
-"use client";
 import AdminHeader from "./AdminHeader";
 
-export default function Header() {
+export default async function Header() {
   return (
     <>
       <AdminHeader />
