@@ -1,3 +1,4 @@
+import { Link } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
@@ -93,6 +94,8 @@ function Login() {
               />
             </div>
             <Button
+              component={Link}
+              href="/"
               fullWidth
               type="submit"
               variant="contained"
