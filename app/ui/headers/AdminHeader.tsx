@@ -1,25 +1,20 @@
-"use client";
-
-import MenuIcon from "@mui/icons-material/Menu";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Badge, Button, IconButton, Menu } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Image from "next/image";
+import { useCart } from "@/app/context/CartContext";
+import {
+  AppBar,
+  Badge,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
-import * as React from "react";
-import LogoImage from "../assets/logo.png";
-import { useCart } from "../context/CartContext";
+import React from "react";
+import LogoImage from "../../assets/logo.png";
 
-/**
- * Komponent för en responsiv app-fält som innehåller navigeringslänkar och en kundvagnsikon.
- *
- * @returns {JSX.Element} Komponenten för app-fältet.
- */
-function ResponsiveAppBar() {
+export default function AdminHeader() {
   const { cart } = useCart();
 
   // Beräkna totala antalet produkter i kundvagnen
@@ -51,7 +46,6 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
   return (
     <AppBar
       position="static"
@@ -80,6 +74,7 @@ function ResponsiveAppBar() {
               marginRight: "30rem",
             }}
           >
+            {" "}
             <Image src={LogoImage} height={75} width={75} alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -93,7 +88,7 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            {/* Layout för mobil */}
+
             <Box
               component={Link}
               href="/"
@@ -224,5 +219,3 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-
-export default ResponsiveAppBar;
