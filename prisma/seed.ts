@@ -1,14 +1,16 @@
+import argon2 from "argon2";
 import { db } from "./db";
 
 // Skapar default användare
 async function user() {
+  const hashedPassword = await argon2.hash("malmö123");
   const test = await db.user.upsert({
     where: { email: "test@testsson.se" },
     update: {},
     create: {
       email: "test@testsson.se",
       name: "Tess",
-      password: "fisonofensn9oie",
+      password: hashedPassword,
       isAdmin: false,
     },
   });
@@ -25,13 +27,14 @@ user()
   });
 
 async function admin() {
+  const hashedPassword = await argon2.hash("göteborg123");
   const test = await db.user.upsert({
     where: { email: "admin@gmail.com" },
     update: {},
     create: {
       email: "admin@gmail.com",
       name: "admin1",
-      password: "göteborg",
+      password: hashedPassword,
       isAdmin: true,
     },
   });
