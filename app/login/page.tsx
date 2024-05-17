@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import { SignIn } from "../ui/Sign-in";
 
 function Login() {
   return (
@@ -113,6 +114,9 @@ function Login() {
           </form>
         </Grid>
       </Grid>
+      <div>
+        <SignIn />
+      </div>
     </Box>
   );
 }
