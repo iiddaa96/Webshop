@@ -10,7 +10,7 @@ export async function getAllUsers(req: NextRequest) {
 
 export async function createUser(incomingData: UserCreate) {
   const userData = UserCreateSchema.parse(incomingData);
-  const user = await db.post.create({
+  const user = await db.user.create({
     data: {
       email: userData.email,
       name: userData.name,

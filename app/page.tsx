@@ -1,4 +1,5 @@
 /* "use client"; */
+
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -17,17 +18,17 @@ import {
 import Link from "next/link";
 
 export default async function Home() {
-  /*   // Tillstånd för att visa snackbar
-  const [openSnackbar, setOpenSnackbar] = useState(false);
+  // Tillstånd för att visa snackbar
+  /*   const [openSnackbar, setOpenSnackbar] = useState(false);
   // Tillstånd för meddelandet i snackbar
   const [snackbarMessage, setSnackbarMessage] = useState("");
+ */
+  // const handleAddToCart = (product) => {
+  //   setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
+  //   setOpenSnackbar(true); // Visa snackbar
+  // };
 
-  const handleAddToCart = (product) => {
-    setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
-    setOpenSnackbar(true); // Visa snackbar
-  };
-
-  const handleCloseSnackbar = () => {
+  /*   const handleCloseSnackbar = () => {
     // Funktion för att stänga snackbar
     setOpenSnackbar(false);
   }; */
@@ -42,30 +43,6 @@ export default async function Home() {
 
   return (
     <main>
-      {/* <div>
-        {users.map((user) => (
-          <div key={user.id}>
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
-            <p>{user.password}</p>
-          </div>
-        ))}
-      </div> */}
-
-      {/* <div>
-        {products.map((product) => (
-          <div key={product.id}>
-            <img
-              style={{ width: "250px", height: "250px" }}
-              src={product.image}
-              alt={product.title}
-            />
-            <h2>{product.title}</h2>
-            <p>{product.description}</p>
-          </div>
-        ))}
-      </div> */}
-
       {/* <Box
         sx={{
           width: "95%",
@@ -127,7 +104,8 @@ export default async function Home() {
                       color="text.secondary"
                       sx={{ fontSize: "0.8rem" }}
                     >
-                      {product.price}kr
+                      {" "}
+                      {product.price}kr{" "}
                     </Typography>
                   </CardContent>
                   <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
@@ -135,7 +113,7 @@ export default async function Home() {
                       disableSpacing
                       sx={{ justifyContent: "flex-end" }}
                     >
-                      {/* <AddToCartButton
+                      {/*         <AddToCartButton
                         product={product}
                         handleAddToCart={handleAddToCart}
                         title={""}
