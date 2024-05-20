@@ -1,5 +1,4 @@
 "use client";
-
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge, Button, IconButton, Menu } from "@mui/material";
@@ -131,9 +130,6 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <Button component={Link} href="/login" color="inherit">
-                Login
-              </Button>
               <Button component={Link} href="/frames" color="inherit">
                 Frames
               </Button>
