@@ -3,6 +3,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import github from "next-auth/providers/github";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  pages: {
+    signIn: "/login",
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",

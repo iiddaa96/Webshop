@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import SignIn from "../ui/auth/Signin-button";
+import SignInWithGitHubButton from "../ui/auth/SigninWithGithubButton";
 
 function Login() {
   return (
@@ -33,7 +33,7 @@ function Login() {
             >
               Log In
             </Typography>
-            <SignIn></SignIn>
+            <SignInWithGitHubButton />
           </Box>
         </Grid>
         {/*         <Grid item xs={12}>
