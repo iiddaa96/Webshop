@@ -9,7 +9,7 @@ export default function SignInButton() {
         color: "black",
         fontFamily: "Roboto, Arial, sans-serif",
         fontWeight: "bold",
-        backgroundColor: "#f3f9b2",
+        backgroundColor: "#F0E8D5",
         border: "none",
         cursor: "pointer",
       }}
