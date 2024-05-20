@@ -97,6 +97,7 @@ export default async function Home() {
                       disableSpacing
                       sx={{ justifyContent: "flex-end" }}
                     ></CardActions>
+                    {/* Här ska snackbaren vara om det ska finnas en */}
                   </Box>
                 </Card>
               </Link>
