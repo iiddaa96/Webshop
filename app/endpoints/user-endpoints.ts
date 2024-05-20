@@ -1,5 +1,6 @@
 import { db } from "@/prisma/db";
 import { NextRequest, NextResponse } from "next/server";
+import { signIn } from "../auth";
 import { UserCreate, UserCreateSchema } from "../zod-validation/users";
 
 export async function getAllUsers(req: NextRequest) {
@@ -9,7 +10,7 @@ export async function getAllUsers(req: NextRequest) {
 
 export async function createUser(incomingData: UserCreate) {
   const userData = UserCreateSchema.parse(incomingData);
-  const user = await db.post.create({
+  const user = await db.user.create({
     data: {
       email: userData.email,
       name: userData.name,
@@ -17,4 +18,8 @@ export async function createUser(incomingData: UserCreate) {
     },
   });
   console.log("user created:", user);
+}
+
+export async function signInUser() {
+  await signIn();
 }
