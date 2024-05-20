@@ -76,7 +76,7 @@ function ResponsiveAppBar() {
               marginRight: "30rem",
             }}
           >
-            <Image src={LogoImage} height={75} width={75} alt="Logo" />
+            <Image src={LogoImage} height={73} width={71} alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
