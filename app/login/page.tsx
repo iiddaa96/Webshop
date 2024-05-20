@@ -1,9 +1,7 @@
-import { Link } from "@mui/material";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import SignIn from "../ui/auth/Signin-button";
 
 function Login() {
   return (
@@ -35,10 +33,10 @@ function Login() {
             >
               Log In
             </Typography>
+            <SignIn></SignIn>
           </Box>
         </Grid>
-
-        <Grid item xs={12}>
+        {/*         <Grid item xs={12}>
           <form className="form">
             <div className="form-group">
               <label
@@ -93,7 +91,7 @@ function Login() {
                 }}
               />
             </div>
-            <Button
+             <Button
               component={Link}
               href="/"
               fullWidth
@@ -109,9 +107,9 @@ function Login() {
               }}
             >
               Log In
-            </Button>
+            </Button> 
           </form>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   );
