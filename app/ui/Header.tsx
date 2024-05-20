@@ -111,7 +111,7 @@ function ResponsiveAppBar() {
                   padding: "10px",
                 }}
               >
-                Wall of Art
+                Sand & Sjö
               </Typography>
             </Box>
             <Menu
