@@ -60,8 +60,8 @@ function Footer() {
         <Typography sx={{ textAlign: "center", fontSize: "14px" }}>
           ©️ Copyright by
         </Typography>
-        <Typography sx={{ fontSize: "14px" }}>Wall of art company</Typography>
-        <Typography sx={{ fontSize: "14px" }}>Team JIMM 2024</Typography>
+        <Typography sx={{ fontSize: "14px" }}>Sand & Sjö company</Typography>
+        <Typography sx={{ fontSize: "14px" }}>Team fantastic5 2024</Typography>
       </Box>
 
       <Box
