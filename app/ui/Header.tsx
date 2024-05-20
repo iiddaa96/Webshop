@@ -134,6 +134,7 @@ function ResponsiveAppBar() {
               <Button component={Link} href="/login" color="inherit">
                 Login
               </Button>
+
               <Button component={Link} href="/frames" color="inherit">
                 Frames
               </Button>
