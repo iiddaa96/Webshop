@@ -4,7 +4,7 @@ import { CartProvider } from "./context/CartContext";
 import { PaymentProvider } from "./context/PaymentContext";
 import { LayoutProps } from "./types";
 import Footer from "./ui/Footer";
-import Header from "./ui/headers/Header";
+import Header from "./ui/Header";
 
 /**
  * Rotlayoutkomponenten som ger grundläggande layout för hela applikationen.
