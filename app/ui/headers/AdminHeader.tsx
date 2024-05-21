@@ -14,6 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import LogoImage from "../../assets/logo.png";
+import SignInButton from "../auth/SigninButton";
 
 export default function AdminHeader() {
   /*   const { cart } = useCart();
@@ -214,6 +215,7 @@ export default function AdminHeader() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             ></Menu>
+            <SignInButton></SignInButton>
           </Box>
         </Toolbar>
       </Container>
