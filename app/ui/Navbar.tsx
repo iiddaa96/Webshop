@@ -1,3 +1,4 @@
+"use client";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   Box,
@@ -11,7 +12,6 @@ import {
 import Link from "next/link";
 import React from "react";
 import HomeButton from "./HomeButton";
-import SignInButton from "./auth/SigninButton";
 
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -125,8 +125,6 @@ export default function Navbar() {
           <Button component={Link} href="/favorite" color="inherit">
             Favorite
           </Button>
-
-          <SignInButton></SignInButton>
         </Box>
       </Toolbar>
     </Container>

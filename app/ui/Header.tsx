@@ -1,20 +1,23 @@
-"use client";
 import { AppBar } from "@mui/material";
 import Navbar from "./Navbar";
+import AuthButtons from "./auth/AuthButtons";
 
-export default function AdminHeader() {
+export default function Header() {
   return (
-    <AppBar
-      position="static"
-      component="header"
-      sx={{
-        backgroundColor: "#ffffff",
-        borderBottom: "1px solid black",
-        boxShadow: "none",
-        color: "black",
-      }}
-    >
-      <Navbar></Navbar>
-    </AppBar>
+    <header>
+      <AppBar
+        position="static"
+        component="header"
+        sx={{
+          backgroundColor: "#ffffff",
+          borderBottom: "1px solid black",
+          boxShadow: "none",
+          color: "black",
+        }}
+      >
+        <Navbar></Navbar>
+      </AppBar>
+      <AuthButtons></AuthButtons>
+    </header>
   );
 }
