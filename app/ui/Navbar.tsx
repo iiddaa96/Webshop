@@ -40,7 +40,7 @@ export default async function Navbar() {
                 padding: "10px",
               }}
             >
-              Wall of Art
+              Sand & Sjö
             </Typography>
           </Box>
         </Box>
