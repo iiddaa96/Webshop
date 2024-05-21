@@ -4,7 +4,7 @@ import { CartProvider } from "./context/CartContext";
 import { PaymentProvider } from "./context/PaymentContext";
 import { LayoutProps } from "./types";
 import Footer from "./ui/Footer";
-import ResponsiveAppBar from "./ui/Header";
+import Header from "./ui/Header";
 
 /**
  * Rotlayoutkomponenten som ger grundläggande layout för hela applikationen.
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: LayoutProps) {
           <AppRouterCacheProvider>
             <PaymentProvider>
               <ProductProvider>
-                <ResponsiveAppBar />
+                <Header />
                 {children}
                 <Footer />
               </ProductProvider>

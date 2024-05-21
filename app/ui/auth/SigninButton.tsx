@@ -1,8 +1,17 @@
 "use client";
-
 import { signIn } from "next-auth/react";
 
 export default function SignInButton() {
+  const handleSignIn = async () => {
+    try {
+      await signIn("github", {
+        callbackUrl: "http://localhost:5173/",
+      });
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
+  };
+
   return (
     <button
       style={{
@@ -13,7 +22,7 @@ export default function SignInButton() {
         border: "none",
         cursor: "pointer",
       }}
-      onClick={() => signIn()}
+      onClick={handleSignIn}
     >
       SIGN IN
     </button>
