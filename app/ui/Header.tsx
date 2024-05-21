@@ -1,8 +1,7 @@
+"use server";
 import { AppBar } from "@mui/material";
 import Navbar from "./Navbar";
-import AuthButtons from "./auth/AuthButtons";
-
-export default function Header() {
+export default async function Header() {
   return (
     <header>
       <AppBar
@@ -17,7 +16,6 @@ export default function Header() {
       >
         <Navbar></Navbar>
       </AppBar>
-      <AuthButtons></AuthButtons>
     </header>
   );
 }
