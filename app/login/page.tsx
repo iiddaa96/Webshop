@@ -24,92 +24,18 @@ function Login() {
             <Typography
               variant="body1"
               sx={{
-                fontSize: { xs: "25px", md: "3rem", lg: "2.6rem" },
-                fontFamily: "times new roman",
-                color: "white",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+                fontSize: { xs: "25px", md: "3rem", lg: "5.6rem" },
+                fontFamily: "Arial, sans-serif",
+                color: "#f0ff8c",
+                textShadow: "4px 4px 8px rgba(245, 162, 38, 0.9)",
                 fontWeight: "bold",
               }}
             >
-              Log In
+              LOG IN
             </Typography>
             <SignInWithGitHubButton />
           </Box>
         </Grid>
-        {/*         <Grid item xs={12}>
-          <form className="form">
-            <div className="form-group">
-              <label
-                style={{
-                  color: "white",
-                  fontFamily: "Times New Roman",
-                  fontWeight: "bold",
-                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
-                  fontSize: "1.3rem",
-                }}
-                htmlFor="username"
-              >
-                Username
-              </label>
-              <TextField
-                fullWidth
-                id="username"
-                variant="outlined"
-                margin="normal"
-                sx={{
-                  bgcolor: "white",
-                  border: "1px solid black",
-                  borderRadius: "10px",
-                }}
-              />
-            </div>
-
-            <div className="form-group">
-              <label
-                style={{
-                  fontFamily: "Times New Roman",
-                  fontWeight: "bold",
-                  fontSize: "1.3rem",
-                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.9)",
-                  color: "white",
-                }}
-                htmlFor="password"
-              >
-                Password
-              </label>
-
-              <TextField
-                fullWidth
-                id="password"
-                variant="outlined"
-                margin="normal"
-                type="password"
-                sx={{
-                  bgcolor: "white",
-                  border: "1px solid black",
-                  borderRadius: "10px",
-                }}
-              />
-            </div>
-             <Button
-              component={Link}
-              href="/"
-              fullWidth
-              type="submit"
-              variant="contained"
-              sx={{
-                mt: 2,
-                color: "black",
-                fontSize: "1rem",
-                bgcolor: "#a9b4d5",
-                "&:hover": { bgcolor: "#6d82b7" },
-                fontFamily: "times new roman",
-              }}
-            >
-              Log In
-            </Button> 
-          </form>
-        </Grid> */}
       </Grid>
     </Box>
   );

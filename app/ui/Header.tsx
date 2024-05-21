@@ -76,7 +76,7 @@ function ResponsiveAppBar() {
               marginRight: "30rem",
             }}
           >
-            <Image src={LogoImage} height={75} width={75} alt="Logo" />
+            <Image src={LogoImage} height={75} width={79} alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -111,7 +111,7 @@ function ResponsiveAppBar() {
                   padding: "10px",
                 }}
               >
-                Wall of Art
+                Sand & Sjö
               </Typography>
             </Box>
             <Menu
