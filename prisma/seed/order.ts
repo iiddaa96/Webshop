@@ -1,3 +1,4 @@
+import { number } from "zod";
 import { db } from "../db";
 
 // Skapar default användare
