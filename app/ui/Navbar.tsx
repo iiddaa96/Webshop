@@ -18,6 +18,7 @@ export default async function Navbar() {
       >
         <HomeButton></HomeButton>
         <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <AuthButtons></AuthButtons>
           <Box
             component={Link}
             href="/"
