@@ -13,11 +13,11 @@ import Link from "next/link";
 import * as React from "react";
 import LogoImage from "../assets/logo.png";
 import { useCart } from "../context/CartContext";
+import RenderUser from "./RenderUser";
 import SignInButton from "./auth/SigninButton";
 
 function ResponsiveAppBar() {
   const { cart } = useCart();
-
   // Beräkna totala antalet produkter i kundvagnen
   const totalQuantity = cart.reduce(
     (total, currentItem) => total + currentItem.quantity,
@@ -214,6 +214,7 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+      <RenderUser></RenderUser>
     </AppBar>
   );
 }

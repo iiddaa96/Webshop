@@ -1,18 +1,18 @@
 import argon2 from "argon2";
 import { db } from "../db";
 
-async function admin() {
+export async function admin() {
   const hashedPassword = await argon2.hash("göteborg123");
   const test = await db.user.upsert({
-    where: { email: "admin@gmail.com" },
+    where: { email: "jonatanhelander@hotmail.com" },
     update: {
-      name: "göran",
+      name: "jonatan",
       password: hashedPassword,
       isAdmin: true,
     },
     create: {
-      email: "admin@gmail.com",
-      name: "göran",
+      email: "jonatanhelander@hotmail.com",
+      name: "jonatan",
       password: hashedPassword,
       isAdmin: true,
     },
