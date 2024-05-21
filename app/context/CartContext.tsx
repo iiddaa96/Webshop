@@ -13,12 +13,12 @@ import { CartItem, Product } from "../../data/index";
  */
 export interface CartContextType {
   cart: CartItem[];
-  confirmedCart: CartItem[]; // Lägg till denna rad
+  confirmedCart: CartItem[];
   addToCart: (product: Product) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
-  clearCart: () => void; //lägger till clearCart
-  setConfirmedCart: (items: CartItem[]) => void; // Lägg till denna rad
+  clearCart: () => void;
+  setConfirmedCart: (items: CartItem[]) => void;
 }
 
 const CART_LOCAL_STORAGE_KEY = "cart";
@@ -28,12 +28,12 @@ const CART_LOCAL_STORAGE_KEY = "cart";
  */
 export const CartContext = createContext<CartContextType>({
   cart: [],
-  confirmedCart: [], // Lägg till denna rad
+  confirmedCart: [],
   addToCart: () => {},
   removeFromCart: () => {},
   updateQuantity: () => {},
-  clearCart: () => [], // cart to empty array on clear
-  setConfirmedCart: () => {}, // Lägg till denna rad
+  clearCart: () => {},
+  setConfirmedCart: () => {},
 });
 
 /**
@@ -52,7 +52,7 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [confirmedCart, setConfirmedCart] = useState<CartItem[]>([]); // Ny state
+  const [confirmedCart, setConfirmedCart] = useState<CartItem[]>([]);
 
   // Funktion för att hantera inställning av bekräftade varor i varukorgen
   const handleSetConfirmedCart = (items: CartItem[]) => {
@@ -101,6 +101,7 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   };
 
+  // Funktion för att uppdatera kvantiteten av en produkt i varukorgen
   const updateQuantity = (productId: string, quantity: number) => {
     setCart((currentCart) => {
       return currentCart.map((item) => {
@@ -112,25 +113,12 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
     });
   };
 
+  // Funktion för att rensa varukorgen
   const clearCart = () => {
     setCart([]);
     localStorage.removeItem(CART_LOCAL_STORAGE_KEY);
   };
 
-  /**
-   * Renderar provider-komponenten för CartContext.
-   *
-   * @param {Object} props - Objektet med props.
-   * @param {Array} props.cart - Nuvarande varor i kundvagnen.
-   * @param {Function} props.addToCart - Funktionen för att lägga till en vara i kundvagnen.
-   * @param {Function} props.removeFromCart - Funktionen för att ta bort en vara från kundvagnen.
-   * @param {Function} props.updateQuantity - Funktionen för att uppdatera antalet av en vara i kundvagnen.
-   * @param {Function} props.clearCart - Funktionen för att rensa kundvagnen.
-   * @param {Function} props.handleSetConfirmedCart - Funktionen för att sätta den bekräftade kundvagnen.
-   * @param {Array} props.confirmedCart - De bekräftade varorna i kundvagnen.
-   * @param {ReactNode} props.children - Barnkomponenterna.
-   * @returns {JSX.Element} Provider-komponenten för CartContext.
-   */
   return (
     <CartContext.Provider
       value={{
