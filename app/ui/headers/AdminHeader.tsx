@@ -1,9 +1,7 @@
-import { useCart } from "@/app/context/CartContext";
+"use client";
 import MenuIcon from "@mui/icons-material/Menu";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
   AppBar,
-  Badge,
   Box,
   Button,
   Container,
@@ -18,13 +16,13 @@ import React from "react";
 import LogoImage from "../../assets/logo.png";
 
 export default function AdminHeader() {
-  const { cart } = useCart();
+  /*   const { cart } = useCart();
 
   // Beräkna totala antalet produkter i kundvagnen
   const totalQuantity = cart.reduce(
     (total, currentItem) => total + currentItem.quantity,
     0
-  );
+  ); */
 
   // Tillstånd för att hantera öppnande och stängning av navigeringsmenyn och användarmenyn
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -191,13 +189,13 @@ export default function AdminHeader() {
                 sx={{ p: 0 }}
                 data-cy="cart-link"
               >
-                <Badge
+                {/*         <Badge
                   badgeContent={totalQuantity}
                   color="secondary"
                   data-cy="cart-items-count-badge"
                 >
                   <ShoppingCartIcon />
-                </Badge>
+                </Badge> */}
               </IconButton>
             </Box>
             <Menu
