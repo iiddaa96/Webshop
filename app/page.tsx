@@ -17,10 +17,6 @@ import Link from "next/link";
 import MiddleImage from "./assets/palms.jpg";
 
 export default async function Home() {
-  const users = await db.user.findMany({
-    orderBy: { id: "desc" },
-  });
-
   const products = await db.product.findMany({
     orderBy: { id: "desc" },
   });

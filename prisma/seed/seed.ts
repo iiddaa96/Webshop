@@ -1,12 +1,12 @@
 import { db } from "../db";
+import { admin as seedAdmin } from "./admin";
 import { seedCatorgories as seedCatorgoriesWithProducts } from "./categoryWithProducts";
 import { user as seedUser } from "./user";
-
 // Skapar default användare
 async function main() {
   await seedCatorgoriesWithProducts();
   await seedUser();
-  // await seed other stuff
+  await seedAdmin();
 }
 
 main()

@@ -1,3 +1,4 @@
+
 "use server";
 import { AppBar } from "@mui/material";
 import Navbar from "./Navbar";
@@ -17,5 +18,6 @@ export default async function Header() {
         <Navbar></Navbar>
       </AppBar>
     </header>
+
   );
 }
