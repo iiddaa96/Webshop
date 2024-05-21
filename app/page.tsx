@@ -1,10 +1,8 @@
-/* "use client"; */
+import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-
-import { db } from "@/prisma/db";
 import {
   Box,
   Card,
@@ -14,24 +12,11 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
+import MiddleImage from "./assets/palms.jpg";
 
 export default async function Home() {
-  /*   // Tillstånd för att visa snackbar
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-  // Tillstånd för meddelandet i snackbar
-  const [snackbarMessage, setSnackbarMessage] = useState("");
-
-  const handleAddToCart = (product) => {
-    setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
-    setOpenSnackbar(true); // Visa snackbar
-  };
-
-  const handleCloseSnackbar = () => {
-    // Funktion för att stänga snackbar
-    setOpenSnackbar(false);
-  }; */
-
   const users = await db.user.findMany({
     orderBy: { id: "desc" },
   });
@@ -42,31 +27,7 @@ export default async function Home() {
 
   return (
     <main>
-      {/* <div>
-        {users.map((user) => (
-          <div key={user.id}>
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
-            <p>{user.password}</p>
-          </div>
-        ))}
-      </div> */}
-
-      {/* <div>
-        {products.map((product) => (
-          <div key={product.id}>
-            <img
-              style={{ width: "250px", height: "250px" }}
-              src={product.image}
-              alt={product.title}
-            />
-            <h2>{product.title}</h2>
-            <p>{product.description}</p>
-          </div>
-        ))}
-      </div> */}
-
-      {/* <Box
+      <Box
         sx={{
           width: "95%",
           justifyContent: "center",
@@ -79,12 +40,12 @@ export default async function Home() {
         }}
       >
         <Image
-          src={product.image}
-          alt={product.title}
+          src={MiddleImage}
+          alt="Stor Bild"
           layout="fill"
           objectFit="cover"
         />
-      </Box> */}
+      </Box>
 
       <Box
         sx={{
@@ -127,20 +88,16 @@ export default async function Home() {
                       color="text.secondary"
                       sx={{ fontSize: "0.8rem" }}
                     >
-                      {product.price}kr
+                      {" "}
+                      {product.price}kr{" "}
                     </Typography>
                   </CardContent>
                   <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
                     <CardActions
                       disableSpacing
                       sx={{ justifyContent: "flex-end" }}
-                    >
-                      {/* <AddToCartButton
-                        product={product}
-                        handleAddToCart={handleAddToCart}
-                        title={""}
-                      /> */}
-                    </CardActions>
+                    ></CardActions>
+                    {/* Här ska snackbaren vara om det ska finnas en */}
                   </Box>
                 </Card>
               </Link>
@@ -148,15 +105,6 @@ export default async function Home() {
           ))}
         </Grid>
       </Box>
-
-      {/*  Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
-      {/* <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        open={openSnackbar}
-        autoHideDuration={1000}
-        onClose={handleCloseSnackbar}
-        message={snackbarMessage}
-      /> */}
     </main>
   );
 }

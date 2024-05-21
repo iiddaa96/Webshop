@@ -1,3 +1,6 @@
 Handledning:
 * Hur skapar vi mellanhanden, CategoryProduct?
 * Hur kopplar man admin till products
+* Cookie-session
+* Kloning på DELETE & UPDATE, HUR???? 
+* FRÅGA OM HUR VI SKA HA VÅRA PRODUKTER, i seed [] eller som admin lägger upp

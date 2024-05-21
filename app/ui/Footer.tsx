@@ -45,7 +45,7 @@ function Footer() {
         <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
           Kontakta oss här:
         </Typography>
-        <Typography sx={{ fontSize: "14px" }}>Wall of Art </Typography>
+        <Typography sx={{ fontSize: "14px" }}>Sand & Sjö </Typography>
         <Typography sx={{ fontSize: "14px" }}>Hittepå gatan 01</Typography>
         <Typography sx={{ fontSize: "14px" }}>442 11 Göteborg</Typography>
       </Box>
@@ -60,8 +60,8 @@ function Footer() {
         <Typography sx={{ textAlign: "center", fontSize: "14px" }}>
           ©️ Copyright by
         </Typography>
-        <Typography sx={{ fontSize: "14px" }}>Wall of art company</Typography>
-        <Typography sx={{ fontSize: "14px" }}>Team JIMM 2024</Typography>
+        <Typography sx={{ fontSize: "14px" }}>Sand & Sjö company</Typography>
+        <Typography sx={{ fontSize: "14px" }}>Team fantastic5 2024</Typography>
       </Box>
 
       <Box

@@ -13,12 +13,8 @@ import Link from "next/link";
 import * as React from "react";
 import LogoImage from "../assets/logo.png";
 import { useCart } from "../context/CartContext";
+import SignInButton from "./auth/SigninButton";
 
-/**
- * Komponent för en responsiv app-fält som innehåller navigeringslänkar och en kundvagnsikon.
- *
- * @returns {JSX.Element} Komponenten för app-fältet.
- */
 function ResponsiveAppBar() {
   const { cart } = useCart();
 
@@ -80,7 +76,7 @@ function ResponsiveAppBar() {
               marginRight: "30rem",
             }}
           >
-            <Image src={LogoImage} height={75} width={75} alt="Logo" />
+            <Image src={LogoImage} height={75} width={79} alt="Logo" />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -115,7 +111,7 @@ function ResponsiveAppBar() {
                   padding: "10px",
                 }}
               >
-                Wall of Art
+                Sand & Sjö
               </Typography>
             </Box>
             <Menu
@@ -136,9 +132,8 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <Button component={Link} href="/posters" color="inherit">
-                Posters
-              </Button>
+              <SignInButton />
+
               <Button component={Link} href="/frames" color="inherit">
                 Frames
               </Button>
@@ -160,9 +155,7 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {/* Tillfälliga länkar till andra sidor desktop */}
-            <Button component={Link} href="/posters" color="inherit">
-              Posters
-            </Button>
+            <SignInButton />
             <Button component={Link} href="/frames" color="inherit">
               Frames
             </Button>
