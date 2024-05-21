@@ -214,6 +214,7 @@ function ResponsiveAppBar() {
           </Box>
         </Toolbar>
       </Container>
+
       <RenderUser></RenderUser>
     </AppBar>
   );
