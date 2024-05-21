@@ -2,7 +2,19 @@
 
 import { useEffect, useState } from "react";
 
-export const TotalPrice = ({ cart }) => {
+export interface Item {
+  id: string;
+  title: string;
+  price: number;
+  quantity: number;
+  image: string;
+}
+
+export interface ItemsProps {
+  cart: Item[];
+}
+
+export const TotalPrice = ({ cart }: ItemsProps) => {
   const [totalPrice, setTotalPrice] = useState(0); // State för den totala summan
 
   useEffect(() => {

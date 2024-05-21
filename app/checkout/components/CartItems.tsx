@@ -6,8 +6,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Grid, IconButton, Typography } from "@mui/material";
 import { useState } from "react";
 import { ConfirmDeleteToast } from "./ConfirmDeleteToast";
+import { ItemsProps } from "./TotalPrice";
 
-export const CartItems = ({ cart }) => {
+export const CartItems = ({ cart }: ItemsProps) => {
   const { removeFromCart } = useCart();
   const [showDeleteToast, setShowDeleteToast] = useState(false);
   const [selectedItemId, setSelectedItemId] = useState("");

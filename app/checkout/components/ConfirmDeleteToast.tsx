@@ -2,11 +2,17 @@
 
 import { Button, Paper, Typography } from "@mui/material";
 
+interface ConfirmDeleteToastProps {
+  selectedItemId: string;
+  removeFromCart: (id: string) => void;
+  setShowDeleteToast: (show: boolean) => void;
+}
+
 export const ConfirmDeleteToast = ({
   selectedItemId,
   removeFromCart,
   setShowDeleteToast,
-}) => {
+}: ConfirmDeleteToastProps) => {
   const handleConfirmDelete = () => {
     // Remove the item from the cart
     removeFromCart(selectedItemId);
