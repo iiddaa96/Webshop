@@ -4,6 +4,7 @@ import Link from "next/link";
 import { auth } from "../auth";
 import HamburgerMenu from "./HamburgerMenu";
 import HomeButton from "./HomeButton";
+import UnderHeader from "./UnderHeader";
 import AuthButtons from "./auth/AuthButtons";
 
 export default async function Navbar() {
@@ -60,6 +61,8 @@ export default async function Navbar() {
             Favorite
           </Button>
         </Box>
+
+        <UnderHeader></UnderHeader>
       </Toolbar>
     </Container>
   );
