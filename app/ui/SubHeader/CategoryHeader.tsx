@@ -33,6 +33,9 @@ export default function SubHeader() {
           <Button component={Link} href="/categories/nyheter" color="inherit">
             Nyheter
           </Button>
+          <Button component={Link} href="/admin" color="inherit">
+            Admin
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>
