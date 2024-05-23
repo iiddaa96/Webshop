@@ -1,39 +1,34 @@
 "use server";
-import { Box, Button, Container, Toolbar, Typography } from "@mui/material";
+import { Box, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
-import HamburgerMenu from "./HamburgerMenu";
-import HomeButton from "./HomeButton";
 import AuthButtons from "./auth/AuthButtons";
 
 export default async function Navbar() {
   const session = await auth();
   return (
     <Container maxWidth="xl">
-      <p>Welcome {session?.user?.email}</p>
-
       <Toolbar
         disableGutters
         sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
       >
-        <HomeButton></HomeButton>
-        <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-          <AuthButtons></AuthButtons>
+        {/* Flex container for center alignment */}
+        <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
           <Box
-            component={Link}
-            href="/"
             sx={{
-              textDecoration: "none",
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              justifyContent: "flex-start",
             }}
           >
-            {/* logo namn mobil vy */}
-            <HamburgerMenu></HamburgerMenu>
+            {/* Centered "Sand & Sjö" för mobil */}
             <Typography
               variant="h6"
               noWrap
-              component="div"
+              component={Link}
+              href="/"
               sx={{
-                fontFamily: "monospace",
+                fontFamily: "Arial, sans-serif",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "black",
@@ -44,21 +39,39 @@ export default async function Navbar() {
               Sand & Sjö
             </Typography>
           </Box>
-        </Box>
-        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-          <AuthButtons></AuthButtons>
-          <Button component={Link} href="/posters" color="inherit">
-            Posters
-          </Button>
-          <Button component={Link} href="/frames" color="inherit">
-            Frames
-          </Button>
-          <Button component={Link} href="/home" color="inherit">
-            Home
-          </Button>
-          <Button component={Link} href="/favorite" color="inherit">
-            Favorite
-          </Button>
+
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              justifyContent: "center",
+              flexGrow: 1,
+            }}
+          >
+            {/* Centered "Sand & Sjö" för desktop */}
+            <Typography
+              variant="h6"
+              noWrap
+              component={Link}
+              href="/"
+              sx={{
+                fontFamily: "Arial, sans-serif",
+                fontWeight: "bold",
+                letterSpacing: ".3rem",
+                color: "black",
+                textDecoration: "none",
+                fontSize: "2.5rem",
+                marginRight: "-6.5rem",
+                textShadow: "2px 2px 2px rgba(234, 246, 129, 0.8)",
+              }}
+            >
+              Sand & Sjö
+            </Typography>
+          </Box>
+
+          {/* Right-aligned AuthButtons */}
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <AuthButtons />
+          </Box>
         </Box>
       </Toolbar>
     </Container>

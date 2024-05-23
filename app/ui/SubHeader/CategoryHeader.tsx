@@ -20,13 +20,13 @@ export default function SubHeader() {
           <Button component={Link} href="/rea" color="inherit">
             Rea
           </Button>
-          <Button component={Link} href="/handdukar" color="inherit">
+          <Button component={Link} href="/categories" color="inherit">
             Handdukar
           </Button>
-          <Button component={Link} href="/badleksaker" color="inherit">
+          <Button component={Link} href="/categories" color="inherit">
             Badleksaker
           </Button>
-          <Button component={Link} href="/nyheter" color="inherit">
+          <Button component={Link} href="/categories" color="inherit">
             Nyheter
           </Button>
         </Box>
