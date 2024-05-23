@@ -68,15 +68,12 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
             color="inherit"
             aria-label="decrement"
             onClick={decrementQuantity}
-            data-cy="decrease-quantity-button"
           >
             <RemoveIcon />
           </IconButton>
         )}
         <Button variant="contained" color="inherit">
-          <Typography data-cy="product-quantity" component="span">
-            {quantity}
-          </Typography>
+          <Typography component="span">{quantity}</Typography>
         </Button>
 
         {showControls && (
@@ -84,7 +81,6 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
             color="inherit"
             aria-label="increment"
             onClick={incrementQuantity}
-            data-cy="increase-quantity-button"
           >
             <AddIcon />
           </IconButton>
@@ -93,7 +89,7 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
 
       {showTotalPrice && (
         <Box>
-          <Typography variant="subtitle1" data-cy="product-price">
+          <Typography variant="subtitle1">
             Price: {calculateTotalPrice()} kr
           </Typography>
         </Box>
