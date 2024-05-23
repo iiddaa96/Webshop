@@ -130,5 +130,42 @@ const categoriesData: CategoriesData[] = [
       },
     ],
   },
-  { name: "Rea" },
+  {
+    name: "Rea",
+    products: [
+      {
+        title: "Kasta ring",
+        description:
+          "Kasta ring är ett klassiskt spel för trädgården eller parken som roat generationer. Samla poäng. Kasta ring är ett roligt spel att spela på midsommar, på stranden eller på utflykten. Ta fram spelet på kalaset och utmana kompisarna. Spelet går ut på att du ska träffa pinnarna med ringarna och varje pinne är värd olika mycket poäng. Ni kommer överens om hur ni ska räkna eller kasta, flest poäng på tre kast eller gul ring på gul pinne – reglerna är väldigt flexibla! Tränar motoriken. Forskare har sett att det hjälper barn i deras utveckling av motoriska färdigheter och hand-ögon-samordning genom att träna på att kasta och sikta. Vad ingår? Spelet innehåller två träbrädor, 5 träpinnar och fem repringar. Från 3 år.",
+        image:
+          "https://images.clasohlson.com/medias/sys_master/h95/hde/68349037445150.jpg",
+        price: 99,
+      },
+      {
+        title: "Boccia utomhusspel",
+        description:
+          "Boccia är ett utomhusspel som är lätt att ta med och som passar att spela ensam eller i lag. De vattenfyllda plastkloten levereras i en förvaringsväska med ett handtag. Boccia spelas utomhus i en trädgård, grusplan eller annan plats där en större yta finns. Precisionsspel för barn och vuxna. Bocciaspel går ut på att kasta sina klot så nära den lilla kulan som möjligt. Den som kommer närmast vinner. Variera gärna svårighetsgraden genom att anpassa avståndet från den som kastar till den lilla kulan.",
+        image:
+          "https://images.clasohlson.com/medias/sys_master/ha7/hdb/68349056942110.png",
+        price: 129,
+      },
+      {
+        title: "Strandhandduk randig",
+        description:
+          "Mjuk och skön strandhandduk – hamaminspirerad med vävd framsida och baksida i frotté. Rulla ut den direkt i sanden eller använd den som ett extra skydd på solsängen. Den är enkel att ta med på resan, i gymväskan eller i picknickkorgen. Certifierad bomull. Badlakanet är tillverkat av Oeko-Tex-certifierad* bomull, är mjuk och smidig och torkar snabbt. Perfekt efter ditt dopp i poolen, att ha med på stranden eller att torka sig med efter duschen.",
+        image:
+          "https://images.clasohlson.com/medias/sys_master/h69/h2e/68350024679454.jpg",
+        price: 99,
+      },
+      {
+        title: "Hopfällbar solstol",
+        description:
+          "Hopfällbar campingstol lättvikt, passar lika bra till picknicken och strandhänget som till campingen. Stolen har en bekväm sitthöjd. När den är hopfälld tar den extra liten plats i packningen. Campingstol för picknick, strand och camping. Lättskött och slitstarkt material – tåligt polyestertyg med en stomme av lackerade stålrör som tål väder och vind. Komfort – bekväm sitthöjd och armstöd för avlastning av armarna. Funktion – stolens design tillåter enkel hopfällning för smidig transport och förvaring.",
+        image:
+          "https://images.clasohlson.com/medias/sys_master/h7c/h9d/68384488063006.jpg",
+        price: 179,
+      },
+    ],
+  },
+  ,
 ];
