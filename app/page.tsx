@@ -28,11 +28,11 @@ export default async function Home() {
           width: "95%",
           justifyContent: "center",
           position: "relative",
-          paddingTop: "30%", // Minskat från '56.25%' till en lägre procent för att minska höjden
+          paddingTop: "30%",
           margin: "32px auto",
           display: "flex",
           alignItems: "center",
-          marginBottom: "24px", // Mellanrum mellan bilden och griden
+          marginBottom: "24px",
         }}
       >
         <Image

@@ -1,7 +1,7 @@
 "use server";
 import { AppBar } from "@mui/material";
 import Navbar from "./Navbar";
-import CategoryHeader from "./SubHeader/CategoryHeader";
+import CategoryHeader from "./subHeader/CategoryHeader";
 export default async function Header() {
   return (
     <>

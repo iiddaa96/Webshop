@@ -1,3 +1,4 @@
+// "use server";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -12,50 +13,38 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { GetServerSideProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import MiddleImage from "../../assets/palms.jpg";
 
 interface CategoryPageProps {
-  category: {
-    id: number;
-    name: string;
+  params: {
     slug: string;
-    products: {
-      id: number;
-      title: string;
-      image: string;
-      price: number;
-    }[];
   };
 }
 
-// Fetch category data on the server side
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { slug } = context.params as { slug: string };
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const { slug } = params;
 
-  // Fetch the category by slug
-  const category = await db.category.findUnique({
-    where: { slug },
-    include: { products: true },
-  });
-
-  // If the category doesn't exist, return 404
-  if (!category) {
-    return {
-      notFound: true,
-    };
+  let category;
+  try {
+    category = await db.category.findUnique({
+      where: { slug },
+      include: { products: true },
+    });
+  } catch (error) {
+    console.error("Error fetching category:", error);
+    category = null;
   }
 
-  return {
-    props: {
-      category,
-    },
-  };
-};
+  if (!category) {
+    return (
+      <div>
+        <h1>Category not found</h1>
+      </div>
+    );
+  }
 
-export default function CategoryPage({ category }: CategoryPageProps) {
   return (
     <main>
       <Box
