@@ -34,6 +34,7 @@ export default async function Navbar() {
                 color: "black",
                 textDecoration: "none",
                 padding: "10px",
+                textShadow: "4px 4px 4px rgba(240, 232, 213, 1.0)",
               }}
             >
               Sand & Sjö
@@ -61,7 +62,7 @@ export default async function Navbar() {
                 textDecoration: "none",
                 fontSize: "2.5rem",
                 marginRight: "-6.5rem",
-                textShadow: "2px 2px 2px rgba(234, 246, 129, 0.8)",
+                textShadow: "4px 4px 4px rgba(240, 232, 213, 1.0)",
               }}
             >
               Sand & Sjö
