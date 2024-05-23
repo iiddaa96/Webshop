@@ -1,7 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
-    previewFeatures = ["driverAdapters"]
-
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -11,15 +10,15 @@ datasource db {
 
 // Detta är models för våra user och products som vi ska använda i vår databas
 model User {
-  id       String     @id @default(cuid())
+  id       String  @id @default(cuid())
   email    String  @unique
   name     String
   password String // ska bli hashed password
-  isAdmin  Boolean @default(false) 
+  isAdmin  Boolean @default(false)
 
   accounts Account[]
   sessions Session[]
-  order Order[] //en user kan ha flera orders
+  order    Order[] //en user kan ha flera orders
 }
 
 model Order {
@@ -69,10 +68,10 @@ model Product {
 model Category {
   id   Int    @id @default(autoincrement())
   name String @unique
+  slug String @unique
 
   products Product[]
 }
-
 
 model Account {
   userId            String
@@ -89,7 +88,6 @@ model Account {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
 
-
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([provider, providerAccountId])
@@ -104,7 +102,6 @@ model Session {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
 
 model VerificationToken {
   identifier String
