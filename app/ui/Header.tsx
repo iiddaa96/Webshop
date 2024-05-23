@@ -1,4 +1,3 @@
-
 "use server";
 import { AppBar } from "@mui/material";
 import Navbar from "./Navbar";
@@ -15,9 +14,9 @@ export default async function Header() {
           color: "black",
         }}
       >
-        <Navbar></Navbar>
+        {" "}
       </AppBar>
+      <Navbar></Navbar>
     </header>
-
   );
 }
