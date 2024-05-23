@@ -1,5 +1,3 @@
-"use client";
-
 import {
   AppBar,
   Box,
@@ -9,14 +7,19 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 import Link from "next/link";
+import { ReactElement } from "react";
 
-function HideOnScroll({ children }) {
+interface HideOnScrollProps {
+  children: ReactElement;
+}
+
+function HideOnScroll({ children }: HideOnScrollProps) {
   const trigger = useScrollTrigger({
-    threshold: 100, // Adjust the threshold as needed
+    threshold: 100, // Justera tröskeln vid behov
   });
 
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
+    <Slide appear={false} direction="down" in={!trigger} timeout={500}>
       {children}
     </Slide>
   );
