@@ -1,25 +1,23 @@
-"use server";
-import { AppBar } from "@mui/material";
+import { AppBar, Box } from "@mui/material";
 import Navbar from "./Navbar";
 import CategoryHeader from "./subHeader/CategoryHeader";
-export default async function Header() {
+
+export default function Header() {
   return (
-    <>
-      <header>
-        <AppBar
-          position="static"
-          component="header"
-          sx={{
-            backgroundColor: "#ffffff",
-            borderBottom: "1px solid black",
-            boxShadow: "none",
-            color: "black",
-          }}
-        >
-          <Navbar></Navbar>
-        </AppBar>
-      </header>
+    <Box position="sticky" top={0} zIndex={1000}>
+      <AppBar
+        position="static"
+        component="header"
+        sx={{
+          backgroundColor: "#ffffff",
+          borderBottom: "1px solid black",
+          boxShadow: "none",
+          color: "black",
+        }}
+      >
+        <Navbar />
+      </AppBar>
       <CategoryHeader />
-    </>
+    </Box>
   );
 }
