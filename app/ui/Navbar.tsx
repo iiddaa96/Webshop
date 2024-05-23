@@ -61,13 +61,27 @@ export default async function Navbar() {
                 color: "black",
                 textDecoration: "none",
                 fontSize: "2.5rem",
-                marginRight: "-6.5rem",
+                marginRight: "-13rem",
                 textShadow: "4px 4px 4px rgba(240, 232, 213, 1.0)",
               }}
             >
               Sand & Sjö
             </Typography>
           </Box>
+
+          {/* User som dyker upp när man är inloggad från github */}
+          <Typography
+            sx={{
+              color: "black",
+              fontFamily: "Arial, sans-serif",
+              fontWeight: "bold",
+              backgroundColor: "#F0E8D5",
+              fontSize: "13px",
+              marginRight: "2rem",
+            }}
+          >
+            Welcome: {session?.user?.email}
+          </Typography>
 
           {/* Right-aligned AuthButtons */}
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
