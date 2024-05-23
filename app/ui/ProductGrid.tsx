@@ -21,6 +21,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
+import { Product } from "@prisma/client";
 import React from "react";
 import { useProduct } from "../context/AdminContext";
 
@@ -33,14 +34,17 @@ const StyledCard = styled(Card)(({ theme }) => ({
 interface State extends SnackbarOrigin {
   open: boolean;
 }
+
+export interface ProductGridProps {
+  products: Product[]; // Use the Product type for the products prop
+}
 /**
  * Komponent för att visa produkter i ett rutnät samt hantera produktredigering och borttagning.
  * @returns {JSX.Element} JSX för produktgriden.
  */
 
-export default function ProductGrid() {
-  // Using the context to select a product
-  const { products, removeProduct } = useProduct();
+export default function ProductGrid({ products }: ProductGridProps) {
+  const { removeProduct } = useProduct();
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [productToDelete, setProductToDelete] = React.useState<string | null>(
@@ -77,7 +81,7 @@ export default function ProductGrid() {
     <Container fixed>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ xs: 2, md: 3 }}>
-          {products.map((product, index) => (
+          {products.map((product: Product, index: number) => (
             <Grid
               item
               xs={12}
@@ -101,7 +105,6 @@ export default function ProductGrid() {
                       gutterBottom
                       variant="h6"
                       sx={{ color: "primary.main" }}
-                      data-cy="product-title"
                     >
                       {product.title}
                     </Typography>
@@ -109,11 +112,11 @@ export default function ProductGrid() {
                       gutterBottom
                       variant="h6"
                       sx={{ color: "secondary.main" }}
-                      data-cy="product-price"
                     >
-                      {product.price}Kr
+                      {`${product.price.toString()}Kr`}{" "}
+                      {/* Konverterat till en string */}
                     </Typography>
-                    <Typography data-cy="product-id">{product.id}</Typography>
+                    <Typography>{product.id}</Typography>
                     <Box
                       sx={{
                         display: "flex",
@@ -121,15 +124,11 @@ export default function ProductGrid() {
                       }}
                     >
                       <Link href={"/admin/product/" + product.id}>
-                        <EditNoteIcon
-                          fontSize="large"
-                          data-cy="admin-edit-product"
-                        />
+                        <EditNoteIcon fontSize="large" />
                       </Link>
                       <DeleteIcon
                         fontSize="large"
-                        data-cy="admin-remove-product"
-                        onClick={() => handleDialogOpen(product.id)}
+                        onClick={() => handleDialogOpen(product.id.toString())}
                       />
                     </Box>
                   </CardContent>
@@ -148,11 +147,7 @@ export default function ProductGrid() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDialogClose}>Avbryt</Button>
-          <Button
-            onClick={handleDeleteProduct}
-            data-cy="confirm-delete-button"
-            autoFocus
-          >
+          <Button onClick={handleDeleteProduct} autoFocus>
             Radera
           </Button>
         </DialogActions>
