@@ -9,17 +9,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+enum UserRole {
+ADMIN
+USER 
+}
+
 // Detta är models för våra user och products som vi ska använda i vår databas
 model User {
   id       String     @id @default(cuid())
-  email    String  @unique
+  email    String     @unique
   name     String
-  password String // ska bli hashed password
-  isAdmin  Boolean @default(false) 
-
+  password String
+  isAdmin  Boolean    @default(false)
+  role     UserRole   @default(USER)
   accounts Account[]
   sessions Session[]
-  order Order[] //en user kan ha flera orders
+  order    Order[]    // en user kan ha flera orders
 }
 
 model Order {
