@@ -1,4 +1,5 @@
 "use server";
+import { db } from "@/prisma/db";
 import { Box, Button, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
@@ -8,9 +9,16 @@ import AuthButtons from "./auth/AuthButtons";
 
 export default async function Navbar() {
   const session = await auth();
+  const loggedInUser = session?.user?.email;
+
+  const foundUser = await db.user.findUnique({
+    where: { email: "jonatanhelander@hotmail.com" },
+  });
+
   return (
     <Container maxWidth="xl">
       <p>Welcome {session?.user?.email}</p>
+      <p>{foundUser?.isAdmin?.toString() ?? "N/A"}</p>
 
       <Toolbar
         disableGutters
