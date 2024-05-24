@@ -4,7 +4,7 @@ import { db } from "@/prisma/db";
 import { revalidatePath } from "next/cache";
 import { ProductCreate, ProductCreateSchema } from "../zod-validation/products";
 
-// Funkar inte just nu !! new comment new comment
+// Funkar inte just nu !! sefsefse
 export async function saveProduct(incomingData: ProductCreate) {
   const postData = ProductCreateSchema.parse(incomingData);
   const post = await db.post.create({
