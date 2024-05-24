@@ -1,4 +1,4 @@
-// "use server";
+"use server";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -22,20 +22,13 @@ interface CategoryPageProps {
     slug: string;
   };
 }
-
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = params;
 
-  let category;
-  try {
-    category = await db.category.findUnique({
-      where: { slug },
-      include: { products: true },
-    });
-  } catch (error) {
-    console.error("Error fetching category:", error);
-    category = null;
-  }
+  const category = await db.category.findFirst({
+    where: { name: slug },
+    include: { products: true },
+  });
 
   if (!category) {
     return (
@@ -108,7 +101,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       color="text.secondary"
                       sx={{ fontSize: "0.8rem" }}
                     >
-                      {product.price}kr
+                      {`${product.price}`}kr
                     </Typography>
                   </CardContent>
                   <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>

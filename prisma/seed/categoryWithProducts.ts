@@ -27,7 +27,7 @@ type CategoriesData = {
 
 const categoriesData: CategoriesData[] = [
   {
-    name: "Nyheter",
+    name: "nyheter",
     products: [
       {
         title: "Handduk Saga",
@@ -64,7 +64,7 @@ const categoriesData: CategoriesData[] = [
     ],
   },
   {
-    name: "Badleksaker",
+    name: "badleksaker",
     products: [
       {
         image:
@@ -101,7 +101,7 @@ const categoriesData: CategoriesData[] = [
     ],
   },
   {
-    name: "Handdukar",
+    name: "handdukar",
     products: [
       {
         title: "Handduk Saga",
@@ -138,7 +138,7 @@ const categoriesData: CategoriesData[] = [
     ],
   },
   {
-    name: "Rea",
+    name: "rea",
     products: [
       {
         title: "Handduk Saga",
