@@ -1,7 +1,15 @@
 "use server";
 
 import { db } from "@/prisma/db";
-import { Box, Container, Toolbar, Typography } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import {
+  Badge,
+  Box,
+  Container,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
 import AuthButtons from "./auth/AuthButtons";
@@ -21,7 +29,6 @@ export default async function Navbar() {
         disableGutters
         sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
       >
-        {/* Flex container for center alignment */}
         <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
           <Box
             sx={{
@@ -30,7 +37,6 @@ export default async function Navbar() {
               justifyContent: "flex-start",
             }}
           >
-            {/* Centered "Sand & Sjö" för mobil */}
             <Typography
               variant="h6"
               noWrap
@@ -57,7 +63,6 @@ export default async function Navbar() {
               flexGrow: 1,
             }}
           >
-            {/* Centered "Sand & Sjö" för desktop */}
             <Typography
               variant="h6"
               noWrap
@@ -78,7 +83,6 @@ export default async function Navbar() {
             </Typography>
           </Box>
 
-          {/* User som dyker upp när man är inloggad från github */}
           <Typography
             sx={{
               color: "black",
@@ -92,9 +96,34 @@ export default async function Navbar() {
             Welcome: {session?.user?.email}
           </Typography>
 
-          {/* Right-aligned AuthButtons */}
-          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <AuthButtons />
+          {/* Right-aligned AuthButtons and Cart */}
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                marginRight: "16px", // Justera detta värde för att få önskat mellanrum
+              }}
+            >
+              <AuthButtons />
+            </Box>
+            <Box>
+              <IconButton
+                component={Link}
+                href="/checkout"
+                size="large"
+                aria-label="show cart items"
+                color="inherit"
+                sx={{ p: 0 }}
+              >
+                <Badge
+                  // badgeContent={totalQuantity}
+                  color="secondary"
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </Box>
           </Box>
         </Box>
       </Toolbar>

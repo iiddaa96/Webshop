@@ -1,7 +1,6 @@
 "use server";
 import { AppBar, Box } from "@mui/material";
 import Navbar from "./Navbar";
-import CategoryHeader from "./SubHeader/CategoryHeader";
 
 export default async function Header() {
   return (
@@ -18,7 +17,6 @@ export default async function Header() {
       >
         <Navbar />
       </AppBar>
-      <CategoryHeader />
     </Box>
   );
 }

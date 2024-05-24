@@ -15,6 +15,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import MiddleImage from "./assets/palms.jpg";
+import CategoryHeader from "./ui/SubHeader/CategoryHeader";
 
 export default async function Home() {
   const products = await db.product.findMany({
@@ -23,6 +24,9 @@ export default async function Home() {
 
   return (
     <main>
+      <Box>
+        <CategoryHeader />
+      </Box>
       <Box
         sx={{
           width: "95%",
