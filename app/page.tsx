@@ -3,9 +3,10 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import Image from "next/image";
 import MiddleImage from "./assets/palms.jpg";
+import CardsHeader from "./ui/CardsForHomepage/CardsHeader";
 import CategoryHeader from "./ui/SubHeader/CategoryHeader";
 
 export default async function Home() {
@@ -38,19 +39,7 @@ export default async function Home() {
           objectFit="cover"
         />
       </Box>
-
-      <Box
-        sx={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 24px",
-          marginBottom: "24px",
-        }}
-      >
-        <Grid container spacing={4}>
-          {/* Visa något annat här? */}
-        </Grid>
-      </Box>
+      <CardsHeader />
     </main>
   );
 }
