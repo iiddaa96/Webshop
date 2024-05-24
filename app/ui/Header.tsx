@@ -1,3 +1,4 @@
+"use server";
 import { AppBar, Box } from "@mui/material";
 import Navbar from "./Navbar";
 import CategoryHeader from "./subHeader/CategoryHeader";

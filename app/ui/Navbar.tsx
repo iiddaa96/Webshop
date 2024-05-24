@@ -1,11 +1,22 @@
 "use server";
-import { Box, Container, Toolbar, Typography } from "@mui/material";
+
+import { db } from "@/prisma/db";
+import { Box, Button, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
+import AdminButton from "./AdminButton";
+import HomeButton from "./HomeButton";
 import AuthButtons from "./auth/AuthButtons";
 
 export default async function Navbar() {
   const session = await auth();
+
+  const loggedInUser = session?.user?.email as string | undefined;
+
+  const foundUser = await db.user.findFirst({
+    where: { email: loggedInUser },
+  });
+
   return (
     <Container maxWidth="xl">
       <Toolbar
@@ -87,6 +98,7 @@ export default async function Navbar() {
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <AuthButtons />
           </Box>
+
         </Box>
       </Toolbar>
     </Container>

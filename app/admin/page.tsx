@@ -1,45 +1,31 @@
-"use client";
-import ProductGrid from "@/app/ui/ProductGrid";
-import AddIcon from "@mui/icons-material/Add";
-import { Box } from "@mui/material";
-import Link from "next/link";
+"use server";
+import { db } from "@/prisma/db";
+import { Decimal } from "@prisma/client/runtime/library";
+import AdminClient from "./component/AdminClient";
 
 /**
  * Renderar administrationsgränssnittet.
  * @returns {JSX.Element} JSX-elementet som representerar administrationsgränssnittet.
  */
-function Admin() {
-  return (
-    <>
-      <Box
-        component={"main"}
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-          marginTop: "30px",
-          marginRight: "30px",
-        }}
-      >
-        <Link href="/admin/product/new">
-          <AddIcon
-            data-cy="admin-add-product"
-            sx={{
-              color: "black",
-              padding: "20px",
-              fontSize: "52px",
-              borderRadius: "999px",
-              transition: "background-color 0.3s",
-              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
-              "&:hover": {
-                background: "#f5f5f5",
-              },
-            }}
-          />
-        </Link>
-      </Box>
-      <ProductGrid />
-    </>
-  );
-}
+export default async function Admin() {
+  let products: {
+    id: number;
+    title: string;
+    image: string;
+    price: Decimal;
+    description: string;
+  }[] = [];
 
-export default Admin;
+  try {
+    products = await db.product.findMany();
+  } catch (error) {
+    console.error("error fetching products:", error);
+  }
+
+  /* const productsWithStringPrice = products.map((product) => ({
+    ...product,
+    price: product.price.toString(),
+  })); */
+
+  return <AdminClient products={products} />;
+}

@@ -3,13 +3,7 @@
 import { Product, productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
-import {
-  Box,
-  Button,
-  FormHelperTextProps,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -55,7 +49,6 @@ function ProductForm(props: Props) {
     <Box
       component="form"
       onSubmit={form.handleSubmit(save)}
-      data-cy="product-form"
       sx={{
         borderRadius: "10px",
         width: "100%",
@@ -75,10 +68,6 @@ function ProductForm(props: Props) {
       <TextField
         fullWidth
         label="Title"
-        inputProps={{ "data-cy": "product-title" }}
-        FormHelperTextProps={
-          { "data-cy": "product-title-error" } as FormHelperTextProps
-        }
         helperText={form.formState.errors.title?.message}
         error={Boolean(form.formState.errors.title)}
         id="demo-helper-text-aligned-no-helper"
@@ -87,10 +76,6 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för image */}
       <TextField
-        inputProps={{ "data-cy": "product-image" }}
-        FormHelperTextProps={
-          { "data-cy": "product-image-error" } as FormHelperTextProps
-        }
         fullWidth
         label="Image"
         helperText={form.formState.errors.image?.message}
@@ -101,10 +86,6 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för pris */}
       <TextField
-        inputProps={{ "data-cy": "product-price" }}
-        FormHelperTextProps={
-          { "data-cy": "product-price-error" } as FormHelperTextProps
-        }
         fullWidth
         label="Price"
         helperText={form.formState.errors.price?.message}
@@ -115,10 +96,6 @@ function ProductForm(props: Props) {
       />
       {/* Textfält för beskrivning */}
       <TextField
-        inputProps={{ "data-cy": "product-description" }}
-        FormHelperTextProps={
-          { "data-cy": "product-description-error" } as FormHelperTextProps
-        }
         id="outlined-multiline-static"
         label="Description"
         // multiline // Fråga David om denna ska vara med eller inte (admin-2) ???
