@@ -1,11 +1,9 @@
 "use server";
 
 import { db } from "@/prisma/db";
-import { Box, Button, Container, Toolbar, Typography } from "@mui/material";
+import { Box, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
-import AdminButton from "./AdminButton";
-import HomeButton from "./HomeButton";
 import AuthButtons from "./auth/AuthButtons";
 
 export default async function Navbar() {
@@ -98,7 +96,6 @@ export default async function Navbar() {
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <AuthButtons />
           </Box>
-
         </Box>
       </Toolbar>
     </Container>

@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { ReactElement } from "react";
+import AdminButton from "../AdminButton";
 
 interface HideOnScrollProps {
   children: ReactElement;
@@ -61,9 +62,7 @@ export default function SubHeader() {
             <Button component={Link} href="/categories/nyheter" color="inherit">
               Nyheter
             </Button>
-            <Button component={Link} href="/admin" color="inherit">
-              Admin
-            </Button>
+            <AdminButton />
           </Box>
         </Toolbar>
       </AppBar>

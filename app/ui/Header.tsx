@@ -1,9 +1,9 @@
 "use server";
 import { AppBar, Box } from "@mui/material";
 import Navbar from "./Navbar";
-import CategoryHeader from "./subHeader/CategoryHeader";
+import CategoryHeader from "./SubHeader/CategoryHeader";
 
-export default function Header() {
+export default async function Header() {
   return (
     <Box position="sticky" top={0} zIndex={1000}>
       <AppBar
