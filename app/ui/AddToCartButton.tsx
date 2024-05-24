@@ -13,7 +13,7 @@ interface AddToCartButtonProps {
 }
 
 /**
- * Komponent för en knapp som lägger till en produkt i kundvagnen.
+ * Komponent för en knapp som lägger till en produkt i kundvagnen. dddd
  * Använder en ikon för att representera "Lägg till i kundvagnen".
  *
  * @component
