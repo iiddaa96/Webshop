@@ -1,5 +1,5 @@
 import { db } from "../db";
-import { admin as seedAdmin } from "./admin";
+import admin from "./admin";
 import { seedCategories as seedCategoriesWithProducts } from "./categoryWithProducts";
 import { seedOrders } from "./order";
 import { product as seedProducts } from "./product";
@@ -8,7 +8,7 @@ import { user as seedUser } from "./user";
 async function main() {
   await seedCategoriesWithProducts();
   await seedUser();
-  await seedAdmin();
+  await admin();
   await seedProducts();
   await seedOrders();
 }
