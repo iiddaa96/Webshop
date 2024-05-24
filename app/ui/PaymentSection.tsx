@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useCustomer } from "../context/PaymentContext";
+import { createOrder } from "../endpoints/endpoints";
 
 // Skapar schema för inputfälten
 const stringSchema = z.string();
@@ -66,6 +67,7 @@ export default function InputPayment() {
   const handleSubmit = (customer: CustomerInfo) => {
     console.log(customer);
     setCustomer(customer);
+    createOrder();
     router.push("/confirmation");
   };
 

@@ -1,20 +1,42 @@
 "use server";
 
 import { db } from "@/prisma/db";
-import { revalidatePath } from "next/cache";
-import { ProductCreate, ProductCreateSchema } from "../zod-validation/products";
+import { auth } from "../auth";
 
-// Funkar inte just nu !! sefsefse
-export async function saveProduct(incomingData: ProductCreate) {
-  const postData = ProductCreateSchema.parse(incomingData);
-  const post = await db.post.create({
+export async function createOrder() {
+  const session = await auth();
+
+  const order = await db.order.create({
     data: {
-      title: postData.title,
-      content: postData.content,
-      authorId: 1,
+      total: 500,
+      user: {
+        connect: {
+          id: "1",
+        },
+      },
+      deliveryAddress: {
+        create: {
+          street: "test",
+          city: "Example City",
+          zip: 5050,
+        },
+      },
+      orderDetails: {
+        create: [
+          {
+            productId: 1,
+            quantity: 2,
+            subTotal: 200,
+          },
+          {
+            productId: 2,
+            quantity: 1,
+            subTotal: 300,
+          },
+        ],
+      },
     },
   });
-  console.log("Post created:", post);
 
-  revalidatePath("/");
+  return order;
 }
