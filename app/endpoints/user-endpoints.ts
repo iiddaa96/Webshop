@@ -1,3 +1,4 @@
+"use server";
 import { db } from "@/prisma/db";
 import { NextRequest, NextResponse } from "next/server";
 import { signIn } from "../auth";

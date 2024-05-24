@@ -1,4 +1,3 @@
-"use server";
 import CategoryHeader from "@/app/ui/SubHeader/CategoryHeader";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
@@ -23,6 +22,7 @@ interface CategoryPageProps {
     slug: string;
   };
 }
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = params;
 

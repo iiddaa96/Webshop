@@ -1,5 +1,3 @@
-"use server";
-
 import { db } from "@/prisma/db";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
@@ -83,18 +81,20 @@ export default async function Navbar() {
             </Typography>
           </Box>
 
-          <Typography
-            sx={{
-              color: "black",
-              fontFamily: "Arial, sans-serif",
-              fontWeight: "bold",
-              backgroundColor: "#F0E8D5",
-              fontSize: "13px",
-              marginRight: "2rem",
-            }}
-          >
-            Welcome: {session?.user?.email}
-          </Typography>
+          <Box>
+            <Typography
+              sx={{
+                color: "black",
+                fontFamily: "Arial, sans-serif",
+                fontWeight: "bold",
+                backgroundColor: "#F0E8D5",
+                fontSize: "13px",
+                marginRight: "2rem",
+              }}
+            >
+              Welcome: {session?.user?.email}
+            </Typography>
+          </Box>
 
           {/* Right-aligned AuthButtons and Cart */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
