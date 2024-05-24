@@ -115,7 +115,6 @@ export default async function Navbar() {
                 aria-label="show cart items"
                 color="inherit"
                 sx={{ p: 0 }}
-                data-cy="cart-link"
               >
                 <Badge
                   // badgeContent={totalQuantity}
