@@ -1,68 +1,22 @@
-import { db } from "@/prisma/db";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Button, CardActionArea } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Link from "next/link";
 
-export default async function CardsForHomepage() {
-  const products = await db.product.findMany({
-    // where: { isFeatured: true },
-    orderBy: { id: "desc" },
-  });
-
+export default function ActionAreaCard() {
   return (
-    <main>
-      <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Card 1
-              </Typography>
-              <Typography color="textSecondary">
-                Temporary content for Card 1
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Card 2
-              </Typography>
-              <Typography color="textSecondary">
-                Temporary content for Card 2
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Card 3
-              </Typography>
-              <Typography color="textSecondary">
-                Temporary content for Card 3
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={3}>
-          <Card>
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                Card 4
-              </Typography>
-              <Typography color="textSecondary">
-                Temporary content for Card 4
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
-    </main>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="140"
+          image="https://plus.unsplash.com/premium_photo-1663133679087-bc5deb50ab00?q=80&w=1902&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="green iguana"
+        />
+      </CardActionArea>
+      <Button component={Link} href="/categories/nyheter" color="inherit">
+        Nyheter
+      </Button>
+    </Card>
   );
 }
