@@ -86,7 +86,7 @@ function Confirmation() {
         }}
       >
         <Typography>Name: {customer.fullname}</Typography>
-        <Typography>Address: {customer.address}</Typography>
+        <Typography>Address: {customer.street}</Typography>
         <Typography>Zip: {customer.zip}</Typography>
         <Typography>City: {customer.city}</Typography>
         <Typography>Email: {customer.email}</Typography>

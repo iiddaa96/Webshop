@@ -1,9 +1,8 @@
 "use server";
-
 import { db } from "@/prisma/db";
 import { auth } from "../auth";
-
-export async function createOrder() {
+import { CustomerInfo } from "../ui/PaymentSection";
+export async function createOrder(customer: CustomerInfo) {
   const session = await auth();
 
   const order = await db.order.create({
@@ -11,14 +10,14 @@ export async function createOrder() {
       total: 500,
       user: {
         connect: {
-          id: "1",
+          email: session?.user?.email?.toString(),
         },
       },
       deliveryAddress: {
         create: {
-          street: "test",
-          city: "Example City",
-          zip: 5050,
+          street: customer.street,
+          city: customer.city,
+          zip: customer.zip,
         },
       },
       orderDetails: {
@@ -37,6 +36,5 @@ export async function createOrder() {
       },
     },
   });
-
   return order;
 }
