@@ -120,7 +120,6 @@ export default async function Navbar() {
                 <Badge
                   // badgeContent={totalQuantity}
                   color="secondary"
-                  data-cy="cart-items-count-badge"
                 >
                   <ShoppingCartIcon />
                 </Badge>
