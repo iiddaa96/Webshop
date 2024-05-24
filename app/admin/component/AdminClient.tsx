@@ -1,4 +1,4 @@
-"use client";
+"use server";
 
 import ProductGrid, { ProductGridProps } from "@/app/ui/ProductGrid";
 import AddIcon from "@mui/icons-material/Add";
@@ -7,7 +7,7 @@ import Link from "next/link";
 
 function AdminClient({ products }: ProductGridProps) {
   return (
-    <>
+    <section>
       <Box
         component={"main"}
         sx={{
@@ -35,7 +35,9 @@ function AdminClient({ products }: ProductGridProps) {
         </Link>
       </Box>
       <ProductGrid products={products} />
-    </>
+
+      <button></button>
+    </section>
   );
 }
 
