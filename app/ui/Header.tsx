@@ -1,9 +1,11 @@
 "use server";
-import { AppBar } from "@mui/material";
+import { AppBar, Box } from "@mui/material";
 import Navbar from "./Navbar";
-export default async function Header() {
+import CategoryHeader from "./subHeader/CategoryHeader";
+
+export default function Header() {
   return (
-    <header>
+    <Box position="sticky" top={0} zIndex={1000}>
       <AppBar
         position="static"
         component="header"
@@ -14,9 +16,9 @@ export default async function Header() {
           color: "black",
         }}
       >
-        {" "}
+        <Navbar />
       </AppBar>
-      <Navbar></Navbar>
-    </header>
+      <CategoryHeader />
+    </Box>
   );
 }

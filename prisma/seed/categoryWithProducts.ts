@@ -1,7 +1,6 @@
-import { Prisma } from "@prisma/client";
 import { db } from "../db";
 
-export async function seedCatorgories() {
+export async function seedCategories() {
   for (const categoryData of categoriesData) {
     await db.category.upsert({
       where: { name: categoryData.name },
@@ -16,11 +15,19 @@ export async function seedCatorgories() {
   }
 }
 
-type CategoriesData = { name: string; products?: Prisma.ProductCreateInput[] };
+type CategoriesData = {
+  name: string;
+  products?: {
+    title: string;
+    description: string;
+    image: string;
+    price: number;
+  }[];
+};
 
 const categoriesData: CategoriesData[] = [
   {
-    name: "Nyheter",
+    name: "nyheter",
     products: [
       {
         title: "Handduk Saga",
@@ -57,7 +64,7 @@ const categoriesData: CategoriesData[] = [
     ],
   },
   {
-    name: "Badleksaker",
+    name: "badleksaker",
     products: [
       {
         image:
@@ -94,7 +101,7 @@ const categoriesData: CategoriesData[] = [
     ],
   },
   {
-    name: "Handdukar",
+    name: "handdukar",
     products: [
       {
         title: "Handduk Saga",
@@ -130,5 +137,41 @@ const categoriesData: CategoriesData[] = [
       },
     ],
   },
-  { name: "Rea" },
+  {
+    name: "rea",
+    products: [
+      {
+        title: "Handduk Saga",
+        description:
+          "Handduk i mjuk och skön bomullsfrotté med garnfärgade ränder. Perfekt för både stranden och badrummet, med en generös storlek på 70x140 cm. Högabsorberande och hållbar, ger en lyxig känsla efter varje dusch. Enkel att tvätta och behåller sina färger tvätt efter tvätt.",
+        image:
+          "https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1700979-09_Fm_M0087987&mw=468&fmt=webp",
+        price: 299,
+      },
+      {
+        title: "Handduk Hav",
+        description:
+          "En stilren och snabbabsorberande mikrofiberhandduk i en djupblå nyans. Perfekt för strand, träning och resor, torkar snabbt och tar minimal plats i väskan. Mjuk och lätt, idealisk för alla dina äventyr.",
+        image:
+          "https://cdn.shopify.com/s/files/1/0188/6063/8272/products/2_2_5f2a8ce2-e68e-4856-884e-1b924ca58e2d.jpg?v=1680510961&width=950",
+        price: 199,
+      },
+      {
+        title: "Handduk Sol",
+        description:
+          "Den ultimata strandhandduken i mjuk bomullsfrotté med garnfärgade ränder, inbjuder till avkoppling. Den är vävd med dubbelt garn och har ett omvänt mönster på båda sidor. Perfekt för härliga dagar vid havet.",
+        image:
+          "https://assets.ellosgroup.com/i/ellos/b?$jg$&$jm$&$jp$&$jd$&n=jot_1866256-03_Fm_M0091310&mw=644&fmt=webp",
+        price: 199,
+      },
+      {
+        title: "Handduk Eko",
+        description:
+          "Lyxigt strandbadlakan tillverkad av finkammad ekologisk bomull. Certifierad av GOTS (Global Organic Textile Standard). I en generös storlek, 100x180 cm, som passar lika bra på strandutflykten som i solstolen vid poolen. Vävd i ett tunnare tyg för att torka snabbt och för att ta mindre plats i packningen. Stilren design med vävda ränder och dekorativa fransar längs med kortsidorna. Mille Notti monogrammet broderat i det nedre vänstra hörnet.",
+        image:
+          "https://www.mille-notti.com/_next/image?url=https%3A%2F%2Fmillenotti.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F549_57fd25bc67-70016057-2-1350x0.jpg&w=640&q=75",
+        price: 299,
+      },
+    ],
+  },
 ];

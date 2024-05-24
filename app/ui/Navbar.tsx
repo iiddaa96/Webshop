@@ -1,10 +1,10 @@
 "use server";
+
 import { db } from "@/prisma/db";
 import { Box, Button, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
 import AdminButton from "./AdminButton";
-import HamburgerMenu from "./HamburgerMenu";
 import HomeButton from "./HomeButton";
 import AuthButtons from "./auth/AuthButtons";
 
@@ -19,57 +19,86 @@ export default async function Navbar() {
 
   return (
     <Container maxWidth="xl">
-      <p>Welcome {session?.user?.email}</p>
-      <p>{foundUser?.isAdmin?.toString() ?? "N/A"}</p>
-      <p>{session?.user?.name}</p>
       <Toolbar
         disableGutters
         sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
       >
-        <HomeButton></HomeButton>
-        <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-          <AuthButtons></AuthButtons>
+        {/* Flex container for center alignment */}
+        <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
           <Box
-            component={Link}
-            href="/"
             sx={{
-              textDecoration: "none",
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              justifyContent: "flex-start",
             }}
           >
-            {/* logo namn mobil vy */}
-            <HamburgerMenu></HamburgerMenu>
+            {/* Centered "Sand & Sjö" för mobil */}
             <Typography
               variant="h6"
               noWrap
-              component="div"
+              component={Link}
+              href="/"
               sx={{
-                fontFamily: "monospace",
+                fontFamily: "Arial, sans-serif",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "black",
                 textDecoration: "none",
                 padding: "10px",
+                textShadow: "4px 4px 4px rgba(240, 232, 213, 1.0)",
               }}
             >
               Sand & Sjö
             </Typography>
           </Box>
-        </Box>
-        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-          <AuthButtons></AuthButtons>
-          <Button component={Link} href="/posters" color="inherit">
-            Posters
-          </Button>
-          <Button component={Link} href="/frames" color="inherit">
-            Frames
-          </Button>
-          <Button component={Link} href="/home" color="inherit">
-            Home
-          </Button>
-          <Button component={Link} href="/favorite" color="inherit">
-            Favorite
-          </Button>
-          <AdminButton></AdminButton>
+
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              justifyContent: "center",
+              flexGrow: 1,
+            }}
+          >
+            {/* Centered "Sand & Sjö" för desktop */}
+            <Typography
+              variant="h6"
+              noWrap
+              component={Link}
+              href="/"
+              sx={{
+                fontFamily: "Arial, sans-serif",
+                fontWeight: "bold",
+                letterSpacing: ".3rem",
+                color: "black",
+                textDecoration: "none",
+                fontSize: "2.5rem",
+                marginRight: "-13rem",
+                textShadow: "4px 4px 4px rgba(240, 232, 213, 1.0)",
+              }}
+            >
+              Sand & Sjö
+            </Typography>
+          </Box>
+
+          {/* User som dyker upp när man är inloggad från github */}
+          <Typography
+            sx={{
+              color: "black",
+              fontFamily: "Arial, sans-serif",
+              fontWeight: "bold",
+              backgroundColor: "#F0E8D5",
+              fontSize: "13px",
+              marginRight: "2rem",
+            }}
+          >
+            Welcome: {session?.user?.email}
+          </Typography>
+
+          {/* Right-aligned AuthButtons */}
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <AuthButtons />
+          </Box>
+
         </Box>
       </Toolbar>
     </Container>
