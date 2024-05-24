@@ -8,8 +8,11 @@ export default async function AdminOrdersList() {
     <div>
       <ul>
         {orders.map((order) => (
-          <div>
-            <li>{order.id}</li>
+          <div key={order.id}>
+            <li>Order ID:{order.id}</li>
+            <li>{order.userId}</li>
+            <li>{order.total.toString()}kr</li>
+            <li>{order.createdAt.toISOString()}</li>
           </div>
         ))}
       </ul>
