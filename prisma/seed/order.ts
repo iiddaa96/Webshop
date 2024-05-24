@@ -1,5 +1,3 @@
-import { db } from "../db";
-
 // Skapar default användare
 export async function order() {
   const test = await db.order.upsert({
