@@ -13,6 +13,7 @@ function Confirmation() {
   // Hämtar kundvagnens innehåll, bekräftar och tömmer kundvagnen samt hämtar kundinformation från kontexten
   const { cart } = useCart();
   const { clearCart, setConfirmedCart, confirmedCart } = useCart();
+  // (auth) hämtar order och kolla om du äger ordern, lägg till här
   const { customer } = useCustomer();
 
   // Hanterar bekräftelse av kundvagn och tömning efter bekräftelse
@@ -47,15 +48,14 @@ function Confirmation() {
           Orderbekräftelse
         </Typography>
         <Typography>
-          Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya tavlor.
+          Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya varor.
         </Typography>
         <Typography>
-          Här kommer ditt digitala kvitto från Wall of Art. Mer inspiration
-          finns på vår hemsida Wall of Art.se där du kan se olika tavlor för
-          olika stylingar.
+          Här kommer ditt digitala kvitto från Sand & Sjö. Mer inspiration finns
+          på vår hemsida Sand & Sjö.se
         </Typography>
         <Typography>
-          Hoppas vi hörs snart igen! Hälsningar från oss på Wall of Art.
+          Hoppas vi hörs snart igen! Hälsningar från oss på Sand & Sjö.
         </Typography>
 
         <Grid container spacing={2}>
