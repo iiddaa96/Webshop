@@ -82,15 +82,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {products.map((product: Product, index: number) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
-              key={index}
-              data-cy="product"
-            >
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
               <StyledCard>
                 <CardActionArea>
                   <CardMedia

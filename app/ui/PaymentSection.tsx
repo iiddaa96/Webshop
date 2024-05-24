@@ -1,15 +1,7 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import {
-  Box,
-  Button,
-  FormHelperTextProps,
-  Grid,
-  Link,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -79,7 +71,6 @@ export default function InputPayment() {
 
   return (
     <Box
-      data-cy="customer-form"
       sx={{
         border: "1px solid #ccc",
         padding: "20px",
@@ -95,15 +86,11 @@ export default function InputPayment() {
         Shipping Address
       </Typography>
 
-      <form data-cy="customer-form" onSubmit={form.handleSubmit(handleSubmit)}>
+      <form onSubmit={form.handleSubmit(handleSubmit)}>
         <Grid container spacing={2}>
           <Grid item xs={6}>
             {/* Textfält för namn och efternamn */}
             <TextField
-              inputProps={{ "data-cy": "customer-name" }}
-              FormHelperTextProps={
-                { "data-cy": "customer-name-error" } as FormHelperTextProps
-              }
               id="outlined-error"
               label="FullName"
               {...form.register("fullname")}
@@ -117,10 +104,6 @@ export default function InputPayment() {
           <Grid item xs={6}>
             {/* Textfält för adress */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-address-error" } as FormHelperTextProps
-              }
-              inputProps={{ "data-cy": "customer-address" }}
               id="filled-error"
               label="Address"
               {...form.register("address")}
@@ -134,10 +117,6 @@ export default function InputPayment() {
           <Grid item xs={6}>
             {/* Textfält för zip */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-zipcode-error" } as FormHelperTextProps
-              }
-              inputProps={{ "data-cy": "customer-zipcode" }}
               id="outlined-error-helper-text"
               label="Zip"
               {...form.register("zip")}
@@ -151,10 +130,6 @@ export default function InputPayment() {
           <Grid item xs={6}>
             {/* Textfält för stad */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-city-error" } as FormHelperTextProps
-              }
-              inputProps={{ "data-cy": "customer-city" }}
               id="filled-error-helper-text"
               label="City"
               {...form.register("city")}
@@ -168,10 +143,6 @@ export default function InputPayment() {
           <Grid item xs={6}>
             {/* Textfält för email */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-email-error" } as FormHelperTextProps
-              }
-              inputProps={{ "data-cy": "customer-email" }}
               id="standard-error"
               label="Email"
               {...form.register("email")}
@@ -185,10 +156,6 @@ export default function InputPayment() {
           <Grid item xs={6}>
             {/* Textfält för mobil */}
             <TextField
-              FormHelperTextProps={
-                { "data-cy": "customer-phone-error" } as FormHelperTextProps
-              }
-              inputProps={{ "data-cy": "customer-phone" }}
               id="standard-error-helper-text"
               label="Mobile"
               {...form.register("phone")}

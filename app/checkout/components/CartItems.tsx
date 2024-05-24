@@ -56,7 +56,6 @@ export const CartItems = ({ cart }: ItemsProps) => {
                 textAlign: "left",
               }}
               variant="h6"
-              data-cy="product-title"
             >
               {item.title}
             </Typography>
