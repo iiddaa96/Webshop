@@ -7,46 +7,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useCustomer } from "../context/PaymentContext";
-
-// Skapar schema för inputfälten
-const stringSchema = z.string();
-const numberSchema = z.number();
-
-// Error meddelande för inputfälten om man skriver fel
-const customerSchema = z.object({
-  fullname: z.string().min(1, { message: "Please write your name." }),
-
-  address: z
-    .string()
-    .min(2, { message: "Address must be at least 2 characters long" }),
-
-  zip: z.coerce
-    .number()
-    .min(10000, { message: "Please enter a valid zip code" })
-    .max(99999, { message: "Please enter a valid zip code" }),
-
-  city: z
-    .string()
-    .min(2, { message: "City must be at least 2 characters long" }),
-
-  email: z.string().email({ message: "Invalid email format" }),
-
-  phone: z
-    .string()
-    .min(10, { message: "Phone number must be at least 10 digits long" }),
-});
+import { createOrder } from "../endpoints/endpoints";
+import { customerSchema } from "../zod-validation/users";
 
 export type CustomerInfo = z.infer<typeof customerSchema>;
 
-/**
- * Hantering av inputfält och formulärdata i betalningsprocessen.
- *
- * @returns {JSX.Element} Inputfält och hantering av formulärdata.
- */
 export default function InputPayment() {
   const [formData, setFormData] = useState<CustomerInfo>({
     fullname: "",
-    address: "",
+    street: "",
     zip: "" as any,
     city: "",
     email: "",
@@ -58,14 +27,11 @@ export default function InputPayment() {
 
   const form = useForm<CustomerInfo>({ resolver: zodResolver(customerSchema) });
 
-  /**
-   * Funktion som hanterar formulärinskick.
-   *
-   * @param {CustomerInfo} customer - Kundinformationen från formuläret.
-   */
   const handleSubmit = (customer: CustomerInfo) => {
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
     console.log(customer);
     setCustomer(customer);
+    createOrder(customer, cartData);
     router.push("/confirmation");
   };
 
@@ -106,9 +72,9 @@ export default function InputPayment() {
             <TextField
               id="filled-error"
               label="Address"
-              {...form.register("address")}
-              error={Boolean(form.formState.errors.address)}
-              helperText={form.formState.errors.address?.message}
+              {...form.register("street")}
+              error={Boolean(form.formState.errors.street)}
+              helperText={form.formState.errors.street?.message}
               variant="filled"
               fullWidth
               autoComplete="street-address"

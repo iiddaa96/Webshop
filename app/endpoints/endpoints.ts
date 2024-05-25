@@ -1,20 +1,38 @@
 "use server";
-
 import { db } from "@/prisma/db";
-import { revalidatePath } from "next/cache";
-import { ProductCreate, ProductCreateSchema } from "../zod-validation/products";
+import { auth } from "../auth";
+import { CustomerInfo } from "../ui/PaymentSection";
+export async function createOrder(customer: CustomerInfo, cart: any[]) {
+  const session = await auth();
 
-// Funkar inte just nu !! sefsefse
-export async function saveProduct(incomingData: ProductCreate) {
-  const postData = ProductCreateSchema.parse(incomingData);
-  const post = await db.post.create({
+  const orderDetails = cart.map((item) => ({
+    productId: item.id,
+    quantity: item.quantity,
+    subTotal: item.price * item.quantity,
+  }));
+
+  const order = await db.order.create({
     data: {
-      title: postData.title,
-      content: postData.content,
-      authorId: 1,
+      total: cart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      ),
+      user: {
+        connect: {
+          email: session?.user?.email?.toString(),
+        },
+      },
+      deliveryAddress: {
+        create: {
+          street: customer.street,
+          city: customer.city,
+          zip: customer.zip,
+        },
+      },
+      orderDetails: {
+        create: orderDetails,
+      },
     },
   });
-  console.log("Post created:", post);
-
-  revalidatePath("/");
+  return order;
 }

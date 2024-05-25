@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export interface Item {
-  id: string;
+  id: number;
   title: string;
   price: number;
   quantity: number;
@@ -29,5 +29,5 @@ export const TotalPrice = ({ cart }: ItemsProps) => {
     setTotalPrice(calculateTotalPrice());
   }, [cart]);
 
-  return <>{totalPrice} kr</>;
+  return { cart, totalPrice };
 };
