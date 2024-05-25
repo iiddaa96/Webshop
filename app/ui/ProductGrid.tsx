@@ -38,10 +38,6 @@ interface State extends SnackbarOrigin {
 export interface ProductGridProps {
   products: Product[]; // Use the Product type for the products prop
 }
-/**
- * Komponent för att visa produkter i ett rutnät samt hantera produktredigering och borttagning.
- * @returns {JSX.Element} JSX för produktgriden.
- */
 
 export default function ProductGrid({ products }: ProductGridProps) {
   const { removeProduct } = useProduct();
@@ -51,25 +47,15 @@ export default function ProductGrid({ products }: ProductGridProps) {
     null
   );
 
-  /**
-   * Funktion för att öppna dialogrutan för att bekräfta borttagning av en produkt.
-   * @param {string} productId ID för produkten som ska tas bort.
-   */
-
   const handleDialogOpen = (productId: string) => {
     setProductToDelete(productId);
     setDialogOpen(true);
   };
-  /**
-   * Funktion för att stänga dialogrutan för borttagning av produkt.
-   */
+
   const handleDialogClose = () => {
     setDialogOpen(false);
   };
 
-  /**
-   * Funktion för att hantera borttagning av en produkt.
-   */
   const handleDeleteProduct = () => {
     if (productToDelete) {
       removeProduct(productToDelete);
