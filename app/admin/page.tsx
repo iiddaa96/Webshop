@@ -1,6 +1,4 @@
 import { db } from "@/prisma/db";
-import { Decimal } from "@prisma/client/runtime/library";
-import { auth } from "../auth";
 import AdminClient from "./component/AdminClient";
 
 // 3. Client Component - CSR + SSR (request)
@@ -12,12 +10,11 @@ import AdminClient from "./component/AdminClient";
  * @returns {JSX.Element} JSX-elementet som representerar administrationsgränssnittet.
  */
 export default async function Admin() {
-  const session = await auth();
   let products: {
-    id: number;
+    id: string;
     title: string;
     image: string;
-    price: Decimal;
+    price: number;
     description: string;
   }[] = [];
 

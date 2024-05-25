@@ -1,16 +1,35 @@
 import { db } from "../db";
 
 export async function seedOrders() {
-  const user = await db.user.upsert({
-    where: { id: "1" },
-    update: {},
-    create: {
-      id: "1",
+  // Check if the user with the given email already exists
+  const existingUser = await db.user.findUnique({
+    where: {
       email: "Jonatanhelander@hotmail.com",
-      name: "Jonatan Helander",
-      password: "password",
     },
   });
+
+  let user;
+  if (existingUser) {
+    // Update the existing user
+    user = await db.user.update({
+      where: {
+        id: existingUser.id,
+      },
+      data: {
+        name: "Jonatan Helander",
+        password: "password",
+      },
+    });
+  } else {
+    // Create a new user
+    user = await db.user.create({
+      data: {
+        email: "Jonatanhelander@hotmail.com",
+        name: "Jonatan Helander",
+        password: "password",
+      },
+    });
+  }
 
   const address = await db.address.create({
     data: {

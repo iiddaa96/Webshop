@@ -1,27 +1,19 @@
 "use client";
-
-import { Product, productSchema } from "@/data";
+import { productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { nanoid } from "nanoid";
+import { Product } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { useProduct } from "../context/AdminContext";
 
 interface Props {
-  product?: Product;
+  product: Product;
 }
 
-/**
- * Komponent för formulär för att lägga till eller redigera en produkt.
- *
- * @param {Props} props - Egenskaper för produkten.
- * @returns {JSX.Element} Formulär för produkten.
- */
-function ProductForm(props: Props) {
+export default function ProductForm(props: Props) {
   const isEdit = Boolean(props.product);
-  const { addProduct, editProduct } = useProduct();
+  /*   const { addProduct, editProduct } = useProduct(); */
   const router = useRouter();
 
   const form = useForm<Product>({
@@ -30,18 +22,13 @@ function ProductForm(props: Props) {
     mode: "onChange",
   });
 
-  /**
-   * Funktion för att spara produktinformationen.
-   *
-   * @param {Product} data - Produktinformationen.
-   */
   const save = (data: Product) => {
-    const newData = { ...data, id: nanoid() };
-    if (isEdit) {
+    const newData = { ...data };
+    /*    if (isEdit) {
       editProduct(data);
     } else {
       addProduct(newData);
-    }
+    } */
     router.push("/admin");
   };
 
@@ -98,7 +85,6 @@ function ProductForm(props: Props) {
       <TextField
         id="outlined-multiline-static"
         label="Description"
-        // multiline // Fråga David om denna ska vara med eller inte (admin-2) ???
         helperText={form.formState.errors.description?.message}
         error={Boolean(form.formState.errors.description)}
         rows={6}
@@ -108,13 +94,7 @@ function ProductForm(props: Props) {
       />
       {/* Box med spara knappen */}
       <Box sx={{ display: "flex", gap: "5vh" }}>
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ width: "150px" }}
-          /*  Knappen är grå om formuläret inte 
-          är godkänt*/
-        >
+        <Button type="submit" variant="contained" sx={{ width: "150px" }}>
           <SaveIcon fontSize="large" />
           Spara
         </Button>
@@ -122,5 +102,3 @@ function ProductForm(props: Props) {
     </Box>
   );
 }
-
-export default ProductForm;

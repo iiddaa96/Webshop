@@ -11,7 +11,7 @@ export default async function admin() {
       },
       {
         name: "Jonatan",
-        email: "Jonatanhelander@hotmail.com",
+        email: "jonatanhelander@hotmail.com",
         password: "3",
         isAdmin: true,
       },

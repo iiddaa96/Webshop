@@ -1,30 +1,22 @@
-"use client";
-import { useProduct } from "@/app/context/AdminContext";
 import ProductForm from "@/app/ui/ProductForm";
+import { db } from "@/prisma/db";
 import { Container } from "@mui/material";
 
-type Props = { params: { id: string } };
+interface adminSlugPageProps {
+  params: {
+    slug: string;
+  };
+}
 
-/**
- * Uppdaterar en befintlig produkt.
- *
- * @param {object} props - Egenskaper för komponenten.
- * @param {object} props.params - Parametrar för produkten.
- * @param {string} props.params.id - Id för produkten som ska uppdateras.
- * @returns {JSX.Element} JSX-elementet som representerar sidan för att uppdatera en befintlig produkt.
- */
-function UpdateExistProduct(props: Props) {
-  const { products } = useProduct();
-  const product = products.find((p) => p.id === props.params.id);
+async function UpdateExistProduct({ params }: adminSlugPageProps) {
+  const { slug } = params;
 
-  console.log("product", product);
+  const product = await db.product.findFirst({
+    where: {
+      id: slug,
+    },
+  });
 
-  // Om produkten inte finns, rendera 404-sidan
-  if (!product) {
-    return <div>Loading</div>;
-  }
-
-  // Renderar formuläret för att uppdatera produkten
   return (
     <Container
       fixed
