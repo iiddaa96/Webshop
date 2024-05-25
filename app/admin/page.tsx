@@ -1,5 +1,4 @@
 import { db } from "@/prisma/db";
-import { Decimal } from "@prisma/client/runtime/library";
 import AdminClient from "./component/AdminClient";
 
 export default async function Admin() {
@@ -7,7 +6,7 @@ export default async function Admin() {
     id: number;
     title: string;
     image: string;
-    price: Decimal;
+    price: number;
     description: string;
   }[] = [];
 

@@ -14,7 +14,7 @@ CREATE TABLE "Order" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "userId" TEXT NOT NULL,
-    "total" DECIMAL(65,30) NOT NULL,
+    "total" INTEGER NOT NULL,
     "deliveryAddressId" INTEGER NOT NULL,
     "isSent" BOOLEAN NOT NULL DEFAULT false,
 

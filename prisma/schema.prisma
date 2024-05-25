@@ -27,7 +27,7 @@ model Order {
   id                Int      @id @default(autoincrement())
   createdAt         DateTime @default(now())
   userId            String
-  total             Decimal
+  total             Int
   deliveryAddressId Int
   isSent            Boolean  @default(false)
 
@@ -48,7 +48,7 @@ model OrderDetails {
   orderId   Int
   productId Int
   quantity  Int
-  subTotal  Decimal
+  subTotal  Int
 
   order   Order   @relation(fields: [orderId], references: [id])
   product Product @relation(fields: [productId], references: [id])
@@ -57,10 +57,10 @@ model OrderDetails {
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   title       String
   image       String
-  price       Decimal
+  price       Int
   description String
 
   orderDetails OrderDetails[]
