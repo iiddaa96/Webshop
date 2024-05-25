@@ -1,11 +1,10 @@
-import { nanoid } from "nanoid";
 import { z } from "zod";
 
 /**
  * Beskriver en produkt som ska säljas på sidan.
  **/
 export const productSchema = z.object({
-  id: z.string().default(() => nanoid()),
+  id: z.number(),
   image: z.string().url(),
   title: z.string().min(5, { message: "Titel måste innehålla minst 5 tecken" }),
   price: z.coerce.number().positive({ message: "Skriv in ett nummer" }),
@@ -22,7 +21,7 @@ export interface CartItem extends Product {
 }
 
 /* DATA: Våra mockade produkter, 12 stycken */
-export const products: Product[] = [
+/* export const products: Product[] = [
   {
     id: "1",
     title: "BERLIN SHAPES",
@@ -132,3 +131,4 @@ export const products: Product[] = [
       "https://images.desenio.com/zoom/can16063-1_1.jpg?_gl=1*k2xjuc*_ga*MTQ0NzY2NTM1MC4xNzA5NjMwNzY3*_ga_GH3FS7X5TH*MTcwOTkxNTI2NC41LjEuMTcwOTkxNTI5NC4wLjAuMA..",
   },
 ];
+ */
