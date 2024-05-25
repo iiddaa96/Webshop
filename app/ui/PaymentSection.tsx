@@ -28,9 +28,10 @@ export default function InputPayment() {
   const form = useForm<CustomerInfo>({ resolver: zodResolver(customerSchema) });
 
   const handleSubmit = (customer: CustomerInfo) => {
+    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
     console.log(customer);
     setCustomer(customer);
-    createOrder(customer);
+    createOrder(customer, cartData);
     router.push("/confirmation");
   };
 
