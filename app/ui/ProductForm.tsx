@@ -4,10 +4,10 @@ import { Product, productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useProduct } from "../context/AdminContext";
+import { editProduct } from "../endpoints/product-endpoints";
 
 interface Props {
   product?: Product;
@@ -15,7 +15,7 @@ interface Props {
 
 function ProductForm(props: Props) {
   const isEdit = Boolean(props.product);
-  const { addProduct, editProduct } = useProduct();
+  const { addProduct } = useProduct();
   const router = useRouter();
 
   const form = useForm<Product>({
@@ -25,9 +25,12 @@ function ProductForm(props: Props) {
   });
 
   const save = (data: Product) => {
-    const newData = { ...data, id: nanoid() };
+    const updatedProduct = { ...data };
+
+    console.error(updatedProduct);
+
+    editProduct(updatedProduct);
     if (isEdit) {
-      editProduct(data);
     } else {
     }
     router.push("/admin");
