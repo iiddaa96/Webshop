@@ -1,27 +1,22 @@
 "use server";
 
 import { db } from "@/prisma/db";
-import { revalidatePath } from "next/cache";
+import { Product } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { ProductCreate, ProductCreateSchema } from "../zod-validation/products";
 
 export async function getAllProducts(request: NextRequest) {
   const products = await db.product.findMany();
   return NextResponse.json(products, { status: 200 });
 }
 
-// Funkar inte just nu !!
-export async function createProduct(incomingData: ProductCreate) {
-  const productData = ProductCreateSchema.parse(incomingData);
-  const product = await db.post.create({
+export async function editProduct(updatedProduct: Product) {
+  return await db.product.update({
+    where: { id: updatedProduct.id },
     data: {
-      title: productData.title,
-      description: productData.description,
-      price: productData.price,
-      authorId: 1, //hårdkodat
+      title: updatedProduct.title,
+      image: updatedProduct.image,
+      price: updatedProduct.price,
+      description: updatedProduct.description,
     },
   });
-  console.log("product created:", product);
-
-  revalidatePath("/");
 }

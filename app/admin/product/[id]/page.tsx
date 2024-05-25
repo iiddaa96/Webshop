@@ -1,30 +1,33 @@
-"use client";
-import { useProduct } from "@/app/context/AdminContext";
 import ProductForm from "@/app/ui/ProductForm";
+import { db } from "@/prisma/db";
 import { Container } from "@mui/material";
 
-type Props = { params: { id: string } };
+type Props = { params: { id: number } };
 
-/**
- * Uppdaterar en befintlig produkt.
- *
- * @param {object} props - Egenskaper för komponenten.
- * @param {object} props.params - Parametrar för produkten.
- * @param {string} props.params.id - Id för produkten som ska uppdateras.
- * @returns {JSX.Element} JSX-elementet som representerar sidan för att uppdatera en befintlig produkt.
- */
-function UpdateExistProduct(props: Props) {
-  const { products } = useProduct();
-  const product = products.find((p) => p.id === props.params.id);
+export default async function UpdateExistProduct({ params }: Props) {
+  const { id } = params;
 
-  console.log("product", product);
+  // Fetch the product with the specified ID from the database
+  const product = await db.product.findFirst({ where: { id: Number(id) } });
 
-  // Om produkten inte finns, rendera 404-sidan
   if (!product) {
-    return <div>Loading</div>;
+    return (
+      <Container
+        fixed
+        component="main"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "30px",
+          marginBottom: "30px",
+        }}
+      >
+        <p>Product not found</p>
+      </Container>
+    );
   }
 
-  // Renderar formuläret för att uppdatera produkten
   return (
     <Container
       fixed
@@ -41,5 +44,3 @@ function UpdateExistProduct(props: Props) {
     </Container>
   );
 }
-
-export default UpdateExistProduct;

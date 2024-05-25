@@ -4,24 +4,18 @@ import { Product, productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useProduct } from "../context/AdminContext";
+import { editProduct } from "../endpoints/product-endpoints";
 
 interface Props {
   product?: Product;
 }
 
-/**
- * Komponent för formulär för att lägga till eller redigera en produkt.
- *
- * @param {Props} props - Egenskaper för produkten.
- * @returns {JSX.Element} Formulär för produkten.
- */
 function ProductForm(props: Props) {
   const isEdit = Boolean(props.product);
-  const { addProduct, editProduct } = useProduct();
+  const { addProduct } = useProduct();
   const router = useRouter();
 
   const form = useForm<Product>({
@@ -30,17 +24,14 @@ function ProductForm(props: Props) {
     mode: "onChange",
   });
 
-  /**
-   * Funktion för att spara produktinformationen.
-   *
-   * @param {Product} data - Produktinformationen.
-   */
   const save = (data: Product) => {
-    const newData = { ...data, id: nanoid() };
+    const updatedProduct = { ...data };
+
+    console.error(updatedProduct);
+
+    editProduct(updatedProduct);
     if (isEdit) {
-      editProduct(data);
     } else {
-      addProduct(newData);
     }
     router.push("/admin");
   };
