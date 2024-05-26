@@ -92,7 +92,7 @@ export default async function Navbar() {
                 marginRight: "2rem",
               }}
             >
-              Welcome: {session?.user?.email}
+              Welcome: {session?.user?.name}
             </Typography>
           </Box>
 

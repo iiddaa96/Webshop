@@ -1,13 +1,14 @@
-import { Button, CardActionArea, Grid } from "@mui/material";
+import { Box, Button, CardActionArea, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Link from "next/link";
 
-export default function ActionAreaCard() {
+export default function CardsHeader() {
   const cardStyle = { width: 280, height: 310 }; // Fasta dimensioner för kort
   const mediaStyle = { height: 280 }; // Fasta dimensioner för bilder
 
   return (
+    // Grid med kategorierna som visas på startsidan
     <Grid container spacing={2} justifyContent="center">
       <Grid sx={{ marginBottom: "10px" }} item>
         <Card sx={{ ...cardStyle, margin: 1 }}>
@@ -21,9 +22,11 @@ export default function ActionAreaCard() {
               />
             </Link>
           </CardActionArea>
-          <Button component={Link} href="/categories/nyheter" color="inherit">
-            Nyheter
-          </Button>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Button component={Link} href="/categories/nyheter" color="inherit">
+              Nyheter
+            </Button>
+          </Box>
         </Card>
       </Grid>
       <Grid item>
@@ -38,9 +41,11 @@ export default function ActionAreaCard() {
               />
             </Link>
           </CardActionArea>
-          <Button component={Link} href="/categories/rea" color="inherit">
-            Rea
-          </Button>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Button component={Link} href="/categories/rea" color="inherit">
+              Rea
+            </Button>
+          </Box>
         </Card>
       </Grid>
       <Grid item>
@@ -55,13 +60,15 @@ export default function ActionAreaCard() {
               />
             </Link>
           </CardActionArea>
-          <Button
-            component={Link}
-            href="/categories/badleksaker"
-            color="inherit"
-          >
-            Badleksaker
-          </Button>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              component={Link}
+              href="/categories/badleksaker"
+              color="inherit"
+            >
+              Badleksaker
+            </Button>
+          </Box>
         </Card>
       </Grid>
       <Grid item>
@@ -76,9 +83,15 @@ export default function ActionAreaCard() {
               />
             </Link>
           </CardActionArea>
-          <Button component={Link} href="/categories/handdukar" color="inherit">
-            Handdukar
-          </Button>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              component={Link}
+              href="/categories/handdukar"
+              color="inherit"
+            >
+              Handdukar
+            </Button>
+          </Box>
         </Card>
       </Grid>
     </Grid>
