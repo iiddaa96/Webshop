@@ -15,7 +15,6 @@ export async function createUser(incomingData: UserCreate) {
     data: {
       email: userData.email,
       name: userData.name,
-      password: userData.password,
     },
   });
   console.log("user created:", user);

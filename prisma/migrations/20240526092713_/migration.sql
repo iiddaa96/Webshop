@@ -3,7 +3,6 @@ CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
     "isAdmin" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
@@ -36,7 +35,7 @@ CREATE TABLE "OrderDetails" (
     "orderId" INTEGER NOT NULL,
     "productId" INTEGER NOT NULL,
     "quantity" INTEGER NOT NULL,
-    "subTotal" DECIMAL(65,30) NOT NULL,
+    "subTotal" INTEGER NOT NULL,
 
     CONSTRAINT "OrderDetails_pkey" PRIMARY KEY ("orderId","productId")
 );
@@ -46,7 +45,7 @@ CREATE TABLE "Product" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "image" TEXT NOT NULL,
-    "price" DECIMAL(65,30) NOT NULL,
+    "price" INTEGER NOT NULL,
     "description" TEXT NOT NULL,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")

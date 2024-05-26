@@ -4,11 +4,12 @@ import ProductGrid, { ProductGridProps } from "@/app/ui/ProductGrid";
 import AddIcon from "@mui/icons-material/Add";
 import { Box } from "@mui/material";
 import Link from "next/link";
-import AdminOrdersList from "./AdminOrdersList";
+import OrderList from "./OrderList";
 
 function AdminClient({ products }: ProductGridProps) {
   return (
     <section>
+      <OrderList />
       <Box
         component={"main"}
         sx={{
@@ -35,7 +36,7 @@ function AdminClient({ products }: ProductGridProps) {
           />
         </Link>
       </Box>
-      <AdminOrdersList />
+
       <ProductGrid products={products} />
     </section>
   );
