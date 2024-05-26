@@ -4,13 +4,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Link from "next/link";
 
 export default function ActionAreaCard() {
-  const cardStyle = { width: 250, height: 300 }; // Fasta dimensioner för kort
-  const mediaStyle = { height: 270 }; // Fasta dimensioner för bilder
+  const cardStyle = { width: 280, height: 310 }; // Fasta dimensioner för kort
+  const mediaStyle = { height: 280 }; // Fasta dimensioner för bilder
 
   return (
     <Grid container spacing={2} justifyContent="center">
       <Grid sx={{ marginBottom: "10px" }} item>
-        <Card sx={cardStyle}>
+        <Card sx={{ ...cardStyle, margin: 1 }}>
           <CardActionArea>
             <Link href="/categories/nyheter">
               <CardMedia
@@ -27,7 +27,7 @@ export default function ActionAreaCard() {
         </Card>
       </Grid>
       <Grid item>
-        <Card sx={cardStyle}>
+        <Card sx={{ ...cardStyle, margin: 1 }}>
           <CardActionArea>
             <Link href="/categories/rea">
               <CardMedia
@@ -44,7 +44,7 @@ export default function ActionAreaCard() {
         </Card>
       </Grid>
       <Grid item>
-        <Card sx={cardStyle}>
+        <Card sx={{ ...cardStyle, margin: 1 }}>
           <CardActionArea>
             <Link href="/categories/badleksaker">
               <CardMedia
@@ -65,7 +65,7 @@ export default function ActionAreaCard() {
         </Card>
       </Grid>
       <Grid item>
-        <Card sx={cardStyle}>
+        <Card sx={{ ...cardStyle, margin: 1 }}>
           <CardActionArea>
             <Link href="/categories/handdukar">
               <CardMedia

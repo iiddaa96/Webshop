@@ -12,6 +12,7 @@ export default function SubHeader() {
         borderBottom: "1px solid black",
         boxShadow: "none",
         color: "black",
+        borderTop: "1px solid black",
       }}
     >
       <Toolbar sx={{ justifyContent: "center" }}>
