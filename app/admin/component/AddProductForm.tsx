@@ -1,40 +1,45 @@
 "use client";
-
-import { Product, productSchema } from "@/data";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { addNewProduct } from "@/app/endpoints/product-endpoints";
 import SaveIcon from "@mui/icons-material/Save";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { Prisma } from "@prisma/client";
+import {
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextField,
+} from "@mui/material";
+import { Product } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useProduct } from "../context/AdminContext";
-import { editProduct } from "../endpoints/product-endpoints";
 
-interface Props {
-  product?: Product;
-}
-
-function ProductForm(props: Props) {
-  const isEdit = Boolean(props.product);
-  const { addProduct } = useProduct();
+export default function AddProductForm() {
   const router = useRouter();
-
-  const form = useForm<Prisma.ProductGetPayload<{}>>({
-    defaultValues: props.product,
-    resolver: zodResolver(productSchema),
+  const [chosenCategory, setChosenCategory] = useState("");
+  const form = useForm<Product>({
     mode: "onChange",
   });
 
-  const save = (data: Prisma.ProductGetPayload<{}>) => {
-    const updatedProduct = { ...data };
+  const handleCategoryChange = (event: SelectChangeEvent<string>) => {
+    setChosenCategory(event.target.value);
+  };
 
-    console.error(updatedProduct);
+  const save = (data: Product) => {
+    const newProduct = {
+      ...data,
+      price: Number(data.price),
+      category: chosenCategory,
+    };
 
-    editProduct(updatedProduct);
-    if (isEdit) {
-    } else {
-    }
+    console.log("test1", newProduct);
+
+    addNewProduct(newProduct, chosenCategory.toLowerCase());
     router.push("/admin");
+
+    if (!addNewProduct) {
+      console.log("Error");
+    }
   };
 
   return (
@@ -52,11 +57,6 @@ function ProductForm(props: Props) {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
       }}
     >
-      <Typography variant="h4">
-        {isEdit ? "Uppdatera produkt" : "Skapa ny produkt"}
-      </Typography>
-
-      {/* Textfält för titel */}
       <TextField
         fullWidth
         label="Title"
@@ -66,7 +66,7 @@ function ProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("title")}
       />
-      {/* Textfält för image */}
+
       <TextField
         fullWidth
         label="Image"
@@ -76,7 +76,7 @@ function ProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("image")}
       />
-      {/* Textfält för pris */}
+
       <TextField
         fullWidth
         label="Price"
@@ -86,11 +86,24 @@ function ProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("price")}
       />
-      {/* Textfält för beskrivning */}
+
+      <Select
+        fullWidth
+        label="Category"
+        value={chosenCategory}
+        sx={{ width: "100%", marginBottom: "20px" }}
+        onChange={handleCategoryChange}
+      >
+        <MenuItem value="">Välj en kategori</MenuItem>
+        <MenuItem value="Rea">Rea</MenuItem>
+        <MenuItem value="Nyheter">Nyheter</MenuItem>
+        <MenuItem value="Badleksaker">Badleksaker</MenuItem>
+        <MenuItem value="Handdukar">Handdukar</MenuItem>
+      </Select>
+
       <TextField
         id="outlined-multiline-static"
         label="Description"
-        // multiline // Fråga David om denna ska vara med eller inte (admin-2) ???
         helperText={form.formState.errors.description?.message}
         error={Boolean(form.formState.errors.description)}
         rows={6}
@@ -98,15 +111,9 @@ function ProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("description")}
       />
-      {/* Box med spara knappen */}
+
       <Box sx={{ display: "flex", gap: "5vh" }}>
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ width: "150px" }}
-          /*  Knappen är grå om formuläret inte 
-          är godkänt*/
-        >
+        <Button type="submit" variant="contained" sx={{ width: "150px" }}>
           <SaveIcon fontSize="large" />
           Spara
         </Button>
@@ -114,5 +121,3 @@ function ProductForm(props: Props) {
     </Box>
   );
 }
-
-export default ProductForm;

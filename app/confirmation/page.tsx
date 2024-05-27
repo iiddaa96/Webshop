@@ -1,4 +1,4 @@
-import { db } from "@/prisma/db";
+"use client";
 import { Box, Container, Grid, Typography } from "@mui/material";
 
 import { useEffect } from "react";
@@ -6,11 +6,7 @@ import { useCart } from "../context/CartContext";
 import { useCustomer } from "../context/PaymentContext";
 import QuantityButton from "../ui/QuantityButton";
 
-/**
- * Komponent som representerar bekräftelsesidan för en genomförd beställning.
- * @returns {JSX.Element} JSX-element som representerar bekräftelsesidan för en genomförd beställning.
- */
-function Confirmation() {
+export default function Confirmation() {
   // Hämtar kundvagnens innehåll, bekräftar och tömmer kundvagnen samt hämtar kundinformation från kontexten
   const { cart } = useCart();
   const { clearCart, setConfirmedCart, confirmedCart } = useCart();
@@ -97,7 +93,7 @@ function Confirmation() {
   );
 }
 
-export default async function Confirmation() {
+/* export default async function Confirmation() {
   const session = await auth();
 
   if (!session || !session.user || !session.user.email) {
@@ -192,4 +188,4 @@ export default async function Confirmation() {
     }
     return <p>An error occurred: {errorMessage}</p>;
   }
-}
+} */

@@ -1,13 +1,9 @@
 "use client";
 
-import ProductForm from "@/app/ui/ProductForm";
 import { Container } from "@mui/material";
 import React from "react";
+import AddProductForm from "../../component/AddProductForm";
 
-/**
- * Renderar sidan för att lägga till en ny produkt.
- * @returns {JSX.Element} JSX-elementet som representerar sidan för att lägga till en ny produkt.
- */
 const AddNewProduct: React.FC = () => {
   return (
     <Container
@@ -21,7 +17,7 @@ const AddNewProduct: React.FC = () => {
         marginBottom: "30px",
       }}
     >
-      <ProductForm product={undefined} />
+      <AddProductForm />
     </Container>
   );
 };

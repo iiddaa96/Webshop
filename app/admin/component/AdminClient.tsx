@@ -7,7 +7,6 @@ import Link from "next/link";
 function AdminClient({ products }: ProductGridProps) {
   return (
     <section>
-      {/* <OrderList /> */}
       <Box
         component={"main"}
         sx={{
@@ -17,6 +16,7 @@ function AdminClient({ products }: ProductGridProps) {
           marginRight: "30px",
         }}
       >
+        {/* <Add new product /> */}
         <Link href="/admin/product/new">
           <AddIcon
             data-cy="admin-add-product"
@@ -33,6 +33,7 @@ function AdminClient({ products }: ProductGridProps) {
             }}
           />
         </Link>
+        {/* <OrderList /> */}
         <Link href="/admin/Orders">
           <AssignmentOutlinedIcon
             sx={{

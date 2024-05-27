@@ -1,6 +1,6 @@
-import ProductForm from "@/app/ui/ProductForm";
 import { db } from "@/prisma/db";
 import { Container } from "@mui/material";
+import EditProductForm from "../../component/EditProductForm";
 
 type Props = { params: { id: number } };
 
@@ -40,7 +40,7 @@ export default async function UpdateExistProduct({ params }: Props) {
         marginBottom: "30px",
       }}
     >
-      <ProductForm product={product} />
+      <EditProductForm product={product} />
     </Container>
   );
 }
