@@ -1,5 +1,5 @@
 "use client";
-import { Product, products as mockedProducts } from "@/data";
+import { Product } from "@/data";
 import React, {
   ReactNode,
   createContext,
@@ -42,7 +42,7 @@ const SELECTED_PRODUCT_LOCAL_STORAGE_KEY = "selectedProduct";
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [products, setProducts] = useState<Product[]>(mockedProducts);
+  const [products, setProducts] = useState<Product[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({
    */
   const removeProduct = (productId: string) => {
     setProducts((prevProducts) =>
-      prevProducts.filter((product) => product.id !== productId)
+      prevProducts.filter((product) => product.id.toString() !== productId)
     );
   };
 

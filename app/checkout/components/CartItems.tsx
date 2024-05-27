@@ -61,7 +61,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
             </Typography>
             {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
             <QuantityButton
-              productId={item.id}
+              productId={item.id.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
             />
@@ -72,7 +72,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
             <IconButton
               color="inherit"
               aria-label="delete"
-              onClick={() => handleDelete(item.id)}
+              onClick={() => handleDelete(item.id.toString())}
             >
               <DeleteIcon />
             </IconButton>
