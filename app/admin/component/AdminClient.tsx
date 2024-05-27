@@ -1,5 +1,3 @@
-"use server";
-
 import ProductGrid, { ProductGridProps } from "@/app/ui/ProductGrid";
 import AddIcon from "@mui/icons-material/Add";
 import { Box } from "@mui/material";
