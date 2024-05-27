@@ -6,8 +6,16 @@ export default async function RenderUser() {
   if (session)
     //Du är authenticated genom Github och lagrad i en kaka
     return (
-      <div>
-        <p>{session?.user?.name}</p>
+      <div
+        style={{
+          marginLeft: "30px",
+          marginTop: "25px",
+          fontSize: "20px",
+          fontWeight: "bold",
+          fontFamily: "monospace",
+        }}
+      >
+        <p>Customer: {session?.user?.name}</p>
       </div>
     );
 
