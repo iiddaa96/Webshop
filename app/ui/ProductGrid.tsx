@@ -23,7 +23,6 @@ import {
 } from "@mui/material";
 import { Product } from "@prisma/client";
 import React from "react";
-import { useProduct } from "../context/AdminContext";
 
 // Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -40,7 +39,6 @@ export interface ProductGridProps {
 }
 
 export default function ProductGrid({ products }: ProductGridProps) {
-  const { removeProduct } = useProduct();
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [productToDelete, setProductToDelete] = React.useState<string | null>(

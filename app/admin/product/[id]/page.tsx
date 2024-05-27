@@ -1,4 +1,4 @@
-import ProductForm from "@/app/ui/ProductForm";
+import ProductForm from "@/app/ui/UpdateProductForm";
 import { db } from "@/prisma/db";
 import { Container } from "@mui/material";
 

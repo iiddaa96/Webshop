@@ -20,3 +20,22 @@ export async function editProduct(updatedProduct: Product) {
     },
   });
 }
+
+export async function addNewProduct(
+  updatedProduct: Product,
+  chosenCategory: string
+) {
+  await db.product.create({
+    data: {
+      title: updatedProduct.title,
+      image: updatedProduct.image,
+      price: updatedProduct.price,
+      description: updatedProduct.description,
+      categories: {
+        connect: {
+          name: chosenCategory,
+        },
+      },
+    },
+  });
+}

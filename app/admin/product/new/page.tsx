@@ -1,10 +1,7 @@
-"use client";
-
-import ProductForm from "@/app/ui/ProductForm";
 import { Container } from "@mui/material";
-import React from "react";
+import AddNewProductForm from "../../component/AddNewProductForm";
 
-const AddNewProduct: React.FC = () => {
+export default async function addNewProductPage() {
   return (
     <Container
       fixed
@@ -17,9 +14,7 @@ const AddNewProduct: React.FC = () => {
         marginBottom: "30px",
       }}
     >
-      <ProductForm product={undefined} />
+      <AddNewProductForm />
     </Container>
   );
-};
-
-export default AddNewProduct;
+}
