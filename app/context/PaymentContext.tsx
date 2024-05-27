@@ -46,7 +46,7 @@ export const useCustomer = () => {
 export const PaymentProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [customer, setCustomer] = useState<CustomerInfo>({
     fullname: "",
-    address: "",
+    street: "",
     zip: 0,
     city: "",
     email: "",

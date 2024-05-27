@@ -4,6 +4,7 @@ import { Product, productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { Prisma } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useProduct } from "../context/AdminContext";
@@ -18,13 +19,13 @@ function ProductForm(props: Props) {
   const { addProduct } = useProduct();
   const router = useRouter();
 
-  const form = useForm<Product>({
+  const form = useForm<Prisma.ProductGetPayload<{}>>({
     defaultValues: props.product,
     resolver: zodResolver(productSchema),
     mode: "onChange",
   });
 
-  const save = (data: Product) => {
+  const save = (data: Prisma.ProductGetPayload<{}>) => {
     const updatedProduct = { ...data };
 
     console.error(updatedProduct);
