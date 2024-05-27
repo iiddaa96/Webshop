@@ -1,5 +1,4 @@
 "use client";
-
 import { Product, productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
@@ -7,7 +6,6 @@ import { Box, Button, TextField } from "@mui/material";
 import { Prisma } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { useProduct } from "../../context/AdminContext";
 import { editProduct } from "../../endpoints/product-endpoints";
 
 export interface Props {
@@ -16,7 +14,7 @@ export interface Props {
 
 export default function EditProductForm(props: Props) {
   const isEdit = Boolean(props.product);
-  const { addProduct } = useProduct();
+
   const router = useRouter();
 
   const form = useForm<Prisma.ProductGetPayload<{}>>({
@@ -31,9 +29,6 @@ export default function EditProductForm(props: Props) {
     console.error(updatedProduct);
 
     editProduct(updatedProduct);
-    if (isEdit) {
-    } else {
-    }
     router.push("/admin");
   };
 

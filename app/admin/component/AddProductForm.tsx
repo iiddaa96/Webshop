@@ -1,29 +1,51 @@
+"use client";
+import { addNewProduct } from "@/app/endpoints/product-endpoints";
+import SaveIcon from "@mui/icons-material/Save";
 import {
-    Box,
-    Button,
-    MenuItem,
-    Select,
-    SelectChangeEvent,
-    TextField
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextField,
 } from "@mui/material";
 import { Product } from "@prisma/client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function AddProductForm() {
-    const [chosenCategory, setChosenCategory] = useState("");
-    const form = useForm<Product>({
-      mode: "onChange",
-    });
-  
-    const handleCategoryChange = (event: SelectChangeEvent<string>) => {
-      control.setValue("category", event.target.value);
+  const router = useRouter();
+  const [chosenCategory, setChosenCategory] = useState("");
+  const form = useForm<Product>({
+    mode: "onChange",
+  });
+
+  // const save = (data: Product) => {
+  //   const newProduct = { ...data, category: chosenCategory };
+  //   addNewProduct(newProduct, chosenCategory);
+  //   router.push("/admin");
+  // };
+  const handleCategoryChange = (event: SelectChangeEvent<string>) => {
+    setChosenCategory(event.target.value);
+  };
+
+  const save = (data: Product) => {
+    const newProduct = {
+      ...data,
+      price: Number(data.price),
+      category: chosenCategory,
     };
-  
-    const save = (data: Product) => {
-      const updatedProduct = { ...data };
-  
-      addNewProduct(updatedProduct, chosenCategory);
+
+    console.log("test1", newProduct);
+
+    addNewProduct(newProduct, chosenCategory);
+    router.push("/admin");
+
+    if (!addNewProduct) {
+      console.log("Error");
+    }
+  };
 
   return (
     <Box
@@ -40,7 +62,6 @@ export default function AddProductForm() {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
       }}
     >
-      {/* Textfält för titel */}
       <TextField
         fullWidth
         label="Title"
@@ -50,7 +71,7 @@ export default function AddProductForm() {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("title")}
       />
-      {/* Textfält för image */}
+
       <TextField
         fullWidth
         label="Image"
@@ -60,7 +81,7 @@ export default function AddProductForm() {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("image")}
       />
-      {/* Textfält för pris */}
+
       <TextField
         fullWidth
         label="Price"
@@ -70,7 +91,7 @@ export default function AddProductForm() {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("price")}
       />
-      {/* Textfält för kategori */}
+
       <Select
         fullWidth
         label="Category"
@@ -83,11 +104,10 @@ export default function AddProductForm() {
         <MenuItem value="Badleksaker">Badleksaker</MenuItem>
         <MenuItem value="Handdukar">Handdukar</MenuItem>
       </Select>
-      {/* Textfält för beskrivning */}
+
       <TextField
         id="outlined-multiline-static"
         label="Description"
-        // multiline // Fråga David om denna ska vara med eller inte (admin-2) ???
         helperText={form.formState.errors.description?.message}
         error={Boolean(form.formState.errors.description)}
         rows={6}
@@ -95,15 +115,9 @@ export default function AddProductForm() {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("description")}
       />
-      {/* Box med spara knappen */}
+
       <Box sx={{ display: "flex", gap: "5vh" }}>
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ width: "150px" }}
-          /*  Knappen är grå om formuläret inte 
-          är godkänt*/
-        >
+        <Button type="submit" variant="contained" sx={{ width: "150px" }}>
           <SaveIcon fontSize="large" />
           Spara
         </Button>
