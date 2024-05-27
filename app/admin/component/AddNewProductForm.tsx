@@ -21,7 +21,7 @@ export default function AddNewProductForm() {
   });
 
   const handleCategoryChange = (event: SelectChangeEvent<string>) => {
-    form.setValue("category", event.target.value);
+    control.setValue("category", event.target.value);
   };
 
   const save = (data: Product) => {
