@@ -17,6 +17,7 @@ function ProductForm(props: Props) {
   const isEdit = Boolean(props.product);
   const { addProduct } = useProduct();
   const router = useRouter();
+  const { register } = form;
 
   const form = useForm<Product>({
     defaultValues: props.product,
@@ -51,6 +52,11 @@ function ProductForm(props: Props) {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
       }}
     >
+      <input
+        type="number"
+        {...register("inventory")}
+        defaultValue={props.product?.inventory}
+      />
       <Typography variant="h4">
         {isEdit ? "Uppdatera produkt" : "Skapa ny produkt"}
       </Typography>

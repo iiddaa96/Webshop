@@ -1,3 +1,4 @@
+import { editProduct } from "@/app/endpoints/product-endpoints";
 import ProductGrid, { ProductGridProps } from "@/app/ui/ProductGrid";
 import AddIcon from "@mui/icons-material/Add";
 import { Box } from "@mui/material";
@@ -36,6 +37,22 @@ function AdminClient({ products }: ProductGridProps) {
       </Box>
 
       <ProductGrid products={products} />
+      {products.map((product) => (
+        <div key={product.id}>
+          <input
+            type="number"
+            defaultValue={product.inventory}
+            onChange={(e) => {
+              // Uppdatera lagersaldo för produkten
+              const updatedProduct = {
+                ...product,
+                inventory: parseInt(e.target.value),
+              };
+              editProduct(updatedProduct);
+            }}
+          />
+        </div>
+      ))}
     </section>
   );
 }
