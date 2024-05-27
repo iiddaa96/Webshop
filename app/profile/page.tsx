@@ -27,23 +27,65 @@ export default async function ProfilePage() {
     <div>
       <RenderUser />
       <List>
+        <p
+          style={{
+            fontWeight: "bold",
+            marginLeft: "30px",
+            fontSize: "20px",
+            marginTop: "-10px",
+            fontFamily: "monospace",
+            textDecoration: "underline",
+          }}
+        >
+          {" "}
+          ORDERS:
+        </p>
         {orders.map((order) => (
-          <Box key={order.id}>
-            <ListItem>Total Price: {order.total}kr</ListItem>
-            <ListItem>
+          <Box
+            sx={{ fontSize: "15px", fontWeight: "bold", marginLeft: "15px" }}
+            key={order.id}
+          >
+            {/* <ListItem>Total Price: {order.total}kr</ListItem> */}
+            <ListItem sx={{ fontFamily: "monospace" }}>
               Date: {new Date(order.createdAt).toLocaleString()}
             </ListItem>
             <ListItem>
               {order.orderDetails.map((item) => (
-                <Typography key={item.orderId}>
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: "bold",
+                    fontFamily: "monospace",
+                  }}
+                  key={item.orderId}
+                >
                   {item.product.title} - {item.quantity} x {item.product.price}
                   kr
                 </Typography>
               ))}
             </ListItem>
+
             <Box>
-              <Typography>Status: {order.isSent.toString()}</Typography>
+              <Typography
+                sx={{
+                  marginLeft: "15px",
+                  fontWeight: "bold",
+                  fontSize: "15px",
+                  fontFamily: "monospace",
+                }}
+              >
+                Status shipping: {order.isSent.toString()}
+              </Typography>
             </Box>
+            <ListItem
+              style={{
+                borderBottom: "1px solid black",
+                fontSize: "16px",
+                fontFamily: "monospace",
+              }}
+            >
+              Total Price: {order.total}kr
+            </ListItem>
           </Box>
         ))}
       </List>
