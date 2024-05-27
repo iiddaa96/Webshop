@@ -21,11 +21,6 @@ export default function AddProductForm() {
     mode: "onChange",
   });
 
-  // const save = (data: Product) => {
-  //   const newProduct = { ...data, category: chosenCategory };
-  //   addNewProduct(newProduct, chosenCategory);
-  //   router.push("/admin");
-  // };
   const handleCategoryChange = (event: SelectChangeEvent<string>) => {
     setChosenCategory(event.target.value);
   };
@@ -39,7 +34,7 @@ export default function AddProductForm() {
 
     console.log("test1", newProduct);
 
-    addNewProduct(newProduct, chosenCategory);
+    addNewProduct(newProduct, chosenCategory.toLowerCase());
     router.push("/admin");
 
     if (!addNewProduct) {
@@ -97,6 +92,7 @@ export default function AddProductForm() {
         label="Category"
         value={chosenCategory}
         sx={{ width: "100%", marginBottom: "20px" }}
+        onChange={handleCategoryChange}
       >
         <MenuItem value="">Välj en kategori</MenuItem>
         <MenuItem value="Rea">Rea</MenuItem>
