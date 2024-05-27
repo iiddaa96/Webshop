@@ -1,34 +1,29 @@
-import { useProduct } from "@/app/context/AdminContext";
-import { editProduct } from "@/app/endpoints/product-endpoints";
-import { productSchema } from "@/data";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { Prisma } from "@prisma/client";
-import { useRouter } from "next/navigation";
+import {
+    Box,
+    Button,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    TextField
+} from "@mui/material";
+import { Product } from "@prisma/client";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function AddProductForm() {
-  const isEdit = Boolean(props.product);
-  const { addProduct } = useProduct();
-  const router = useRouter();
-
-  const form = useForm<Prisma.ProductGetPayload<{}>>({
-    defaultValues: props.product,
-    resolver: zodResolver(productSchema),
-    mode: "onChange",
-  });
-
-  const save = (data: Prisma.ProductGetPayload<{}>) => {
-    const updatedProduct = { ...data };
-
-    console.error(updatedProduct);
-
-    editProduct(updatedProduct);
-    if (isEdit) {
-    } else {
-    }
-    router.push("/admin");
-  };
+    const [chosenCategory, setChosenCategory] = useState("");
+    const form = useForm<Product>({
+      mode: "onChange",
+    });
+  
+    const handleCategoryChange = (event: SelectChangeEvent<string>) => {
+      control.setValue("category", event.target.value);
+    };
+  
+    const save = (data: Product) => {
+      const updatedProduct = { ...data };
+  
+      addNewProduct(updatedProduct, chosenCategory);
 
   return (
     <Box
@@ -45,10 +40,6 @@ export default function AddProductForm() {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
       }}
     >
-      <Typography variant="h4">
-        {isEdit ? "Uppdatera produkt" : "Skapa ny produkt"}
-      </Typography>
-
       {/* Textfält för titel */}
       <TextField
         fullWidth
@@ -79,6 +70,19 @@ export default function AddProductForm() {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("price")}
       />
+      {/* Textfält för kategori */}
+      <Select
+        fullWidth
+        label="Category"
+        value={chosenCategory}
+        sx={{ width: "100%", marginBottom: "20px" }}
+      >
+        <MenuItem value="">Välj en kategori</MenuItem>
+        <MenuItem value="Rea">Rea</MenuItem>
+        <MenuItem value="Nyheter">Nyheter</MenuItem>
+        <MenuItem value="Badleksaker">Badleksaker</MenuItem>
+        <MenuItem value="Handdukar">Handdukar</MenuItem>
+      </Select>
       {/* Textfält för beskrivning */}
       <TextField
         id="outlined-multiline-static"

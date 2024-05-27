@@ -3,14 +3,14 @@
 import { Product, productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { Prisma } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useProduct } from "../../context/AdminContext";
 import { editProduct } from "../../endpoints/product-endpoints";
 
-interface Props {
+export interface Props {
   product?: Product;
 }
 
@@ -52,10 +52,6 @@ export default function EditProductForm(props: Props) {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
       }}
     >
-      <Typography variant="h4">
-        {isEdit ? "Uppdatera produkt" : "Skapa ny produkt"}
-      </Typography>
-
       {/* Textfält för titel */}
       <TextField
         fullWidth

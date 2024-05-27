@@ -8,7 +8,7 @@ export async function getAllProducts() {
 }
 
 export async function editProduct(updatedProduct: Product) {
-  return await db.product.update({
+  await db.product.update({
     where: { id: updatedProduct.id },
     data: {
       title: updatedProduct.title,
@@ -19,4 +19,12 @@ export async function editProduct(updatedProduct: Product) {
   });
 }
 
-export async function addProduct();
+export async function addProduct(updatedProduct: Product);
+await db.product.create({
+  data: {
+    title: updatedProduct.title,
+    image: updatedProduct.image,
+    price: updatedProduct.price,
+    description: updatedProduct.description,
+  },
+});
