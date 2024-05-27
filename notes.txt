@@ -4,3 +4,9 @@ Handledning:
 * Cookie-session
 * Kloning på DELETE & UPDATE, HUR???? 
 * FRÅGA OM HUR VI SKA HA VÅRA PRODUKTER, i seed [] eller som admin lägger upp
+
+
+
+CSR - "use client" --> Innehållet läggs i er bundle fil (.js)
+SSR - Skapa html koden vid REQUEST - RUNTIME (måste finnas när användar info är ett krav)
+SSG - Skapa html koden vid BUILD - COMPILE

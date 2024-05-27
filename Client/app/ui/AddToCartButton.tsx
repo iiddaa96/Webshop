@@ -1,15 +1,15 @@
 "use client";
+import { useCart } from "@/app/context/CartContext";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { IconButton } from "@mui/material";
+import { Prisma, Product } from "@prisma/client";
 import React from "react";
-import { Product } from "../../data/index";
-import { useCart } from "../context/CartContext";
 
 interface AddToCartButtonProps {
-  product: Product;
+  product: Prisma.ProductGetPayload<{}>;
   title: string;
   // Lägg till funktion för att hantera "Lägg till i kundvagnen"
-  handleAddToCart: (products: Product) => void;
+  handleAddToCart: (products: Prisma.ProductGetPayload<{}>) => void;
 }
 
 /**

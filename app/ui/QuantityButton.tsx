@@ -51,7 +51,7 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
     }
   };
 
-  const selectedProduct = cart.find((item) => item.id === productId);
+  const selectedProduct = cart.find((item) => item.id.toString() === productId);
   /**
    * Funktion för att beräkna det totala priset för produkten.
    * @returns {number} Totalpriset för produkten.
@@ -61,40 +61,42 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
   };
 
   return (
-    <Box>
-      <Box sx={{ display: "flex", alignItems: "center", marginLeft: "2px" }}>
-        {showControls && (
-          <IconButton
-            color="inherit"
-            aria-label="decrement"
-            onClick={decrementQuantity}
-          >
-            <RemoveIcon />
-          </IconButton>
-        )}
-        <Button variant="contained" color="inherit">
-          <Typography component="span">{quantity}</Typography>
-        </Button>
+    <div>
+      <Box>
+        <Box sx={{ display: "flex", alignItems: "center", marginLeft: "2px" }}>
+          {showControls && (
+            <IconButton
+              color="inherit"
+              aria-label="decrement"
+              onClick={decrementQuantity}
+            >
+              <RemoveIcon />
+            </IconButton>
+          )}
+          <Button variant="contained" color="inherit">
+            <Typography component="span">{quantity}</Typography>
+          </Button>
 
-        {showControls && (
-          <IconButton
-            color="inherit"
-            aria-label="increment"
-            onClick={incrementQuantity}
-          >
-            <AddIcon />
-          </IconButton>
+          {showControls && (
+            <IconButton
+              color="inherit"
+              aria-label="increment"
+              onClick={incrementQuantity}
+            >
+              <AddIcon />
+            </IconButton>
+          )}
+        </Box>
+
+        {showTotalPrice && (
+          <Box>
+            <Typography variant="subtitle1">
+              Price: {calculateTotalPrice()} kr
+            </Typography>
+          </Box>
         )}
       </Box>
-
-      {showTotalPrice && (
-        <Box>
-          <Typography variant="subtitle1">
-            Price: {calculateTotalPrice()} kr
-          </Typography>
-        </Box>
-      )}
-    </Box>
+    </div>
   );
 };
 

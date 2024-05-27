@@ -98,14 +98,16 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
 
   // Funktion för att ta bort en produkt från varukorgen
   const removeFromCart = (productId: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.id.toString() !== productId)
+    );
   };
 
   // Funktion för att uppdatera kvantiteten av en produkt i varukorgen
   const updateQuantity = (productId: string, quantity: number) => {
     setCart((currentCart) => {
       return currentCart.map((item) => {
-        if (item.id === productId) {
+        if (item.id.toString() === productId) {
           return { ...item, quantity };
         }
         return item;

@@ -63,7 +63,7 @@ function Confirmation() {
             <Grid item xs={12} key={item.id}>
               <Typography variant="h6">{item.title}</Typography>
               <QuantityButton
-                productId={item.id}
+                productId={item.id.toString()}
                 initialQuantity={item.quantity}
                 showTotalPrice={false}
                 showControls={false}
