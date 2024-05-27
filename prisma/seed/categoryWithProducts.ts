@@ -22,6 +22,7 @@ type CategoriesData = {
     description: string;
     image: string;
     price: number;
+    inventory: number;
   }[];
 };
 
@@ -36,12 +37,14 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1700979-09_Fm_M0087987&mw=468&fmt=webp",
         price: 299,
+        inventory: 5,
       },
       {
         image:
           "https://homeofess.com/pub_images/original/charlieston12.jpg?extend=copy&width=800&method=crop&height=800&type=webp",
         title: "Badring Sol",
         price: 259,
+        inventory: 5,
         description:
           "Badboll för stranden och poolen, perfekt för sommarens alla lekar. Tillverkad av slitstark plast och lätt att blåsa upp. Finns i flera färgglada mönster som gör den rolig att använda. Ger timmar av underhållning för både barn och vuxna.",
       },
@@ -50,6 +53,7 @@ const categoriesData: CategoriesData[] = [
           "https://www.junglebird.se/cdn/shop/files/F7A1DCB0-32B6-49C4-81EB-06057DF363CE_670x.webp?v=1711202486",
         title: "Strand Tennis",
         price: 369,
+        inventory: 5,
         description:
           "Gör dig redo att spela dagen lång med stil. Rio Sun Foam Beach Bats är ultratrendiga och färgstarka mjuka paddlar som verkligen sticker ut. Tillverkade av hållbart och lätt material och levereras komplett med två paddlar, två SUNNYLiFE-bollar och ett praktiskt fodral med dragkedja. Ta med en vän, bege er till stranden och ha riktigt roligt. Dra blickarna till er och gör denna säsong minnesvärd med deras härliga pastellfärger.",
       },
@@ -58,6 +62,7 @@ const categoriesData: CategoriesData[] = [
           "https://homeofess.com/pub_images/original/101408-255-002_4.jpg?extend=copy&width=800&method=crop&height=800&type=webp",
         title: "Badring Celiné",
         price: 179,
+        inventory: 5,
         description:
           "Ränder går med allt. Pool, hav, sjö, strand eller klippa – en randig badring passar alltid perfekt. Den är ett säkert kort för alla sommaräventyr.",
       },
@@ -71,6 +76,7 @@ const categoriesData: CategoriesData[] = [
           "https://homeofess.com/pub_images/original/charlieston12.jpg?extend=copy&width=800&method=crop&height=800&type=webp",
         title: "Badring Sol",
         price: 259,
+        inventory: 5,
         description:
           "Badboll för stranden och poolen, perfekt för sommarens alla lekar. Tillverkad av slitstark plast och lätt att blåsa upp. Finns i flera färgglada mönster som gör den rolig att använda. Ger timmar av underhållning för både barn och vuxna.",
       },
@@ -79,6 +85,7 @@ const categoriesData: CategoriesData[] = [
           "https://homeofess.com/pub_images/original/101408-255-002_4.jpg?extend=copy&width=800&method=crop&height=800&type=webp",
         title: "Badring Celiné",
         price: 179,
+        inventory: 5,
         description:
           "Ränder går med allt. Pool, hav, sjö, strand eller klippa – en randig badring passar alltid perfekt. Den är ett säkert kort för alla sommaräventyr.",
       },
@@ -87,6 +94,7 @@ const categoriesData: CategoriesData[] = [
           "https://www.junglebird.se/cdn/shop/files/F7A1DCB0-32B6-49C4-81EB-06057DF363CE_670x.webp?v=1711202486",
         title: "Strand Tennis",
         price: 369,
+        inventory: 5,
         description:
           "Gör dig redo att spela dagen lång med stil. Rio Sun Foam Beach Bats är ultratrendiga och färgstarka mjuka paddlar som verkligen sticker ut. Tillverkade av hållbart och lätt material och levereras komplett med två paddlar, två SUNNYLiFE-bollar och ett praktiskt fodral med dragkedja. Ta med en vän, bege er till stranden och ha riktigt roligt. Dra blickarna till er och gör denna säsong minnesvärd med deras härliga pastellfärger.",
       },
@@ -95,6 +103,7 @@ const categoriesData: CategoriesData[] = [
           "https://min-lilla-sotnos.se/cdn/shop/files/S83aa0cf3fe9b4c92a0d4541c5913aac0p_1024x1024@2x.jpg?v=1685363963",
         title: "Återanvändbara Vattenballonger",
         price: 149,
+        inventory: 5,
         description:
           "Möt Reusable Water Balloons! Dessa återanvändbara vattenballonger ger oändligt med skoj under varma sommardagar i trädgården. Barnen kan roa sig med vattenkrig utan att behöva oroa sig för trasiga ballonger. Ballongerna är tillverkade av ett slitstarkt material och är lätta att fylla, så de tål tuffa tag och är roliga gång på gång.",
       },
@@ -110,6 +119,7 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1700979-09_Fm_M0087987&mw=468&fmt=webp",
         price: 299,
+        inventory: 5,
       },
       {
         title: "Handduk Hav",
@@ -118,6 +128,7 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://cdn.shopify.com/s/files/1/0188/6063/8272/products/2_2_5f2a8ce2-e68e-4856-884e-1b924ca58e2d.jpg?v=1680510961&width=950",
         price: 199,
+        inventory: 5,
       },
       {
         title: "Handduk Sol",
@@ -126,6 +137,7 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://assets.ellosgroup.com/i/ellos/b?$jg$&$jm$&$jp$&$jd$&n=jot_1866256-03_Fm_M0091310&mw=644&fmt=webp",
         price: 199,
+        inventory: 5,
       },
       {
         title: "Handduk Eko",
@@ -134,6 +146,7 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://www.mille-notti.com/_next/image?url=https%3A%2F%2Fmillenotti.centracdn.net%2Fclient%2Fdynamic%2Fimages%2F549_57fd25bc67-70016057-2-1350x0.jpg&w=640&q=75",
         price: 299,
+        inventory: 5,
       },
     ],
   },
@@ -147,6 +160,7 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://images.clasohlson.com/medias/sys_master/h95/hde/68349037445150.jpg",
         price: 99,
+        inventory: 5,
       },
       {
         title: "Boccia utomhusspel",
@@ -155,6 +169,7 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://images.clasohlson.com/medias/sys_master/ha7/hdb/68349056942110.png",
         price: 129,
+        inventory: 5,
       },
       {
         title: "Strandhandduk randig",
@@ -163,6 +178,7 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://images.clasohlson.com/medias/sys_master/h69/h2e/68350024679454.jpg",
         price: 99,
+        inventory: 5,
       },
       {
         title: "Hopfällbar solstol",
@@ -171,6 +187,7 @@ const categoriesData: CategoriesData[] = [
         image:
           "https://images.clasohlson.com/medias/sys_master/h7c/h9d/68384488063006.jpg",
         price: 179,
+        inventory: 5,
       },
     ],
   },

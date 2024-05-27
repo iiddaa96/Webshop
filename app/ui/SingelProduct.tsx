@@ -47,6 +47,9 @@ export default function SingleProduct({ product }: Props) {
             <Typography variant="body2" gutterBottom>
               {product.price} kr
             </Typography>
+            <Typography variant="body2" gutterBottom>
+              Saldo i lager: {product.inventory}
+            </Typography>
             <AddToCartButton
               product={product}
               handleAddToCart={handleAddToCart}

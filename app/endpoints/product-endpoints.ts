@@ -17,6 +17,7 @@ export async function editProduct(updatedProduct: Product) {
       image: updatedProduct.image,
       price: updatedProduct.price,
       description: updatedProduct.description,
+      inventory: updatedProduct.inventory,
     },
   });
 }
