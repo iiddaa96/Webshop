@@ -4,10 +4,6 @@ import ProductForm from "@/app/ui/ProductForm";
 import { Container } from "@mui/material";
 import React from "react";
 
-/**
- * Renderar sidan för att lägga till en ny produkt.
- * @returns {JSX.Element} JSX-elementet som representerar sidan för att lägga till en ny produkt.
- */
 const AddNewProduct: React.FC = () => {
   return (
     <Container

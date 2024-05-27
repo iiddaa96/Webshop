@@ -7,6 +7,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useProduct } from "../context/AdminContext";
+import { addNewProduct } from "../endpoints/addNewProduct-endpoints";
 import { editProduct } from "../endpoints/product-endpoints";
 
 interface Props {
@@ -28,8 +29,12 @@ function ProductForm(props: Props) {
     const updatedProduct = { ...data };
 
     console.error(updatedProduct);
+    if (!isEdit) {
+      addProduct(addNewProduct);
+    } else {
+      editProduct(updatedProduct);
+    }
 
-    editProduct(updatedProduct);
     if (isEdit) {
     } else {
     }
