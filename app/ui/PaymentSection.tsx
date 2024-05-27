@@ -7,7 +7,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useCustomer } from "../context/PaymentContext";
-import { createOrder } from "../endpoints/endpoints";
+
+import { createOrder } from "../endpoints/order-endpoints";
 import { customerSchema } from "../zod-validation/users";
 
 export type CustomerInfo = z.infer<typeof customerSchema>;
