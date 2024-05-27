@@ -2,11 +2,9 @@
 
 import { db } from "@/prisma/db";
 import { Product } from "@prisma/client";
-import { NextRequest, NextResponse } from "next/server";
 
-export async function getAllProducts(request: NextRequest) {
-  const products = await db.product.findMany();
-  return NextResponse.json(products, { status: 200 });
+export async function getAllProducts() {
+  await db.product.findMany();
 }
 
 export async function editProduct(updatedProduct: Product) {
@@ -20,3 +18,5 @@ export async function editProduct(updatedProduct: Product) {
     },
   });
 }
+
+export async function addProduct();

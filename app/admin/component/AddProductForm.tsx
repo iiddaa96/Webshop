@@ -1,20 +1,13 @@
-"use client";
-
-import { Product, productSchema } from "@/data";
+import { useProduct } from "@/app/context/AdminContext";
+import { editProduct } from "@/app/endpoints/product-endpoints";
+import { productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
-import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { Prisma } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { useProduct } from "../context/AdminContext";
-import { editProduct } from "../endpoints/product-endpoints";
 
-interface Props {
-  product?: Product;
-}
-
-function ProductForm(props: Props) {
+export default function AddProductForm() {
   const isEdit = Boolean(props.product);
   const { addProduct } = useProduct();
   const router = useRouter();
@@ -114,5 +107,3 @@ function ProductForm(props: Props) {
     </Box>
   );
 }
-
-export default ProductForm;
