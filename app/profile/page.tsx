@@ -34,6 +34,7 @@ export default async function ProfilePage() {
             fontSize: "20px",
             marginTop: "-10px",
             fontFamily: "monospace",
+            textDecoration: "underline",
           }}
         >
           {" "}

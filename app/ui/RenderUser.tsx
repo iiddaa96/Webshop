@@ -13,6 +13,7 @@ export default async function RenderUser() {
           fontSize: "20px",
           fontWeight: "bold",
           fontFamily: "monospace",
+          textDecoration: "underline",
         }}
       >
         <p>Customer: {session?.user?.name}</p>
