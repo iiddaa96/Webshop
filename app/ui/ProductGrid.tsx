@@ -64,8 +64,8 @@ export default function ProductGrid({ products }: ProductGridProps) {
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    height="auto"
-                    width="auto"
+                    height="200" // Set fixed height
+                    width="100%" // Set fixed width
                     image={product.image}
                     alt={product.title}
                   />

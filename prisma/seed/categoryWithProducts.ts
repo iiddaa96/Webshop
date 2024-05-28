@@ -101,7 +101,7 @@ const categoriesData: CategoriesData[] = [
       {
         image:
           "https://min-lilla-sotnos.se/cdn/shop/files/S83aa0cf3fe9b4c92a0d4541c5913aac0p_1024x1024@2x.jpg?v=1685363963",
-        title: "Återanvändbara Vattenballonger",
+        title: "Vattenballonger",
         price: 149,
         inventory: 5,
         description:
