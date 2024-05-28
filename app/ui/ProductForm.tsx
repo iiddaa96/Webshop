@@ -1,6 +1,6 @@
 "use client";
 
-import { Product, productSchema } from "@/data";
+import { productSchema } from "@/data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField, Typography } from "@mui/material";
@@ -11,7 +11,7 @@ import { useProduct } from "../context/AdminContext";
 import { editProduct } from "../endpoints/product-endpoints";
 
 interface Props {
-  product?: Product;
+  product?: Prisma.ProductGetPayload<{}>;
 }
 
 function ProductForm(props: Props) {
@@ -27,6 +27,8 @@ function ProductForm(props: Props) {
 
   const save = (data: Prisma.ProductGetPayload<{}>) => {
     const updatedProduct = { ...data };
+
+    console.log(updatedProduct);
 
     console.error(updatedProduct);
 

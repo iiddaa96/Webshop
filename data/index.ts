@@ -8,6 +8,7 @@ export const productSchema = z.object({
   image: z.string().url(),
   title: z.string().min(5, { message: "Titel måste innehålla minst 5 tecken" }),
   price: z.coerce.number().positive({ message: "Skriv in ett nummer" }),
+  inventory: z.coerce.number().positive({ message: "Skriv in ett nummer" }),
   description: z
     .string()
     .min(1)
