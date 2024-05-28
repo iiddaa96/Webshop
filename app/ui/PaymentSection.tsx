@@ -5,10 +5,10 @@ import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Item } from "../checkout/components/TotalPrice";
 import { useCustomer } from "../context/PaymentContext";
 import { createOrder } from "../endpoints/order-endpoints";
 import { updateProductInventory } from "../endpoints/product-endpoints";
+import { CartItem } from "../zod-validation/products";
 import { customerSchema } from "../zod-validation/users";
 
 export type CustomerInfo = z.infer<typeof customerSchema>;
@@ -20,13 +20,13 @@ export default function InputPayment() {
   const form = useForm<CustomerInfo>({ resolver: zodResolver(customerSchema) });
 
   const handleSubmit = (customer: CustomerInfo) => {
-    const cartData: Item[] = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cartData: CartItem[] = JSON.parse(
+      localStorage.getItem("cart") || "[]"
+    );
 
     setCustomer(customer);
 
     createOrder(customer, cartData);
-
-    console.log(cartData);
 
     router.push("/confirmation");
     updateProductInventory(cartData);

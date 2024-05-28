@@ -3,6 +3,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
 import { CartItems } from "./components/CartItems";
+import TotalPrice from "./components/TotalPrice";
 
 const Checkout = () => {
   const { cart } = useCart();
@@ -38,7 +39,7 @@ const Checkout = () => {
                 verticalAlign: "middle",
               }}
             >
-              {/*          <TotalPrice cart={cart} />  FIXA */}
+              <TotalPrice cart={cart} />
             </Typography>
           </Box>
         </Grid>

@@ -119,7 +119,7 @@ export default async function Confirmation({ cart }: ItemsProps) {
           </Typography>
           <Typography>
             Här kommer ditt digitala kvitto från Sand & Sjö. Mer spännande
-            produkter finns på vår hemsida Sand & Sjö & Sjö.se.
+            produkter finns på vår hemsida Sand & Sjö.se.
           </Typography>
           <Typography>
             Hoppas vi hörs snart igen! Hälsningar från oss på Sand & Sjö.
