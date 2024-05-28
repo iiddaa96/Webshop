@@ -9,11 +9,17 @@ export const ProductCreateSchema = z.object({
 export type ProductCreate = z.infer<typeof ProductCreateSchema>;
 
 export const productSchema = z.object({
-  id: z.number(),
-  image: z.string().url(),
-  title: z.string().min(5, { message: "Titel måste innehålla minst 5 tecken" }),
+  id: z.number().optional(),
+  image: z.string().url().optional(),
+  title: z
+    .string()
+    .min(5, { message: "Titel måste innehålla minst 5 tecken" })
+    .optional(),
   price: z.coerce.number().positive({ message: "Skriv in ett nummer" }),
-  inventory: z.coerce.number().positive({ message: "Skriv in ett nummer" }),
+  inventory: z.coerce
+    .number()
+    .positive({ message: "Skriv in ett nummer" })
+    .optional(),
   description: z
     .string()
     .min(1)

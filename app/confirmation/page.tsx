@@ -10,17 +10,18 @@ const QuantityButton = dynamic(() => import("../ui/QuantityButton"), {
   ssr: false,
 });
 
-export type CartItem = {
+interface CartProducts {
   id: number;
   title: string;
   image: string;
   price: number;
   description: string;
+  inventory: number;
   quantity: number;
-};
+}
 
 export type Props = {
-  initialCart: CartItem[];
+  initialCart: CartProducts[];
   user: User;
   address: Address;
 };
@@ -64,13 +65,14 @@ async function fetchUserData(email: string) {
     throw new Error("Order not found");
   }
 
-  const initialCart: CartItem[] = order.orderDetails.map((item) => ({
+  const initialCart: CartProducts[] = order.orderDetails.map((item) => ({
     id: item.product.id,
     title: item.product.title,
     image: item.product.image,
     price: parseFloat(item.product.price.toString()),
     description: item.product.description,
     quantity: item.quantity,
+    inventory: item.product.inventory,
   }));
 
   return { user, address, initialCart };
@@ -112,15 +114,15 @@ export default async function Confirmation({ cart }: ItemsProps) {
             Orderbekräftelse
           </Typography>
           <Typography>
-            Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya tavlor.
+            Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya
+            produkter.
           </Typography>
           <Typography>
-            Här kommer ditt digitala kvitto från Wall of Art. Mer inspiration
-            finns på vår hemsida Wall of Art.se där du kan se olika tavlor för
-            olika stylingar.
+            Här kommer ditt digitala kvitto från Sand & Sjö. Mer spännande
+            produkter finns på vår hemsida Sand & Sjö.se.
           </Typography>
           <Typography>
-            Hoppas vi hörs snart igen! Hälsningar från oss på Wall of Art.
+            Hoppas vi hörs snart igen! Hälsningar från oss på Sand & Sjö.
           </Typography>
 
           <Grid container spacing={2}>

@@ -33,4 +33,3 @@ Har skapat en webshop där vi säljer allt från strand spel till handdukar och 
 - [Jonatan Helander](https://github.com/Jonatanhx)
 - [Sally Stenegärd](https://github.com/sallymaria99)
 - [Philip Bendiksen](https://github.com/Philipbendiksen)
-- [Rich Brandon](https://github.com/ricoace10)

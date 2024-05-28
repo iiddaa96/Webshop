@@ -10,6 +10,7 @@ interface AddToCartButtonProps {
 }
 
 const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
+
   const { addToCart } = useCart();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -38,7 +39,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
         }}
       >
         <AddShoppingCartIcon style={{ color: "black" }} />{" "}
-        {/* Gör ikonen synlig */}
+
       </IconButton>
       <Snackbar
         anchorOrigin={{ vertical: "top", horizontal: "left" }}
