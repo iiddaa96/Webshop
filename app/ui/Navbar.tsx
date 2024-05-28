@@ -1,15 +1,8 @@
 import { db } from "@/prisma/db";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import {
-  Badge,
-  Box,
-  Container,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
+import CartQuantityButton from "./CartQuantityButton";
 import AuthButtons from "./auth/AuthButtons";
 
 export default async function Navbar() {
@@ -107,23 +100,7 @@ export default async function Navbar() {
             >
               <AuthButtons />
             </Box>
-            <Box>
-              <IconButton
-                component={Link}
-                href="/checkout"
-                size="large"
-                aria-label="show cart items"
-                color="inherit"
-                sx={{ p: 0 }}
-              >
-                <Badge
-                  // badgeContent={totalQuantity}
-                  color="secondary"
-                >
-                  <ShoppingCartIcon />
-                </Badge>
-              </IconButton>
-            </Box>
+            <CartQuantityButton />
           </Box>
         </Box>
       </Toolbar>

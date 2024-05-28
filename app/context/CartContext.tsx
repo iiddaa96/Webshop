@@ -36,19 +36,8 @@ export const CartContext = createContext<CartContextType>({
   setConfirmedCart: () => {},
 });
 
-/**
- * Hook för att använda varukorgsrelaterad kontext.
- *
- * @returns {CartContextType} Varukorgsrelaterad kontext
- */
 export const useCart = () => useContext(CartContext);
 
-/**
- * Providerkomponent för varukorgen.
- *
- * @param {PropsWithChildren<{}>} children Barnkomponenter som ska ha tillgång till varukorgskontexten
- * @returns {JSX.Element} JSX-element som representerar varukorgskontexten
- */
 export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
