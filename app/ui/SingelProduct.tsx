@@ -1,8 +1,5 @@
-"use client";
-
-import { Box, Grid, Snackbar, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Product } from "@prisma/client";
-import { useState } from "react";
 import AddToCartButton from "./AddToCartButton";
 
 type Props = {
@@ -10,18 +7,6 @@ type Props = {
 };
 
 export default function SingleProduct({ product }: Props) {
-  const [openSnackbar, setOpenSnackbar] = useState(false); // Tillstånd för att visa snackbar
-  const [snackbarMessage, setSnackbarMessage] = useState(""); // Tillstånd för meddelandet i snackbar
-
-  const handleAddToCart = () => {
-    setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
-    setOpenSnackbar(true); // Visa snackbar
-  };
-
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false); // Stäng snackbar
-  };
-
   return (
     <main>
       <Grid container spacing={2}>
@@ -50,22 +35,10 @@ export default function SingleProduct({ product }: Props) {
             <Typography variant="body2" gutterBottom>
               Saldo i lager: {product.inventory}
             </Typography>
-            <AddToCartButton
-              product={product}
-              handleAddToCart={handleAddToCart}
-              title={""}
-            />
+            <AddToCartButton product={product} />
           </Box>
         </Grid>
       </Grid>
-      {/* Snackbar för att visa meddelande när en produkt läggs till i kundvagnen */}
-      <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        open={openSnackbar}
-        autoHideDuration={1000}
-        onClose={handleCloseSnackbar}
-        message={snackbarMessage}
-      />
     </main>
   );
 }
