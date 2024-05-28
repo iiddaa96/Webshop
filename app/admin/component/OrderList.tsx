@@ -9,18 +9,20 @@ export default async function OrderList() {
 
   return (
     <>
-      <List>
+      <List sx={{ fontFamily: "monospace", fontWeight: "bold" }}>
         {orders.map((order) => (
           <ul key={order.id}>
-            <ListItem>Total price: {order.total}kr</ListItem>
             <ListItem>User ID: {order.userId}</ListItem>
             <ListItem>Date: {order.createdAt.toString()}</ListItem>
+            <ListItem>Total price: {order.total}kr</ListItem>
             <Box
               sx={{
                 display: "flex",
               }}
             >
-              <ListItem>{order.isSent.toString()}</ListItem>
+              <ListItem sx={{ borderBottom: "1px solid black" }}>
+                Shipping status: {order.isSent.toString()}
+              </ListItem>
               <ToggleIsSentButton orderId={order.id} />
             </Box>
           </ul>
