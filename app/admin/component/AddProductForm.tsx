@@ -86,6 +86,16 @@ export default function AddProductForm() {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("price")}
       />
+      {/* Textfält för saldo */}
+      <TextField
+        fullWidth
+        label="inventory"
+        helperText={form.formState.errors.inventory?.message}
+        error={Boolean(form.formState.errors.inventory)}
+        id="demo-helper-text-aligned-no-helper"
+        sx={{ width: "100%", marginBottom: "20px" }}
+        {...form.register("inventory")}
+      />
 
       <Select
         fullWidth

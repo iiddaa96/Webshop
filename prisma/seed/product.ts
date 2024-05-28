@@ -11,6 +11,7 @@ export async function product() {
       title: "Badring2",
       price: 259,
       description: "Badringar är jätte kul",
+      inventory: 10,
     },
   });
 }

@@ -15,6 +15,7 @@ export async function editProduct(updatedProduct: Product) {
       image: updatedProduct.image,
       price: updatedProduct.price,
       description: updatedProduct.description,
+      inventory: updatedProduct.inventory,
     },
   });
 }
@@ -45,6 +46,7 @@ export async function addNewProduct(
       title: newProduct.title,
       image: newProduct.image,
       price: newProduct.price,
+      inventory: newProduct.inventory,
       description: newProduct.description,
       categories: {
         connect: {

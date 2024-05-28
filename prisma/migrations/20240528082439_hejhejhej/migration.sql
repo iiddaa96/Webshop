@@ -48,6 +48,7 @@ CREATE TABLE "Product" (
     "price" INTEGER NOT NULL,
     "description" TEXT NOT NULL,
     "lagersaldo" INTEGER NOT NULL DEFAULT 0,
+    "inventory" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );

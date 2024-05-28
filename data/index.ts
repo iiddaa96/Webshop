@@ -1,8 +1,8 @@
-import { z } from "zod";
+/* import { z } from "zod";
 
 /**
  * Beskriver en produkt som ska säljas på sidan.
- **/
+
 export const productSchema = z.object({
   id: z.number(),
   title: z.string().min(5, { message: "Titel måste innehålla minst 5 tecken" }),
@@ -19,3 +19,4 @@ export type Product = z.infer<typeof productSchema>;
 export interface CartItem extends Product {
   quantity: number;
 }
+ */

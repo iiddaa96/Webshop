@@ -1,9 +1,9 @@
 "use client";
-import { Product, productSchema } from "@/data";
+import { productSchema } from "@/app/zod-validation/products";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import { Box, Button, TextField } from "@mui/material";
-import { Prisma } from "@prisma/client";
+import { Prisma, Product } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { editProduct } from "../../endpoints/product-endpoints";
@@ -76,6 +76,16 @@ export default function EditProductForm(props: Props) {
         id="demo-helper-text-aligned-no-helper"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("price")}
+      />
+      {/* Textfält för saldo */}
+      <TextField
+        fullWidth
+        label="inventory"
+        helperText={form.formState.errors.inventory?.message}
+        error={Boolean(form.formState.errors.inventory)}
+        id="demo-helper-text-aligned-no-helper"
+        sx={{ width: "100%", marginBottom: "20px" }}
+        {...form.register("inventory")}
       />
       {/* Textfält för beskrivning */}
       <TextField
