@@ -1,3 +1,4 @@
+import AddToCartButton from "@/app/ui/AddToCartButton";
 import CategoryHeader from "@/app/ui/SubHeader/CategoryHeader";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
@@ -99,7 +100,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     >
                       {product.title}
                     </Typography>
-
+                    <AddToCartButton product={product} />
                     <Typography
                       variant="body2"
                       color="text.secondary"

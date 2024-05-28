@@ -54,7 +54,7 @@ export default function SingleProduct({ product }: Props) {
             <Typography variant="body2" gutterBottom>
               Saldo i lager: {product.inventory}
             </Typography>
-            <AddToCartButton product={product} addToCart={handleAddToCart} />
+            <AddToCartButton product={product} />
           </Box>
         </Grid>
       </Grid>

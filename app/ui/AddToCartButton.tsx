@@ -1,19 +1,17 @@
 "use client";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { IconButton } from "@mui/material";
-import React from "react";
-
 import { Product } from "@prisma/client";
+import React from "react";
+import { useCart } from "../context/CartContext";
 
 interface AddToCartButtonProps {
   product: Product;
-  addToCart: (product: Product) => void;
 }
 
-const AddToCartButton: React.FC<AddToCartButtonProps> = ({
-  product,
-  addToCart,
-}) => {
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
+  const { addToCart } = useCart();
+
   return (
     <IconButton
       aria-label="add to cart"
@@ -21,9 +19,13 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
         e.preventDefault();
         addToCart(product);
       }}
-      style={{ backgroundColor: "white", zIndex: 10 }} // Temporär stil för att säkerställa synlighet
+      style={{
+        backgroundColor: "yellow", // Gör knappen synlig
+        zIndex: 1000, // Hög z-index för att säkerställa att den inte är dold
+        position: "relative",
+      }}
     >
-      <AddShoppingCartIcon style={{ color: "black" }} />
+      <AddShoppingCartIcon style={{ color: "red" }} /> {/* Gör ikonen synlig */}
     </IconButton>
   );
 };

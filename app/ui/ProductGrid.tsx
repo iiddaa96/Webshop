@@ -1,5 +1,6 @@
+/* 
 "use client";
-/* eslint-disable react/jsx-key */
+/* eslint-disable react/jsx-key 
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import {
@@ -76,6 +77,10 @@ export default function ProductGrid({ products }: ProductGridProps) {
                       alt={product.title}
                     />
                     <CardContent>
+                      <AddToCartButton
+                        product={product}
+                        addToCart={addToCart}
+                      />
                       <Typography
                         gutterBottom
                         variant="h6"
@@ -91,6 +96,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
                         {`${product.price.toString()}Kr`}
                       </Typography>
                       <Typography>{product.id}</Typography>
+
                       <Box
                         sx={{
                           display: "flex",
@@ -98,11 +104,6 @@ export default function ProductGrid({ products }: ProductGridProps) {
                           alignItems: "center",
                         }}
                       >
-                        <AddToCartButton
-                          product={product}
-                          addToCart={addToCart}
-                        />
-                        <Button variant="contained">Test Button</Button>
                         <Link href={"/admin/product/" + product.id}>
                           <EditNoteIcon fontSize="large" />
                         </Link>
@@ -135,3 +136,4 @@ export default function ProductGrid({ products }: ProductGridProps) {
     </Container>
   );
 }
+ */
