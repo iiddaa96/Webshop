@@ -1,4 +1,5 @@
 "use client";
+import { Product } from "@prisma/client";
 import {
   PropsWithChildren,
   createContext,
@@ -6,11 +7,8 @@ import {
   useEffect,
   useState,
 } from "react";
-import { CartItem, Product } from "../../data/index";
+import { CartItem } from "../zod-validation/products";
 
-/**
- * Typ för kontexten som innehåller varukorgsrelaterade funktioner och data.
- */
 export interface CartContextType {
   cart: CartItem[];
   confirmedCart: CartItem[];
@@ -23,9 +21,6 @@ export interface CartContextType {
 
 const CART_LOCAL_STORAGE_KEY = "cart";
 
-/**
- * Skapar en React-kontext för varukorgen.
- */
 export const CartContext = createContext<CartContextType>({
   cart: [],
   confirmedCart: [],
@@ -45,7 +40,7 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
 
   // Funktion för att hantera inställning av bekräftade varor i varukorgen
   const handleSetConfirmedCart = (items: CartItem[]) => {
-    setConfirmedCart(items);
+    /*  setConfirmedCart(items); */
   };
 
   // Effekt för att ladda varukorgen från lokal lagring när komponenten monteras
@@ -88,7 +83,7 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   // Funktion för att ta bort en produkt från varukorgen
   const removeFromCart = (productId: string) => {
     setCart((prevCart) =>
-      prevCart.filter((item) => item.id.toString() !== productId)
+      prevCart.filter((item) => item.id?.toString() !== productId)
     );
   };
 
@@ -96,7 +91,7 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
   const updateQuantity = (productId: string, quantity: number) => {
     setCart((currentCart) => {
       return currentCart.map((item) => {
-        if (item.id.toString() === productId) {
+        if (item.id?.toString() === productId) {
           return { ...item, quantity };
         }
         return item;
@@ -106,8 +101,10 @@ export const CartProvider = ({ children }: PropsWithChildren<{}>) => {
 
   // Funktion för att rensa varukorgen
   const clearCart = () => {
-    setCart([]);
-    localStorage.removeItem(CART_LOCAL_STORAGE_KEY);
+    if (cart.length > 0) {
+      localStorage.removeItem(CART_LOCAL_STORAGE_KEY);
+      setCart([]);
+    }
   };
 
   return (
