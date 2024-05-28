@@ -1,24 +1,17 @@
 "use client";
 
+import { CartItem } from "@/app/zod-validation/products";
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export interface Item {
-  id: number;
-  title: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
-
 export interface ItemsProps {
-  cart: Item[];
+  cart: CartItem[];
 }
 
-export const TotalPrice = ({ cart }: ItemsProps) => {
+export default function TotalPrice({ cart }: ItemsProps) {
   const [totalPrice, setTotalPrice] = useState(0); // State för den totala summan
 
   useEffect(() => {
-    // Uppdatera den totala summan när kundvagnen ändras
     const calculateTotalPrice = () => {
       let total = 0;
       cart.forEach((item) => {
@@ -29,5 +22,9 @@ export const TotalPrice = ({ cart }: ItemsProps) => {
     setTotalPrice(calculateTotalPrice());
   }, [cart]);
 
-  return { cart, totalPrice };
-};
+  return (
+    <Box>
+      <p>{totalPrice}kr</p>
+    </Box>
+  );
+}
