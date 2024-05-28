@@ -4,6 +4,7 @@ import { Address, User } from "@prisma/client";
 import dynamic from "next/dynamic";
 import { auth } from "../auth";
 import { ItemsProps } from "../checkout/components/TotalPrice";
+import { BackButton } from "../ui/BackButton";
 import { ConfirmationClient } from "./components/ConfirmationClient";
 
 const QuantityButton = dynamic(() => import("../ui/QuantityButton"), {
@@ -94,6 +95,7 @@ export default async function Confirmation({ cart }: ItemsProps) {
     return (
       <Container component="main">
         <ConfirmationClient initialCart={initialCart} />
+        <BackButton />
         <Box
           sx={{
             display: "flex",

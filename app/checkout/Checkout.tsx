@@ -4,12 +4,14 @@ import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
 import { CartItems } from "./components/CartItems";
 import TotalPrice from "./components/TotalPrice";
+import { BackButton } from "../ui/BackButton";
 
 const Checkout = () => {
   const { cart } = useCart();
 
   return (
     <Container maxWidth="md" component="main">
+      <BackButton />
       <Typography
         sx={{
           display: "flex",
