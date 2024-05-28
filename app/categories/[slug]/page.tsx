@@ -1,5 +1,4 @@
 import AddToCartButton from "@/app/ui/AddToCartButton";
-import CategoryHeader from "@/app/ui/SubHeader/CategoryHeader";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -42,9 +41,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <main>
-      <Box>
-        <CategoryHeader />
-      </Box>
+      <Box></Box>
       <Box
         sx={{
           width: "95%",

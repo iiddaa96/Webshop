@@ -8,7 +8,6 @@ import Image from "next/image";
 import Car from "./assets/car.jpg";
 import MiddleImage from "./assets/palms.jpg";
 import CardsHeader from "./ui/CardsForHomepage/CardsHeader";
-import CategoryHeader from "./ui/SubHeader/CategoryHeader";
 
 export default async function Home() {
   const products = await db.product.findMany({
@@ -20,9 +19,7 @@ export default async function Home() {
   const mediaStyle = { height: 280 }; // Fasta dimensioner för bilder
   return (
     <main>
-      <Box>
-        <CategoryHeader />
-      </Box>
+      <Box></Box>
       <Box
         sx={{
           width: "95%",
