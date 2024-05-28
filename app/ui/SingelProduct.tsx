@@ -3,6 +3,7 @@
 import { Box, Grid, Snackbar, Typography } from "@mui/material";
 import { Product } from "@prisma/client";
 import { useState } from "react";
+import { useCart } from "../context/CartContext";
 import AddToCartButton from "./AddToCartButton";
 
 type Props = {
@@ -13,7 +14,10 @@ export default function SingleProduct({ product }: Props) {
   const [openSnackbar, setOpenSnackbar] = useState(false); // Tillstånd för att visa snackbar
   const [snackbarMessage, setSnackbarMessage] = useState(""); // Tillstånd för meddelandet i snackbar
 
+  const { addToCart } = useCart();
+
   const handleAddToCart = () => {
+    addToCart(product);
     setSnackbarMessage(`${product.title} har lagts till i kundvagnen`); // Ange meddelandet för snackbar
     setOpenSnackbar(true); // Visa snackbar
   };
@@ -50,11 +54,7 @@ export default function SingleProduct({ product }: Props) {
             <Typography variant="body2" gutterBottom>
               Saldo i lager: {product.inventory}
             </Typography>
-            <AddToCartButton
-              product={product}
-              handleAddToCart={handleAddToCart}
-              title={""}
-            />
+            <AddToCartButton product={product} addToCart={handleAddToCart} />
           </Box>
         </Grid>
       </Grid>

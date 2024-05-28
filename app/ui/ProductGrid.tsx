@@ -23,6 +23,8 @@ import {
 } from "@mui/material";
 import { Product } from "@prisma/client";
 import React from "react";
+import { useCart } from "../context/CartContext";
+import AddToCartButton from "./AddToCartButton";
 
 // Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -35,7 +37,7 @@ interface State extends SnackbarOrigin {
 }
 
 export interface ProductGridProps {
-  products: Product[]; // Use the Product type for the products prop
+  products: Product[];
 }
 
 export default function ProductGrid({ products }: ProductGridProps) {
@@ -44,6 +46,8 @@ export default function ProductGrid({ products }: ProductGridProps) {
   const [productToDelete, setProductToDelete] = React.useState<string | null>(
     null
   );
+
+  const { addToCart } = useCart();
 
   const handleDialogOpen = (productId: string) => {
     setProductToDelete(productId);
@@ -58,53 +62,63 @@ export default function ProductGrid({ products }: ProductGridProps) {
     <Container fixed>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ xs: 2, md: 3 }}>
-          {products.map((product: Product, index: number) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-              <StyledCard>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="200" // Set fixed height
-                    width="100%" // Set fixed width
-                    image={product.image}
-                    alt={product.title}
-                  />
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      sx={{ color: "primary.main" }}
-                    >
-                      {product.title}
-                    </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                      sx={{ color: "secondary.main" }}
-                    >
-                      {`${product.price.toString()}Kr`}{" "}
-                      {/* Konverterat till en string */}
-                    </Typography>
-                    <Typography>{product.id}</Typography>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <Link href={"/admin/product/" + product.id}>
-                        <EditNoteIcon fontSize="large" />
-                      </Link>
-                      <DeleteIcon
-                        fontSize="large"
-                        onClick={() => handleDialogOpen(product.id.toString())}
-                      />
-                    </Box>
-                  </CardContent>
-                </CardActionArea>
-              </StyledCard>
-            </Grid>
-          ))}
+          {products.map((product: Product, index: number) => {
+            console.log("Rendering AddToCartButton for", product.title);
+            return (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+                <StyledCard>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="300"
+                      width="100%"
+                      image={product.image}
+                      alt={product.title}
+                    />
+                    <CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        sx={{ color: "primary.main" }}
+                      >
+                        {product.title}
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        variant="h6"
+                        sx={{ color: "secondary.main" }}
+                      >
+                        {`${product.price.toString()}Kr`}
+                      </Typography>
+                      <Typography>{product.id}</Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
+                        <AddToCartButton
+                          product={product}
+                          addToCart={addToCart}
+                        />
+                        <Button variant="contained">Test Button</Button>
+                        <Link href={"/admin/product/" + product.id}>
+                          <EditNoteIcon fontSize="large" />
+                        </Link>
+                        <DeleteIcon
+                          fontSize="large"
+                          onClick={() =>
+                            handleDialogOpen(product.id.toString())
+                          }
+                        />
+                      </Box>
+                    </CardContent>
+                  </CardActionArea>
+                </StyledCard>
+              </Grid>
+            );
+          })}
         </Grid>
       </Box>
       <Dialog open={dialogOpen} onClose={handleDialogClose}>
