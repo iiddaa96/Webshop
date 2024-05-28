@@ -15,7 +15,17 @@ export default async function AdminButton() {
     if (foundUser && foundUser.isAdmin) {
       return (
         <div>
-          <Button component={Link} href="/admin" color="inherit">
+          <Button
+            component={Link}
+            href="/admin"
+            color="inherit"
+            sx={{
+              fontSize: "1rem",
+              "@media (max-width: 600px)": {
+                fontSize: "0.75rem",
+              },
+            }}
+          >
             Admin
           </Button>
         </div>

@@ -14,24 +14,81 @@ export default function SubHeader() {
         boxShadow: "none",
         color: "black",
         borderTop: "1px solid black",
+        overflow: "hidden",
       }}
     >
-      <Toolbar sx={{ justifyContent: "center" }}>
-        <Box sx={{ display: "flex", gap: "16px" }}>
-          <Button component={Link} href="/categories/rea" color="inherit">
+      <Toolbar
+        sx={{
+          justifyContent: "center",
+          flexWrap: "wrap",
+          "@media (max-width: 600px)": {
+            justifyContent: "flex-start",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            gap: "14px",
+            maxWidth: "100%",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            "@media (max-width: 600px)": {
+              justifyContent: "flex-start",
+              gap: "1px",
+            },
+          }}
+        >
+          <Button
+            component={Link}
+            href="/categories/rea"
+            color="inherit"
+            sx={{
+              fontSize: "1rem",
+              "@media (max-width: 600px)": {
+                fontSize: "0.75rem",
+              },
+            }}
+          >
             Rea
           </Button>
-          <Button component={Link} href="/categories/handdukar" color="inherit">
+          <Button
+            component={Link}
+            href="/categories/handdukar"
+            color="inherit"
+            sx={{
+              fontSize: "1rem",
+              "@media (max-width: 600px)": {
+                fontSize: "0.75rem",
+              },
+            }}
+          >
             Handdukar
           </Button>
           <Button
             component={Link}
             href="/categories/badleksaker"
             color="inherit"
+            sx={{
+              fontSize: "1rem",
+              "@media (max-width: 600px)": {
+                fontSize: "0.75rem",
+              },
+            }}
           >
             Badleksaker
           </Button>
-          <Button component={Link} href="/categories/nyheter" color="inherit">
+          <Button
+            component={Link}
+            href="/categories/nyheter"
+            color="inherit"
+            sx={{
+              fontSize: "1rem",
+              "@media (max-width: 600px)": {
+                fontSize: "0.75rem",
+              },
+            }}
+          >
             Nyheter
           </Button>
           <AdminButton />
