@@ -13,7 +13,13 @@ export default function RootLayout({ children }: LayoutProps) {
           <AppRouterCacheProvider>
             <PaymentProvider>
               <Header />
-              {children}
+              <main
+                style={{
+                  paddingTop: "90px", // Lägg till en padding för att undvika att headern täcker innehållet
+                }}
+              >
+                {children}
+              </main>
               <Footer />
             </PaymentProvider>
           </AppRouterCacheProvider>

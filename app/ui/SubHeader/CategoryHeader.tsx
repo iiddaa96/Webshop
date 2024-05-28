@@ -15,6 +15,7 @@ export default function SubHeader() {
         color: "black",
         borderTop: "1px solid black",
         overflow: "hidden",
+        zIndex: 1000,
       }}
     >
       <Toolbar
