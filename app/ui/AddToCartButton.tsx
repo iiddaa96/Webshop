@@ -20,12 +20,13 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
         addToCart(product);
       }}
       style={{
-        backgroundColor: "yellow", // Gör knappen synlig
+        // Gör knappen synlig
         zIndex: 1000, // Hög z-index för att säkerställa att den inte är dold
         position: "relative",
       }}
     >
-      <AddShoppingCartIcon style={{ color: "red" }} /> {/* Gör ikonen synlig */}
+      <AddShoppingCartIcon style={{ color: "black" }} />{" "}
+      {/* Gör ikonen synlig */}
     </IconButton>
   );
 };
