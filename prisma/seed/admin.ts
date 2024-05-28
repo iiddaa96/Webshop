@@ -42,12 +42,12 @@ export default async function admin() {
 
   await db.user.upsert({
     where: {
-      email: "angelique@prisma.io",
+      email: "sallymaria@live.se",
     },
     update: {},
     create: {
       name: "Sally",
-      email: "angelique@prisma.io",
+      email: "sallymaria@live.se",
 
       isAdmin: true,
     },
