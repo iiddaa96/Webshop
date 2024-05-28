@@ -93,7 +93,7 @@ const categoriesData: CategoriesData[] = [
       {
         image:
           "https://min-lilla-sotnos.se/cdn/shop/files/S83aa0cf3fe9b4c92a0d4541c5913aac0p_1024x1024@2x.jpg?v=1685363963",
-        title: "Återanvändbara Vattenballonger",
+        title: "Vattenballonger",
         price: 149,
         description:
           "Möt Reusable Water Balloons! Dessa återanvändbara vattenballonger ger oändligt med skoj under varma sommardagar i trädgården. Barnen kan roa sig med vattenkrig utan att behöva oroa sig för trasiga ballonger. Ballongerna är tillverkade av ett slitstarkt material och är lätta att fylla, så de tål tuffa tag och är roliga gång på gång.",
