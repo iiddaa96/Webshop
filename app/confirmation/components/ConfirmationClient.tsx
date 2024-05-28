@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/app/context/CartContext";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { CartItem } from "../page";
 
 export const ConfirmationClient = ({
@@ -10,13 +10,22 @@ export const ConfirmationClient = ({
   initialCart: CartItem[];
 }) => {
   const { clearCart, setConfirmedCart } = useCart();
+  const clearCartCallback = useCallback(() => {
+    clearCart();
+  }, [clearCart]);
 
+  const setConfirmedCartCallback = useCallback(
+    (items: CartItem[]) => {
+      setConfirmedCart(items);
+    },
+    [setConfirmedCart]
+  );
   useEffect(() => {
     if (initialCart.length > 0) {
-      setConfirmedCart(initialCart);
-      clearCart();
+      setConfirmedCartCallback(initialCart);
+      clearCartCallback();
     }
-  }, [initialCart, clearCart, setConfirmedCart]);
+  }, [initialCart, setConfirmedCartCallback, clearCartCallback]);
 
   return null;
 };

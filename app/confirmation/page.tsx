@@ -1,99 +1,82 @@
-"use client";
+import { db } from "@/prisma/db";
 import { Box, Container, Grid, Typography } from "@mui/material";
+import { Address, User } from "@prisma/client";
+import dynamic from "next/dynamic";
+import { auth } from "../auth";
+import { ItemsProps } from "../checkout/components/TotalPrice";
+import { ConfirmationClient } from "./components/ConfirmationClient";
 
-import { useEffect } from "react";
-import { useCart } from "../context/CartContext";
-import { useCustomer } from "../context/PaymentContext";
-import QuantityButton from "../ui/QuantityButton";
+const QuantityButton = dynamic(() => import("../ui/QuantityButton"), {
+  ssr: false,
+});
 
-export default function Confirmation() {
-  // Hämtar kundvagnens innehåll, bekräftar och tömmer kundvagnen samt hämtar kundinformation från kontexten
-  const { cart } = useCart();
-  const { clearCart, setConfirmedCart, confirmedCart } = useCart();
-  // (auth) hämtar order och kolla om du äger ordern, lägg till här
-  const { customer } = useCustomer();
+export type CartItem = {
+  id: number;
+  title: string;
+  image: string;
+  price: number;
+  description: string;
+  quantity: number;
+};
 
-  // Hanterar bekräftelse av kundvagn och tömning efter bekräftelse
-  useEffect(() => {
-    if (cart.length > 0) {
-      setConfirmedCart(cart);
-      clearCart();
-    }
-  }, [cart, clearCart, setConfirmedCart]);
+export type Props = {
+  initialCart: CartItem[];
+  user: User;
+  address: Address;
+};
 
-  // Beräknar den totala kostnaden för bekräftade varor
-  const totalPrice = confirmedCart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+async function fetchUserData(email: string) {
+  if (!email) {
+    throw new Error("User email is missing");
+  }
 
-  return (
-    <Container component="main">
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 2,
-          marginTop: "20px",
-          padding: "20px",
-          minHeight: "300px",
-          borderBottom: "1px solid #e0e0e0",
-        }}
-      >
-        <Typography component="h1" variant="h5" style={{ textAlign: "center" }}>
-          Orderbekräftelse
-        </Typography>
-        <Typography>
-          Tack för ditt köp! Hoppas du blir riktigt nöjd över dina nya varor.
-        </Typography>
-        <Typography>
-          Här kommer ditt digitala kvitto från Sand & Sjö. Mer inspiration finns
-          på vår hemsida Sand & Sjö.se
-        </Typography>
-        <Typography>
-          Hoppas vi hörs snart igen! Hälsningar från oss på Sand & Sjö.
-        </Typography>
+  const user = await db.user.findUnique({
+    where: { email },
+  });
 
-        <Grid container spacing={2}>
-          {confirmedCart.map((item) => (
-            <Grid item xs={12} key={item.id}>
-              <Typography variant="h6">{item.title}</Typography>
-              <QuantityButton
-                productId={item.id.toString()}
-                initialQuantity={item.quantity}
-                showTotalPrice={false}
-                showControls={false}
-              />
-              <Typography>Price: {item.price} kr</Typography>
-            </Grid>
-          ))}
-        </Grid>
+  if (!user) {
+    throw new Error("User not found");
+  }
 
-        <Typography variant="h6" sx={{ marginTop: "20px" }}>
-          Totalt: {totalPrice} kr
-        </Typography>
-      </Box>
+  const address = await db.address.findFirst({
+    where: { Order: { some: { userId: user.id } } },
+  });
 
-      <Box
-        sx={{
-          marginTop: "20px",
-          padding: "20px",
-          borderBottom: "1px solid #e0e0e0",
-        }}
-      >
-        <Typography>Name: {customer.fullname}</Typography>
-        <Typography>Address: {customer.street}</Typography>
-        <Typography>Zip: {customer.zip}</Typography>
-        <Typography>City: {customer.city}</Typography>
-        <Typography>Email: {customer.email}</Typography>
-        <Typography>Phone: {customer.phone}</Typography>
-      </Box>
-    </Container>
-  );
+  if (!address) {
+    throw new Error("Address not found");
+  }
+
+  const order = await db.order.findFirst({
+    where: { userId: user.id },
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      orderDetails: {
+        include: {
+          product: true,
+        },
+      },
+    },
+  });
+
+  if (!order) {
+    throw new Error("Order not found");
+  }
+
+  const initialCart: CartItem[] = order.orderDetails.map((item) => ({
+    id: item.product.id,
+    title: item.product.title,
+    image: item.product.image,
+    price: parseFloat(item.product.price.toString()),
+    description: item.product.description,
+    quantity: item.quantity,
+  }));
+
+  return { user, address, initialCart };
 }
 
-/* export default async function Confirmation() {
+export default async function Confirmation({ cart }: ItemsProps) {
   const session = await auth();
 
   if (!session || !session.user || !session.user.email) {
@@ -188,4 +171,4 @@ export default function Confirmation() {
     }
     return <p>An error occurred: {errorMessage}</p>;
   }
-} */
+}
