@@ -7,15 +7,23 @@ export async function getAllProducts() {
   await db.product.findMany();
 }
 
-export async function editProduct(updatedProduct: Product) {
+export async function editProduct(
+  updatedProduct: Product,
+  oldProduct: Product
+) {
   await db.product.update({
     where: { id: updatedProduct.id },
     data: {
-      title: updatedProduct.title,
-      image: updatedProduct.image,
-      price: updatedProduct.price,
-      description: updatedProduct.description,
-      inventory: updatedProduct.inventory,
+      title: oldProduct.title,
+      image: oldProduct.image,
+      price: oldProduct.price,
+      inventory: oldProduct.inventory,
+      description: oldProduct.description,
+      categories: {
+        connect: {
+          name: "",
+        },
+      },
     },
   });
 }

@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { editProduct } from "../../endpoints/product-endpoints";
 
 export interface Props {
-  product?: Product;
+  product: Product;
 }
 
 export default function EditProductForm(props: Props) {
@@ -25,10 +25,10 @@ export default function EditProductForm(props: Props) {
 
   const save = (data: Prisma.ProductGetPayload<{}>) => {
     const updatedProduct = { ...data };
-
+    const oldProduct = props.product;
     console.error(updatedProduct);
 
-    editProduct(updatedProduct);
+    editProduct(updatedProduct, oldProduct);
     router.push("/admin");
   };
 
