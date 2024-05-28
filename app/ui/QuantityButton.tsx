@@ -12,13 +12,6 @@ interface QuantityButtonProps {
   showTotalPrice?: boolean;
 }
 
-/**
- * En återanvändbar komponent för att hantera kvantitet av en produkt i en kundvagn.
- * Tillhandahåller knappar för att öka och minska kvantiteten samt visa den totala priset för produkten.
- * @param {QuantityButtonProps} props Egenskaper för kvantitetsknappen.
- * @returns {JSX.Element} JSX för kvantitetsknappen.
- */
-
 const QuantityButton: React.FC<QuantityButtonProps> = ({
   productId,
   initialQuantity,
