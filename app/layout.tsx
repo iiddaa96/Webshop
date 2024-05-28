@@ -15,7 +15,7 @@ export default function RootLayout({ children }: LayoutProps) {
               <Header />
               <main
                 style={{
-                  paddingTop: "90px", // Lägg till en padding för att undvika att headern täcker innehållet
+                  paddingTop: "90px", // Lägger till en padding för att undvika att headern täcker page
                 }}
               >
                 {children}
