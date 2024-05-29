@@ -48,6 +48,7 @@ CREATE TABLE "Product" (
     "price" INTEGER NOT NULL,
     "description" TEXT NOT NULL,
     "inventory" INTEGER NOT NULL DEFAULT 0,
+    "isArchived" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );

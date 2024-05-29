@@ -56,12 +56,13 @@ model OrderDetails {
 }
 
 model Product {
-  id          Int    @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   title       String
   image       String
   price       Int
   description String
-  inventory   Int   @default(0) @map("inventory")
+  inventory   Int     @default(0) @map("inventory")
+  isArchived  Boolean @default(false)
 
   orderDetails OrderDetails[]
   categories   Category[]
