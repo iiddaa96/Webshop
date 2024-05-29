@@ -1,6 +1,5 @@
-/* 
 "use client";
-/* eslint-disable react/jsx-key 
+/* eslint-disable react/jsx-key */
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import {
@@ -25,7 +24,6 @@ import {
 import { Product } from "@prisma/client";
 import React from "react";
 import { useCart } from "../context/CartContext";
-import AddToCartButton from "./AddToCartButton";
 
 // Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -77,10 +75,6 @@ export default function ProductGrid({ products }: ProductGridProps) {
                       alt={product.title}
                     />
                     <CardContent>
-                      <AddToCartButton
-                        product={product}
-                        addToCart={addToCart}
-                      />
                       <Typography
                         gutterBottom
                         variant="h6"
@@ -136,4 +130,3 @@ export default function ProductGrid({ products }: ProductGridProps) {
     </Container>
   );
 }
- */
