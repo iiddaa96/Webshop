@@ -3,12 +3,15 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { useCart } from "../context/CartContext";
 import PaymentSection from "../ui/PaymentSection";
 import { CartItems } from "./components/CartItems";
+import TotalPrice from "./components/TotalPrice";
+import { BackButton } from "../ui/BackButton";
 
 const Checkout = () => {
   const { cart } = useCart();
 
   return (
     <Container maxWidth="md" component="main">
+      <BackButton />
       <Typography
         sx={{
           display: "flex",
@@ -38,7 +41,7 @@ const Checkout = () => {
                 verticalAlign: "middle",
               }}
             >
-              {/*          <TotalPrice cart={cart} />  FIXA */}
+              <TotalPrice cart={cart} />
             </Typography>
           </Box>
         </Grid>

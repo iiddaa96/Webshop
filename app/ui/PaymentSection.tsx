@@ -3,37 +3,33 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useCustomer } from "../context/PaymentContext";
-
 import { createOrder } from "../endpoints/order-endpoints";
+import { updateProductInventory } from "../endpoints/product-endpoints";
+import { CartItem } from "../zod-validation/products";
 import { customerSchema } from "../zod-validation/users";
 
 export type CustomerInfo = z.infer<typeof customerSchema>;
 
 export default function InputPayment() {
-  const [formData, setFormData] = useState<CustomerInfo>({
-    fullname: "",
-    street: "",
-    zip: "" as any,
-    city: "",
-    email: "",
-    phone: "",
-  });
-
   const router = useRouter();
   const { setCustomer } = useCustomer();
 
   const form = useForm<CustomerInfo>({ resolver: zodResolver(customerSchema) });
 
   const handleSubmit = (customer: CustomerInfo) => {
-    const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
-    console.log(customer);
+    const cartData: CartItem[] = JSON.parse(
+      localStorage.getItem("cart") || "[]"
+    );
+
     setCustomer(customer);
+
     createOrder(customer, cartData);
+
     router.push("/confirmation");
+    updateProductInventory(cartData);
   };
 
   return (
@@ -165,7 +161,7 @@ export default function InputPayment() {
               },
             }}
           >
-            Continue
+            Confirm Order
           </Button>
         </Box>
       </form>

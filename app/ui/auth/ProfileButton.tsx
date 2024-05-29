@@ -15,8 +15,18 @@ export default async function ProfileButton() {
 
     if (foundUser) {
       return (
-        <Button component={Link} href="/profile" color="inherit">
-          Profile
+        <Button
+          component={Link}
+          href="/profile"
+          color="inherit"
+          sx={{
+            fontSize: "1rem",
+            "@media (max-width: 600px)": {
+              fontSize: "0.75rem",
+            },
+          }}
+        >
+          Profil
         </Button>
       );
     }

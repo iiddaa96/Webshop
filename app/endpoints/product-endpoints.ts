@@ -2,6 +2,7 @@
 
 import { db } from "@/prisma/db";
 import { Product } from "@prisma/client";
+import { Item } from "../checkout/components/TotalPrice";
 
 export async function getAllProducts() {
   await db.product.findMany();
@@ -63,4 +64,28 @@ export async function addNewProduct(
       },
     },
   });
+}
+
+export async function updateProductInventory(cartData: Item[]) {
+  // Iterate through the cartData array
+  for (const item of cartData) {
+    // Find the product with the corresponding id
+    const product = await db.product.findUnique({
+      where: {
+        id: item.id,
+      },
+    });
+
+    if (product) {
+      // Update the product's inventory by subtracting the quantity in the cartData
+      await db.product.update({
+        where: {
+          id: item.id,
+        },
+        data: {
+          inventory: product.inventory - item.quantity,
+        },
+      });
+    }
+  }
 }

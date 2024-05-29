@@ -1,4 +1,4 @@
-import CategoryHeader from "@/app/ui/SubHeader/CategoryHeader";
+import AddToCartButton from "@/app/ui/AddToCartButton";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -41,9 +41,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <main>
-      <Box>
-        <CategoryHeader />
-      </Box>
+      <Box></Box>
       <Box
         sx={{
           width: "95%",
@@ -92,21 +90,31 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     alt={product.title}
                   />
                   <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="subtitle1"
-                      component="div"
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
                     >
-                      {product.title}
-                    </Typography>
-
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ fontSize: "0.8rem" }}
-                    >
-                      {`${product.price}`}kr
-                    </Typography>
+                      <Box>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle1"
+                          component="div"
+                        >
+                          {product.title}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ fontSize: "0.8rem" }}
+                        >
+                          {`${product.price}`}kr
+                        </Typography>
+                      </Box>
+                      <AddToCartButton product={product} />
+                    </Box>
                   </CardContent>
                   <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
                     <CardActions

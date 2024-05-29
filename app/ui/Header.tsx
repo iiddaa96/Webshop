@@ -17,8 +17,8 @@ export default function Header() {
         }}
       >
         <Navbar />
+        <CategoryHeader />
       </header>
-      <CategoryHeader />
     </>
   );
 }
