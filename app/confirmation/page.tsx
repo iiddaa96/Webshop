@@ -83,7 +83,7 @@ export default async function Confirmation({ cart }: ItemsProps) {
   const session = await auth();
 
   if (!session || !session.user || !session.user.email) {
-    return <p>You must be logged in to view this page</p>;
+    return <p>Du måste vara inloggad för att se sidan</p>;
   }
 
   const loggedInUser = session.user.email as string;
@@ -137,7 +137,7 @@ export default async function Confirmation({ cart }: ItemsProps) {
                   showTotalPrice={false}
                   showControls={false}
                 />
-                <Typography>Price: {item.price} kr</Typography>
+                <Typography>Summa: {item.price} kr</Typography>
               </Grid>
             ))}
           </Grid>
@@ -159,10 +159,10 @@ export default async function Confirmation({ cart }: ItemsProps) {
             borderBottom: "1px solid #e0e0e0",
           }}
         >
-          <Typography>Name: {user.name}</Typography>
+          <Typography>Namn: {user.name}</Typography>
           <Typography>Address: {address.street}</Typography>
-          <Typography>Zip: {address.zip}</Typography>
-          <Typography>City: {address.city}</Typography>
+          <Typography>Postnummer: {address.zip}</Typography>
+          <Typography>Stad: {address.city}</Typography>
           <Typography>Email: {user.email}</Typography>
         </Box>
       </Container>

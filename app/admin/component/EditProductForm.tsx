@@ -12,7 +12,7 @@ import {
   TextField,
 } from "@mui/material";
 import { Prisma, Product } from "@prisma/client";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -24,6 +24,7 @@ export interface Props {
 export type ProductWithCategories = Product & { categories: string[] };
 
 export default function EditProductForm({ categories, product }: Props) {
+  const { id } = useParams();
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const form = useForm<ProductWithCategories>({
@@ -38,7 +39,7 @@ export default function EditProductForm({ categories, product }: Props) {
     const { categories, ...updatedProduct } = data;
     const chosenCategories = selectedCategories.map((c) => Number(c));
 
-    editProduct(updatedProduct, chosenCategories);
+    editProduct(updatedProduct, chosenCategories, Number(id));
     router.push("/admin");
   };
 

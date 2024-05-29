@@ -16,14 +16,14 @@ export default async function RenderUser() {
           textDecoration: "underline",
         }}
       >
-        <p>Customer: {session?.user?.name}</p>
+        <p>Kund: {session?.user?.name}</p>
       </div>
     );
 
   if (!session)
     return (
       <div>
-        <p>User is not logged in</p>
+        <p>Användare är inte inloggad</p>
       </div>
     );
 }

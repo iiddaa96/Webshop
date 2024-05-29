@@ -28,13 +28,19 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   const category = await db.category.findFirst({
     where: { name: slug },
-    include: { products: true },
+    include: {
+      products: {
+        where: {
+          isArchived: false,
+        },
+      },
+    },
   });
 
   if (!category) {
     return (
       <div>
-        <h1>Category not found</h1>
+        <h1>Kategori hittades inte</h1>
       </div>
     );
   }

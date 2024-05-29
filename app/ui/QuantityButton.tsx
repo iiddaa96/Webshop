@@ -45,10 +45,7 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
   };
 
   const selectedProduct = cart.find((item) => item.id.toString() === productId);
-  /**
-   * Funktion för att beräkna det totala priset för produkten.
-   * @returns {number} Totalpriset för produkten.
-   */
+
   const calculateTotalPrice = (): number => {
     return (selectedProduct?.price || 0) * quantity;
   };

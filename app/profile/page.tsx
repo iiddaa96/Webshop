@@ -1,8 +1,8 @@
 import { db } from "@/prisma/db";
 import { Box, List, ListItem, Typography } from "@mui/material";
 import { auth } from "../auth";
-import RenderUser from "../ui/RenderUser";
 import { BackButton } from "../ui/BackButton";
+import RenderUser from "../ui/RenderUser";
 
 export default async function ProfilePage() {
   const session = await auth();
@@ -40,7 +40,7 @@ export default async function ProfilePage() {
           }}
         >
           {" "}
-          ORDERS:
+          ORDRAR:
         </p>
         {orders.map((order) => (
           <Box
@@ -49,7 +49,7 @@ export default async function ProfilePage() {
           >
             {/* <ListItem>Total Price: {order.total}kr</ListItem> */}
             <ListItem sx={{ fontFamily: "monospace" }}>
-              Date: {new Date(order.createdAt).toLocaleString()}
+              Datum: {new Date(order.createdAt).toLocaleString()}
             </ListItem>
             <ListItem>
               {order.orderDetails.map((item) => (
@@ -76,7 +76,7 @@ export default async function ProfilePage() {
                   fontFamily: "monospace",
                 }}
               >
-                Status shipping: {order.isSent.toString()}
+                Frakt status: {order.isSent.toString()}
               </Typography>
             </Box>
             <ListItem
@@ -86,7 +86,7 @@ export default async function ProfilePage() {
                 fontFamily: "monospace",
               }}
             >
-              Total Price: {order.total}kr
+              Totalt: {order.total}kr
             </ListItem>
           </Box>
         ))}

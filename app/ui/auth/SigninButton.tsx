@@ -24,7 +24,7 @@ export default function SignInButton() {
       }}
       onClick={handleSignIn}
     >
-      SIGN IN
+      LOGGA IN
     </button>
   );
 }
