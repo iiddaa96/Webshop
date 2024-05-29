@@ -1,4 +1,5 @@
 "use client";
+import { editProduct } from "@/app/endpoints/product-endpoints";
 import { productSchema } from "@/app/zod-validation/products";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
@@ -14,38 +15,31 @@ import { Prisma, Product } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { addNewProduct } from "../../endpoints/product-endpoints";
 
 export interface Props {
   categories: Prisma.CategoryGetPayload<{}>[];
+  product: Product;
 }
 
 export type ProductWithCategories = Product & { categories: string[] };
 
-export default function AddProductForm({ categories }: Props) {
+export default function EditProductForm({ categories, product }: Props) {
   const router = useRouter();
-  const [chosenCategory, setChosenCategory] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const form = useForm<ProductWithCategories>({
     mode: "onChange",
     resolver: zodResolver(productSchema),
   });
-
-  const handleCategoryChange = (event: SelectChangeEvent<string>) => {
-    setChosenCategory(event.target.value);
+  const handleCategoryChange = (event: SelectChangeEvent<string[]>) => {
+    setSelectedCategories(event.target.value as string[]);
   };
 
   const save = (data: ProductWithCategories) => {
-    const { categories, ...newProduct } = data;
+    const { categories, ...updatedProduct } = data;
+    const chosenCategories = selectedCategories.map((c) => Number(c));
 
-    console.log(categories);
-    const chosenCategories = categories.map((c) => Number(c));
-
-    addNewProduct(newProduct, chosenCategories);
+    editProduct(updatedProduct, chosenCategories);
     router.push("/admin");
-
-    if (!addNewProduct) {
-      console.log("Error");
-    }
   };
 
   return (
@@ -63,70 +57,66 @@ export default function AddProductForm({ categories }: Props) {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
       }}
     >
-      {/* Textfält för titel */}
       <TextField
         fullWidth
-        label="Title"
+        label={product.title}
         helperText={form.formState.errors.title?.message}
         error={Boolean(form.formState.errors.title)}
         id="demo-helper-text-aligned-no-helper"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("title")}
       />
-      {/* Textfält för image */}
+
       <TextField
         fullWidth
-        label="Image"
+        label={product.image}
         helperText={form.formState.errors.image?.message}
         error={Boolean(form.formState.errors.image)}
         id="demo-helper-text-aligned-no-helper"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("image")}
       />
-      {/* Textfält för pris */}
+
       <TextField
         fullWidth
-        label="Price"
+        label={product.price.toString()}
         helperText={form.formState.errors.price?.message}
         error={Boolean(form.formState.errors.price)}
         id="demo-helper-text-aligned-no-helper"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("price")}
       />
-      {/* Textfält för kategorierna */}
 
       <Select
         fullWidth
         multiple
-        value={chosenCategory}
-        label="Category"
+        value={selectedCategories}
+        label="kategorier"
         placeholder="Välj en kategori"
         {...form.register("categories")}
         sx={{ width: "100%", marginBottom: "20px" }}
         onChange={handleCategoryChange}
       >
         {categories.map((c) => (
-          <MenuItem key={c.id} value={c.id}>
+          <MenuItem key={c.id} value={c.id.toString()}>
             {c.name}
           </MenuItem>
         ))}
       </Select>
 
-      {/* Textfält för saldo */}
       <TextField
         fullWidth
-        label="inventory"
+        label={product.inventory}
         helperText={form.formState.errors.inventory?.message}
         error={Boolean(form.formState.errors.inventory)}
         id="demo-helper-text-aligned-no-helper"
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("inventory")}
       />
-      {/* Textfält för beskrivning */}
+
       <TextField
         id="outlined-multiline-static"
-        label="Description"
-        // multiline // Fråga David om denna ska vara med eller inte (admin-2) ???
+        label={product.description}
         helperText={form.formState.errors.description?.message}
         error={Boolean(form.formState.errors.description)}
         rows={6}
@@ -134,7 +124,7 @@ export default function AddProductForm({ categories }: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("description")}
       />
-      {/* Box med spara knappen */}
+
       <Box sx={{ display: "flex", gap: "5vh" }}>
         <Button
           type="submit"

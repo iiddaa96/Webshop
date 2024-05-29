@@ -10,6 +10,8 @@ export default async function UpdateExistProduct({ params }: Props) {
   // Fetch the product with the specified ID from the database
   const product = await db.product.findFirst({ where: { id: Number(id) } });
 
+  const categories = await db.category.findMany();
+
   if (!product) {
     return (
       <Container
@@ -40,7 +42,7 @@ export default async function UpdateExistProduct({ params }: Props) {
         marginBottom: "30px",
       }}
     >
-      <EditProductForm product={product} />
+      <EditProductForm categories={categories} product={product} />
     </Container>
   );
 }
