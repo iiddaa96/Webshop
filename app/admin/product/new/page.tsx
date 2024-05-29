@@ -1,10 +1,10 @@
-"use client";
-
+import { db } from "@/prisma/db";
 import { Container } from "@mui/material";
 import React from "react";
 import AddProductForm from "../../component/AddProductForm";
 
-const AddNewProduct: React.FC = () => {
+const AddNewProduct: React.FC = async () => {
+  const categories = await db.category.findMany();
   return (
     <Container
       fixed
@@ -17,7 +17,7 @@ const AddNewProduct: React.FC = () => {
         marginBottom: "30px",
       }}
     >
-      <AddProductForm />
+      <AddProductForm categories={categories} />
     </Container>
   );
 };

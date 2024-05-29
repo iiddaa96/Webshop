@@ -2,34 +2,50 @@
 import { productSchema } from "@/app/zod-validation/products";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
-import { Box, Button, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextField,
+} from "@mui/material";
 import { Prisma, Product } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { editProduct } from "../../endpoints/product-endpoints";
+import { addNewProduct } from "../../endpoints/product-endpoints";
 
 export interface Props {
-  product: Product;
+  categories: Prisma.CategoryGetPayload<{}>[];
 }
 
-export default function EditProductForm(props: Props) {
-  const isEdit = Boolean(props.product);
+export type ProductWithCategories = Product & { categories: string[] };
 
+export default function AddProductForm({ categories }: Props) {
   const router = useRouter();
-
-  const form = useForm<Prisma.ProductGetPayload<{}>>({
-    defaultValues: props.product,
-    resolver: zodResolver(productSchema),
+  const [chosenCategory, setChosenCategory] = useState("");
+  const form = useForm<ProductWithCategories>({
     mode: "onChange",
+    resolver: zodResolver(productSchema),
   });
 
-  const save = (data: Prisma.ProductGetPayload<{}>) => {
-    const updatedProduct = { ...data };
-    const oldProduct = props.product;
-    console.error(updatedProduct);
+  const handleCategoryChange = (event: SelectChangeEvent<string>) => {
+    setChosenCategory(event.target.value);
+  };
 
-    editProduct(updatedProduct, oldProduct);
+  const save = (data: ProductWithCategories) => {
+    const { categories, ...newProduct } = data;
+
+    console.log(categories);
+    const chosenCategories = categories.map((c) => Number(c));
+
+    addNewProduct(newProduct, chosenCategories);
     router.push("/admin");
+
+    if (!addNewProduct) {
+      console.log("Error");
+    }
   };
 
   return (
@@ -77,6 +93,25 @@ export default function EditProductForm(props: Props) {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("price")}
       />
+      {/* Textfält för kategorierna */}
+
+      <Select
+        fullWidth
+        multiple
+        value={chosenCategory}
+        label="Category"
+        placeholder="Välj en kategori"
+        {...form.register("categories")}
+        sx={{ width: "100%", marginBottom: "20px" }}
+        onChange={handleCategoryChange}
+      >
+        {categories.map((c) => (
+          <MenuItem key={c.id} value={c.id}>
+            {c.name}
+          </MenuItem>
+        ))}
+      </Select>
+
       {/* Textfält för saldo */}
       <TextField
         fullWidth

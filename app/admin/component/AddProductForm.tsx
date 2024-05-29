@@ -1,5 +1,7 @@
 "use client";
 import { addNewProduct } from "@/app/endpoints/product-endpoints";
+import { productSchema } from "@/app/zod-validation/products";
+import { zodResolver } from "@hookform/resolvers/zod";
 import SaveIcon from "@mui/icons-material/Save";
 import {
   Box,
@@ -9,39 +11,39 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { Product } from "@prisma/client";
+import { Prisma, Product } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-export default function AddProductForm() {
-  const router = useRouter();
-  const [chosenCategory, setChosenCategory] = useState("");
-  const form = useForm<Product>({
-    mode: "onChange",
-  });
+export interface Props {
+  categories: Prisma.CategoryGetPayload<{}>[];
+}
 
-  const handleCategoryChange = (event: SelectChangeEvent<string>) => {
-    setChosenCategory(event.target.value);
+export type ProductWithCategories = Product & { categories: string[] };
+
+export default function AddProductForm({ categories }: Props) {
+  const router = useRouter();
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const form = useForm<ProductWithCategories>({
+    mode: "onChange",
+    resolver: zodResolver(productSchema),
+  });
+  const handleCategoryChange = (event: SelectChangeEvent<string[]>) => {
+    setSelectedCategories(event.target.value as string[]);
   };
 
-  const save = (data: Product) => {
-    const newProduct = {
-      ...data,
-      price: Number(data.price),
-      category: chosenCategory,
-    };
+  const save = (data: ProductWithCategories) => {
+    const { categories, ...newProduct } = data;
+    const chosenCategories = selectedCategories.map((c) => Number(c));
 
-    console.log("test1", newProduct);
-
-    addNewProduct(newProduct, chosenCategory.toLowerCase());
+    addNewProduct(newProduct, chosenCategories);
     router.push("/admin");
 
     if (!addNewProduct) {
       console.log("Error");
     }
   };
-
   return (
     <Box
       component="form"
@@ -96,19 +98,23 @@ export default function AddProductForm() {
         sx={{ width: "100%", marginBottom: "20px" }}
         {...form.register("inventory")}
       />
+      {/* Textfält för kategorierna */}
 
       <Select
         fullWidth
+        multiple
+        value={selectedCategories}
         label="Category"
-        value={chosenCategory}
+        placeholder="Välj en kategori"
+        {...form.register("categories")}
         sx={{ width: "100%", marginBottom: "20px" }}
         onChange={handleCategoryChange}
       >
-        <MenuItem value="">Välj en kategori</MenuItem>
-        <MenuItem value="Rea">Rea</MenuItem>
-        <MenuItem value="Nyheter">Nyheter</MenuItem>
-        <MenuItem value="Badleksaker">Badleksaker</MenuItem>
-        <MenuItem value="Handdukar">Handdukar</MenuItem>
+        {categories.map((c) => (
+          <MenuItem key={c.id} value={c.id.toString()}>
+            {c.name}
+          </MenuItem>
+        ))}
       </Select>
 
       <TextField

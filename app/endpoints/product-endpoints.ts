@@ -2,7 +2,7 @@
 
 import { db } from "@/prisma/db";
 import { Product } from "@prisma/client";
-import { Item } from "../checkout/components/TotalPrice";
+import { CartItem } from "../zod-validation/products";
 
 export async function getAllProducts() {
   await db.product.findMany();
@@ -10,20 +10,22 @@ export async function getAllProducts() {
 
 export async function editProduct(
   updatedProduct: Product,
-  oldProduct: Product
+  chosenCategories: number[]
 ) {
   await db.product.update({
     where: { id: updatedProduct.id },
     data: {
-      title: oldProduct.title,
-      image: oldProduct.image,
-      price: oldProduct.price,
-      inventory: oldProduct.inventory,
-      description: oldProduct.description,
+      isArchived: true,
+    },
+  });
+
+  await db.product.create({
+    data: {
+      ...updatedProduct,
       categories: {
-        connect: {
-          name: "",
-        },
+        connect: chosenCategories.map((id) => ({
+          id,
+        })),
       },
     },
   });
@@ -31,24 +33,8 @@ export async function editProduct(
 
 export async function addNewProduct(
   newProduct: Product,
-  chosenCategory: string
+  chosenCategories: number[]
 ) {
-  // Check if the category exists
-  const category = await db.category.findUnique({
-    where: {
-      name: chosenCategory,
-    },
-  });
-
-  if (!category) {
-    // If the category doesn't exist, create it
-    await db.category.create({
-      data: {
-        name: chosenCategory,
-      },
-    });
-  }
-
   // Create the new product and connect it to the category
   await db.product.create({
     data: {
@@ -58,15 +44,15 @@ export async function addNewProduct(
       inventory: newProduct.inventory,
       description: newProduct.description,
       categories: {
-        connect: {
-          name: chosenCategory,
-        },
+        connect: chosenCategories.map((id) => ({
+          id,
+        })),
       },
     },
   });
 }
 
-export async function updateProductInventory(cartData: Item[]) {
+export async function updateProductInventory(cartData: CartItem[]) {
   // Iterate through the cartData array
   for (const item of cartData) {
     // Find the product with the corresponding id
