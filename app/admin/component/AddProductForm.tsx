@@ -104,10 +104,14 @@ export default function AddProductForm({ categories }: Props) {
         fullWidth
         multiple
         value={selectedCategories}
-        label="Category"
+        label="Kategorier"
         placeholder="Välj en kategori"
         {...form.register("categories")}
-        sx={{ width: "100%", marginBottom: "20px" }}
+        sx={{
+          width: "100%",
+          marginBottom: "20px",
+          color: "black",
+        }}
         onChange={handleCategoryChange}
       >
         {categories.map((c) => (

@@ -46,7 +46,7 @@ export default function InputPayment() {
       {/* Rubrik och icon för inputfälten */}
       <Typography variant="h6" gutterBottom>
         <LocalShippingIcon sx={{ marginRight: "8px" }} />
-        Shipping Address
+        Leverans address
       </Typography>
 
       <form onSubmit={form.handleSubmit(handleSubmit)}>
@@ -55,7 +55,7 @@ export default function InputPayment() {
             {/* Textfält för namn och efternamn */}
             <TextField
               id="outlined-error"
-              label="FullName"
+              label="Fullständiga namn"
               {...form.register("fullname")}
               error={Boolean(form.formState.errors.fullname)}
               helperText={form.formState.errors.fullname?.message}
@@ -81,7 +81,7 @@ export default function InputPayment() {
             {/* Textfält för zip */}
             <TextField
               id="outlined-error-helper-text"
-              label="Zip"
+              label="Post nummer"
               {...form.register("zip")}
               error={Boolean(form.formState.errors.zip)}
               helperText={form.formState.errors.zip?.message}
@@ -94,7 +94,7 @@ export default function InputPayment() {
             {/* Textfält för stad */}
             <TextField
               id="filled-error-helper-text"
-              label="City"
+              label="Stad"
               {...form.register("city")}
               error={Boolean(form.formState.errors.city)}
               helperText={form.formState.errors.city?.message}
@@ -120,7 +120,7 @@ export default function InputPayment() {
             {/* Textfält för mobil */}
             <TextField
               id="standard-error-helper-text"
-              label="Mobile"
+              label="Mobil nummer"
               {...form.register("phone")}
               error={Boolean(form.formState.errors.phone)}
               helperText={form.formState.errors.phone?.message}
@@ -146,7 +146,7 @@ export default function InputPayment() {
               },
             }}
           >
-            Cancel
+            Avbryt
           </Button>
           <Button
             type="submit"
@@ -161,7 +161,7 @@ export default function InputPayment() {
               },
             }}
           >
-            Confirm Order
+            Bekräfta
           </Button>
         </Box>
       </form>

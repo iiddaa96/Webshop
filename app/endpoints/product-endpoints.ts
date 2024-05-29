@@ -10,10 +10,11 @@ export async function getAllProducts() {
 
 export async function editProduct(
   updatedProduct: Product,
-  chosenCategories: number[]
+  chosenCategories: number[],
+  id: number
 ) {
   await db.product.update({
-    where: { id: updatedProduct.id },
+    where: { id: id },
     data: {
       isArchived: true,
     },

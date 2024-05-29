@@ -15,7 +15,7 @@ export default function SignOutButton() {
       }}
       onClick={() => signOut()}
     >
-      SIGN OUT
+      LOGGA UT
     </button>
   );
 }

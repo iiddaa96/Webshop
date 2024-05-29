@@ -38,7 +38,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
           }}
         >
           {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
-          <Box sx={{ width: "10%" }}>
+          <Box sx={{ width: "10%", marginRight: "1rem" }}>
             <img src={item.image} style={{ width: "100%" }} alt={item.title} />
           </Box>
           <Box

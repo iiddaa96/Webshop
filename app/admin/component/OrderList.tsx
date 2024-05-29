@@ -12,16 +12,16 @@ export default async function OrderList() {
       <List sx={{ fontFamily: "monospace", fontWeight: "bold" }}>
         {orders.map((order) => (
           <ul key={order.id}>
-            <ListItem>User ID: {order.userId}</ListItem>
-            <ListItem>Date: {order.createdAt.toString()}</ListItem>
-            <ListItem>Total price: {order.total}kr</ListItem>
+            <ListItem>Användar ID: {order.userId}</ListItem>
+            <ListItem>Datum: {order.createdAt.toString()}</ListItem>
+            <ListItem>Total: {order.total}kr</ListItem>
             <Box
               sx={{
                 display: "flex",
               }}
             >
               <ListItem sx={{ borderBottom: "1px solid black" }}>
-                Shipping status: {order.isSent.toString()}
+                Frakt status: {order.isSent.toString()}
               </ListItem>
               <ToggleIsSentButton orderId={order.id} />
             </Box>

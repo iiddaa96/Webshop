@@ -31,7 +31,7 @@ function Login() {
                 fontWeight: "bold",
               }}
             >
-              LOG IN
+              LOGGA IN
             </Typography>
             <SignInWithGitHubButton />
           </Box>
