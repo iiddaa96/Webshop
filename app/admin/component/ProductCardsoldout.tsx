@@ -40,7 +40,7 @@ const useStyles = makeStyles<Theme, Product>(
     })
 );
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const Boxgrayout: React.FC<ProductCardProps> = ({ product }) => {
   const classes = useStyles(product);
 
   return (
@@ -74,4 +74,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default Boxgrayout;
