@@ -1,3 +1,4 @@
+import Boxgrayout from "@/app/admin/component/ProductCardsoldout";
 import AddToCartButton from "@/app/ui/AddToCartButton";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
@@ -122,6 +123,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       <AddToCartButton product={product} />
                     </Box>
                   </CardContent>
+                  <Boxgrayout product={product}></Boxgrayout>
                   <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
                     <CardActions
                       disableSpacing
