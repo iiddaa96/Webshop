@@ -6,7 +6,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import { Theme, createStyles, makeStyles } from "@mui/styles";
+import { styled } from "@mui/system";
 import React from "react";
 
 interface Product {
@@ -23,28 +23,22 @@ interface ProductCardProps {
   product: Product;
 }
 
-const useStyles = makeStyles<Theme, Product>(
-  (theme: { spacing: (arg0: number) => any }) =>
-    createStyles({
-      card: {
-        margin: theme.spacing(2),
-        border: (props: { inventory: number }) =>
-          props.inventory <= 0 ? "2px solid grey" : "1px solid #ccc",
-        opacity: (props: { inventory: number }) =>
-          props.inventory <= 0 ? 0.5 : 1,
-      },
-      soldOut: {
-        color: "grey",
-        fontWeight: "bold",
-      },
-    })
+const StyledCard = styled(Card)<{ inventory: number }>(
+  ({ theme, inventory }) => ({
+    margin: theme.spacing(2),
+    border: inventory <= 0 ? "2px solid grey" : "1px solid #ccc",
+    opacity: inventory <= 0 ? 0.5 : 1,
+  })
 );
 
-const Boxgrayout: React.FC<ProductCardProps> = ({ product }) => {
-  const classes = useStyles(product);
+const SoldOutText = styled(Typography)({
+  color: "grey",
+  fontWeight: "bold",
+});
 
+const Boxgrayout: React.FC<ProductCardProps> = ({ product }) => {
   return (
-    <Card className={classes.card}>
+    <StyledCard inventory={product.inventory}>
       <CardMedia
         component="img"
         height="140"
@@ -61,16 +55,14 @@ const Boxgrayout: React.FC<ProductCardProps> = ({ product }) => {
         <Typography variant="h6" color="text.primary">
           ${product.price}
         </Typography>
-        {product.inventory <= 0 && (
-          <Typography className={classes.soldOut}>Sold Out</Typography>
-        )}
+        {product.inventory <= 0 && <SoldOutText>Sold Out</SoldOutText>}
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" disabled={product.inventory <= 0}>
           Add to Cart
         </Button>
       </CardActions>
-    </Card>
+    </StyledCard>
   );
 };
 

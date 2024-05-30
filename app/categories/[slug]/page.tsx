@@ -123,7 +123,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       <AddToCartButton product={product} />
                     </Box>
                   </CardContent>
-                  <Boxgrayout></Boxgrayout>
+                  <Boxgrayout product={product}></Boxgrayout>
                   <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
                     <CardActions
                       disableSpacing
