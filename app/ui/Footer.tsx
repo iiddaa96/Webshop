@@ -58,7 +58,7 @@ function Footer() {
         }}
       >
         <Typography sx={{ textAlign: "center", fontSize: "14px" }}>
-          ©️ Copyright by
+          ©️ Copyright av
         </Typography>
         <Typography sx={{ fontSize: "14px" }}>Sand & Sjö company</Typography>
         <Typography sx={{ fontSize: "14px" }}>Team fantastic5 2024</Typography>

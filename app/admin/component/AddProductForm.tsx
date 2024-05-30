@@ -61,7 +61,7 @@ export default function AddProductForm({ categories }: Props) {
     >
       <TextField
         fullWidth
-        label="Title"
+        label="Titel"
         helperText={form.formState.errors.title?.message}
         error={Boolean(form.formState.errors.title)}
         id="demo-helper-text-aligned-no-helper"
@@ -71,7 +71,7 @@ export default function AddProductForm({ categories }: Props) {
 
       <TextField
         fullWidth
-        label="Image"
+        label="Bild"
         helperText={form.formState.errors.image?.message}
         error={Boolean(form.formState.errors.image)}
         id="demo-helper-text-aligned-no-helper"
@@ -81,7 +81,7 @@ export default function AddProductForm({ categories }: Props) {
 
       <TextField
         fullWidth
-        label="Price"
+        label="Pris"
         helperText={form.formState.errors.price?.message}
         error={Boolean(form.formState.errors.price)}
         id="demo-helper-text-aligned-no-helper"
@@ -91,7 +91,7 @@ export default function AddProductForm({ categories }: Props) {
       {/* Textfält för saldo */}
       <TextField
         fullWidth
-        label="inventory"
+        label="Lagersaldo"
         helperText={form.formState.errors.inventory?.message}
         error={Boolean(form.formState.errors.inventory)}
         id="demo-helper-text-aligned-no-helper"
@@ -123,7 +123,7 @@ export default function AddProductForm({ categories }: Props) {
 
       <TextField
         id="outlined-multiline-static"
-        label="Description"
+        label="Beskrivning"
         helperText={form.formState.errors.description?.message}
         error={Boolean(form.formState.errors.description)}
         rows={6}
