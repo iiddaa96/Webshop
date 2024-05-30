@@ -12,7 +12,8 @@ function AdminClient({ products }: ProductGridProps) {
         sx={{
           display: "flex",
           justifyContent: "flex-end",
-          marginTop: "30px",
+          marginTop: "15px",
+          marginBottom: "10px",
           marginRight: "30px",
         }}
       >
@@ -22,7 +23,7 @@ function AdminClient({ products }: ProductGridProps) {
             data-cy="admin-add-product"
             sx={{
               color: "black",
-              padding: "20px",
+              padding: "10px",
               fontSize: "42px",
               borderRadius: "999px",
               transition: "background-color 0.3s",
@@ -38,7 +39,7 @@ function AdminClient({ products }: ProductGridProps) {
           <AssignmentOutlinedIcon
             sx={{
               color: "black",
-              padding: "20px",
+              padding: "10px",
               fontSize: "42px",
               marginLeft: "20px",
               borderRadius: "999px",
