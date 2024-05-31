@@ -7,3 +7,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   providers: [github],
 });
+
+// declare module "next-auth" {
+//   interface Session {
+//     user: {
+//       isAdmin: boolean;
+//     } & DefaultSession["user"];
+//   }
+// }
