@@ -10,11 +10,15 @@ datasource db {
 
 // Detta är models för våra user och products som vi ska använda i vår databas
 model User {
-  id    String @id @default(cuid())
-  email String @unique
-  name  String
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String
+  emailVerified DateTime?
+  image         String?
 
-  isAdmin Boolean @default(false)
+  isAdmin   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   accounts Account[]
   sessions Session[]

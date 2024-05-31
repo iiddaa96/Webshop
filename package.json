@@ -28,7 +28,10 @@
     "@mui/material": "^5.15.18",
     "@mui/material-nextjs": "^5.15.11",
     "@mui/styled-engine-sc": "^6.0.0-alpha.17",
+    "@neondatabase/serverless": "^0.9.3",
+    "@prisma/adapter-neon": "^5.14.0",
     "@prisma/client": "^5.14.0",
+    "@types/ws": "^8.5.10",
     "argon2": "^0.40.1",
     "nanoid": "^5.0.6",
     "next": "^14.2.3",
@@ -37,6 +40,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.0",
     "styled-components": "^6.1.8",
+    "ws": "^8.17.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
