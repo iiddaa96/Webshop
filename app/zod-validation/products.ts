@@ -9,7 +9,7 @@ export const ProductCreateSchema = z.object({
 export type ProductCreate = z.infer<typeof ProductCreateSchema>;
 
 export const productSchema = z.object({
-  id: z.number().optional(),
+  id: z.number(),
   image: z.string().url().optional(),
   title: z
     .string()
