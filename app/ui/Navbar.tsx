@@ -74,7 +74,7 @@ export default async function Navbar() {
             </Typography>
           </Box>
           {session && session.user && (
-            <Box>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
               <Avatar
                 alt="GitHub Profile Picture"
                 src={session.user.image || ""}
@@ -89,12 +89,12 @@ export default async function Navbar() {
                   color: "black",
                   fontFamily: "Arial, sans-serif",
                   fontWeight: "bold",
-                  backgroundColor: "#F0E8D5",
+                  /*  backgroundColor: "#F0E8D5", */
                   fontSize: "13px",
                   marginRight: "2rem",
                 }}
               >
-                Välkommen: {session?.user?.name}
+                {session?.user?.name}
               </Typography>
             </Box>
           )}
