@@ -1,12 +1,11 @@
 import { db } from "@/prisma/db";
 import { Box, Container, Toolbar, Typography } from "@mui/material";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { auth } from "../auth";
 import CartQuantityButton from "./CartQuantityButton";
 import AuthButtons from "./auth/AuthButtons";
 
-const UserImage = dynamic(() => import("../ui/UserImage"), { ssr: false });
+/* const UserImage = dynamic(() => import("../ui/UserImage"), { ssr: false }); */
 
 export default async function Navbar() {
   const session = await auth();
@@ -77,12 +76,12 @@ export default async function Navbar() {
             </Typography>
           </Box>
 
-          {session && session.user && (
+          {/*    {session && session.user && (
             <UserImage
               name={session.user.name || ""}
               image={session.user.image || ""}
             />
-          )}
+          )} */}
 
           {
             /*           {session && session.user && (

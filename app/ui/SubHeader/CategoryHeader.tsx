@@ -1,9 +1,13 @@
+import { auth } from "@/app/auth";
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import AdminButton from "../AdminButton";
-import ProfileButton from "../auth/ProfileButton";
 
-export default function SubHeader() {
+const UserImage = dynamic(() => import("../UserImage"), { ssr: false });
+
+export default async function SubHeader() {
+  const session = await auth();
   return (
     <AppBar
       position="static"
@@ -93,7 +97,12 @@ export default function SubHeader() {
             Nyheter
           </Button>
           <AdminButton />
-          <ProfileButton />
+          {session && session.user && (
+            <UserImage
+              name={session.user.name || ""}
+              image={session.user.image || ""}
+            />
+          )}
         </Box>
       </Toolbar>
     </AppBar>
