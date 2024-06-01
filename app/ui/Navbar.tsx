@@ -1,9 +1,12 @@
 import { db } from "@/prisma/db";
-import { Avatar, Box, Container, Toolbar, Typography } from "@mui/material";
+import { Box, Container, Toolbar, Typography } from "@mui/material";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { auth } from "../auth";
 import CartQuantityButton from "./CartQuantityButton";
 import AuthButtons from "./auth/AuthButtons";
+
+const UserImage = dynamic(() => import("../ui/UserImage"), { ssr: false });
 
 export default async function Navbar() {
   const session = await auth();
@@ -73,7 +76,15 @@ export default async function Navbar() {
               Sand & Sjö
             </Typography>
           </Box>
+
           {session && session.user && (
+            <UserImage
+              name={session.user.name || ""}
+              image={session.user.image || ""}
+            />
+          )}
+
+          {/*           {session && session.user && (
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Avatar
                 alt="GitHub Profile Picture"
@@ -89,7 +100,7 @@ export default async function Navbar() {
                   color: "black",
                   fontFamily: "Arial, sans-serif",
                   fontWeight: "bold",
-                  /*  backgroundColor: "#F0E8D5", */
+                  /*  backgroundColor: "#F0E8D5", 
                   fontSize: "13px",
                   marginRight: "2rem",
                 }}
@@ -97,7 +108,10 @@ export default async function Navbar() {
                 {session?.user?.name}
               </Typography>
             </Box>
-          )}
+          )} 
+
+
+          
           {/* Right-aligned AuthButtons and Cart */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box
