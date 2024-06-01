@@ -80,18 +80,6 @@ const UserImage: React.FC<UserImageProps> = ({ name, image }) => {
             <Typography textAlign="center">Logout</Typography>
           </MenuItem>
         </Menu>
-        <Typography
-          sx={{
-            color: "black",
-            fontFamily: "Arial, sans-serif",
-            fontWeight: "bold",
-            backgroundColor: "#F0E8D5",
-            fontSize: "13px",
-            marginRight: "2rem",
-          }}
-        >
-          Välkommen: {name}
-        </Typography>
       </Box>
     </>
   );
