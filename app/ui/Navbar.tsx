@@ -83,32 +83,7 @@ export default async function Navbar() {
             />
           )} */}
 
-          {
-            /*           {session && session.user && (
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Avatar
-                alt="GitHub Profile Picture"
-                src={session.user.image || ""}
-                sx={{
-                  width: 40,
-                  height: 40,
-                  marginRight: "0.5rem",
-                }}
-              />
-              <Typography
-                sx={{
-                  color: "black",
-                  fontFamily: "Arial, sans-serif",
-                  fontWeight: "bold",
-                  /*  backgroundColor: "#F0E8D5", 
-                  fontSize: "13px",
-                  marginRight: "2rem",
-                }}
-              >
-                {session?.user?.name}
-              </Typography>
-            </Box>
-          )} */
+          {session && session.user && (
             <Typography
               sx={{
                 color: "black",
@@ -121,9 +96,9 @@ export default async function Navbar() {
             >
               Välkommen {session?.user?.name}!
             </Typography>
+          )}
+          {/* Right-aligned AuthButtons and Cart  */}
 
-            /* Right-aligned AuthButtons and Cart */
-          }
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box
               sx={{

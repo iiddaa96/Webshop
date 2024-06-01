@@ -4,6 +4,7 @@ import {
   Avatar,
   Box,
   IconButton,
+  Link,
   Menu,
   MenuItem,
   Typography,
@@ -70,15 +71,18 @@ const UserImage: React.FC<UserImageProps> = ({ name, image }) => {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem>
-            <Typography textAlign="center">Profile</Typography>
+          <MenuItem component={Link} href="/profile">
+            <Typography textAlign="center">Mina ordrar</Typography>
           </MenuItem>
           <MenuItem>
             <Typography textAlign="center">Mitt konto</Typography>
           </MenuItem>
           <MenuItem>
-            <Typography textAlign="center">Logout</Typography>
+            <Typography textAlign="center">Kundsupport</Typography>
           </MenuItem>
+          {/*           <MenuItem>
+            <Typography textAlign="center">Logga ut</Typography>
+          </MenuItem> */}
         </Menu>
       </Box>
     </>
