@@ -1,5 +1,5 @@
 import { db } from "@/prisma/db";
-import { Box, Container, Toolbar, Typography } from "@mui/material";
+import { Avatar, Box, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
 import CartQuantityButton from "./CartQuantityButton";
@@ -73,22 +73,31 @@ export default async function Navbar() {
               Sand & Sjö
             </Typography>
           </Box>
-
-          <Box>
-            <Typography
-              sx={{
-                color: "black",
-                fontFamily: "Arial, sans-serif",
-                fontWeight: "bold",
-                backgroundColor: "#F0E8D5",
-                fontSize: "13px",
-                marginRight: "2rem",
-              }}
-            >
-              Välkommen: {session?.user?.name}
-            </Typography>
-          </Box>
-
+          {session && session.user && (
+            <Box>
+              <Avatar
+                alt="GitHub Profile Picture"
+                src={session.user.image || ""}
+                sx={{
+                  width: 40,
+                  height: 40,
+                  marginRight: "0.5rem",
+                }}
+              />
+              <Typography
+                sx={{
+                  color: "black",
+                  fontFamily: "Arial, sans-serif",
+                  fontWeight: "bold",
+                  backgroundColor: "#F0E8D5",
+                  fontSize: "13px",
+                  marginRight: "2rem",
+                }}
+              >
+                Välkommen: {session?.user?.name}
+              </Typography>
+            </Box>
+          )}
           {/* Right-aligned AuthButtons and Cart */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box
