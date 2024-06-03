@@ -1,10 +1,18 @@
-import SingleProduct from "@/app/ui/SingelProduct";
+import AddToCartButton from "@/app/ui/AddToCartButton";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { Box, Grid } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import MiddleImage from "../../assets/palms.jpg";
@@ -72,17 +80,55 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {category.products.map((product) => (
             <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
               <Link href={`/product/${product.id}`} passHref>
-                <SingleProduct
-                  product={{
-                    id: 0,
-                    title: "",
-                    image: "",
-                    price: 0,
-                    description: "",
-                    inventory: 0,
-                    isArchived: false,
+                <Card
+                  sx={{
+                    maxWidth: 345,
+                    m: "auto",
+                    boxShadow: 3,
+                    position: "relative",
                   }}
-                ></SingleProduct>
+                >
+                  <CardMedia
+                    component="img"
+                    width="auto"
+                    height="280"
+                    image={product.image}
+                    alt={product.title}
+                  />
+                  <CardContent>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Box>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle1"
+                          component="div"
+                        >
+                          {product.title}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          color="text.secondary"
+                          sx={{ fontSize: "0.8rem" }}
+                        >
+                          {`${product.price}`}kr
+                        </Typography>
+                      </Box>
+                      <AddToCartButton product={product} />
+                    </Box>
+                  </CardContent>
+                  <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
+                    <CardActions
+                      disableSpacing
+                      sx={{ justifyContent: "flex-end" }}
+                    ></CardActions>
+                  </Box>
+                </Card>
               </Link>
             </Grid>
           ))}
