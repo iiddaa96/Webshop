@@ -1,4 +1,4 @@
-import Boxgrayout from "@/app/admin/component/ProductCardsoldout";
+import SingleProduct from "@/app/ui/SingelProduct";
 import { db } from "@/prisma/db";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -72,7 +72,17 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {category.products.map((product) => (
             <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
               <Link href={`/product/${product.id}`} passHref>
-                <Boxgrayout product={product}></Boxgrayout>
+                <SingleProduct
+                  product={{
+                    id: 0,
+                    title: "",
+                    image: "",
+                    price: 0,
+                    description: "",
+                    inventory: 0,
+                    isArchived: false,
+                  }}
+                ></SingleProduct>
               </Link>
             </Grid>
           ))}
