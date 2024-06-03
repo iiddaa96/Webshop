@@ -1,14 +1,13 @@
 import {
-  Box,
   Card,
+  CardActions,
   CardContent,
   CardMedia,
   Typography,
-  CardActions,
 } from "@mui/material";
 import { Product } from "@prisma/client";
-import AddToCartButton from "./AddToCartButton";
 import React from "react";
+import AddToCartButton from "./AddToCartButton";
 
 type Props = {
   product: Product;
