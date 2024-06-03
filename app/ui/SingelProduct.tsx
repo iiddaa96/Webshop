@@ -27,8 +27,8 @@ const SingleProduct: React.FC<Props> = ({ product }) => {
                 maxWidth: 345,
                 margin: "auto",
                 boxShadow: 3,
-                backgroundColor: isSoldOut ? "grey.300" : "white",
-                opacity: isSoldOut ? 0.5 : 1,
+                border: isSoldOut ? "2px solid grey" : "none",
+                opacity: isSoldOut ? 0.8 : 1,
                 position: "relative",
               }}
             >
@@ -37,7 +37,6 @@ const SingleProduct: React.FC<Props> = ({ product }) => {
                 height="280"
                 image={product.image}
                 alt={product.title}
-                sx={{ filter: isSoldOut ? "grayscale(100%)" : "none" }}
               />
               <CardContent>
                 <Typography variant="h5" component="div">
