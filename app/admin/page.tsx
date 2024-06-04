@@ -5,7 +5,7 @@ import AdminClient from "./component/AdminClient";
 export default async function Admin() {
   let products: Prisma.ProductGetPayload<{}>[] = [];
 
-  products = await db.product.findMany();
+  products = await db.product.findMany({ where: { isArchived: false } });
 
   return <AdminClient products={products} />;
 }

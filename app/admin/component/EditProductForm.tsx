@@ -26,7 +26,7 @@ export interface Props {
 export type ProductWithCategories = Product & { categories: string[] };
 
 export default function EditProductForm({ categories, product }: Props) {
-  function handleSubmit() {
+  function handleDelete() {
     deleteProduct(Number(id));
   }
 
@@ -133,28 +133,22 @@ export default function EditProductForm({ categories, product }: Props) {
       />
 
       <Box sx={{ display: "flex", gap: "5vh" }}>
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ width: "150px" }}
-          /*  Knappen är grå om formuläret inte 
-          är godkänt*/
-        >
+        <Button type="submit" variant="contained" sx={{ width: "150px" }}>
           <SaveIcon fontSize="large" />
           Spara
         </Button>
 
         <Link href="/admin">
-          <Button
+          {/*      <Button
             sx={{ color: "red", border: "1px red solid", width: "150px" }}
-          >
-            <DeleteIcon
-              fontSize="large"
-              sx={{ cursor: "pointer" }}
-              onClick={() => handleSubmit()}
-            />
-            Ta bort
-          </Button>
+          > */}
+          <DeleteIcon
+            fontSize="large"
+            sx={{ cursor: "pointer" }}
+            onClick={() => handleDelete()}
+          />
+          Ta bort
+          {/*    </Button> */}
         </Link>
       </Box>
     </Box>
