@@ -13,25 +13,40 @@ export default function SingleProduct({ product }: Props) {
     <main>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          <Box sx={{ flexGrow: 1, marginLeft: "8rem" }}>
+          <Box sx={{ flexGrow: 1, marginLeft: "8rem", position: "relative" }}>
             <div key={product.id}>
               <img
                 src={product.image}
                 alt={product.title}
-                style={{ maxWidth: "100%" }}
+                style={{
+                  maxWidth: "100%",
+                  filter: isOutOfStock ? "grayscale(100%)" : "none",
+                  boxShadow: isOutOfStock ? "0 0 10px gray" : "none",
+                  position: "relative",
+                }}
               />
+              {isOutOfStock && (
+                <Typography
+                  variant="body2"
+                  sx={{
+                    position: "absolute",
+                    top: "10px",
+                    right: "10px",
+                    color: "red",
+                    backgroundColor: "white",
+                    padding: "5px",
+                    borderRadius: "5px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Sold Out
+                </Typography>
+              )}
             </div>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Box
-            sx={{
-              flexGrow: 1,
-              padding: "80px 30px",
-              border: isOutOfStock ? "2px solid gray" : "none",
-              borderRadius: isOutOfStock ? "4px" : "none",
-            }}
-          >
+          <Box sx={{ flexGrow: 1, padding: "80px 30px" }}>
             <Typography variant="h4" gutterBottom>
               {product.title}
             </Typography>
