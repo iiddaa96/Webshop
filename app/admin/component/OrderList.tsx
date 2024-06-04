@@ -21,7 +21,7 @@ export default async function OrderList() {
               }}
             >
               <ListItem sx={{ borderBottom: "1px solid black" }}>
-                Frakt status: {order.isSent.toString()}
+                Staus: {order.isSent ? "Skickad" : "Ej skickad"}
               </ListItem>
               <ToggleIsSentButton orderId={order.id} />
             </Box>
