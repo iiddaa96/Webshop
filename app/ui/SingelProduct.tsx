@@ -58,9 +58,7 @@ const SingleProduct: React.FC<Props> = ({ product }) => {
           <AddToCartButton product={product} />
         )}
       </CardContent>
-      <CardActions sx={{ justifyContent: "flex-end" }}>
-        {/* Additional Card Actions if any */}
-      </CardActions>
+      <CardActions sx={{ justifyContent: "flex-end" }}></CardActions>
     </Card>
   );
 };
