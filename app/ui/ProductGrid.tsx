@@ -1,6 +1,5 @@
 "use client";
 /* eslint-disable react/jsx-key */
-import DeleteIcon from "@mui/icons-material/Delete";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import {
   Box,
@@ -100,13 +99,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
                       >
                         <Link href={"/admin/product/" + product.id}>
                           <EditNoteIcon fontSize="large" />
-                        </Link>
-                        <DeleteIcon
-                          fontSize="large"
-                          onClick={() =>
-                            handleDialogOpen(product.id.toString())
-                          }
-                        />
+                        </Link>{" "}
                       </Box>
                     </CardContent>
                   </CardActionArea>

@@ -1,11 +1,13 @@
 "use client";
-import { editProduct } from "@/app/endpoints/product-endpoints";
+import { deleteProduct, editProduct } from "@/app/endpoints/product-endpoints";
 import { productSchema } from "@/app/zod-validation/products";
 import { zodResolver } from "@hookform/resolvers/zod";
+import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
 import {
   Box,
   Button,
+  Link,
   MenuItem,
   Select,
   SelectChangeEvent,
@@ -24,6 +26,10 @@ export interface Props {
 export type ProductWithCategories = Product & { categories: string[] };
 
 export default function EditProductForm({ categories, product }: Props) {
+  function handleSubmit() {
+    deleteProduct(Number(id));
+  }
+
   const { id } = useParams();
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -137,6 +143,19 @@ export default function EditProductForm({ categories, product }: Props) {
           <SaveIcon fontSize="large" />
           Spara
         </Button>
+
+        <Link href="/admin">
+          <Button
+            sx={{ color: "red", border: "1px red solid", width: "150px" }}
+          >
+            <DeleteIcon
+              fontSize="large"
+              sx={{ cursor: "pointer" }}
+              onClick={() => handleSubmit()}
+            />
+            Ta bort
+          </Button>
+        </Link>
       </Box>
     </Box>
   );

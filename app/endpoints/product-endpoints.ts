@@ -76,3 +76,11 @@ export async function updateProductInventory(cartData: CartItem[]) {
     }
   }
 }
+export async function deleteProduct(id: number) {
+  await db.product.update({
+    where: { id: id },
+    data: {
+      isArchived: true,
+    },
+  });
+}
