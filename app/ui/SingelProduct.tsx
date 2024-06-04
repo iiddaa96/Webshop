@@ -26,6 +26,7 @@ export default function SingleProduct({ product }: Props) {
                 alt={product.title}
                 style={{
                   width: "100%",
+                  // Om produkten är slutsåld så blir den utgråad och får en skugga
                   filter: isOutOfStock ? "grayscale(100%)" : "none",
                   boxShadow: isOutOfStock ? "0 0 10px gray" : "none",
                   position: "relative",
