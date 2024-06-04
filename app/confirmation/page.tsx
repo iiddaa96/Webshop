@@ -10,7 +10,7 @@ import { ConfirmationClient } from "./components/ConfirmationClient";
 const QuantityButton = dynamic(() => import("../ui/QuantityButton"), {
   ssr: false,
 });
-//sss
+
 interface CartProducts {
   id: number;
   title: string;
