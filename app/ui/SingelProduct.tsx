@@ -29,7 +29,7 @@ export default function SingleProduct({ product }: Props) {
               flexGrow: 1,
               padding: "80px 30px",
               border: isOutOfStock ? "2px solid gray" : "none",
-              borderRadius: isOutOfStock ? "4px" : "none", // Optional: Add some border radius for better appearance
+              borderRadius: isOutOfStock ? "4px" : "none",
             }}
           >
             <Typography variant="h4" gutterBottom>
