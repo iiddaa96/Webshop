@@ -3,6 +3,7 @@ import { Box, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
 import CartQuantityButton from "./CartQuantityButton";
+import UserAvatar from "./UserAvatar";
 import AuthButtons from "./auth/AuthButtons";
 
 export default async function Navbar() {
@@ -75,6 +76,7 @@ export default async function Navbar() {
           </Box>
 
           <Box>
+            <UserAvatar />
             <Typography
               sx={{
                 color: "black",
