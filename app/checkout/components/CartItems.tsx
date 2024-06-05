@@ -48,6 +48,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
               }}
             >
               <Image
+                layout="fill"
                 src={item.image}
                 alt="Produktbild"
                 style={{ width: "100%", borderRadius: "8px" }}

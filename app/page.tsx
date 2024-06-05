@@ -34,8 +34,8 @@ export default async function Home() {
       >
         <Image
           src={MiddleImage}
-          alt="Stor Bild"
           layout="fill"
+          alt="Stor Bild"
           objectFit="cover"
         />
       </Box>
@@ -98,7 +98,7 @@ export default async function Home() {
           marginBottom: "24px",
         }}
       >
-        <Image src={Car} alt="Stor Bild" layout="fill" objectFit="cover" />
+        <Image src={Car} layout="fill" alt="Stor Bild" objectFit="cover" />
       </Box>
       {/* Kort som leder till kategorierna */}
       <CardsHeader />
