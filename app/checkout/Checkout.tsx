@@ -27,12 +27,12 @@ const Checkout = () => {
         <CartItems cart={cart} />
       </Grid>
       <Grid container sx={{ alignItems: "center", marginTop: "20px" }}>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Box>
             <Typography variant="h6">Totalt:</Typography>
           </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Box sx={{ textAlign: "right" }}>
             <Typography
               variant="body1"

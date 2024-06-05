@@ -39,7 +39,12 @@ export const CartItems = ({ cart }: ItemsProps) => {
             position: "relative",
           }}
         >
-          <Box sx={{ width: "15%", marginRight: "2rem" }}>
+          <Box
+            sx={{
+              width: { xs: "100%", sm: "15%" },
+              marginRight: { xs: "0", sm: "2rem" },
+            }}
+          >
             <img
               src={item.image}
               style={{ width: "100%", borderRadius: "8px" }}
@@ -52,7 +57,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
-              width: "70%",
+              width: { xs: "100%", sm: "70%" },
             }}
           >
             <Typography
