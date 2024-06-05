@@ -3,7 +3,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { useCart } from "../context/CartContext";
 import { BackButton } from "../ui/BackButton";
 import PaymentSection from "../ui/PaymentSection";
-import { CartItems } from "./components/CartItems";
+import CartItems from "./components/CartItems";
 import TotalPrice from "./components/TotalPrice";
 
 const Checkout = () => {
@@ -18,14 +18,15 @@ const Checkout = () => {
           justifyContent: "center",
           fontWeight: "bold",
           fontSize: "30px",
+          marginBottom: "20px",
         }}
       >
         Kassa
       </Typography>
-      <Grid container spacing={1}>
+      <Grid container spacing={3}>
         <CartItems cart={cart} />
       </Grid>
-      <Grid container sx={{ alignItems: "center" }}>
+      <Grid container sx={{ alignItems: "center", marginTop: "20px" }}>
         <Grid item xs={6}>
           <Box>
             <Typography variant="h6">Totalt:</Typography>

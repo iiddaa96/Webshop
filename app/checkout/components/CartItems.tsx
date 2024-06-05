@@ -11,7 +11,7 @@ import { ItemsProps } from "./TotalPrice";
 export const CartItems = ({ cart }: ItemsProps) => {
   const { removeFromCart } = useCart();
   const [showDeleteToast, setShowDeleteToast] = useState(false);
-  const [selectedItemId, setSelectedItemId] = useState("");
+  const [selectedItemId, setSelectedItemId] = useState<string>("");
 
   const handleDelete = (itemId: string) => {
     setShowDeleteToast(true);
@@ -78,8 +78,6 @@ export const CartItems = ({ cart }: ItemsProps) => {
           <Box sx={{ width: "15%", textAlign: "right" }}>
             <IconButton
               color="inherit"
-              aria-label
-              // eslint-disable-next-line react/jsx-no-duplicate-props
               aria-label="delete"
               onClick={() => handleDelete(item.id.toString())}
             >
