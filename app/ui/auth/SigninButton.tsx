@@ -15,20 +15,20 @@ export default function SignInButton() {
   return (
     <button
       style={{
-        color: "#ffffff", // White text color
+        color: "black",
         fontFamily: "'Roboto', Arial, sans-serif",
         fontWeight: "bold",
-        backgroundColor: "#A8DADC", // Pastel teal background
-        border: "2px solid #457B9D", // Darker teal border
-        borderRadius: "12px", // Slightly rounded corners
-        padding: "10px 20px",
+        backgroundColor: "#e5dfdf",
+        border: "2px solid #050a0e",
+        borderRadius: "10px",
+        padding: "6px 15px",
         cursor: "pointer",
         boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
         transition: "background-color 0.3s, transform 0.3s",
       }}
       onClick={handleSignIn}
-      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#81B29A")} // Slightly darker pastel teal on hover
-      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#A8DADC")}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0e793")} // Slightly darker pastel teal on hover
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#c9d1d2")}
       onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
       onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
     >

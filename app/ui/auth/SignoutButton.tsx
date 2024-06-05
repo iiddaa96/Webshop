@@ -9,7 +9,7 @@ export default function SignOutButton() {
         color: "black",
         fontFamily: "'Roboto', Arial, sans-serif",
         fontWeight: "bold",
-        backgroundColor: "#c9d1d2",
+        backgroundColor: "#e5dfdf",
         border: "2px solid #050a0e",
         borderRadius: "10px",
         padding: "6px 15px",
@@ -18,8 +18,8 @@ export default function SignOutButton() {
         transition: "background-color 0.3s, transform 0.3s",
       }}
       onClick={() => signOut()}
-      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#81B29A")} // Slightly darker pastel teal on hover
-      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#A8DADC")}
+      onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0e793")} // Slightly darker pastel teal on hover
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#c9d1d2")}
       onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
       onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
     >
