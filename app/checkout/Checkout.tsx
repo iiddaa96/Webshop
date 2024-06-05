@@ -3,7 +3,7 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { useCart } from "../context/CartContext";
 import { BackButton } from "../ui/BackButton";
 import PaymentSection from "../ui/PaymentSection";
-import CartItems from "./components/CartItems";
+import { CartItems } from "./components/CartItems";
 import TotalPrice from "./components/TotalPrice";
 
 const Checkout = () => {
