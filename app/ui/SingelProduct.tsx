@@ -1,5 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { Product } from "@prisma/client";
+import Image from "next/image";
 import AddToCartButton from "./AddToCartButton";
 
 type Props = {
@@ -21,7 +22,7 @@ export default function SingleProduct({ product }: Props) {
             }}
           >
             <div key={product.id}>
-              <img
+              <Image
                 src={product.image}
                 alt={product.title}
                 style={{
