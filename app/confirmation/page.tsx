@@ -3,7 +3,6 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { Address, User } from "@prisma/client";
 import dynamic from "next/dynamic";
 import { auth } from "../auth";
-import { ItemsProps } from "../checkout/components/TotalPrice";
 import { BackButton } from "../ui/BackButton";
 import { ConfirmationClient } from "./components/ConfirmationClient";
 
@@ -79,7 +78,7 @@ async function fetchUserData(email: string) {
   return { user, address, initialCart };
 }
 
-export default async function Confirmation({ cart }: ItemsProps) {
+export default async function Confirmation() {
   const session = await auth();
 
   if (!session || !session.user || !session.user.email) {
@@ -87,7 +86,6 @@ export default async function Confirmation({ cart }: ItemsProps) {
   }
 
   const loggedInUser = session.user.email as string;
-  console.log(`Logged in user's email: ${loggedInUser}`); // Felsökningsrad
 
   try {
     const { user, address, initialCart } = await fetchUserData(loggedInUser);

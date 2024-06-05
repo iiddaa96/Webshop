@@ -71,11 +71,11 @@ export const CartItems = ({ cart }: ItemsProps) => {
             >
               {item.title}
             </Typography>
+
             <QuantityButton
-              productId={item.id.toString()}
+              productId={item.id!.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
-              sx={{ alignSelf: "flex-start" }}
             />
           </Box>
 
@@ -83,7 +83,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
             <IconButton
               color="inherit"
               aria-label="delete"
-              onClick={() => handleDelete(item.id.toString())}
+              onClick={() => handleDelete(item.id?.toString() || "")}
             >
               <DeleteIcon />
             </IconButton>
