@@ -3,6 +3,7 @@ import { Box, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
 import CartQuantityButton from "./CartQuantityButton";
+import UserAvatar from "./UserAvatar";
 import AuthButtons from "./auth/AuthButtons";
 
 export default async function Navbar() {
@@ -74,8 +75,9 @@ export default async function Navbar() {
             </Typography>
           </Box>
 
-          <Box>
-            <Typography
+          <Box sx={{ marginRight: "2rem" }}>
+            <UserAvatar />
+            {/*    <Typography
               sx={{
                 color: "black",
                 fontFamily: "Arial, sans-serif",
@@ -86,7 +88,7 @@ export default async function Navbar() {
               }}
             >
               Välkommen: {session?.user?.name}
-            </Typography>
+            </Typography> */}
           </Box>
 
           {/* Right-aligned AuthButtons and Cart */}
