@@ -11,7 +11,7 @@ import { ItemsProps } from "./TotalPrice";
 export const CartItems = ({ cart }: ItemsProps) => {
   const { removeFromCart } = useCart();
   const [showDeleteToast, setShowDeleteToast] = useState(false);
-  const [selectedItemId, setSelectedItemId] = useState("");
+  const [selectedItemId, setSelectedItemId] = useState<string>("");
 
   const handleDelete = (itemId: string) => {
     setShowDeleteToast(true);
@@ -19,7 +19,6 @@ export const CartItems = ({ cart }: ItemsProps) => {
   };
 
   const handleConfirmDelete = () => {
-    // Remove the item from the cart
     removeFromCart(selectedItemId);
     setShowDeleteToast(false);
   };
@@ -33,42 +32,54 @@ export const CartItems = ({ cart }: ItemsProps) => {
           key={item.id}
           sx={{
             display: "flex",
-            border: "1px solid black",
-            marginTop: "30px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+            padding: "16px",
+            marginBottom: "16px",
+            position: "relative",
           }}
         >
-          {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
-          <Box sx={{ width: "10%", marginRight: "1rem" }}>
-            <img src={item.image} style={{ width: "100%" }} alt={item.title} />
+          <Box
+            sx={{
+              width: { xs: "100%", sm: "15%" },
+              marginRight: { xs: "0", sm: "2rem" },
+            }}
+          >
+            <img
+              src={item.image}
+              style={{ width: "100%", borderRadius: "8px" }}
+              alt={item.title}
+            />
           </Box>
+
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              width: "90%",
+              justifyContent: "flex-start",
+              width: { xs: "100%", sm: "70%" },
             }}
           >
-            {/* Mappar ut titel av tavlorna */}
             <Typography
               sx={{
                 fontSize: "16px",
-                marginTop: "40px",
+                marginBottom: "6px",
                 textAlign: "left",
+                fontWeight: "bold",
               }}
               variant="h6"
             >
               {item.title}
             </Typography>
-            {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
             <QuantityButton
               productId={item.id.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
+              sx={{ alignSelf: "flex-start" }}
             />
-            {/* Mappar ut priset per tavla */}
           </Box>
-          {/* DeleteIcon som en knapp längst till höger */}
-          <Box sx={{ alignSelf: "flex-start" }}>
+
+          <Box sx={{ position: "absolute", top: "8px", right: "8px" }}>
             <IconButton
               color="inherit"
               aria-label="delete"

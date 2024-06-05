@@ -18,20 +18,21 @@ const Checkout = () => {
           justifyContent: "center",
           fontWeight: "bold",
           fontSize: "30px",
+          marginBottom: "20px",
         }}
       >
         Kassa
       </Typography>
-      <Grid container spacing={1}>
+      <Grid container spacing={3}>
         <CartItems cart={cart} />
       </Grid>
-      <Grid container sx={{ alignItems: "center" }}>
-        <Grid item xs={6}>
+      <Grid container sx={{ alignItems: "center", marginTop: "20px" }}>
+        <Grid item xs={12} sm={6}>
           <Box>
             <Typography variant="h6">Totalt:</Typography>
           </Box>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Box sx={{ textAlign: "right" }}>
             <Typography
               variant="body1"
