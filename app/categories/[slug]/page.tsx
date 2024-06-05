@@ -77,61 +77,84 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         }}
       >
         <Grid container spacing={4}>
-          {category.products.map((product) => (
-            <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
-              <Link href={`/product/${product.id}`} passHref>
-                <Card
-                  sx={{
-                    maxWidth: 345,
-                    m: "auto",
-                    boxShadow: 3,
-                    position: "relative",
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    width="auto"
-                    height="280"
-                    image={product.image}
-                    alt={product.title}
-                  />
-                  <CardContent>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
-                    >
-                      <Box>
-                        <Typography
-                          gutterBottom
-                          variant="subtitle1"
-                          component="div"
-                        >
-                          {product.title}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{ fontSize: "0.8rem" }}
-                        >
-                          {`${product.price}`}kr
-                        </Typography>
+          {category.products.map((product) => {
+            const isOutOfStock = product.inventory <= 0;
+
+            return (
+              <Grid item xs={12} sm={6} lg={4} xl={3} key={product.id}>
+                <Link href={`/product/${product.id}`} passHref>
+                  <Card
+                    sx={{
+                      maxWidth: 345,
+                      m: "auto",
+                      boxShadow: 3,
+                      position: "relative",
+                      filter: isOutOfStock ? "grayscale(100%)" : "none",
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      width="auto"
+                      height="280"
+                      image={product.image}
+                      alt={product.title}
+                    />
+                    <CardContent>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Box>
+                          <Typography
+                            gutterBottom
+                            variant="subtitle1"
+                            component="div"
+                          >
+                            {product.title}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{ fontSize: "0.8rem" }}
+                          >
+                            {`${product.price}`}kr
+                          </Typography>
+                        </Box>
+                        <AddToCartButton product={product} />
                       </Box>
-                      <AddToCartButton product={product} />
+                    </CardContent>
+                    {isOutOfStock && (
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          position: "absolute",
+                          top: "10px",
+                          right: "10px",
+                          color: "red",
+                          backgroundColor: "white",
+                          padding: "5px",
+                          borderRadius: "5px",
+                          fontWeight: "bold",
+                          fontSize: { xs: "10px", sm: "12px", md: "14px" },
+                        }}
+                      >
+                        Sold Out
+                      </Typography>
+                    )}
+                    <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
+                      <CardActions
+                        disableSpacing
+                        sx={{ justifyContent: "flex-end" }}
+                      ></CardActions>
                     </Box>
-                  </CardContent>
-                  <Box sx={{ position: "absolute", bottom: 0, right: 0 }}>
-                    <CardActions
-                      disableSpacing
-                      sx={{ justifyContent: "flex-end" }}
-                    ></CardActions>
-                  </Box>
-                </Card>
-              </Link>
-            </Grid>
-          ))}
+                  </Card>
+                </Link>
+              </Grid>
+            );
+          })}
         </Grid>
       </Box>
     </main>
