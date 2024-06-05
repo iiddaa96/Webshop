@@ -24,6 +24,9 @@ export default async function Navbar() {
         sx={{ paddingY: "8px", paddingX: { xs: "10px", sm: "20px" } }}
       >
         <Box sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}>
+          <Box>
+            <UserAvatar />
+          </Box>
           <Box
             sx={{
               flexGrow: 1,
@@ -49,9 +52,18 @@ export default async function Navbar() {
               Sand & Sjö
             </Typography>
           </Box>
-          <AdminButton />
-          <ProfileButton />
-
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: { xs: "flex-start", md: "center" },
+              marginTop: { xs: "10px", md: "0" },
+              marginRight: { xs: "16px", md: "0" },
+            }}
+          >
+            <AdminButton />
+            <ProfileButton />
+          </Box>
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -71,16 +83,12 @@ export default async function Navbar() {
                 color: "black",
                 textDecoration: "none",
                 fontSize: "2.5rem",
-                marginRight: "-5.5rem",
+                marginRight: "3rem",
                 textShadow: "4px 4px 4px rgba(240, 232, 213, 1.0)",
               }}
             >
               Sand & Sjö
             </Typography>
-          </Box>
-
-          <Box sx={{ marginRight: "2rem" }}>
-            <UserAvatar />
           </Box>
 
           {/* Right-aligned AuthButtons and Cart */}
@@ -89,7 +97,7 @@ export default async function Navbar() {
               sx={{
                 display: "flex",
                 justifyContent: "flex-end",
-                marginRight: "16px", // Justera detta värde för att få önskat mellanrum
+                marginRight: "15px", // Justera detta värde för att få önskat mellanrum
               }}
             >
               <AuthButtons />
