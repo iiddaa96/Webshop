@@ -36,11 +36,11 @@ export const CartItems = ({ cart }: ItemsProps) => {
             borderRadius: "8px",
             padding: "16px",
             marginBottom: "16px",
-            alignItems: "center",
+            position: "relative",
           }}
         >
           {/* Product Image */}
-          <Box sx={{ width: "15%", marginRight: "1rem" }}>
+          <Box sx={{ width: "15%", marginRight: "2rem" }}>
             <img
               src={item.image}
               style={{ width: "100%", borderRadius: "8px" }}
@@ -75,7 +75,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
           </Box>
 
           {/* Delete Button */}
-          <Box sx={{ width: "15%", textAlign: "right" }}>
+          <Box sx={{ position: "absolute", top: "8px", right: "8px" }}>
             <IconButton
               color="inherit"
               aria-label="delete"
