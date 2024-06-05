@@ -6,7 +6,7 @@ import AdminButton from "../AdminButton";
 import CartQuantityButton from "../CartQuantityButton";
 import UserAvatar from "../UserAvatar";
 import AuthButtons from "../auth/AuthButtons";
-import ProfileButton from "../auth/OderButton";
+import ProfileButton from "../auth/OrderButton";
 
 export default async function Navbar() {
   const session = await auth();
@@ -97,7 +97,7 @@ export default async function Navbar() {
               sx={{
                 display: "flex",
                 justifyContent: "flex-end",
-                marginRight: "15px", // Justera detta värde för att få önskat mellanrum
+                marginRight: "15px",
               }}
             >
               <AuthButtons />
