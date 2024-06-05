@@ -5,7 +5,7 @@ export default async function UserAvatar() {
   const session = await auth();
 
   if (!session || !session.user) {
-    return <div>Du måste logga in</div>;
+    return <div></div>;
   }
 
   return (

@@ -1,5 +1,5 @@
+import CategoryHeader from "../SubHeader/CategoryHeader";
 import Navbar from "./Navbar";
-import CategoryHeader from "./SubHeader/CategoryHeader";
 
 export default function Header() {
   return (

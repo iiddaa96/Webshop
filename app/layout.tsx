@@ -3,7 +3,7 @@ import { CartProvider } from "./context/CartContext";
 import { PaymentProvider } from "./context/PaymentContext";
 import { LayoutProps } from "./types";
 import Footer from "./ui/Footer";
-import Header from "./ui/Header";
+import Header from "./ui/Header/Header";
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
