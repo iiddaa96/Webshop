@@ -39,7 +39,7 @@ export default function SingleProduct({ product }: Props) {
                     position: "absolute",
                     top: "10px",
                     right: "10px",
-                    color: "red",
+                    color: "black",
                     backgroundColor: "white",
                     padding: "5px",
                     borderRadius: "5px",
