@@ -1,7 +1,5 @@
 import { AppBar, Box, Button, Toolbar } from "@mui/material";
 import Link from "next/link";
-import AdminButton from "../AdminButton";
-import ProfileButton from "../auth/ProfileButton";
 
 export default function SubHeader() {
   return (
@@ -92,8 +90,6 @@ export default function SubHeader() {
           >
             Nyheter
           </Button>
-          <AdminButton />
-          <ProfileButton />
         </Box>
       </Toolbar>
     </AppBar>
