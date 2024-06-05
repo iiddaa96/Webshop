@@ -19,7 +19,6 @@ export const CartItems = ({ cart }: ItemsProps) => {
   };
 
   const handleConfirmDelete = () => {
-    // Remove the item from the cart
     removeFromCart(selectedItemId);
     setShowDeleteToast(false);
   };
@@ -33,44 +32,54 @@ export const CartItems = ({ cart }: ItemsProps) => {
           key={item.id}
           sx={{
             display: "flex",
-            border: "1px solid black",
-            marginTop: "30px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+            padding: "16px",
+            marginBottom: "16px",
+            alignItems: "center",
           }}
         >
-          {/* Mappar ut bilderna/tavlorna, plus styleing på boxen dom är i */}
-          <Box sx={{ width: "10%", marginRight: "1rem" }}>
-            <img src={item.image} style={{ width: "100%" }} alt={item.title} />
+          {/* Product Image */}
+          <Box sx={{ width: "15%", marginRight: "1rem" }}>
+            <img
+              src={item.image}
+              style={{ width: "100%", borderRadius: "8px" }}
+              alt={item.title}
+            />
           </Box>
+
+          {/* Product Details */}
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              width: "90%",
+              width: "70%",
             }}
           >
-            {/* Mappar ut titel av tavlorna */}
             <Typography
               sx={{
                 fontSize: "16px",
-                marginTop: "40px",
+                marginBottom: "8px",
                 textAlign: "left",
+                fontWeight: "bold",
               }}
               variant="h6"
             >
               {item.title}
             </Typography>
-            {/* Icon buttons för att lägga till eller ta bort antal valda posters */}
             <QuantityButton
               productId={item.id.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
             />
-            {/* Mappar ut priset per tavla */}
           </Box>
-          {/* DeleteIcon som en knapp längst till höger */}
-          <Box sx={{ alignSelf: "flex-start" }}>
+
+          {/* Delete Button */}
+          <Box sx={{ width: "15%", textAlign: "right" }}>
             <IconButton
               color="inherit"
+              aria-label
+              // eslint-disable-next-line react/jsx-no-duplicate-props
               aria-label="delete"
               onClick={() => handleDelete(item.id.toString())}
             >
