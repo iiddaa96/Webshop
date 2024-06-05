@@ -37,7 +37,6 @@ export const CartItems = ({ cart }: ItemsProps) => {
             padding: "16px",
             marginBottom: "16px",
             position: "relative",
-            alignItems: "center", // Align items vertically center
           }}
         >
           {/* Product Image */}
@@ -55,14 +54,13 @@ export const CartItems = ({ cart }: ItemsProps) => {
               display: "flex",
               flexDirection: "column",
               width: "55%",
-              alignItems: "center", // Center items vertically
             }}
           >
             <Typography
               sx={{
                 fontSize: "16px",
                 marginBottom: "8px",
-                textAlign: "center",
+                textAlign: "left",
                 fontWeight: "bold",
               }}
               variant="h6"
@@ -73,6 +71,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
               productId={item.id.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
+              sx={{ marginBottom: "16px" }} // Added margin bottom here
             />
           </Box>
 
@@ -81,10 +80,10 @@ export const CartItems = ({ cart }: ItemsProps) => {
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
+              justifyContent: "flex-start", // Align to the start of the column
+              marginTop: "16px", // Added margin top here
               width: "15%",
               textAlign: "right",
-              alignItems: "center", // Center items vertically
             }}
           >
             <Typography variant="body1" fontWeight="bold">
