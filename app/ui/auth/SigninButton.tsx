@@ -28,7 +28,7 @@ export default function SignInButton() {
       }}
       onClick={handleSignIn}
       onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0e793")} // Slightly darker pastel teal on hover
-      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#c9d1d2")}
+      onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#e5dfdf")}
       onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.95)")}
       onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
     >
