@@ -53,13 +53,14 @@ export const CartItems = ({ cart }: ItemsProps) => {
             sx={{
               display: "flex",
               flexDirection: "column",
-              width: "55%",
+              justifyContent: "space-between",
+              width: "70%",
             }}
           >
             <Typography
               sx={{
                 fontSize: "16px",
-                marginBottom: "8px",
+                marginBottom: "4px",
                 textAlign: "left",
                 fontWeight: "bold",
               }}
@@ -71,24 +72,8 @@ export const CartItems = ({ cart }: ItemsProps) => {
               productId={item.id.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
-              sx={{ marginBottom: "16px" }}
+              sx={{ alignSelf: "flex-start", marginBottom: "8px" }}
             />
-          </Box>
-
-          {/* Price */}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              marginTop: "16px",
-              width: "15%",
-              textAlign: "right",
-            }}
-          >
-            <Typography variant="body1" fontWeight="bold">
-              {item.price} kr
-            </Typography>
           </Box>
 
           {/* Delete Button */}
