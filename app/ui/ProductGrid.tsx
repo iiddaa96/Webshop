@@ -1,5 +1,4 @@
 "use client";
-/* eslint-disable react/jsx-key */
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import {
   Box,
@@ -16,13 +15,11 @@ import {
   DialogTitle,
   Grid,
   Link,
-  SnackbarOrigin,
   Typography,
   styled,
 } from "@mui/material";
 import { Product } from "@prisma/client";
 import React from "react";
-import { useCart } from "../context/CartContext";
 
 // Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -30,27 +27,12 @@ const StyledCard = styled(Card)(({ theme }) => ({
   color: "black",
 }));
 
-interface State extends SnackbarOrigin {
-  open: boolean;
-}
-
 export interface ProductGridProps {
   products: Product[];
 }
 
 export default function ProductGrid({ products }: ProductGridProps) {
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const [productToDelete, setProductToDelete] = React.useState<string | null>(
-    null
-  );
-
-  const { addToCart } = useCart();
-
-  const handleDialogOpen = (productId: string) => {
-    setProductToDelete(productId);
-    setDialogOpen(true);
-  };
 
   const handleDialogClose = () => {
     setDialogOpen(false);
@@ -61,7 +43,6 @@ export default function ProductGrid({ products }: ProductGridProps) {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {products.map((product: Product, index: number) => {
-            console.log("Rendering AddToCartButton for", product.title);
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                 <StyledCard>

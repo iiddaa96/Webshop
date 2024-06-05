@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import AddToCartButton from "./AddToCartButton";
@@ -22,6 +22,8 @@ export default function SingleProduct({ product }: Props) {
             }}
           >
             <div key={product.id}>
+              <CardMedia
+                component="img"
               <Image
                 src={product.image}
                 alt={product.title}
