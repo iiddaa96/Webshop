@@ -71,7 +71,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
               productId={item.id.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
-              sx={{ marginBottom: "16px" }} // Added margin bottom here
+              sx={{ marginBottom: "16px" }}
             />
           </Box>
 
@@ -80,8 +80,8 @@ export const CartItems = ({ cart }: ItemsProps) => {
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "flex-start", // Align to the start of the column
-              marginTop: "16px", // Added margin top here
+              justifyContent: "flex-start",
+              marginTop: "16px",
               width: "15%",
               textAlign: "right",
             }}
