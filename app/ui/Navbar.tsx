@@ -75,9 +75,9 @@ export default async function Navbar() {
             </Typography>
           </Box>
 
-          <Box>
+          <Box sx={{ marginRight: "2rem" }}>
             <UserAvatar />
-            <Typography
+            {/*    <Typography
               sx={{
                 color: "black",
                 fontFamily: "Arial, sans-serif",
@@ -88,7 +88,7 @@ export default async function Navbar() {
               }}
             >
               Välkommen: {session?.user?.name}
-            </Typography>
+            </Typography> */}
           </Box>
 
           {/* Right-aligned AuthButtons and Cart */}

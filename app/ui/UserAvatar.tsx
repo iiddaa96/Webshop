@@ -4,6 +4,10 @@ import { auth } from "../auth";
 export default async function UserAvatar() {
   const session = await auth();
 
+  if (!session || !session.user) {
+    return <div>Du måste logga in</div>;
+  }
+
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
       <Avatar

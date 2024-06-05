@@ -1,8 +1,7 @@
-import NextAuth, { Session } from "next-auth";
-import { JWT } from "next-auth/jwt";
+import NextAuth from "next-auth";
 import github from "next-auth/providers/github";
 
-interface ExtendedToken extends JWT {
+/* interface ExtendedToken extends JWT {
   id?: string;
   picture?: string;
 }
@@ -14,7 +13,7 @@ interface ExtendedSession extends Session {
     name?: string;
     email?: string;
   };
-}
+} */
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
@@ -22,7 +21,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   providers: [github],
 
-  callbacks: {
+  /* callbacks: {
     async session({ session, token }: { session: Session; token: JWT }) {
       const extendedSession = session as ExtendedSession;
 
@@ -56,7 +55,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return extendedToken;
     },
-  },
+  }, */
 });
 
 // declare module "next-auth" {

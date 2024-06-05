@@ -7,9 +7,13 @@ import RenderUser from "../ui/RenderUser";
 export default async function ProfilePage() {
   const session = await auth();
 
+  if (!session || !session.user) {
+    return <p>Du måste vara inloggad för att se denna sida.</p>;
+  }
+
   const orders = await db.order.findMany({
     where: {
-      userId: session?.user?.id,
+      userId: session.user.id,
     },
     include: {
       orderDetails: {
@@ -76,7 +80,7 @@ export default async function ProfilePage() {
                   fontFamily: "monospace",
                 }}
               >
-                Frakt status: {order.isSent.toString()}
+                Status: {order.isSent ? "Skickad" : "Ej skickad"}
               </Typography>
             </Box>
             <ListItem
