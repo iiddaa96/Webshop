@@ -2,9 +2,11 @@ import { db } from "@/prisma/db";
 import { Box, Container, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { auth } from "../auth";
+import AdminButton from "./AdminButton";
 import CartQuantityButton from "./CartQuantityButton";
 import UserAvatar from "./UserAvatar";
 import AuthButtons from "./auth/AuthButtons";
+import ProfileButton from "./auth/OderButton";
 
 export default async function Navbar() {
   const session = await auth();
@@ -47,6 +49,8 @@ export default async function Navbar() {
               Sand & Sjö
             </Typography>
           </Box>
+          <AdminButton />
+          <ProfileButton />
 
           <Box
             sx={{
@@ -67,7 +71,7 @@ export default async function Navbar() {
                 color: "black",
                 textDecoration: "none",
                 fontSize: "2.5rem",
-                marginRight: "-13rem",
+                marginRight: "-5.5rem",
                 textShadow: "4px 4px 4px rgba(240, 232, 213, 1.0)",
               }}
             >
@@ -77,18 +81,6 @@ export default async function Navbar() {
 
           <Box sx={{ marginRight: "2rem" }}>
             <UserAvatar />
-            {/*    <Typography
-              sx={{
-                color: "black",
-                fontFamily: "Arial, sans-serif",
-                fontWeight: "bold",
-                backgroundColor: "#F0E8D5",
-                fontSize: "13px",
-                marginRight: "2rem",
-              }}
-            >
-              Välkommen: {session?.user?.name}
-            </Typography> */}
           </Box>
 
           {/* Right-aligned AuthButtons and Cart */}

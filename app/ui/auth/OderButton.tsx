@@ -26,7 +26,7 @@ export default async function ProfileButton() {
             },
           }}
         >
-          Profil
+          Ordrar
         </Button>
       );
     }
