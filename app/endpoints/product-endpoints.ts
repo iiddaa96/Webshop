@@ -1,5 +1,4 @@
 "use server";
-
 import { db } from "@/prisma/db";
 import { Product } from "@prisma/client";
 import { CartItem } from "../zod-validation/products";
