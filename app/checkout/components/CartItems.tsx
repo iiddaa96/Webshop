@@ -39,7 +39,6 @@ export const CartItems = ({ cart }: ItemsProps) => {
             position: "relative",
           }}
         >
-          {/* Product Image */}
           <Box sx={{ width: "15%", marginRight: "2rem" }}>
             <img
               src={item.image}
@@ -48,19 +47,18 @@ export const CartItems = ({ cart }: ItemsProps) => {
             />
           </Box>
 
-          {/* Product Details */}
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-between",
+              justifyContent: "flex-start",
               width: "70%",
             }}
           >
             <Typography
               sx={{
                 fontSize: "16px",
-                marginBottom: "4px",
+                marginBottom: "6px",
                 textAlign: "left",
                 fontWeight: "bold",
               }}
@@ -72,11 +70,10 @@ export const CartItems = ({ cart }: ItemsProps) => {
               productId={item.id.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
-              sx={{ alignSelf: "flex-start", marginBottom: "8px" }}
+              sx={{ alignSelf: "flex-start" }}
             />
           </Box>
 
-          {/* Delete Button */}
           <Box sx={{ position: "absolute", top: "8px", right: "8px" }}>
             <IconButton
               color="inherit"
