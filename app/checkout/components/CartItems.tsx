@@ -4,6 +4,7 @@ import { useCart } from "@/app/context/CartContext";
 import QuantityButton from "@/app/ui/QuantityButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Grid, IconButton, Typography } from "@mui/material";
+import Image from "next/image";
 import { useState } from "react";
 import { ConfirmDeleteToast } from "./ConfirmDeleteToast";
 import { ItemsProps } from "./TotalPrice";
@@ -39,19 +40,20 @@ export const CartItems = ({ cart }: ItemsProps) => {
             position: "relative",
           }}
         >
-          <Box
-            sx={{
-              width: { xs: "100%", sm: "15%" },
-              marginRight: { xs: "0", sm: "2rem" },
-            }}
-          >
-            <img
-              src={item.image}
-              style={{ width: "100%", borderRadius: "8px" }}
-              alt={item.title}
-            />
-          </Box>
-
+          {item.image && (
+            <Box
+              sx={{
+                width: { xs: "100%", sm: "15%" },
+                marginRight: { xs: "0", sm: "2rem" },
+              }}
+            >
+              <Image
+                src={item.image}
+                alt="Produktbild"
+                style={{ width: "100%", borderRadius: "8px" }}
+              />
+            </Box>
+          )}
           <Box
             sx={{
               display: "flex",
@@ -71,11 +73,11 @@ export const CartItems = ({ cart }: ItemsProps) => {
             >
               {item.title}
             </Typography>
+
             <QuantityButton
-              productId={item.id.toString()}
+              productId={item.id!.toString()}
               initialQuantity={item.quantity}
               showTotalPrice
-              sx={{ alignSelf: "flex-start" }}
             />
           </Box>
 
@@ -83,7 +85,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
             <IconButton
               color="inherit"
               aria-label="delete"
-              onClick={() => handleDelete(item.id.toString())}
+              onClick={() => handleDelete(item.id?.toString() || "")}
             >
               <DeleteIcon />
             </IconButton>

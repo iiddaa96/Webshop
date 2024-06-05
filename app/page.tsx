@@ -9,6 +9,7 @@ import Car from "./assets/car.jpg";
 import MiddleImage from "./assets/palms.jpg";
 import CardsHeader from "./ui/CardsForHomepage/CardsHeader";
 
+
 export default async function HomePage() {
   const products = await db.product.findMany({
     orderBy: { id: "desc" },
@@ -17,7 +18,6 @@ export default async function HomePage() {
   const cardStyle = { width: 280, height: 310 }; // Fasta dimensioner för kort
   return (
     <main>
-      <Box></Box>
       <Box
         sx={{
           width: "95%",

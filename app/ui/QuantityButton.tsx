@@ -44,7 +44,9 @@ const QuantityButton: React.FC<QuantityButtonProps> = ({
     }
   };
 
-  const selectedProduct = cart.find((item) => item.id.toString() === productId);
+  const selectedProduct = cart.find(
+    (item) => item.id!.toString() === productId
+  );
 
   const calculateTotalPrice = (): number => {
     return (selectedProduct?.price || 0) * quantity;
