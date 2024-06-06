@@ -20,7 +20,7 @@ export default function ToggleIsSentButton({ orderId }: { orderId: number }) {
       }}
       onClick={toggleIsSent}
     >
-      Färdigbehandlad
+      Toggle
     </button>
   );
 }
