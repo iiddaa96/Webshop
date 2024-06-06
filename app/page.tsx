@@ -35,8 +35,9 @@ export default async function HomePage() {
       >
         <Image
           src={MiddleImage}
+          width={100}
+          height={100}
           alt="Stor Bild"
-          layout="fill"
           objectFit="cover"
         />
       </Box>
@@ -99,7 +100,13 @@ export default async function HomePage() {
           marginBottom: "24px",
         }}
       >
-        <Image src={Car} alt="Stor Bild" layout="fill" objectFit="cover" />
+        <Image
+          src={Car}
+          alt="Stor Bild"
+          objectFit="cover"
+          width={100}
+          height={100}
+        />
       </Box>
       {/* Kort som leder till kategorierna */}
       <CardsHeader />

@@ -49,7 +49,9 @@ export const CartItems = ({ cart }: ItemsProps) => {
               <Image
                 src={item.image}
                 alt="Produktbild"
-                style={{ width: "100%", borderRadius: "8px" }}
+                style={{ borderRadius: "8px" }}
+                width={100}
+                height={100}
               />
             </Box>
           )}

@@ -63,9 +63,10 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         }}
       >
         <Image
+          width={100}
+          height={100}
           src={MiddleImage}
           alt="Stor Bild"
-          layout="fill"
           objectFit="cover"
         />
       </Box>
