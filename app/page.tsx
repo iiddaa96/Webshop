@@ -23,8 +23,7 @@ export default async function HomePage() {
           width: "95%",
           justifyContent: "center",
           position: "relative",
-          paddingTop: "30%",
-          margin: "32px auto",
+          margin: "20px auto",
           display: "flex",
           alignItems: "center",
           marginBottom: "24px",
@@ -33,17 +32,26 @@ export default async function HomePage() {
           },
         }}
       >
-        <Image
-          src={MiddleImage}
-          width={100}
-          height={100}
-          alt="Stor Bild"
-          objectFit="cover"
-        />
+        <div
+          style={{
+            width: "90vw",
+            height: "60vh",
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
+          <Image
+            src={MiddleImage}
+            alt="Stor Bild"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
       </Box>
       {/* Kort för syns skull */}
       <Grid container spacing={2} justifyContent="center">
-        <Grid sx={{ marginBottom: "10px" }} item>
+        <Grid sx={{ marginBottom: "24px" }} item>
           <Card sx={{ ...cardStyle, margin: 1 }}>
             <CardActionArea>
               <CardMedia
@@ -93,20 +101,28 @@ export default async function HomePage() {
           width: "82%",
           justifyContent: "center",
           position: "relative",
-          paddingTop: "30%",
           margin: "32px auto",
           display: "flex",
           alignItems: "center",
           marginBottom: "24px",
         }}
       >
-        <Image
-          src={Car}
-          alt="Stor Bild"
-          objectFit="cover"
-          width={100}
-          height={100}
-        />
+        <div
+          style={{
+            width: "90vw",
+            height: "60vh",
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
+          <Image
+            src={Car}
+            alt="Stor Bild"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
       </Box>
       {/* Kort som leder till kategorierna */}
       <CardsHeader />
