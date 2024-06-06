@@ -21,7 +21,7 @@ export default function SubHeader() {
           justifyContent: "center",
           flexWrap: "wrap",
           "@media (max-width: 600px)": {
-            justifyContent: "flex-start",
+            justifyContent: "center",
           },
         }}
       >
@@ -33,7 +33,7 @@ export default function SubHeader() {
             flexWrap: "wrap",
             justifyContent: "center",
             "@media (max-width: 600px)": {
-              justifyContent: "flex-start",
+              justifyContent: "center",
               gap: "1px",
             },
           }}

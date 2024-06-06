@@ -20,7 +20,6 @@ function AdminClient({ products }: ProductGridProps) {
         {/* <Add new product /> */}
         <Link href="/admin/product/new">
           <AddIcon
-            data-cy="admin-add-product"
             sx={{
               color: "black",
               padding: "10px",

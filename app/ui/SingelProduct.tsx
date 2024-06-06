@@ -12,9 +12,14 @@ export default function SingleProduct({ product }: Props) {
   return (
     <main>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={10} sm={6}>
           <Box
-            sx={{ flexGrow: 1, marginLeft: "8rem" }}
+            sx={{
+              flexGrow: 1,
+              marginLeft: "5.3rem",
+              marginBottom: "-4rem",
+              marginTop: "10px",
+            }}
             style={{ filter: isOutOfStock ? "grayscale(100%)" : "none" }}
           >
             <div key={product.id}>

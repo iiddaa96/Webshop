@@ -47,7 +47,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <main>
-      <Box></Box>
       <Box
         sx={{
           width: "95%",
@@ -58,6 +57,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           display: "flex",
           alignItems: "center",
           marginBottom: "24px",
+          "@media (max-width: 600px)": {
+            display: "none",
+          },
         }}
       >
         <Image
@@ -68,14 +70,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         />
       </Box>
 
-      <Box
-        sx={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 24px",
-          marginBottom: "24px",
-        }}
-      >
+      <Box>
         <Grid container spacing={4}>
           {category.products.map((product) => {
             const isOutOfStock = product.inventory <= 0;
