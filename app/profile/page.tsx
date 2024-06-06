@@ -2,7 +2,7 @@ import { db } from "@/prisma/db";
 import { Box, List, ListItem, Typography } from "@mui/material";
 import { auth } from "../auth";
 import { BackButton } from "../ui/BackButton";
-import RenderUser from "../ui/RenderUser";
+import RenderUser from "../ui/Header/RenderUser";
 
 export default async function ProfilePage() {
   const session = await auth();
