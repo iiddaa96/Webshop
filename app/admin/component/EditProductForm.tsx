@@ -7,7 +7,6 @@ import SaveIcon from "@mui/icons-material/Save";
 import {
   Box,
   Button,
-  Link,
   MenuItem,
   Select,
   SelectChangeEvent,
@@ -26,11 +25,6 @@ export interface Props {
 export type ProductWithCategories = Product & { categories: string[] };
 
 export default function EditProductForm({ categories, product }: Props) {
-  function handleSubmit() {
-    deleteProduct(Number(id));
-    console.log(id);
-  }
-
   const { id } = useParams();
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -42,6 +36,11 @@ export default function EditProductForm({ categories, product }: Props) {
     setSelectedCategories(event.target.value as string[]);
   };
 
+  function handleSubmit() {
+    deleteProduct(Number(id));
+    console.log(id);
+    router.push("/admin");
+  }
   const save = (data: ProductWithCategories) => {
     const { categories, ...updatedProduct } = data;
     const chosenCategories = selectedCategories.map((c) => Number(c));
@@ -145,18 +144,18 @@ export default function EditProductForm({ categories, product }: Props) {
           Spara
         </Button>
 
-        <Link>
-          <Button
-            sx={{ color: "red", border: "1px red solid", width: "150px" }}
-          >
-            <DeleteIcon
-              fontSize="large"
-              sx={{ cursor: "pointer" }}
-              onClick={() => handleSubmit()}
-            />
-            Ta bort
-          </Button>
-        </Link>
+        <Button
+          sx={{
+            color: "red",
+            border: "1px red solid",
+            width: "150px",
+            cursor: "pointer",
+          }}
+          onClick={() => handleSubmit()}
+        >
+          <DeleteIcon fontSize="large" />
+          Ta bort
+        </Button>
       </Box>
     </Box>
   );
