@@ -28,6 +28,7 @@ export type ProductWithCategories = Product & { categories: string[] };
 export default function EditProductForm({ categories, product }: Props) {
   function handleSubmit() {
     deleteProduct(Number(id));
+    console.log(id);
   }
 
   const { id } = useParams();
@@ -144,7 +145,7 @@ export default function EditProductForm({ categories, product }: Props) {
           Spara
         </Button>
 
-        <Link href="/admin">
+        <Link>
           <Button
             sx={{ color: "red", border: "1px red solid", width: "150px" }}
           >
