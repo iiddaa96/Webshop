@@ -33,18 +33,17 @@ const Checkout = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Box sx={{ textAlign: "right" }}>
-            <Typography
-              variant="body1"
-              sx={{
-                fontWeight: "bold",
-                display: "inline-block",
-                verticalAlign: "middle",
-              }}
-            >
-              <TotalPrice cart={cart} />
-            </Typography>
-          </Box>
+          <Typography
+            variant="body1"
+            sx={{
+              fontWeight: "bold",
+              display: "inline-block",
+              verticalAlign: "middle",
+            }}
+          >
+            {" "}
+            <TotalPrice cart={cart} />
+          </Typography>
         </Grid>
       </Grid>
       <PaymentSection />

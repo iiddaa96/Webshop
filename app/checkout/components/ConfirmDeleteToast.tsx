@@ -33,11 +33,11 @@ export const ConfirmDeleteToast = ({
       }}
     >
       <Typography variant="body1">
-        AÄr du säker på att du vill radera produkten?
+        Är du säker på att du vill radera produkten?
       </Typography>
       <Button
         variant="contained"
-        color="primary"
+        color="error"
         onClick={handleConfirmDelete}
         sx={{ marginRight: "10px", marginTop: "10px" }}
       >
@@ -45,7 +45,7 @@ export const ConfirmDeleteToast = ({
       </Button>
       <Button
         variant="contained"
-        color="error"
+        color="primary"
         onClick={() => setShowDeleteToast(false)}
         sx={{ marginTop: "10px" }}
       >
