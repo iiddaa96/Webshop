@@ -21,10 +21,14 @@ import {
 import { Product } from "@prisma/client";
 import React from "react";
 
-// Your existing StyledCard component
 const StyledCard = styled(Card)(({ theme }) => ({
   padding: theme.spacing(2),
   color: "black",
+  [theme.breakpoints.down("sm")]: {
+    padding: theme.spacing(1),
+    maxWidth: 300,
+    margin: "auto",
+  },
 }));
 
 export interface ProductGridProps {
@@ -40,16 +44,33 @@ export default function ProductGrid({ products }: ProductGridProps) {
 
   return (
     <Container fixed>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={{ xs: 2, md: 3 }}>
+      <Typography
+        sx={{
+          marginTop: "-1rem",
+          display: "flex",
+          justifyContent: "center",
+          fontWeight: "bold",
+          fontSize: "30px",
+          marginBottom: "20px",
+        }}
+      >
+        ADMIN
+      </Typography>
+      <Box>
+        <Grid container spacing={4}>
           {products.map((product: Product, index: number) => {
+            const isOutOfStock = product.inventory <= 0;
+
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                 <StyledCard>
                   <CardActionArea>
                     <CardMedia
                       component="img"
-                      height="300"
+                      sx={{
+                        height: { xs: 200, sm: 300 },
+                        filter: isOutOfStock ? "grayscale(100%)" : "none",
+                      }}
                       width="100%"
                       image={product.image}
                       alt={product.title}
@@ -58,19 +79,26 @@ export default function ProductGrid({ products }: ProductGridProps) {
                       <Typography
                         gutterBottom
                         variant="h6"
-                        sx={{ color: "primary.main" }}
+                        sx={{
+                          color: "primary.main",
+                          fontSize: { xs: "1rem", sm: "1.25rem" },
+                        }}
                       >
                         {product.title}
                       </Typography>
                       <Typography
                         gutterBottom
                         variant="h6"
-                        sx={{ color: "secondary.main" }}
+                        sx={{
+                          color: "secondary.main",
+                          fontSize: { xs: "1rem", sm: "1.25rem" },
+                        }}
                       >
                         {`${product.price.toString()}Kr`}
                       </Typography>
-                      <Typography>{product.id}</Typography>
-
+                      <Typography variant="body2" color="text.secondary">
+                        Saldo i lager: {product.inventory}
+                      </Typography>
                       <Box
                         sx={{
                           display: "flex",
@@ -80,9 +108,27 @@ export default function ProductGrid({ products }: ProductGridProps) {
                       >
                         <Link href={"/admin/product/" + product.id}>
                           <EditNoteIcon fontSize="large" />
-                        </Link>{" "}
+                        </Link>
                       </Box>
                     </CardContent>
+                    {isOutOfStock && (
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          position: "absolute",
+                          top: "10px",
+                          right: "10px",
+                          color: "red",
+                          backgroundColor: "white",
+                          padding: "5px",
+                          borderRadius: "5px",
+                          fontWeight: "bold",
+                          fontSize: { xs: "10px", sm: "12px", md: "14px" },
+                        }}
+                      >
+                        Sold Out
+                      </Typography>
+                    )}
                   </CardActionArea>
                 </StyledCard>
               </Grid>

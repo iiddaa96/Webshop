@@ -1,5 +1,4 @@
 "use client";
-
 import { useCart } from "@/app/context/CartContext";
 import QuantityButton from "@/app/ui/QuantityButton";
 import DeleteIcon from "@mui/icons-material/Delete";
