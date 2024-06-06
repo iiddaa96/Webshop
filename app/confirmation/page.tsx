@@ -40,7 +40,7 @@ async function fetchUserData(email: string) {
   }
 
   const address = await db.address.findFirst({
-    where: { Order: { some: { userId: user.id } } },
+    where: { order: { some: { userId: user.id } } },
   });
 
   if (!address) {
