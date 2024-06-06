@@ -145,15 +145,12 @@ export default function EditProductForm({ categories, product }: Props) {
           Spara
         </Button>
 
-        <Link>
+        <Link href="/admin">
           <Button
             sx={{ color: "red", border: "1px red solid", width: "150px" }}
+            onClick={() => handleSubmit()}
           >
-            <DeleteIcon
-              fontSize="large"
-              sx={{ cursor: "pointer" }}
-              onClick={() => handleSubmit()}
-            />
+            <DeleteIcon fontSize="large" sx={{ cursor: "pointer" }} />
             Ta bort
           </Button>
         </Link>
