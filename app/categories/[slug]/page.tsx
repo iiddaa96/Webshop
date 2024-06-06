@@ -52,7 +52,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           width: "95%",
           justifyContent: "center",
           position: "relative",
-          paddingTop: "30%",
           margin: "32px auto",
           display: "flex",
           alignItems: "center",
@@ -62,13 +61,22 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           },
         }}
       >
-        <Image
-          width={100}
-          height={100}
-          src={MiddleImage}
-          alt="Stor Bild"
-          objectFit="cover"
-        />
+        <div
+          style={{
+            width: "90vw",
+            height: "60vh",
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
+          <Image
+            src={MiddleImage}
+            alt="Stor Bild"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
       </Box>
 
       <Box>
@@ -86,6 +94,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       boxShadow: 3,
                       position: "relative",
                       filter: isOutOfStock ? "grayscale(100%)" : "none",
+                      marginBottom: "24px",
                     }}
                   >
                     <CardMedia
