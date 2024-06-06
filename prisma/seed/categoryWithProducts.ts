@@ -172,7 +172,7 @@ const categoriesData: CategoriesData[] = [
         inventory: 5,
       },
       {
-        title: "Strandhandduk randig",
+        title: "Strandhandduk",
         description:
           "Mjuk och skön strandhandduk – hamaminspirerad med vävd framsida och baksida i frotté. Rulla ut den direkt i sanden eller använd den som ett extra skydd på solsängen. Den är enkel att ta med på resan, i gymväskan eller i picknickkorgen. Certifierad bomull. Badlakanet är tillverkat av Oeko-Tex-certifierad* bomull, är mjuk och smidig och torkar snabbt. Perfekt efter ditt dopp i poolen, att ha med på stranden eller att torka sig med efter duschen.",
         image:

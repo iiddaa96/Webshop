@@ -27,6 +27,7 @@ function Footer() {
         display: "flex",
         alignItems: "center",
         padding: "10px 0",
+        marginTop: "20px",
         backgroundColor: "white",
         flexDirection: "row", // För desktop-läge
         "@media (max-width: 600px)": {
