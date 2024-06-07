@@ -2,7 +2,7 @@
 import { useCart } from "@/app/context/CartContext";
 import QuantityButton from "@/app/ui/QuantityButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box, Grid, IconButton, Typography } from "@mui/material";
+import { Box, Container, Grid, IconButton, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import { ConfirmDeleteToast } from "./ConfirmDeleteToast";
@@ -24,7 +24,7 @@ export const CartItems = ({ cart }: ItemsProps) => {
   };
 
   return (
-    <>
+    <Container>
       {cart.map((item) => (
         <Grid
           item
@@ -100,6 +100,6 @@ export const CartItems = ({ cart }: ItemsProps) => {
           setShowDeleteToast={setShowDeleteToast}
         />
       )}
-    </>
+    </Container>
   );
 };

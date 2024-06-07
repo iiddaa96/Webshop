@@ -23,6 +23,7 @@ const Checkout = () => {
       >
         Kassa
       </Typography>
+
       <Grid container spacing={3}>
         <CartItems cart={cart} />
       </Grid>
@@ -33,9 +34,8 @@ const Checkout = () => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Typography
-            variant="body1"
-            sx={{
+          <div
+            style={{
               fontWeight: "bold",
               display: "inline-block",
               verticalAlign: "middle",
@@ -43,7 +43,7 @@ const Checkout = () => {
           >
             {" "}
             <TotalPrice cart={cart} />
-          </Typography>
+          </div>
         </Grid>
       </Grid>
       <PaymentSection />
