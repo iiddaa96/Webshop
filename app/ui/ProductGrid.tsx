@@ -14,11 +14,11 @@ import {
   DialogContentText,
   DialogTitle,
   Grid,
-  Link,
   Typography,
   styled,
 } from "@mui/material";
 import { Product } from "@prisma/client";
+import Link from "next/link";
 import React from "react";
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -106,7 +106,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
                           alignItems: "center",
                         }}
                       >
-                        <Link href={"/admin/product/" + product.id}>
+                        <Link href={`/admin/product/${product.id}`} passHref>
                           <EditNoteIcon fontSize="large" />
                         </Link>
                       </Box>
