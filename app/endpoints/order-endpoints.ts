@@ -38,39 +38,40 @@ export async function isSentEndpoint(orderId: number) {
 }
 
 export async function createOrder(customer: CustomerInfo, cart: any[]) {
+  const session = await auth();
   try {
-    const session = await auth();
+    if (session) {
+      const orderDetails = cart.map((item) => ({
+        productId: item.id,
+        quantity: item.quantity,
+        subTotal: item.price * item.quantity,
+      }));
 
-    const orderDetails = cart.map((item) => ({
-      productId: item.id,
-      quantity: item.quantity,
-      subTotal: item.price * item.quantity,
-    }));
-
-    const order = await db.order.create({
-      data: {
-        total: cart.reduce(
-          (total, item) => total + item.price * item.quantity,
-          0
-        ),
-        user: {
-          connect: {
-            email: session?.user?.email?.toString(),
+      const order = await db.order.create({
+        data: {
+          total: cart.reduce(
+            (total, item) => total + item.price * item.quantity,
+            0
+          ),
+          user: {
+            connect: {
+              email: session?.user?.email?.toString(),
+            },
+          },
+          deliveryAddress: {
+            create: {
+              street: customer.street,
+              city: customer.city,
+              zip: customer.zip,
+            },
+          },
+          orderDetails: {
+            create: orderDetails,
           },
         },
-        deliveryAddress: {
-          create: {
-            street: customer.street,
-            city: customer.city,
-            zip: customer.zip,
-          },
-        },
-        orderDetails: {
-          create: orderDetails,
-        },
-      },
-    });
-    return order;
+      });
+      return order;
+    }
   } catch (error) {
     console.error("Failed to create order");
     throw new Error("Failed to create order");
