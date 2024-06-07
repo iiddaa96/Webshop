@@ -1,6 +1,8 @@
-# Webbshop Next.js
+# Sand & Sjö
 
-Har skapat en webshop där vi säljer allt från strand spel till handdukar och badleksaker. Allt för att man ska vara redo för sommaren! Vi använder oss av DB för hantering av våra produkter och funktioner.
+### Webbshop NextJS
+
+Vi har skapat en webshop där vi säljer allt från strandspel till handdukar och badleksaker. Allt för att man ska vara redo för sommaren! Vi använder oss av DB för att dels hantera våra produkter, användare och funktioner.
 
 #### Projektet innehåller:
 
@@ -24,8 +26,15 @@ Har skapat en webshop där vi säljer allt från strand spel till handdukar och 
 
 ## Starta projekt:
 
-- nmp install
-- npm run dev
+- `npm install`
+- `npm run dev`
+- `npm run studio`
+
+## Admin-konto
+
+`npm run studio` för att komma till Prisma Studio där du kan göra dig till Admin efter att du en gång har loggat in som User på webbshoppen.
+
+Alternativt lägg till din email du har kopplat till ditt GitHub konto i kodbasen. Lokalisera mappen Prisma, sedan Seed där du finner admin.ts.
 
 **Medverkande**
 
