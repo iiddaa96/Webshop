@@ -23,6 +23,7 @@ export const ConfirmDeleteToast = ({
     <Paper
       elevation={3}
       sx={{
+        zindex: 1000,
         position: "fixed",
         top: "20%",
         left: "50%",
