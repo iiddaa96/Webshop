@@ -51,7 +51,6 @@ export default async function ProfilePage() {
             sx={{ fontSize: "15px", fontWeight: "bold", marginLeft: "15px" }}
             key={order.id}
           >
-            {/* <ListItem>Total Price: {order.total}kr</ListItem> */}
             <ListItem sx={{ fontFamily: "monospace" }}>
               Datum: {new Date(order.createdAt).toLocaleString()}
             </ListItem>
@@ -63,7 +62,7 @@ export default async function ProfilePage() {
                     fontWeight: "bold",
                     fontFamily: "monospace",
                   }}
-                  key={item.orderId}
+                  key={item.productId}
                 >
                   {item.product.title} - {item.quantity} x {item.product.price}
                   kr
