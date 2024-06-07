@@ -28,6 +28,7 @@ export const ConfirmDeleteToast = ({
         top: "20%",
         left: "50%",
         transform: "translate(-50%, -50%)",
+        marginTop: "70px",
         padding: "20px",
         borderRadius: "10px",
         backgroundColor: "#fff",
