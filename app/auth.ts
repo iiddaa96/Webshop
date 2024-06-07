@@ -20,6 +20,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/login",
   },
   providers: [github],
+  trustHost: true,
 
   /* callbacks: {
     async session({ session, token }: { session: Session; token: JWT }) {
