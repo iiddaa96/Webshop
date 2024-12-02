@@ -6,16 +6,16 @@ Vi har skapat en webshop där vi säljer allt från strandspel till handdukar oc
 
 #### Projektet innehåller:
 
-- Next.js
-- React
-- TypeScript
-- MUI
-- NanoId
-- Zod
-- React-hook-form
-- Prisma
-- SQL
-- Neon
+- **Next.js**
+- **React**
+- **TypeScript**
+- **MUI (Material-UI)**
+- **NanoId**
+- **Zod**
+- **React Hook Form**
+- **Prisma**
+- **SQL**
+- **Neon**
 
 ## Länkar:
 
